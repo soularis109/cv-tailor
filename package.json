@@ -1,0 +1,16 @@
+{
+  "name": "cv-tailor",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A job-hunt workbench: tailor your CV to any posting and track applications.",
+  "scripts": {
+    "dev": "concurrently -n server,client -c green,cyan \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "typecheck": "npm --prefix server run typecheck && npm --prefix client run typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}

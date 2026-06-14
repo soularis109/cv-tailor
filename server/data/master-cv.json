@@ -1,0 +1,83 @@
+{
+  "name": "Olena Kovalenko",
+  "title": "Senior Frontend Engineer",
+  "location": "Kyiv, Ukraine (remote)",
+  "email": "olena.k@example.com",
+  "phone": "",
+  "links": {
+    "github": "https://github.com/example",
+    "linkedin": "https://linkedin.com/in/example"
+  },
+  "summary": "Senior frontend engineer with 8 years building product UIs in React and TypeScript. I care about performance, accessibility, and shipping. Comfortable owning features end to end, mentoring, and working directly with product and design.",
+  "skills": {
+    "languages": ["TypeScript", "JavaScript", "HTML", "CSS", "SQL"],
+    "frameworks": ["React", "Next.js", "Redux Toolkit", "React Query", "Vue 2", "Node.js", "Express"],
+    "styling": ["Tailwind CSS", "CSS Modules", "styled-components", "Storybook"],
+    "testing": ["Vitest", "Jest", "React Testing Library", "Playwright", "Cypress"],
+    "tooling": ["Vite", "Webpack", "Turborepo", "ESLint", "GitHub Actions", "Docker"],
+    "practices": ["accessibility (WCAG)", "performance optimization", "design systems", "code review", "mentoring", "A/B testing"],
+    "cloud": ["AWS (S3, CloudFront, Lambda)", "Vercel"]
+  },
+  "experience": [
+    {
+      "company": "FinFlow",
+      "role": "Senior Frontend Engineer",
+      "period": "2021 — present",
+      "location": "Remote",
+      "tech": ["React", "TypeScript", "Next.js", "React Query", "Tailwind CSS", "Playwright"],
+      "bullets": [
+        "Led the rebuild of the customer dashboard in Next.js and TypeScript, cutting time-to-interactive by 41% and lifting weekly active users by 18%.",
+        "Built and own a shared design system (40+ components in Storybook) used by 5 product teams, reducing UI build time for new features by roughly a third.",
+        "Introduced Playwright end-to-end tests and a CI gate in GitHub Actions, dropping production UI regressions by ~60%.",
+        "Mentored 3 mid-level engineers through code review and pairing; two were promoted within a year.",
+        "Drove accessibility to WCAG 2.1 AA across the core funnel, fixing 120+ issues found in audits."
+      ]
+    },
+    {
+      "company": "ShopGrid",
+      "role": "Frontend Engineer",
+      "period": "2018 — 2021",
+      "location": "Kyiv",
+      "tech": ["React", "Redux", "JavaScript", "Webpack", "Jest"],
+      "bullets": [
+        "Built the checkout and product pages for an e-commerce platform serving 2M monthly users.",
+        "Cut bundle size by 35% through code-splitting and dependency pruning, improving Lighthouse performance from 58 to 92.",
+        "Ran A/B tests on the cart flow that increased conversion by 7%.",
+        "Migrated a legacy jQuery storefront to React incrementally with zero downtime."
+      ]
+    },
+    {
+      "company": "Brightside Studio",
+      "role": "Junior Frontend Developer",
+      "period": "2016 — 2018",
+      "location": "Kyiv",
+      "tech": ["JavaScript", "Vue 2", "CSS", "PHP"],
+      "bullets": [
+        "Delivered marketing sites and small web apps for 15+ clients.",
+        "Built reusable Vue components and a small internal CSS framework."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "a11y-checklist",
+      "description": "Open-source browser extension that flags common accessibility issues on any page. 1.2k GitHub stars.",
+      "tech": ["TypeScript", "React", "Chrome Extensions API"],
+      "link": "https://github.com/example/a11y-checklist"
+    },
+    {
+      "name": "perfbench",
+      "description": "CLI that runs Lighthouse against a list of routes and posts a diff to pull requests.",
+      "tech": ["Node.js", "TypeScript", "GitHub Actions"],
+      "link": "https://github.com/example/perfbench"
+    }
+  ],
+  "education": [
+    {
+      "institution": "National Technical University of Ukraine (KPI)",
+      "credential": "BSc, Computer Science",
+      "period": "2012 — 2016"
+    }
+  ],
+  "certifications": []
+}
