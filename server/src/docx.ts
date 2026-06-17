@@ -35,7 +35,7 @@ function sectionHeading(text: string): Paragraph {
         size: 20,
         color: ACCENT,
         font: FONT,
-        characterSpacing: 20,
+        characterSpacing: 4,
       }),
     ],
   });
@@ -85,7 +85,7 @@ export async function buildDocx(cv: TailoredCv, header: CvHeader): Promise<Buffe
     parts.push({ text: url.replace(/^https?:\/\//, ""), link: url });
   }
   parts.forEach((p, i) => {
-    if (i > 0) contactRuns.push(new TextRun({ text: "  ·  ", size: 19, color: MUTED, font: FONT }));
+    if (i > 0) contactRuns.push(new TextRun({ text: "  |  ", size: 19, color: MUTED, font: FONT }));
     if (p.link) {
       contactRuns.push(
         new ExternalHyperlink({
@@ -119,7 +119,7 @@ export async function buildDocx(cv: TailoredCv, header: CvHeader): Promise<Buffe
       new Paragraph({
         spacing: { after: 60 },
         children: [
-          new TextRun({ text: cv.top_skills.join("  ·  "), size: 21, color: INK, font: FONT }),
+          new TextRun({ text: cv.top_skills.join(", "), size: 21, color: INK, font: FONT }),
         ],
       }),
     );
@@ -138,7 +138,7 @@ export async function buildDocx(cv: TailoredCv, header: CvHeader): Promise<Buffe
           ],
         }),
       );
-      const meta = [job.period, job.location].filter(Boolean).join("  ·  ");
+      const meta = [job.period, job.location].filter(Boolean).join("  |  ");
       if (meta) {
         children.push(
           new Paragraph({
@@ -195,7 +195,7 @@ export async function buildDocx(cv: TailoredCv, header: CvHeader): Promise<Buffe
           alignment: AlignmentType.LEFT,
           children: [
             new TextRun({ text: e.credential, bold: true, size: 21, color: INK, font: FONT }),
-            new TextRun({ text: `  —  ${e.institution}  ·  ${e.period}`, size: 20, color: MUTED, font: FONT }),
+            new TextRun({ text: `  —  ${e.institution}  |  ${e.period}`, size: 20, color: MUTED, font: FONT }),
           ],
         }),
       );

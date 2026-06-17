@@ -38,6 +38,42 @@ Hard rules (do not break these):
    (strong / partial / missing). In 'match_notes', tell the candidate plainly where they are
    weak for this role. 'fit_score' must reflect reality, not optimism.
 
+LEVEL-SPECIFIC WRITING GUIDE — apply strictly based on the role's 'seniority' field:
+
+For intern / junior:
+  Action verbs: Built, Developed, Implemented, Created, Integrated, Optimized, Tested, Fixed, Contributed
+  Bullet formula: "[Verb] [specific component/feature] using [technology], [outcome or scope]"
+  Emphasize: exact technologies used, concrete implementations, quantified small wins (load time reduced by X ms, test coverage up X%, X bugs fixed)
+  Include projects prominently; education section if recent grad
+  AVOID "Architected", "Spearheaded", "Led team of N engineers", "Drove initiative" — these read as overqualified and destroy credibility with hiring managers
+  Max bullet length: 1 line preferred, 2 max
+
+For middle:
+  Action verbs: Designed, Led, Owned, Delivered, Built, Optimized, Migrated, Reduced, Improved, Shipped, Drove
+  Bullet formula: "[Verb] [system/feature with scope], achieving [measurable outcome]"
+  Emphasize: feature or system ownership end-to-end, measurable impact (%, latency, user count, team size), cross-team collaboration, key technical decisions made independently
+  Quantify scope and team context wherever possible (e.g. "across 3 squads", "serving 200k DAU")
+  AVOID pure task language ("Assisted with", "Helped build", "Contributed to") — signals junior; also avoid unsupported strategy language ("Transformed the platform", "Defined company architecture") — signals overqualified
+  Max bullet length: 1-2 lines
+
+For senior / lead / staff / principal:
+  Action verbs: Architected, Spearheaded, Established, Mentored, Scaled, Drove, Defined, Oversaw, Championed, Transformed, Pioneered
+  Bullet formula: "[Verb] [initiative/system at scale], [business or team impact with numbers]"
+  Emphasize: scale (DAU, RPS, team headcount), business outcomes ($ARR generated, cost reduced X%, retention improved), architectural decisions, cross-team or cross-org influence, mentoring and growing others
+  AVOID low-level implementation details (leave those to mid/junior); passive or assistive verbs; underselling scope
+  Max bullet length: 2 lines; always lead with scale or outcome — never with implementation detail
+
+ATS COMPLIANCE — apply to every bullet and field regardless of level:
+  - Start every bullet with an action verb. Never use "Responsible for...", "Duties included...", "Was tasked with..."
+  - Use exact technology names from ats_keywords verbatim in bullets where truthful — ATS scanners match on exact strings
+  - Use digits not words: write "5 engineers", "3 months", not "five engineers", "three months"
+  - Date format: "Mon YYYY – Mon YYYY" (e.g. "Jan 2022 – Mar 2024") consistently; use "Present" for current role
+  - Do NOT add periods at the end of bullets
+  - Location: "City, Country" format, no abbreviations
+  - Headline: match the job's exact seniority wording — if posting says "Middle Frontend Engineer" write exactly that, not "Senior Frontend Engineer"
+  - Skills: plain comma-separated terms only, no grouping symbols, no bullet points within the list
+  - Keep each bullet to 1-2 lines maximum; split long thoughts rather than wrapping to 3+ lines
+
 Write all candidate-facing CV text in English. Keep bullets concrete and quantified wherever the master CV provides numbers.`;
 
 export function tailorUserMessage(masterCv: unknown, analysis: unknown): string {

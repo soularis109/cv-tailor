@@ -13,9 +13,7 @@ const THREAD = "#0e7a63";
 const INK = "#16181a";
 const INK2 = "#33373b";
 const MUTED = "#5f6b66";
-const LINE = "#e1e6e3";
-const PAGE_W = 595.28; // A4 points width
-const PAGE_H = 841.89;
+const PAGE_W = 595.28;
 const MARGIN = 48;
 const CONTENT_W = PAGE_W - MARGIN * 2;
 
@@ -29,7 +27,8 @@ function contactLine(header: CvPdfHeader): string {
       if (url) parts.push(url);
     }
   }
-  return parts.join("  ·  ");
+  // ATS-safe ASCII separator
+  return parts.join("  |  ");
 }
 
 export async function buildPdf(tailored: TailoredCv, header: CvPdfHeader): Promise<Buffer> {
@@ -42,84 +41,102 @@ export async function buildPdf(tailored: TailoredCv, header: CvPdfHeader): Promi
 
     let y = MARGIN;
 
-    function moveDown(pt: number) {
+    function text(
+      content: string,
+      opts: {
+        font?: string;
+        size?: number;
+        color?: string;
+        lineGap?: number;
+        width?: number;
+      } = {},
+    ) {
+      const { font = "Helvetica", size = 9.5, color = INK, lineGap = 1, width = CONTENT_W } = opts;
+      doc.fontSize(size).fillColor(color).font(font).text(content, MARGIN, y, { width, lineGap });
+      y = doc.y;
+    }
+
+    function gap(pt: number) {
       y += pt;
       doc.y = y;
     }
 
-    function rule(color = LINE) {
-      doc.moveTo(MARGIN, y).lineTo(MARGIN + CONTENT_W, y).strokeColor(color).lineWidth(0.75).stroke();
-      moveDown(8);
-    }
-
     function sectionHeading(title: string) {
-      moveDown(14);
-      doc.fontSize(7.5).fillColor(MUTED).font("Helvetica-Bold").text(title.toUpperCase(), MARGIN, y, {
-        width: CONTENT_W,
-        characterSpacing: 1.2,
-      });
+      gap(14);
+      // Plain uppercase text — no graphic lines, fully ATS-parseable
+      doc.fontSize(7.5).fillColor(MUTED).font("Helvetica-Bold").text(
+        title.toUpperCase(),
+        MARGIN,
+        y,
+        { width: CONTENT_W, characterSpacing: 1.2 },
+      );
       y = doc.y + 4;
-      rule();
+      // Thin underline via a short text rule (dashes) is intentionally omitted —
+      // graphical lines break ATS text extraction. Spacing alone provides visual separation.
     }
 
-    // ---- Name & contact ----
+    function checkPageBreak() {
+      if (y > 841.89 - MARGIN - 60) {
+        doc.addPage();
+        y = MARGIN;
+      }
+    }
+
+    // ---- Name ----
     doc.fontSize(24).fillColor(INK).font("Helvetica-Bold").text(header.name, MARGIN, y, { width: CONTENT_W });
     y = doc.y + 4;
 
+    // ---- Headline ----
     if (tailored.headline) {
       doc.fontSize(11).fillColor(THREAD).font("Helvetica-Bold").text(tailored.headline, MARGIN, y, { width: CONTENT_W });
       y = doc.y + 4;
     }
 
+    // ---- Contact (single left-to-right line, ATS reads cleanly) ----
     const contact = contactLine(header);
     if (contact) {
       doc.fontSize(8.5).fillColor(MUTED).font("Helvetica").text(contact, MARGIN, y, { width: CONTENT_W });
-      y = doc.y + 6;
+      y = doc.y + 10;
     }
-
-    rule(THREAD);
 
     // ---- Summary ----
     if (tailored.summary) {
-      doc.fontSize(9.5).fillColor(INK2).font("Helvetica").text(tailored.summary, MARGIN, y, {
-        width: CONTENT_W,
-        lineGap: 2,
-      });
-      y = doc.y;
+      sectionHeading("Summary");
+      text(tailored.summary, { color: INK2, lineGap: 2 });
     }
 
     // ---- Skills ----
     if (tailored.top_skills?.length) {
       sectionHeading("Skills");
-      doc.fontSize(9).fillColor(INK2).font("Helvetica").text(tailored.top_skills.join("  ·  "), MARGIN, y, {
-        width: CONTENT_W,
-        lineGap: 2,
-      });
-      y = doc.y;
+      // Comma-separated plain text — most ATS-friendly format
+      text(tailored.top_skills.join(", "), { color: INK2, lineGap: 2 });
     }
 
     // ---- Experience ----
     if (tailored.experience?.length) {
       sectionHeading("Experience");
       for (const job of tailored.experience) {
-        const rightSide = job.period ?? "";
-        doc.fontSize(9.5).fillColor(INK).font("Helvetica-Bold").text(job.role, MARGIN, y, { continued: false, width: CONTENT_W - 100 });
-        const jobY = y;
-        doc.fontSize(8.5).fillColor(MUTED).font("Helvetica").text(rightSide, MARGIN, jobY, { align: "right", width: CONTENT_W });
-        y = doc.y;
-        doc.fontSize(9).fillColor(THREAD).font("Helvetica").text(`${job.company}${job.location ? ` · ${job.location}` : ""}`, MARGIN, y, { width: CONTENT_W });
-        y = doc.y + 3;
-        for (const bullet of job.bullets ?? []) {
-          doc.fontSize(9).fillColor(INK2).font("Helvetica").text(`•  ${bullet}`, MARGIN + 8, y, { width: CONTENT_W - 8, lineGap: 1 });
-          y = doc.y + 1;
-        }
-        y += 6;
-        doc.y = y;
+        checkPageBreak();
 
-        if (y > PAGE_H - MARGIN - 60) {
-          doc.addPage();
-          y = MARGIN;
+        // Role (bold, line 1) — ATS reads top-to-bottom, left-to-right
+        doc.fontSize(9.5).fillColor(INK).font("Helvetica-Bold").text(job.role, MARGIN, y, { width: CONTENT_W });
+        y = doc.y + 2;
+
+        // Company  |  Location  |  Period (all on line 2, sequential — ATS-safe)
+        const jobMeta = [job.company, job.location, job.period].filter(Boolean).join("  |  ");
+        doc.fontSize(9).fillColor(THREAD).font("Helvetica").text(jobMeta, MARGIN, y, { width: CONTENT_W });
+        y = doc.y + 4;
+
+        // Bullets
+        for (const b of job.bullets ?? []) {
+          doc.fontSize(9).fillColor(INK2).font("Helvetica").text(`• ${b}`, MARGIN + 8, y, {
+            width: CONTENT_W - 8,
+            lineGap: 1,
+          });
+          y = doc.y + 2;
+          checkPageBreak();
         }
+        gap(6);
       }
     }
 
@@ -127,22 +144,23 @@ export async function buildPdf(tailored: TailoredCv, header: CvPdfHeader): Promi
     if (tailored.projects?.length) {
       sectionHeading("Projects");
       for (const proj of tailored.projects) {
-        doc.fontSize(9.5).fillColor(INK).font("Helvetica-Bold").text(proj.name, MARGIN, y, { continued: false, width: CONTENT_W });
+        checkPageBreak();
+
+        doc.fontSize(9.5).fillColor(INK).font("Helvetica-Bold").text(proj.name, MARGIN, y, { width: CONTENT_W });
         y = doc.y + 2;
+
         if (proj.description) {
-          doc.fontSize(9).fillColor(INK2).font("Helvetica").text(proj.description, MARGIN, y, { width: CONTENT_W, lineGap: 1 });
-          y = doc.y + 2;
+          text(proj.description, { color: INK2, lineGap: 1 });
+          gap(2);
         }
         if (proj.tech?.length) {
-          doc.fontSize(8).fillColor(MUTED).font("Helvetica").text(proj.tech.join(", "), MARGIN, y, { width: CONTENT_W });
-          y = doc.y + 2;
+          text(proj.tech.join(", "), { color: MUTED, size: 8.5 });
+          gap(2);
         }
         if (proj.link) {
-          doc.fontSize(8).fillColor(THREAD).font("Helvetica").text(proj.link, MARGIN, y, { width: CONTENT_W });
-          y = doc.y;
+          text(proj.link, { color: THREAD, size: 8.5 });
         }
-        y += 6;
-        doc.y = y;
+        gap(6);
       }
     }
 
@@ -150,13 +168,15 @@ export async function buildPdf(tailored: TailoredCv, header: CvPdfHeader): Promi
     if (tailored.education?.length) {
       sectionHeading("Education");
       for (const edu of tailored.education) {
-        doc.fontSize(9.5).fillColor(INK).font("Helvetica-Bold").text(edu.credential, MARGIN, y, { continued: false, width: CONTENT_W - 100 });
-        const eduY = y;
-        doc.fontSize(8.5).fillColor(MUTED).font("Helvetica").text(edu.period ?? "", MARGIN, eduY, { align: "right", width: CONTENT_W });
+        checkPageBreak();
+
+        doc.fontSize(9.5).fillColor(INK).font("Helvetica-Bold").text(edu.credential, MARGIN, y, { width: CONTENT_W });
         y = doc.y + 2;
-        doc.fontSize(9).fillColor(THREAD).font("Helvetica").text(edu.institution, MARGIN, y, { width: CONTENT_W });
+
+        // Institution  |  Period — sequential, ATS-safe
+        const eduMeta = [edu.institution, edu.period].filter(Boolean).join("  |  ");
+        doc.fontSize(9).fillColor(THREAD).font("Helvetica").text(eduMeta, MARGIN, y, { width: CONTENT_W });
         y = doc.y + 8;
-        doc.y = y;
       }
     }
 

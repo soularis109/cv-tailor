@@ -1412,3 +1412,27 @@ select {
   outline: none;
   background: var(--panel);
 }
+
+/* Pipeline toolbar */
+.pipeline-toolbar { display: flex; gap: 0.6rem; margin-bottom: 0.75rem; align-items: center; flex-wrap: wrap; }
+.pipeline-search { flex: 1; min-width: 160px; padding: 0.45rem 0.75rem; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); font-size: 0.86rem; }
+.pipeline-search:focus { border-color: var(--thread); outline: none; }
+.pipeline-filter-status { padding: 0.45rem 0.6rem; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); font-size: 0.86rem; cursor: pointer; }
+.pipeline-filter-status:focus { border-color: var(--thread); outline: none; }
+.sort-btn { border: 1px solid var(--line); background: var(--panel); border-radius: 9px; padding: 0.4rem 0.75rem; font-size: 0.8rem; font-weight: 500; cursor: pointer; color: var(--muted); white-space: nowrap; }
+.sort-btn.active { border-color: var(--thread); color: var(--thread); background: var(--thread-weak); }
+/* Pipeline stats */
+.pipeline-stats { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
+.stat-chip { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.5rem 0.85rem; min-width: 72px; }
+.stat-label { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); font-weight: 600; }
+.stat-value { font-family: var(--display); font-weight: 700; font-size: 1.15rem; color: var(--thread); line-height: 1.2; margin-top: 0.1rem; }
+.stat-value.offers { color: var(--thread); }
+/* Onboarding */
+.drawer-onboarding { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.85rem; text-align: center; padding: 1.5rem 1rem; }
+.onboarding-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--thread-weak); border: 1px solid var(--line); flex: none; }
+/* Responsive pipeline */
+@media (max-width: 680px) {
+  .pipeline-page { padding: 1rem 0.75rem; }
+  .pipeline-head { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .table th:nth-child(7), .table td:nth-child(7), .table th:nth-child(8), .table td:nth-child(8) { display: none; }
+}

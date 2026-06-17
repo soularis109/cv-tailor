@@ -1,5 +1,7 @@
+import { useMemo, useState } from "react";
 import { api } from "../api";
 import { STATUSES, type Application, type Status } from "../types";
+import { PipelineStats } from "./PipelineStats";
 
 interface Props {
   applications: Application[];
@@ -24,6 +26,31 @@ function statusClass(status: Status): string {
 }
 
 export function Pipeline({ applications, onPatch, onDelete, onOpen, loadError, loading }: Props) {
+  const [search, setSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState<Status | "All">("All");
+  const [sortKey, setSortKey] = useState<"dateAdded" | "fitScore" | null>(null);
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+
+  const visibleApplications = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    const filtered = applications.filter((a) => {
+      const matchesSearch =
+        !q || a.company.toLowerCase().includes(q) || a.role.toLowerCase().includes(q);
+      const matchesStatus = statusFilter === "All" || a.status === statusFilter;
+      return matchesSearch && matchesStatus;
+    });
+
+    if (!sortKey) return filtered;
+
+    return [...filtered].sort((a, b) => {
+      const comparison =
+        sortKey === "dateAdded"
+          ? a.dateAdded.localeCompare(b.dateAdded)
+          : a.fitScore - b.fitScore;
+      return sortDir === "asc" ? comparison : -comparison;
+    });
+  }, [applications, search, sortDir, sortKey, statusFilter]);
+
   if (loading) {
     return (
       <div className="pipeline-loading">
@@ -66,13 +93,59 @@ export function Pipeline({ applications, onPatch, onDelete, onOpen, loadError, l
 
   return (
     <div className="pipeline">
+      <PipelineStats applications={applications} />
       <div className="pipeline-head">
         <span className="pipeline-count">
-          {applications.length} application{applications.length === 1 ? "" : "s"}
+          {visibleApplications.length} application{visibleApplications.length === 1 ? "" : "s"}
         </span>
         <a className="btn btn-ghost" href={api.xlsxUrl} download>
           Open Excel
         </a>
+      </div>
+
+      <div className="pipeline-toolbar">
+        <input
+          className="pipeline-search"
+          placeholder="Search company or role…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <select
+          className="pipeline-filter-status"
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value as Status | "All")}
+        >
+          <option value="All">All statuses</option>
+          {STATUSES.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+        <button
+          className={`sort-btn ${sortKey === "dateAdded" ? "active" : ""}`}
+          onClick={() => {
+            if (sortKey === "dateAdded") setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+            else {
+              setSortKey("dateAdded");
+              setSortDir("desc");
+            }
+          }}
+        >
+          Date {sortKey === "dateAdded" ? (sortDir === "desc" ? "↓" : "↑") : "↕"}
+        </button>
+        <button
+          className={`sort-btn ${sortKey === "fitScore" ? "active" : ""}`}
+          onClick={() => {
+            if (sortKey === "fitScore") setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+            else {
+              setSortKey("fitScore");
+              setSortDir("desc");
+            }
+          }}
+        >
+          Fit {sortKey === "fitScore" ? (sortDir === "desc" ? "↓" : "↑") : "↕"}
+        </button>
       </div>
 
       <div className="table-wrap">
@@ -92,7 +165,7 @@ export function Pipeline({ applications, onPatch, onDelete, onOpen, loadError, l
             </tr>
           </thead>
           <tbody>
-            {applications.map((a) => (
+            {visibleApplications.map((a) => (
               <tr
                 key={a.id}
                 className="table-row-clickable"

@@ -1,0 +1,259 @@
+{
+  "jobText": "Frontend Engineer (React)\n Київ\nGrowly — глобальна продуктова компанія, яку рухають виняткові команди.\n\nНаш принцип простий: ніхто не перемагає наодинці. Змінюються продукти і ринки — але сильна команда досягає результатів знову і знову. Тому для нас не так важливо, що робити. Важливо — з ким, ми збираємо команди, які разом перетворюють амбітні ідеї на реальність.\n\nСьогодні ми розвиваємо три напрями в межах одного бренду:\n\nІнструменти для роботи з документами — редагування, конвертація, підписання і захист файлів в одному місці.\nПлатформа для розвитку когнітивних навичок — тренування памʼяті, уваги та швидкості мислення через науково обґрунтовані тести й практики.\nПлатформа для розвитку карʼєри — резюме та мотиваційні листи, пошук вакансій і підтримка на кожному етапі карʼєрного розвитку.\nМи частина екосистеми SKELAR. Що варто знати про SKELAR? Це венчур-білдер — іншими словами, компанія, яка будує компанії. З нами фаундери створюють consumer-бізнеси, які стають лідерами на глобальних ринках EdTech, Mental health, Petcare, FashionTech та інших.\n\nСкеларівці будують tech-продукти, які здобувають відзнаки від Product Hunt, The Webby Awards та отримують тисячі позитивних відгуків на TrustPilot. Загалом tech-продуктами наших бізнесів користуються 10+ млн людей у світі.\n\nКласні продукти будують не вакансії, а люди. Тому ми не «закриваємо позицію» — ми шукаємо людину, яка підніме планку команди — можливо, це ти.\n\nЗараз ми шукаємо Frontend Engineer, з яким перетворимо амбіції на результат.\n\nЩо робитимеш:\n— Розробка та підтримка користувацьких інтерфейсів з використанням React 19 / Next.js 15 / TypeScript.\n— Робота в монорепозиторії з кількома продуктами та спільними пакетами.\n— Покриття коду тестами (компонентними та E2E) і участь у налаштуванні CI/CD-пайплайнів.\n— Запуск та аналіз A/B-тестів.\n— Участь у технічному прийнятті рішень, code review та покращенні Developer Experience.\nЩо для нас важливо:\n— 2+ роки комерційного досвіду на React + TypeScript.\n— Практичний досвід роботи з інструментами керування станом на клієнті та сервері (Zustand / Redux Toolkit, TanStack Query або аналогічні).\n— Розуміння performance-практик на фронтенді (оптимізація рендерів, Core Web Vitals, зменшення бандл-розміру, робота з браузером).\n— Впевнена робота з Dev Tools та вміння ефективно взаємодіяти з Figma.\nБуде перевагою:\n— Досвід роботи в монорепозиторіях (Turborepo, Nx тощо).\n— Досвід написання E2E-тестів (Cypress, Playwright).\n— Досвід роботи з системами моніторингу помилок та перформансу (Sentry).\n— Досвід налаштування CI/CD пайплайнів (GitHub Actions, GitLab CI тощо).\n\nЯк ми працюємо — наші цінності\nOpenness — Be Brave. Embrace Change. Value Feedback. Сміливість говорити правду й чути інших — навіть коли незручно.\n\nOwnership — Take charge. Deliver results. Тут не питають «де мій KPI» — тут приходять з «я бачу, як зробити краще».\n\nBias for Action — Quick Moves, Big Wins. Приймаємо рішення швидко й любимо дію більше за нескінченні узгодження. Краще спробувати, помилитись і навчитися, ніж зробити ідеально, але запізно.\n\nGrowth — Evolve Today, Excel Tomorrow. Ми не зупиняємось на досягнутому — ні як бізнес, ні як люди. Ставимо високу планку й щодня рухаємось до неї.\n\nЩо ми даємо\n— Внутрішні професійні клуби: маркетинг, розробка, фінанси і т.п;\n— Компенсація навчання: тренінги, курси, конференції;\n— Медичне страхування та корпоративний лікар;\n— Компенсація Mental Health програми;\n— Безкоштовні заняття спортом з корпоративними тренерами;\n— Сніданки та обіди в офісі.",
+  "analysis": {
+    "role_title": "Frontend Engineer (React)",
+    "seniority": "middle",
+    "language": "uk",
+    "must_have": [
+      "2+ роки комерційного досвіду на React + TypeScript",
+      "Практичний досвід роботи з інструментами керування станом на клієнті та сервері (Zustand / Redux Toolkit, TanStack Query або аналогічні)",
+      "Розуміння performance-практик на фронтенді (оптимізація рендерів, Core Web Vitals, зменшення бандл-розміру, робота з браузером)",
+      "Впевнена робота з Dev Tools та вміння ефективно взаємодіяти з Figma"
+    ],
+    "nice_to_have": [
+      "Досвід роботи в монорепозиторіях (Turborepo, Nx тощо)",
+      "Досвід написання E2E-тестів (Cypress, Playwright)",
+      "Досвід роботи з системами моніторингу помилок та перформансу (Sentry)",
+      "Досвід налаштування CI/CD пайплайнів (GitHub Actions, GitLab CI тощо)"
+    ],
+    "core_technologies": [
+      "React 19",
+      "Next.js 15",
+      "TypeScript",
+      "Zustand",
+      "Redux Toolkit",
+      "TanStack Query",
+      "Turborepo",
+      "Nx",
+      "Cypress",
+      "Playwright",
+      "Sentry",
+      "GitHub Actions",
+      "GitLab CI",
+      "Figma",
+      "Dev Tools"
+    ],
+    "domains": [
+      "EdTech",
+      "Mental Health",
+      "document tools",
+      "career development",
+      "cognitive skills",
+      "consumer tech"
+    ],
+    "responsibilities": [
+      "Розробка та підтримка користувацьких інтерфейсів з використанням React 19 / Next.js 15 / TypeScript",
+      "Робота в монорепозиторії з кількома продуктами та спільними пакетами",
+      "Покриття коду тестами (компонентними та E2E) і участь у налаштуванні CI/CD-пайплайнів",
+      "Запуск та аналіз A/B-тестів",
+      "Участь у технічному прийнятті рішень, code review та покращенні Developer Experience"
+    ],
+    "ats_keywords": [
+      "Frontend Engineer",
+      "React",
+      "React 19",
+      "Next.js 15",
+      "TypeScript",
+      "Zustand",
+      "Redux Toolkit",
+      "TanStack Query",
+      "монорепозиторій",
+      "monorepo",
+      "Turborepo",
+      "Nx",
+      "E2E",
+      "Cypress",
+      "Playwright",
+      "CI/CD",
+      "GitHub Actions",
+      "GitLab CI",
+      "Sentry",
+      "Core Web Vitals",
+      "A/B-тестів",
+      "code review",
+      "Developer Experience",
+      "Figma",
+      "performance",
+      "2+ роки комерційного досвіду"
+    ],
+    "soft_signals": [
+      "Openness — Be Brave, Embrace Change, Value Feedback",
+      "Ownership — Take charge, Deliver results",
+      "Bias for Action — Quick Moves, Big Wins",
+      "Growth — Evolve Today, Excel Tomorrow",
+      "ніхто не перемагає наодинці (team-first culture)",
+      "приймаємо рішення швидко (fast decision-making)",
+      "краще спробувати, помилитись і навчитися (fail-fast mindset)",
+      "глобальна продуктова компанія (global product company)"
+    ],
+    "red_flags": [
+      "Компенсація не вказана у вакансії (no salary range disclosed)",
+      "Три різні продуктові напрями в межах одного бренду — можливий широкий scope та часте перемикання між продуктами",
+      "Вакансія прив'язана до офісу в Києві (Kyiv office) — обмежена гнучкість для remote-кандидатів"
+    ]
+  },
+  "tailored": {
+    "headline": "Frontend Engineer · React, TypeScript, Next.js",
+    "summary": "Senior Frontend Engineer with 5+ years of commercial experience building scalable web applications with React and TypeScript. Deep expertise in client- and server-side state management (Redux Toolkit, TanStack Query), performance optimisation (Core Web Vitals, bundle size reduction, code-splitting), and real-time systems. Proven track record of establishing code review standards, CI/CD pipelines, and A/B testing workflows that measurably improve release quality and conversion rates. Thrives in fast-moving, product-driven environments with a strong ownership mindset.",
+    "top_skills": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "TanStack Query",
+      "Redux Toolkit",
+      "JavaScript",
+      "HTML",
+      "CSS / SCSS",
+      "Playwright",
+      "Jest",
+      "Sentry",
+      "CI/CD",
+      "Core Web Vitals",
+      "A/B Testing",
+      "code review",
+      "WebSockets",
+      "Vite",
+      "Webpack",
+      "Node.js"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Senior Frontend Engineer",
+        "period": "February 2025 – Present",
+        "location": "Remote",
+        "bullets": [
+          "Led frontend development from scratch to production across three products — a marketplace, an admin panel, and SEO-driven landing pages — managing a team of 3–5 engineers.",
+          "Defined frontend architecture and selected the tech stack (React, Next.js, TypeScript, TanStack Query, SCSS), establishing scalable development practices from project inception.",
+          "Built and shipped a full-featured marketplace platform serving 50K+ monthly users, including listings, transactions, and complex user flows backed by scalable state management.",
+          "Implemented real-time features using WebSockets to support live marketplace interactions and instant updates.",
+          "Ran A/B tests on SEO-optimised landing pages in collaboration with the marketing team, increasing conversion rates by ~18%.",
+          "Established code review standards, PR workflows, task estimation, and release management processes, reducing time-to-release by ~25%.",
+          "Set up CI/CD pipelines, logging, and monitoring to ensure production stability and quality control.",
+          "Leveraged AI tools (Cursor, Claude Code) to accelerate development, improve code quality, and streamline pull request workflows.",
+          "Hired and mentored frontend developers, contributing to team growth and improving overall Developer Experience."
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Senior Frontend Engineer",
+        "period": "November 2022 – January 2025",
+        "location": "Remote",
+        "bullets": [
+          "Developed an AI-powered chatbot platform integrated into third-party products, replacing traditional website support solutions — built with React, Next.js, TypeScript, and Material UI.",
+          "Built and maintained an embeddable client-side script for seamless integration into external websites, ensuring isolated and secure DOM interaction.",
+          "Designed and implemented a configurable admin panel for managing chatbot behaviour, content, and user interactions.",
+          "Optimised performance (LCP, TTI) through code-splitting, lazy loading, and caching strategies, improving load times by ~30% and reducing bundle size by ~25% — directly improving Core Web Vitals.",
+          "Built an efficient data layer using TanStack Query (caching, deduplication, background updates), significantly reducing redundant network requests.",
+          "Implemented real-time features using WebSockets to enable responsive chatbot interactions.",
+          "Integrated error monitoring and performance tracking with Sentry, reducing debugging time and improving system observability.",
+          "Introduced a structured release workflow (code reviews, PR guidelines, staging validation), reducing production issues by ~30% and improving release stability.",
+          "Refactored a chaotic frontend codebase into a scalable, modular architecture, improving maintainability and team velocity.",
+          "Led the migration from Next.js to React where SSR was unnecessary, simplifying the stack and reducing application complexity.",
+          "Contributed to the testing strategy using Jest and React Testing Library, reducing regressions and improving code reliability."
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Frontend Developer",
+        "period": "November 2020 – October 2022",
+        "location": "Remote",
+        "bullets": [
+          "Developed and scaled a complex admin panel for a streaming platform used by 10K+ active users, built with React, TypeScript, Redux, and SCSS.",
+          "Contributed to building the admin panel from scratch to production, covering the full product development lifecycle.",
+          "Implemented data-heavy dashboards handling 1,000+ rows per view, including tables, statistics, and real-time updates.",
+          "Built multiple configuration modules for stream customisation (alerts, banners, widgets, user settings).",
+          "Designed reusable UI components and established a consistent design system across the platform, accelerating feature development.",
+          "Collaborated closely with backend engineers to integrate REST APIs and ensure stable, efficient data flow."
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc Logistics",
+        "period": "2018–2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc Management",
+        "period": "2014–2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "2+ роки комерційного досвіду на React + TypeScript",
+        "status": "strong",
+        "evidence": "5+ years total; React + TypeScript used across all three roles (KYC Market, AMO FINTECH, DonateSystem) since 2020."
+      },
+      {
+        "requirement": "Практичний досвід роботи з інструментами керування станом (Zustand / Redux Toolkit, TanStack Query або аналогічні)",
+        "status": "strong",
+        "evidence": "TanStack Query used at KYC Market and AMO FINTECH; Redux / Redux Toolkit used at DonateSystem. Zustand not explicitly listed but Redux Toolkit is a direct equivalent."
+      },
+      {
+        "requirement": "Розуміння performance-практик (Core Web Vitals, зменшення бандл-розміру, оптимізація рендерів)",
+        "status": "strong",
+        "evidence": "AMO FINTECH: improved LCP/TTI, reduced bundle size by ~25%, improved load times by ~30% via code-splitting, lazy loading, and caching."
+      },
+      {
+        "requirement": "Впевнена робота з Dev Tools та взаємодія з Figma",
+        "status": "partial",
+        "evidence": "Dev Tools usage is implied by performance optimisation and debugging work. Figma is not explicitly mentioned in the master CV."
+      },
+      {
+        "requirement": "Досвід роботи в монорепозиторіях (Turborepo, Nx тощо)",
+        "status": "missing",
+        "evidence": "No mention of monorepo tooling (Turborepo, Nx) in the master CV."
+      },
+      {
+        "requirement": "Досвід написання E2E-тестів (Cypress, Playwright)",
+        "status": "partial",
+        "evidence": "Playwright is listed in the skills section. Cypress is not mentioned. No specific E2E project described in bullets."
+      },
+      {
+        "requirement": "Досвід роботи з системами моніторингу помилок та перформансу (Sentry)",
+        "status": "strong",
+        "evidence": "Sentry integrated at AMO FINTECH for error tracking and monitoring, explicitly mentioned."
+      },
+      {
+        "requirement": "Досвід налаштування CI/CD пайплайнів",
+        "status": "strong",
+        "evidence": "CI/CD pipelines set up at KYC Market; release workflow and staging validation established at AMO FINTECH."
+      },
+      {
+        "requirement": "Розробка та підтримка UI з React 19 / Next.js 15 / TypeScript",
+        "status": "strong",
+        "evidence": "React + Next.js + TypeScript used across all roles. Specific versions (19/15) not stated but stack is directly aligned."
+      },
+      {
+        "requirement": "Запуск та аналіз A/B-тестів",
+        "status": "strong",
+        "evidence": "KYC Market: ran A/B tests on landing pages, increasing conversion rates by ~18%."
+      },
+      {
+        "requirement": "Участь у code review та покращенні Developer Experience",
+        "status": "strong",
+        "evidence": "Established code review standards and PR workflows at KYC Market and AMO FINTECH; mentored developers; improved DX through tooling and process."
+      }
+    ],
+    "fit_score": 78,
+    "match_notes": "**Strengths:** Kostya is a strong match on the core technical stack — React, TypeScript, Next.js, TanStack Query, Redux, and performance optimisation are all well-evidenced with concrete metrics. His CI/CD, Sentry, A/B testing, code review, and real-time (WebSockets) experience directly map to the role's responsibilities. With 5+ years of experience he is technically above the middle seniority bar, which is a positive signal for quality of delivery.\n\n**Gaps to address:**\n1. **Monorepo tooling (Turborepo / Nx)** — this is a nice-to-have but the role explicitly works in a monorepo. Kostya has no stated experience here. If he has any exposure, even personal, it should be added to the CV or mentioned in a cover letter.\n2. **Figma** — not mentioned anywhere in the master CV. Most frontend engineers use Figma daily; if Kostya does, this must be added to the skills list before submitting.\n3. **Zustand** — the job lists Zustand as a primary state manager. Kostya uses Redux Toolkit and TanStack Query, which are solid alternatives, but Zustand is not listed. Worth noting in an interview that the patterns are transferable.\n4. **E2E testing depth** — Playwright is listed as a skill but no concrete E2E project or coverage metric is described. If Kostya has written Playwright tests, a specific example would strengthen this area.\n5. **Seniority vs. role level** — the role is scoped as \"middle\". Kostya's CV reads as senior (team lead, hiring, architecture ownership). This is generally fine, but he should be prepared for the possibility of a lower title/compensation band and should assess whether the scope is a good fit for his career goals.",
+    "keywords_to_weave_in": [
+      "Core Web Vitals",
+      "TanStack Query",
+      "Redux Toolkit",
+      "Playwright",
+      "CI/CD",
+      "Sentry",
+      "A/B testing",
+      "code review",
+      "Developer Experience",
+      "monorepo",
+      "performance",
+      "React 19",
+      "Next.js 15"
+    ]
+  }
+}

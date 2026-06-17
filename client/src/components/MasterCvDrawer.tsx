@@ -30,9 +30,13 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
   const [loading, setLoading] = useState(false);
   const [pdfModalOpen, setPdfModalOpen] = useState(false);
   const [droppedFile, setDroppedFile] = useState<File | null>(null);
+  const [showRawEditor, setShowRawEditor] = useState(false);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      setShowRawEditor(false);
+      return;
+    }
     setLoading(true);
     setError(null);
     api
@@ -51,6 +55,22 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
 
   if (!open) return null;
 
+  const isFirstRun =
+    !loading &&
+    (() => {
+      try {
+        const parsed = JSON.parse(text);
+        return !parsed.name || parsed.name === "";
+      } catch {
+        return true;
+      }
+    })();
+
+  function handleClose() {
+    setShowRawEditor(false);
+    onClose();
+  }
+
   async function save() {
     let parsed: MasterCv;
     try {
@@ -64,7 +84,7 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
     try {
       await api.putMasterCv(parsed);
       onSaved(parsed);
-      onClose();
+      handleClose();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Could not save.");
     } finally {
@@ -84,7 +104,7 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
 
   return (
     <>
-      <div className="drawer-scrim" onClick={onClose}>
+      <div className="drawer-scrim" onClick={handleClose}>
         <aside
           className="drawer"
           onClick={(e) => e.stopPropagation()}
@@ -99,7 +119,7 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
                 is invented. Keep more detail than fits one page.
               </p>
             </div>
-            <button className="icon-btn" onClick={onClose} aria-label="Close">
+            <button className="icon-btn" onClick={handleClose} aria-label="Close">
               ×
             </button>
           </div>
@@ -117,6 +137,28 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
           </div>
           {loading ? (
             <div className="drawer-loading">Loading…</div>
+          ) : isFirstRun && !showRawEditor ? (
+            <div className="drawer-onboarding">
+              <div className="onboarding-icon" aria-hidden="true" />
+              <div>
+                <h3 style={{ marginBottom: "0.35rem" }}>Import your CV to get started</h3>
+                <p className="muted small">
+                  Upload your existing PDF and we'll extract all sections automatically.
+                </p>
+              </div>
+              <button
+                className="btn btn-primary btn-block"
+                onClick={() => {
+                  setDroppedFile(null);
+                  setPdfModalOpen(true);
+                }}
+              >
+                Import from PDF
+              </button>
+              <button className="btn btn-ghost btn-sm" onClick={() => setShowRawEditor(true)}>
+                Edit JSON manually instead
+              </button>
+            </div>
           ) : (
             <textarea
               className="cv-editor mono"
@@ -127,7 +169,7 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
           )}
           {error && <div className="form-error">{error}</div>}
           <div className="drawer-actions">
-            <button className="btn btn-ghost" onClick={onClose}>
+            <button className="btn btn-ghost" onClick={handleClose}>
               Cancel
             </button>
             <button className="btn btn-primary" onClick={save} disabled={saving || loading}>

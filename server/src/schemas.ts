@@ -258,7 +258,7 @@ export const tailorCvTool: Anthropic.Messages.Tool = {
     properties: {
       headline: {
         type: "string",
-        description: "Short role-specific headline, e.g. 'Senior Frontend Engineer · React, TypeScript'.",
+        description: "Short role-specific headline matching the job's exact seniority wording, e.g. 'Middle Frontend Engineer | React, TypeScript'. No periods.",
       },
       summary: { type: "string", description: "2-4 sentence summary aimed at this role." },
       top_skills: {
