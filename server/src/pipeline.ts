@@ -2,8 +2,10 @@ import { anthropic, MODEL } from "./config.js";
 import {
   analyzeJobTool,
   tailorCvTool,
+  masterCvTool,
   type JobAnalysis,
   type TailoredCv,
+  type MasterCvData,
 } from "./schemas.js";
 import { ANALYZE_SYSTEM, TAILOR_SYSTEM, tailorUserMessage } from "./prompts.js";
 import type Anthropic from "@anthropic-ai/sdk";
@@ -39,6 +41,29 @@ export async function analyzeJob(jobText: string): Promise<JobAnalysis> {
     ],
   });
   return extractToolInput<JobAnalysis>(message, analyzeJobTool.name);
+}
+
+/** Extract structured CV data from a base64-encoded PDF. */
+export async function extractCvFromPdf(pdfBase64: string): Promise<MasterCvData> {
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 4096,
+    tools: [masterCvTool],
+    tool_choice: { type: "tool", name: masterCvTool.name },
+    messages: [
+      {
+        role: "user",
+        content: [
+          {
+            type: "document",
+            source: { type: "base64", media_type: "application/pdf", data: pdfBase64 },
+          } as Anthropic.Messages.ContentBlockParam,
+          { type: "text", text: "Extract all CV data from this document." },
+        ],
+      },
+    ],
+  });
+  return extractToolInput<MasterCvData>(message, masterCvTool.name);
 }
 
 /** Step 2 — rewrite the master CV for the analyzed role. */

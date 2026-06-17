@@ -5,27 +5,47 @@ interface Props {
   applications: Application[];
   onPatch: (id: string, patch: Partial<Application>) => void;
   onDelete: (id: string) => void;
+  onOpen: (id: string) => void;
+  loadError: string | null;
+  loading: boolean;
 }
 
 function statusClass(status: Status): string {
   switch (status) {
-    case "Offer":
-      return "st-offer";
+    case "Offer": return "st-offer";
     case "Interview":
-    case "Take-home":
-      return "st-interview";
+    case "Take-home": return "st-interview";
     case "Screening":
-    case "Applied":
-      return "st-active";
+    case "Applied": return "st-active";
     case "Rejected":
-    case "Withdrawn":
-      return "st-closed";
-    default:
-      return "st-draft";
+    case "Withdrawn": return "st-closed";
+    default: return "st-draft";
   }
 }
 
-export function Pipeline({ applications, onPatch, onDelete }: Props) {
+export function Pipeline({ applications, onPatch, onDelete, onOpen, loadError, loading }: Props) {
+  if (loading) {
+    return (
+      <div className="pipeline-loading">
+        <div className="pipeline-skeleton" />
+        <div className="pipeline-skeleton" />
+        <div className="pipeline-skeleton" />
+      </div>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div className="empty">
+        <p className="muted">Could not load your pipeline.</p>
+        <p className="small" style={{ color: "var(--gap)" }}>{loadError}</p>
+        <button className="btn btn-ghost btn-sm" style={{ marginTop: "0.75rem" }} onClick={() => window.location.reload()}>
+          Retry
+        </button>
+      </div>
+    );
+  }
+
   if (!applications.length) {
     return (
       <div className="empty">
@@ -73,19 +93,29 @@ export function Pipeline({ applications, onPatch, onDelete }: Props) {
           </thead>
           <tbody>
             {applications.map((a) => (
-              <tr key={a.id}>
+              <tr
+                key={a.id}
+                className="table-row-clickable"
+                onClick={() => onOpen(a.id)}
+              >
                 <td className="mono nowrap">{a.dateAdded}</td>
-                <td>
+                <td onClick={(e) => e.stopPropagation()}>
                   <input
                     className="cell-input"
                     defaultValue={a.company}
                     onBlur={blurPatch(a.id, "company", a.company)}
                   />
                 </td>
-                <td className="role-cell">{a.role}</td>
+                <td onClick={(e) => e.stopPropagation()}>
+                  <input
+                    className="cell-input role-cell-input"
+                    defaultValue={a.role}
+                    onBlur={blurPatch(a.id, "role", a.role)}
+                  />
+                </td>
                 <td className="mono">{a.seniority}</td>
                 <td className="mono fit">{a.fitScore}</td>
-                <td>
+                <td onClick={(e) => e.stopPropagation()}>
                   <select
                     className={`status-select ${statusClass(a.status)}`}
                     value={a.status}
@@ -98,7 +128,7 @@ export function Pipeline({ applications, onPatch, onDelete }: Props) {
                     ))}
                   </select>
                 </td>
-                <td>
+                <td onClick={(e) => e.stopPropagation()}>
                   <input
                     className="cell-input narrow"
                     defaultValue={a.salary}
@@ -106,7 +136,7 @@ export function Pipeline({ applications, onPatch, onDelete }: Props) {
                     onBlur={blurPatch(a.id, "salary", a.salary)}
                   />
                 </td>
-                <td>
+                <td onClick={(e) => e.stopPropagation()}>
                   {a.jobUrl ? (
                     <a href={a.jobUrl} target="_blank" rel="noreferrer" className="cell-link">
                       open
@@ -120,7 +150,7 @@ export function Pipeline({ applications, onPatch, onDelete }: Props) {
                     />
                   )}
                 </td>
-                <td>
+                <td onClick={(e) => e.stopPropagation()}>
                   <input
                     className="cell-input wide"
                     defaultValue={a.notes}
@@ -128,7 +158,7 @@ export function Pipeline({ applications, onPatch, onDelete }: Props) {
                     onBlur={blurPatch(a.id, "notes", a.notes)}
                   />
                 </td>
-                <td>
+                <td onClick={(e) => e.stopPropagation()}>
                   <button
                     className="row-del"
                     onClick={() => onDelete(a.id)}

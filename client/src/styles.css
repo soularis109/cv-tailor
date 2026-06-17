@@ -287,6 +287,10 @@ select {
 .btn:active {
   transform: translateY(1px);
 }
+.btn-sm {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.82rem;
+}
 .btn-primary {
   background: var(--thread);
   color: #fff;
@@ -903,10 +907,242 @@ select {
   place-items: center;
   color: var(--muted);
 }
+.drawer-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+}
 .drawer-actions {
   display: flex;
   justify-content: flex-end;
   gap: 0.6rem;
+}
+
+/* ---------- Tailor Progress ---------- */
+.tailor-progress {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.progress-bar-wrap {
+  height: 6px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: var(--thread);
+  border-radius: 99px;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.stage-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.crumb:not(:last-of-type)::after {
+  content: "→";
+  margin-left: 0.4rem;
+  opacity: 0.4;
+}
+.crumb-dot {
+  font-size: 0.6rem;
+}
+.crumb-done {
+  color: var(--thread);
+}
+.crumb-active {
+  color: var(--ink);
+  font-weight: 600;
+}
+.crumb-active .crumb-dot {
+  animation: pulse-dot 1s ease-in-out infinite;
+}
+.elapsed {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+.retry-btn {
+  margin-top: 0.5rem;
+  display: block;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar-fill { transition: none; }
+  .crumb-active .crumb-dot { animation: none; }
+}
+
+/* ---------- PDF Import Modal ---------- */
+.modal-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 24, 26, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.modal {
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 40px rgba(22, 24, 26, 0.18);
+  width: min(460px, 92vw);
+  padding: 1.75rem;
+  animation: modal-in 0.18s ease;
+}
+
+@keyframes modal-in {
+  from {
+    transform: scale(0.96) translateY(6px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+/* Drop zone */
+.drop-zone {
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  text-align: center;
+  color: var(--muted);
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.drop-zone:hover,
+.drop-zone.drag-over {
+  border-color: var(--thread);
+  background: var(--thread-weak);
+  color: var(--thread);
+}
+.drop-zone svg {
+  transition: transform 0.15s ease;
+}
+.drop-zone:hover svg,
+.drop-zone.drag-over svg {
+  transform: translateY(-4px);
+}
+
+/* File card (selected state) */
+.file-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--panel-2);
+}
+.file-card-icon {
+  color: var(--thread);
+  flex-shrink: 0;
+  display: flex;
+}
+.file-card-info {
+  flex: 1;
+  min-width: 0;
+}
+.file-card-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.file-card-size {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+
+/* Import progress (importing / done states) */
+.import-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2.25rem 1rem;
+  text-align: center;
+}
+.import-elapsed {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* SVG spinner */
+.spinner-svg {
+  width: 44px;
+  height: 44px;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Done checkmark */
+.done-mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--thread-weak);
+  color: var(--thread);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pop-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.done-mark svg {
+  width: 24px;
+  height: 24px;
+}
+@keyframes pop-in {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* ---------- Responsive ---------- */
@@ -938,4 +1174,241 @@ select {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ---------- Toast stack ---------- */
+.toast-stack {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 360px;
+  pointer-events: none;
+}
+.toast {
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 10px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  box-shadow: 0 4px 18px rgba(22, 24, 26, 0.16);
+  animation: toast-in 0.18s ease;
+}
+@keyframes toast-in {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+.toast-info  { background: var(--ink); color: #fff; }
+.toast-success { background: var(--thread); color: #fff; }
+.toast-error { background: var(--gap); color: #fff; }
+.toast-msg { flex: 1; }
+.toast-btns { display: flex; align-items: center; gap: 0.4rem; flex: none; }
+.toast-action {
+  border: 1px solid rgba(255,255,255,0.4);
+  background: transparent;
+  color: #fff;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.toast-action:hover { background: rgba(255,255,255,0.15); }
+.toast-close {
+  border: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.2rem;
+}
+.toast-close:hover { color: #fff; }
+
+/* ---------- Pipeline loading skeleton ---------- */
+.pipeline-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.pipeline-skeleton {
+  height: 44px;
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, var(--line-2) 25%, var(--panel) 50%, var(--line-2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ---------- Clickable pipeline rows ---------- */
+.table-row-clickable {
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+.table-row-clickable:hover {
+  background: var(--panel-2);
+}
+.role-cell-input {
+  min-width: 160px;
+  font-weight: 500;
+}
+
+/* ---------- Result download row ---------- */
+.result-download-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Application Detail Panel ---------- */
+.detail-panel {
+  width: min(680px, 100%);
+}
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.detail-header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+.detail-company {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.detail-role {
+  font-size: 1.25rem;
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+.detail-link {
+  text-decoration: none;
+  color: var(--thread) !important;
+}
+.detail-status-row {
+  margin-top: 0.25rem;
+}
+.detail-downloads {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+.detail-tabs {
+  display: flex;
+  gap: 0.2rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.detail-tab {
+  border: 0;
+  background: transparent;
+  padding: 0.5rem 0.9rem;
+  font-weight: 500;
+  font-size: 0.86rem;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.detail-tab.on {
+  color: var(--thread);
+  border-bottom-color: var(--thread);
+  font-weight: 600;
+}
+.detail-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.detail-fit-row {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+.detail-fit-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+/* ---------- Interview Prep ---------- */
+.prep-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.prep-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.prep-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+.prep-list li {
+  margin-bottom: 0.3rem;
+}
+.prep-list-gap {
+  color: var(--gap);
+}
+.prep-list-partial {
+  color: var(--partial);
+}
+.prep-evidence {
+  color: var(--muted);
+  font-weight: 400;
+}
+.prep-notes {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.prep-notes-input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  resize: vertical;
+  background: var(--panel-2);
+  font-family: var(--body);
+}
+.prep-notes-input:focus {
+  border-color: var(--thread);
+  outline: none;
+  background: var(--panel);
 }

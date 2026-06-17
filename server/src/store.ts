@@ -3,8 +3,16 @@ import ExcelJS from "exceljs";
 import {
   APPLICATIONS_JSON_PATH,
   APPLICATIONS_XLSX_PATH,
+  APPLICATION_DATA_DIR,
   DATA_DIR,
 } from "./config.js";
+import type { JobAnalysis, TailoredCv } from "./schemas.js";
+
+export interface ApplicationData {
+  jobText: string;
+  analysis: JobAnalysis;
+  tailored: TailoredCv;
+}
 
 export const STATUSES = [
   "Drafted",
@@ -36,6 +44,28 @@ export interface Application {
 
 async function ensureDataDir(): Promise<void> {
   await fs.mkdir(DATA_DIR, { recursive: true });
+}
+
+async function ensureAppDataDir(): Promise<void> {
+  await fs.mkdir(APPLICATION_DATA_DIR, { recursive: true });
+}
+
+function appDataPath(id: string): string {
+  return `${APPLICATION_DATA_DIR}/${id}.json`;
+}
+
+export async function saveApplicationData(id: string, data: ApplicationData): Promise<void> {
+  await ensureAppDataDir();
+  await fs.writeFile(appDataPath(id), JSON.stringify(data, null, 2), "utf8");
+}
+
+export async function readApplicationData(id: string): Promise<ApplicationData | null> {
+  try {
+    const raw = await fs.readFile(appDataPath(id), "utf8");
+    return JSON.parse(raw) as ApplicationData;
+  } catch {
+    return null;
+  }
 }
 
 export async function readApplications(): Promise<Application[]> {
@@ -136,6 +166,8 @@ export async function deleteApplication(id: string): Promise<boolean> {
   const next = apps.filter((a) => a.id !== id);
   if (next.length === apps.length) return false;
   await persist(next);
+  // Clean up full data file if it exists
+  await fs.unlink(appDataPath(id)).catch(() => {});
   return true;
 }
 

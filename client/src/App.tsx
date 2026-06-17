@@ -1,13 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { api, type MasterCv } from "./api";
-import type { Application, TailorResponse } from "./types";
+import type { Application, JobAnalysis, TailorResponse } from "./types";
 import { FitGauge } from "./components/FitGauge";
 import { Coverage } from "./components/Coverage";
 import { CvPreview } from "./components/CvPreview";
 import { Pipeline } from "./components/Pipeline";
 import { MasterCvDrawer } from "./components/MasterCvDrawer";
+import { TailorProgress } from "./components/TailorProgress";
+import { ApplicationDetailPanel } from "./components/ApplicationDetailPanel";
+import { ToastStack } from "./components/Toast";
+import { showToast } from "./utils/toast";
+import { playDoneChime, notifyDone, requestNotificationPermission } from "./utils/notify";
 
 type Tab = "tailor" | "pipeline";
+type Stage = null | "analyzing" | "tailoring";
+
+interface PendingDelete {
+  app: Application;
+  timeoutId: ReturnType<typeof setTimeout>;
+}
 
 function Tokens({ items, kind = "" }: { items: string[]; kind?: string }) {
   if (!items.length) return <span className="muted small">—</span>;
@@ -22,54 +33,227 @@ function Tokens({ items, kind = "" }: { items: string[]; kind?: string }) {
   );
 }
 
+function AnalysisCard({ analysis }: { analysis: JobAnalysis }) {
+  return (
+    <div className="card">
+      <h3>What the role wants</h3>
+      <div className="want-grid">
+        <div>
+          <h5>Must have</h5>
+          <Tokens items={analysis.must_have} kind="hard" />
+        </div>
+        <div>
+          <h5>Nice to have</h5>
+          <Tokens items={analysis.nice_to_have} />
+        </div>
+        <div>
+          <h5>Core tech</h5>
+          <Tokens items={analysis.core_technologies} kind="mono" />
+        </div>
+        <div>
+          <h5>ATS keywords</h5>
+          <Tokens items={analysis.ats_keywords} kind="mono" />
+        </div>
+      </div>
+      {analysis.red_flags.length > 0 && (
+        <div className="redflags">
+          <h5>Worth a second look</h5>
+          <ul>
+            {analysis.red_flags.map((r, i) => (
+              <li key={i}>{r}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function App() {
   const [tab, setTab] = useState<Tab>("tailor");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [master, setMaster] = useState<MasterCv | null>(null);
+  const [masterLoading, setMasterLoading] = useState(true);
   const [masterError, setMasterError] = useState<string | null>(null);
 
   const [jobText, setJobText] = useState("");
   const [jobUrl, setJobUrl] = useState("");
   const [source, setSource] = useState("");
-  const [loading, setLoading] = useState(false);
+
+  const [stage, setStage] = useState<Stage>(null);
+  const [progress, setProgress] = useState(0);
+  const [elapsed, setElapsed] = useState(0);
+  const [cachedAnalysis, setCachedAnalysis] = useState<JobAnalysis | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<TailorResponse | null>(null);
 
   const [apps, setApps] = useState<Application[]>([]);
+  const [appsLoading, setAppsLoading] = useState(true);
+  const [appsError, setAppsError] = useState<string | null>(null);
+
+  const [detailAppId, setDetailAppId] = useState<string | null>(null);
+  const [pendingDeletes] = useState<Map<string, PendingDelete>>(() => new Map());
+
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
+    setMasterLoading(true);
     api
       .getMasterCv()
-      .then(setMaster)
-      .catch((e) => setMasterError(e.message));
-    api.getApplications().then(setApps).catch(() => {});
+      .then((cv) => {
+        setMaster(cv);
+        setMasterError(null);
+      })
+      .catch((e) => setMasterError(e instanceof Error ? e.message : "Unknown error"))
+      .finally(() => setMasterLoading(false));
+
+    setAppsLoading(true);
+    api
+      .getApplications()
+      .then((data) => {
+        setApps(data);
+        setAppsError(null);
+      })
+      .catch((e) => setAppsError(e instanceof Error ? e.message : "Could not load applications."))
+      .finally(() => setAppsLoading(false));
   }, []);
 
+  useEffect(() => {
+    if (stage) {
+      setElapsed(0);
+      timerRef.current = setInterval(() => setElapsed((s) => s + 1), 1000);
+    } else {
+      if (timerRef.current) clearInterval(timerRef.current);
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [stage]);
+
   async function runTailor() {
-    setLoading(true);
+    // Guard: master CV must exist before spending tokens
+    if (!masterLoading && !master) {
+      setDrawerOpen(true);
+      showToast("Set up your master CV first, then tailor for this role.", "info");
+      return;
+    }
+
+    await requestNotificationPermission();
+    setStage("analyzing");
+    setProgress(0);
     setError(null);
+    setCachedAnalysis(null);
+
     try {
-      const res = await api.tailor(jobText, jobUrl, source);
+      const { analysis } = await api.analyzeJob(jobText);
+      setCachedAnalysis(analysis);
+      setProgress(50);
+      setStage("tailoring");
+
+      const res = await api.tailor(jobText, jobUrl, source, analysis);
+      setProgress(100);
       setResult(res);
       setApps((prev) => [res.application, ...prev]);
+
+      playDoneChime();
+      await notifyDone(res.analysis.role_title);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong.");
     } finally {
-      setLoading(false);
+      setStage(null);
+      setProgress(0);
+    }
+  }
+
+  async function retryTailor() {
+    if (!cachedAnalysis) return;
+    setStage("tailoring");
+    setProgress(50);
+    setError(null);
+    try {
+      const res = await api.tailor(jobText, jobUrl, source, cachedAnalysis);
+      setProgress(100);
+      setResult(res);
+      setApps((prev) => [res.application, ...prev]);
+      playDoneChime();
+      await notifyDone(res.analysis.role_title);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Something went wrong.");
+    } finally {
+      setStage(null);
+      setProgress(0);
     }
   }
 
   function patchApp(id: string, patch: Partial<Application>) {
     setApps((prev) => prev.map((a) => (a.id === id ? { ...a, ...patch } : a)));
-    api.patchApplication(id, patch).catch(() => api.getApplications().then(setApps));
+    api.patchApplication(id, patch).catch(() => {
+      showToast("Could not save changes — reverted.", "error");
+      api.getApplications().then(setApps).catch(() => {});
+    });
   }
 
   function removeApp(id: string) {
+    const app = apps.find((a) => a.id === id);
+    if (!app) return;
+
+    // Optimistically hide the row
     setApps((prev) => prev.filter((a) => a.id !== id));
-    api.deleteApplication(id).catch(() => api.getApplications().then(setApps));
+
+    const timeoutId = setTimeout(() => {
+      api.deleteApplication(id).catch(() => {
+        showToast("Could not delete — restored.", "error");
+        setApps((prev) => {
+          const exists = prev.find((a) => a.id === id);
+          return exists ? prev : [app, ...prev];
+        });
+      });
+      pendingDeletes.delete(id);
+    }, 5000);
+
+    pendingDeletes.set(id, { app, timeoutId });
+
+    showToast(`Removed ${app.company} — ${app.role}`, "info", {
+      duration: 5000,
+      action: {
+        label: "Undo",
+        onAction: () => {
+          const pending = pendingDeletes.get(id);
+          if (!pending) return;
+          clearTimeout(pending.timeoutId);
+          pendingDeletes.delete(id);
+          setApps((prev) => {
+            const exists = prev.find((a) => a.id === id);
+            return exists ? prev : [app, ...prev];
+          });
+        },
+      },
+    });
   }
 
+  const detailApp = detailAppId ? apps.find((a) => a.id === detailAppId) ?? null : null;
+
   const { analysis, tailored } = result ?? {};
+  const isRunning = stage !== null;
+  const showPartialAnalysis = stage === "tailoring" && cachedAnalysis && !result;
+
+  async function handleDownloadDocx() {
+    if (!tailored) return;
+    try {
+      await api.downloadDocx(tailored);
+    } catch (e) {
+      showToast(e instanceof Error ? e.message : "Could not download .docx.", "error");
+    }
+  }
+
+  async function handleDownloadPdf() {
+    if (!tailored) return;
+    try {
+      await api.downloadPdf(tailored);
+    } catch (e) {
+      showToast(e instanceof Error ? e.message : "Could not download PDF.", "error");
+    }
+  }
 
   return (
     <div className="app">
@@ -101,7 +285,9 @@ export default function App() {
         </nav>
 
         <button className="master-chip" onClick={() => setDrawerOpen(true)}>
-          {master ? (
+          {masterLoading ? (
+            <span className="master-name muted">Loading…</span>
+          ) : master ? (
             <>
               <span className="master-dot" />
               <span className="master-name">{master.name ?? "Master CV"}</span>
@@ -114,7 +300,7 @@ export default function App() {
 
       {masterError && (
         <div className="banner warn">
-          Could not load your master CV ({masterError}). Open the master CV panel to add one.
+          Could not load your master CV ({masterError}). Open the master CV panel to fix this.
         </div>
       )}
 
@@ -148,11 +334,20 @@ export default function App() {
             <button
               className="btn btn-primary btn-block"
               onClick={runTailor}
-              disabled={loading || jobText.trim().length < 30}
+              disabled={isRunning || jobText.trim().length < 30}
             >
-              {loading ? "Tailoring…" : "Tailor for this role"}
+              {isRunning ? "Working…" : "Tailor for this role"}
             </button>
-            {error && <div className="form-error">{error}</div>}
+            {error && (
+              <div className="form-error">
+                {error}
+                {cachedAnalysis && (
+                  <button className="btn btn-ghost btn-sm retry-btn" onClick={retryTailor}>
+                    Retry tailoring
+                  </button>
+                )}
+              </div>
+            )}
             <p className="hint">
               The agent reads the posting, then rewrites your master CV for it — using only
               what is truly in your CV. A row is added to your pipeline automatically.
@@ -160,12 +355,17 @@ export default function App() {
           </section>
 
           <section className="result-col">
-            {!result ? (
+            {isRunning && (
+              <TailorProgress stage={stage} progress={progress} elapsed={elapsed} />
+            )}
+            {showPartialAnalysis && <AnalysisCard analysis={cachedAnalysis!} />}
+            {!result && !isRunning && !showPartialAnalysis && (
               <div className="placeholder">
                 <span className="placeholder-mark" aria-hidden="true" />
                 <p>Your tailored CV and fit analysis will appear here.</p>
               </div>
-            ) : (
+            )}
+            {result && (
               <>
                 <div className="result-summary card">
                   <FitGauge score={tailored!.fit_score} />
@@ -180,46 +380,18 @@ export default function App() {
                         </span>
                       ))}
                     </div>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => api.downloadDocx(tailored!)}
-                    >
-                      Download .docx
-                    </button>
+                    <div className="result-download-row">
+                      <button className="btn btn-primary" onClick={handleDownloadDocx}>
+                        Download .docx
+                      </button>
+                      <button className="btn btn-ghost" onClick={handleDownloadPdf}>
+                        Download PDF
+                      </button>
+                    </div>
                   </div>
                 </div>
 
-                <div className="card">
-                  <h3>What the role wants</h3>
-                  <div className="want-grid">
-                    <div>
-                      <h5>Must have</h5>
-                      <Tokens items={analysis!.must_have} kind="hard" />
-                    </div>
-                    <div>
-                      <h5>Nice to have</h5>
-                      <Tokens items={analysis!.nice_to_have} />
-                    </div>
-                    <div>
-                      <h5>Core tech</h5>
-                      <Tokens items={analysis!.core_technologies} kind="mono" />
-                    </div>
-                    <div>
-                      <h5>ATS keywords</h5>
-                      <Tokens items={analysis!.ats_keywords} kind="mono" />
-                    </div>
-                  </div>
-                  {analysis!.red_flags.length > 0 && (
-                    <div className="redflags">
-                      <h5>Worth a second look</h5>
-                      <ul>
-                        {analysis!.red_flags.map((r, i) => (
-                          <li key={i}>{r}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
+                <AnalysisCard analysis={analysis!} />
 
                 <div className="card">
                   <Coverage coverage={tailored!.coverage} />
@@ -241,12 +413,14 @@ export default function App() {
                 <div className="card cv-card">
                   <div className="cv-card-head">
                     <h3>Tailored CV</h3>
-                    <button
-                      className="btn btn-ghost"
-                      onClick={() => api.downloadDocx(tailored!)}
-                    >
-                      Download .docx
-                    </button>
+                    <div className="result-download-row">
+                      <button className="btn btn-ghost" onClick={handleDownloadDocx}>
+                        Download .docx
+                      </button>
+                      <button className="btn btn-ghost" onClick={handleDownloadPdf}>
+                        Download PDF
+                      </button>
+                    </div>
                   </div>
                   <CvPreview cv={tailored!} />
                 </div>
@@ -256,7 +430,14 @@ export default function App() {
         </main>
       ) : (
         <main className="pipeline-page">
-          <Pipeline applications={apps} onPatch={patchApp} onDelete={removeApp} />
+          <Pipeline
+            applications={apps}
+            onPatch={patchApp}
+            onDelete={removeApp}
+            onOpen={(id) => setDetailAppId(id)}
+            loadError={appsError}
+            loading={appsLoading}
+          />
         </main>
       )}
 
@@ -268,6 +449,14 @@ export default function App() {
           setMasterError(null);
         }}
       />
+
+      <ApplicationDetailPanel
+        application={detailApp}
+        onClose={() => setDetailAppId(null)}
+        onPatch={patchApp}
+      />
+
+      <ToastStack />
     </div>
   );
 }

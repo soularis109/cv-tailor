@@ -1,0 +1,269 @@
+import { useEffect, useState } from "react";
+import { api } from "../api";
+import type { Application, ApplicationData, CoverageItem } from "../types";
+import { STATUSES, type Status } from "../types";
+import { FitGauge } from "./FitGauge";
+import { Coverage } from "./Coverage";
+import { CvPreview } from "./CvPreview";
+import { showToast } from "../utils/toast";
+
+interface Props {
+  application: Application | null;
+  onClose: () => void;
+  onPatch: (id: string, patch: Partial<Application>) => void;
+}
+
+function statusClass(status: Status): string {
+  switch (status) {
+    case "Offer": return "st-offer";
+    case "Interview":
+    case "Take-home": return "st-interview";
+    case "Screening":
+    case "Applied": return "st-active";
+    case "Rejected":
+    case "Withdrawn": return "st-closed";
+    default: return "st-draft";
+  }
+}
+
+function PrepChecklist({ data }: { data: ApplicationData }) {
+  const { analysis, tailored } = data;
+
+  const gaps = tailored.coverage.filter((c: CoverageItem) => c.status === "missing");
+  const partials = tailored.coverage.filter((c: CoverageItem) => c.status === "partial");
+
+  return (
+    <div className="prep-checklist">
+      {analysis.red_flags.length > 0 && (
+        <div className="prep-section">
+          <h5>Red flags to address</h5>
+          <ul className="prep-list prep-list-gap">
+            {analysis.red_flags.map((r, i) => (
+              <li key={i}>{r}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {gaps.length > 0 && (
+        <div className="prep-section">
+          <h5>Gaps to explain</h5>
+          <ul className="prep-list prep-list-gap">
+            {gaps.map((g, i) => (
+              <li key={i}>
+                <strong>{g.requirement}</strong>
+                {g.evidence && <span className="prep-evidence"> — {g.evidence}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {partials.length > 0 && (
+        <div className="prep-section">
+          <h5>Partial matches — prepare examples</h5>
+          <ul className="prep-list prep-list-partial">
+            {partials.map((p, i) => (
+              <li key={i}>
+                <strong>{p.requirement}</strong>
+                {p.evidence && <span className="prep-evidence"> — {p.evidence}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {analysis.responsibilities.length > 0 && (
+        <div className="prep-section">
+          <h5>Expected responsibilities</h5>
+          <ul className="prep-list">
+            {analysis.responsibilities.slice(0, 6).map((r, i) => (
+              <li key={i}>{r}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {gaps.length === 0 && partials.length === 0 && analysis.red_flags.length === 0 && (
+        <p className="muted small">Strong match — no major gaps to prepare for.</p>
+      )}
+    </div>
+  );
+}
+
+export function ApplicationDetailPanel({ application, onClose, onPatch }: Props) {
+  const [data, setData] = useState<ApplicationData | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<"overview" | "cv" | "prep">("overview");
+  const [notes, setNotes] = useState("");
+  const [notesSaving, setNotesSaving] = useState(false);
+
+  useEffect(() => {
+    if (!application) {
+      setData(null);
+      setLoadError(null);
+      return;
+    }
+    setData(null);
+    setLoadError(null);
+    setNotes(application.notes ?? "");
+    setActiveSection("overview");
+
+    api
+      .getApplicationData(application.id)
+      .then(setData)
+      .catch((e) => setLoadError(e instanceof Error ? e.message : "Could not load application data."));
+  }, [application?.id]);
+
+  if (!application) return null;
+
+  async function saveNotes() {
+    if (!application || notes === application.notes) return;
+    setNotesSaving(true);
+    try {
+      await api.patchApplication(application.id, { notes });
+      onPatch(application.id, { notes });
+    } catch {
+      showToast("Could not save notes.", "error");
+    } finally {
+      setNotesSaving(false);
+    }
+  }
+
+  async function handleDocx() {
+    if (!data) return;
+    try {
+      await api.downloadDocx(data.tailored);
+    } catch (e) {
+      showToast(e instanceof Error ? e.message : "Could not download .docx.", "error");
+    }
+  }
+
+  async function handlePdf() {
+    if (!data) return;
+    try {
+      await api.downloadPdf(data.tailored);
+    } catch (e) {
+      showToast(e instanceof Error ? e.message : "Could not download PDF.", "error");
+    }
+  }
+
+  return (
+    <>
+      <div className="drawer-scrim" onClick={onClose}>
+        <aside
+          className="drawer detail-panel"
+          onClick={(e) => e.stopPropagation()}
+          onKeyDown={(e) => { if (e.key === "Escape") onClose(); }}
+        >
+          {/* Header */}
+          <div className="detail-header">
+            <div className="detail-header-meta">
+              <div className="detail-company">{application.company}</div>
+              <h2 className="detail-role">{application.role}</h2>
+              <div className="detail-tags">
+                <span className="pill ghost">{application.seniority}</span>
+                <span className="pill ghost">fit: {application.fitScore}%</span>
+                <span className="pill ghost">{application.dateAdded}</span>
+                {application.jobUrl && (
+                  <a href={application.jobUrl} target="_blank" rel="noreferrer" className="pill ghost detail-link">
+                    job posting ↗
+                  </a>
+                )}
+              </div>
+              <div className="detail-status-row">
+                <select
+                  className={`status-select ${statusClass(application.status)}`}
+                  value={application.status}
+                  onChange={(e) => onPatch(application.id, { status: e.target.value as Status })}
+                >
+                  {STATUSES.map((s) => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <button className="icon-btn" onClick={onClose} aria-label="Close">×</button>
+          </div>
+
+          {/* Download buttons */}
+          {data && (
+            <div className="detail-downloads">
+              <button className="btn btn-primary btn-sm" onClick={handleDocx}>
+                Download .docx
+              </button>
+              <button className="btn btn-ghost btn-sm" onClick={handlePdf}>
+                Download PDF
+              </button>
+            </div>
+          )}
+
+          {/* Section tabs */}
+          <div className="detail-tabs">
+            {(["overview", "cv", "prep"] as const).map((s) => (
+              <button
+                key={s}
+                className={`detail-tab ${activeSection === s ? "on" : ""}`}
+                onClick={() => setActiveSection(s)}
+              >
+                {s === "overview" ? "Overview" : s === "cv" ? "Tailored CV" : "Interview Prep"}
+              </button>
+            ))}
+          </div>
+
+          {/* Body */}
+          <div className="detail-body">
+            {loadError && (
+              <div className="form-error">{loadError}</div>
+            )}
+
+            {!data && !loadError && (
+              <div className="drawer-loading">Loading…</div>
+            )}
+
+            {data && activeSection === "overview" && (
+              <>
+                <div className="detail-fit-row">
+                  <FitGauge score={data.tailored.fit_score} />
+                  <div className="detail-fit-meta">
+                    <h3>{data.analysis.role_title}</h3>
+                    <div className="meta-line">
+                      <span className="pill">{data.analysis.seniority}</span>
+                      <span className="pill ghost">lang: {data.analysis.language}</span>
+                    </div>
+                    {data.tailored.match_notes && (
+                      <p className="notes small">{data.tailored.match_notes}</p>
+                    )}
+                  </div>
+                </div>
+                <Coverage coverage={data.tailored.coverage} />
+              </>
+            )}
+
+            {data && activeSection === "cv" && (
+              <CvPreview cv={data.tailored} />
+            )}
+
+            {data && activeSection === "prep" && (
+              <div>
+                <PrepChecklist data={data} />
+                <div className="prep-notes">
+                  <h5>Your notes</h5>
+                  <textarea
+                    className="prep-notes-input"
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    onBlur={saveNotes}
+                    placeholder="Interview notes, questions to ask, things to remember…"
+                    rows={6}
+                  />
+                  {notesSaving && <span className="muted small">Saving…</span>}
+                </div>
+              </div>
+            )}
+          </div>
+        </aside>
+      </div>
+    </>
+  );
+}

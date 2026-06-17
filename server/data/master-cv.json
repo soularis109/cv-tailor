@@ -1,83 +1,148 @@
 {
-  "name": "Olena Kovalenko",
-  "title": "Senior Frontend Engineer",
-  "location": "Kyiv, Ukraine (remote)",
-  "email": "olena.k@example.com",
-  "phone": "",
+  "name": "Kostya Lymar",
+  "title": "Senior Front-End Developer",
+  "email": "soularis109@gmail.com",
+  "phone": "+380934277254",
+  "summary": "Senior Frontend Engineer with 5+ years of experience building scalable web applications and leading frontend development from scratch to production. Specialized in frontend architecture, performance optimization, and real-time systems. Proven track record of delivering complex products (marketplaces, AI platforms, admin systems) and improving system reliability, scalability, and developer workflows. Strong focus on building maintainable systems, optimizing Core Web Vitals, and leveraging AI tools to accelerate development and improve code quality.",
   "links": {
-    "github": "https://github.com/example",
-    "linkedin": "https://linkedin.com/in/example"
+    "LinkedIn": "listed on CV (URL not specified)",
+    "Telegram": "Soul109"
   },
-  "summary": "Senior frontend engineer with 8 years building product UIs in React and TypeScript. I care about performance, accessibility, and shipping. Comfortable owning features end to end, mentoring, and working directly with product and design.",
   "skills": {
-    "languages": ["TypeScript", "JavaScript", "HTML", "CSS", "SQL"],
-    "frameworks": ["React", "Next.js", "Redux Toolkit", "React Query", "Vue 2", "Node.js", "Express"],
-    "styling": ["Tailwind CSS", "CSS Modules", "styled-components", "Storybook"],
-    "testing": ["Vitest", "Jest", "React Testing Library", "Playwright", "Cypress"],
-    "tooling": ["Vite", "Webpack", "Turborepo", "ESLint", "GitHub Actions", "Docker"],
-    "practices": ["accessibility (WCAG)", "performance optimization", "design systems", "code review", "mentoring", "A/B testing"],
-    "cloud": ["AWS (S3, CloudFront, Lambda)", "Vercel"]
+    "Languages & Core": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "Node.js"
+    ],
+    "Frameworks & Libraries": [
+      "React",
+      "Next.js",
+      "Material UI",
+      "Ant Design",
+      "Bootstrap",
+      "Tailwind",
+      "Sass/Less",
+      "Styled Components",
+      "Redux",
+      "Redux Toolkit",
+      "TanStack Query",
+      "React Testing Library"
+    ],
+    "Testing": [
+      "Jest",
+      "Vitest",
+      "Playwright"
+    ],
+    "Build Tools": [
+      "Vite",
+      "Webpack"
+    ],
+    "AI Tools": [
+      "Cursor",
+      "Claude Code"
+    ],
+    "Soft Skills": [
+      "Communication",
+      "Problem solving",
+      "Adaptability",
+      "Teamwork",
+      "Leadership"
+    ]
   },
   "experience": [
     {
-      "company": "FinFlow",
-      "role": "Senior Frontend Engineer",
-      "period": "2021 — present",
-      "location": "Remote",
-      "tech": ["React", "TypeScript", "Next.js", "React Query", "Tailwind CSS", "Playwright"],
+      "company": "KYC Market",
+      "role": "Senior Front-End Developer",
+      "period": "February 2025 – Present",
+      "tech": [
+        "TypeScript",
+        "React",
+        "TanStack Query",
+        "Next.js",
+        "SCSS",
+        "Jest"
+      ],
       "bullets": [
-        "Led the rebuild of the customer dashboard in Next.js and TypeScript, cutting time-to-interactive by 41% and lifting weekly active users by 18%.",
-        "Built and own a shared design system (40+ components in Storybook) used by 5 product teams, reducing UI build time for new features by roughly a third.",
-        "Introduced Playwright end-to-end tests and a CI gate in GitHub Actions, dropping production UI regressions by ~60%.",
-        "Mentored 3 mid-level engineers through code review and pairing; two were promoted within a year.",
-        "Drove accessibility to WCAG 2.1 AA across the core funnel, fixing 120+ issues found in audits."
+        "Led frontend development from scratch to production across three products: a marketplace, an admin panel, and SEO-driven landing pages, managing a team of 3–5 engineers",
+        "Defined frontend architecture, selected the tech stack, and established scalable development practices from project inception",
+        "Built and delivered a full-featured marketplace platform used by 50K+ monthly users, including listings, transactions, and complex user flows with scalable state management",
+        "Developed an admin panel for moderation, user management, and operational workflows",
+        "Implemented SEO-optimized landing pages in collaboration with the marketing team, increasing conversion rates by ~18% through A/B testing",
+        "Hired and mentored frontend developers, contributing to team growth and improving overall development quality",
+        "Collaborated closely with product managers, backend engineers, and founders to align technical decisions with business goals",
+        "Established end-to-end development processes, including code review standards, PR workflows, task estimation, and release management, reducing time-to-release by ~25%",
+        "Set up CI/CD pipelines, logging, and monitoring to ensure production stability and quality control",
+        "Implemented real-time features using WebSockets to support marketplace interactions and live updates",
+        "Designed scalable state management and data flows for complex user and transaction scenarios",
+        "Leveraged AI tools to accelerate development, improve code quality, and streamline pull request workflows",
+        "Integrated project workflows with Linear for task tracking, release planning, and team coordination",
+        "Supported and scaled the production system post-launch, continuously delivering new features and improving system stability"
       ]
     },
     {
-      "company": "ShopGrid",
-      "role": "Frontend Engineer",
-      "period": "2018 — 2021",
-      "location": "Kyiv",
-      "tech": ["React", "Redux", "JavaScript", "Webpack", "Jest"],
+      "company": "AMO FINTECH",
+      "role": "Senior Front-End Developer",
+      "period": "November 2022 – January 2025",
+      "tech": [
+        "TypeScript",
+        "React",
+        "React Query",
+        "Next.js",
+        "Material UI",
+        "Jest"
+      ],
       "bullets": [
-        "Built the checkout and product pages for an e-commerce platform serving 2M monthly users.",
-        "Cut bundle size by 35% through code-splitting and dependency pruning, improving Lighthouse performance from 58 to 92.",
-        "Ran A/B tests on the cart flow that increased conversion by 7%.",
-        "Migrated a legacy jQuery storefront to React incrementally with zero downtime."
+        "Developed an AI-powered chatbot platform integrated into third-party products, replacing traditional website support solutions",
+        "Built and maintained an embeddable script for seamless integration into client websites, ensuring isolated and secure DOM interaction",
+        "Designed and implemented a configurable admin panel for managing chatbot behavior, content, and user interactions",
+        "Introduced a structured release workflow (code reviews, PR guidelines, staging validation), reducing production issues by ~30% and improving release stability",
+        "Improved deployment reliability and reduced post-release bugs by establishing consistent development and QA practices",
+        "Refactored a chaotic frontend codebase into a scalable, modular architecture, improving maintainability and team velocity",
+        "Led the migration from Next.js to React where SSR was unnecessary, simplifying the stack and reducing application complexity",
+        "Optimized performance (LCP, TTI) through code-splitting, lazy loading, and caching strategies, improving load times by ~30% and reducing bundle size by ~25%",
+        "Implemented real-time features using WebSockets to enable responsive chatbot interactions",
+        "Built an efficient data layer using TanStack Query (caching, deduplication, background updates)",
+        "Integrated monitoring and error tracking with Sentry, reducing debugging time and improving system observability",
+        "Contributed to the testing strategy (Jest, React Testing Library), reducing regressions and improving code reliability"
       ]
     },
     {
-      "company": "Brightside Studio",
-      "role": "Junior Frontend Developer",
-      "period": "2016 — 2018",
-      "location": "Kyiv",
-      "tech": ["JavaScript", "Vue 2", "CSS", "PHP"],
+      "company": "DonateSystem",
+      "role": "Front-End Developer",
+      "period": "November 2020 – October 2022",
+      "tech": [
+        "TypeScript",
+        "React.js",
+        "Redux",
+        "SCSS"
+      ],
       "bullets": [
-        "Delivered marketing sites and small web apps for 15+ clients.",
-        "Built reusable Vue components and a small internal CSS framework."
+        "Developed and scaled a complex admin panel for a streaming platform used by 10K+ active users",
+        "Contributed to building the admin panel from scratch to production",
+        "Built multiple configuration modules for stream customization (alerts, banners, widgets, user settings)",
+        "Implemented data-heavy dashboards handling 1000+ rows per view, including tables, statistics, and real-time updates",
+        "Designed reusable UI components and established a consistent design system across the platform, accelerating feature development",
+        "Implemented UI components and contributed to the development of core platform features",
+        "Worked on forms, layouts, and interactive elements for stream configuration",
+        "Gained hands-on experience across the full product development lifecycle",
+        "Collaborated closely with backend engineers to integrate REST APIs and ensure stable and efficient data flow",
+        "Collaborated with team members to deliver features and resolve bugs",
+        "Contributed to production stability and continuous delivery of new features in a fast-paced environment"
       ]
-    }
-  ],
-  "projects": [
-    {
-      "name": "a11y-checklist",
-      "description": "Open-source browser extension that flags common accessibility issues on any page. 1.2k GitHub stars.",
-      "tech": ["TypeScript", "React", "Chrome Extensions API"],
-      "link": "https://github.com/example/a11y-checklist"
-    },
-    {
-      "name": "perfbench",
-      "description": "CLI that runs Lighthouse against a list of routes and posts a diff to pull requests.",
-      "tech": ["Node.js", "TypeScript", "GitHub Actions"],
-      "link": "https://github.com/example/perfbench"
     }
   ],
   "education": [
     {
-      "institution": "National Technical University of Ukraine (KPI)",
-      "credential": "BSc, Computer Science",
-      "period": "2012 — 2016"
+      "institution": "National University of Food Technologies",
+      "credential": "MSc Logistics",
+      "period": "2018–2020"
+    },
+    {
+      "institution": "National University of Food Technologies",
+      "credential": "BSc Management",
+      "period": "2014–2018"
     }
-  ],
-  "certifications": []
+  ]
 }

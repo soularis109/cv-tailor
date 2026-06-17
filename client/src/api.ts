@@ -1,4 +1,4 @@
-import type { Application, TailoredCv, TailorResponse } from "./types";
+import type { Application, ApplicationData, JobAnalysis, TailoredCv, TailorResponse } from "./types";
 
 async function json<T>(res: Response): Promise<T> {
   if (!res.ok) {
@@ -6,6 +6,19 @@ async function json<T>(res: Response): Promise<T> {
     throw new Error(body.error ?? `Request failed (${res.status})`);
   }
   return res.json() as Promise<T>;
+}
+
+async function triggerDownload(res: Response, fallbackName: string): Promise<void> {
+  const blob = await res.blob();
+  const disposition = res.headers.get("Content-Disposition") ?? "";
+  const match = disposition.match(/filename="([^"]+)"/);
+  const filename = match ? match[1] : fallbackName;
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 export type MasterCv = Record<string, unknown> & { name?: string; title?: string };
@@ -25,12 +38,27 @@ export const api = {
     );
   },
 
-  async tailor(jobText: string, jobUrl: string, source: string): Promise<TailorResponse> {
+  async analyzeJob(jobText: string): Promise<{ analysis: JobAnalysis }> {
+    return json(
+      await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ jobText }),
+      }),
+    );
+  },
+
+  async tailor(
+    jobText: string,
+    jobUrl: string,
+    source: string,
+    analysis?: JobAnalysis,
+  ): Promise<TailorResponse> {
     return json(
       await fetch("/api/tailor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ jobText, jobUrl, source }),
+        body: JSON.stringify({ jobText, jobUrl, source, analysis }),
       }),
     );
   },
@@ -42,16 +70,17 @@ export const api = {
       body: JSON.stringify({ tailored }),
     });
     if (!res.ok) throw new Error("Could not generate the .docx file.");
-    const blob = await res.blob();
-    const disposition = res.headers.get("Content-Disposition") ?? "";
-    const match = disposition.match(/filename="([^"]+)"/);
-    const filename = match ? match[1] : "CV.docx";
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(url);
+    await triggerDownload(res, "CV.docx");
+  },
+
+  async downloadPdf(tailored: TailoredCv): Promise<void> {
+    const res = await fetch("/api/pdf", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tailored }),
+    });
+    if (!res.ok) throw new Error("Could not generate the PDF.");
+    await triggerDownload(res, "CV.pdf");
   },
 
   async getApplications(): Promise<Application[]> {
@@ -70,6 +99,16 @@ export const api = {
 
   async deleteApplication(id: string): Promise<void> {
     await json(await fetch(`/api/applications/${id}`, { method: "DELETE" }));
+  },
+
+  async getApplicationData(id: string): Promise<ApplicationData> {
+    return json(await fetch(`/api/applications/${id}/data`));
+  },
+
+  async importPdf(file: File): Promise<MasterCv> {
+    const form = new FormData();
+    form.append("file", file);
+    return json(await fetch("/api/master-cv/import-pdf", { method: "POST", body: form }));
   },
 
   xlsxUrl: "/api/applications.xlsx",

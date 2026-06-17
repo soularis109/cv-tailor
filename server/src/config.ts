@@ -27,3 +27,4 @@ export const DATA_DIR = path.resolve(__dirname, "..", "data");
 export const MASTER_CV_PATH = path.join(DATA_DIR, "master-cv.json");
 export const APPLICATIONS_JSON_PATH = path.join(DATA_DIR, "applications.json");
 export const APPLICATIONS_XLSX_PATH = path.join(DATA_DIR, "applications.xlsx");
+export const APPLICATION_DATA_DIR = path.join(DATA_DIR, "application-data");

@@ -38,8 +38,7 @@ Hard rules (do not break these):
    (strong / partial / missing). In 'match_notes', tell the candidate plainly where they are
    weak for this role. 'fit_score' must reflect reality, not optimism.
 
-Write all candidate-facing CV text in the language given by the job analysis 'language'
-field. Keep bullets concrete and quantified wherever the master CV provides numbers.`;
+Write all candidate-facing CV text in English. Keep bullets concrete and quantified wherever the master CV provides numbers.`;
 
 export function tailorUserMessage(masterCv: unknown, analysis: unknown): string {
   return [

@@ -151,6 +151,104 @@ export interface TailoredCv {
   keywords_to_weave_in: string[]; // truthful job keywords the candidate has but under-emphasizes
 }
 
+// ---------- PDF import: master CV extraction ----------
+
+export interface MasterCvData {
+  name: string;
+  title?: string;
+  location?: string;
+  email?: string;
+  phone?: string;
+  links?: Record<string, string>;
+  summary?: string;
+  skills?: Record<string, string[]>;
+  experience?: Array<{
+    company: string;
+    role: string;
+    period: string;
+    location?: string;
+    tech?: string[];
+    bullets: string[];
+  }>;
+  projects?: Array<{
+    name: string;
+    description: string;
+    tech: string[];
+    link?: string;
+  }>;
+  education?: Array<{
+    institution: string;
+    credential: string;
+    period: string;
+  }>;
+  certifications?: string[];
+}
+
+export const masterCvTool: Anthropic.Messages.Tool = {
+  name: "extract_master_cv",
+  description: "Extract all CV data from the document into structured JSON.",
+  input_schema: {
+    type: "object",
+    properties: {
+      name: { type: "string" },
+      title: { type: "string" },
+      location: { type: "string" },
+      email: { type: "string" },
+      phone: { type: "string" },
+      links: { type: "object", additionalProperties: { type: "string" } },
+      summary: { type: "string" },
+      skills: {
+        type: "object",
+        additionalProperties: { type: "array", items: { type: "string" } },
+      },
+      experience: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            company: { type: "string" },
+            role: { type: "string" },
+            period: { type: "string" },
+            location: { type: "string" },
+            tech: { type: "array", items: { type: "string" } },
+            bullets: { type: "array", items: { type: "string" } },
+          },
+          required: ["company", "role", "period", "bullets"],
+        },
+      },
+      projects: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            name: { type: "string" },
+            description: { type: "string" },
+            tech: { type: "array", items: { type: "string" } },
+            link: { type: "string" },
+          },
+          required: ["name", "description", "tech"],
+        },
+      },
+      education: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            institution: { type: "string" },
+            credential: { type: "string" },
+            period: { type: "string" },
+          },
+          required: ["institution", "credential", "period"],
+        },
+      },
+      certifications: { type: "array", items: { type: "string" } },
+    },
+    required: ["name"],
+  },
+};
+
+// ---------- Step 2: tailored CV ----------
+
 export const tailorCvTool: Anthropic.Messages.Tool = {
   name: "produce_tailored_cv",
   description:

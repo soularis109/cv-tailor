@@ -97,3 +97,9 @@ export interface TailorResponse {
   tailored: TailoredCv;
   application: Application;
 }
+
+export interface ApplicationData {
+  jobText: string;
+  analysis: JobAnalysis;
+  tailored: TailoredCv;
+}
