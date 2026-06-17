@@ -89,13 +89,13 @@ app.post("/api/analyze", async (req, res) => {
 // ---- Tailor: analyze + rewrite + log ----
 app.post("/api/tailor", async (req, res) => {
   try {
-    const { jobText, jobUrl = "", source = "", analysis: preAnalysis } = req.body ?? {};
+    const { jobText, jobUrl = "", source = "", analysis: preAnalysis, customInstructions } = req.body ?? {};
     if (!jobText || typeof jobText !== "string" || jobText.trim().length < 30) {
       return fail(res, new Error("Paste the full job posting (at least a few lines)."), 400);
     }
     const masterCv = await readMasterCv();
     const analysis: JobAnalysis = preAnalysis ?? await analyzeJob(jobText);
-    const tailored = await tailorCv(masterCv, analysis);
+    const tailored = await tailorCv(masterCv, analysis, typeof customInstructions === "string" ? customInstructions : undefined);
 
     const application = await addApplication({
       company: extractCompany(jobText) || "—",

@@ -76,8 +76,12 @@ ATS COMPLIANCE — apply to every bullet and field regardless of level:
 
 Write all candidate-facing CV text in English. Keep bullets concrete and quantified wherever the master CV provides numbers.`;
 
-export function tailorUserMessage(masterCv: unknown, analysis: unknown): string {
-  return [
+export function tailorUserMessage(
+  masterCv: unknown,
+  analysis: unknown,
+  customInstructions?: string,
+): string {
+  const parts = [
     "MASTER CV (the candidate's full, truthful record — JSON):",
     "```json",
     JSON.stringify(masterCv, null, 2),
@@ -87,7 +91,12 @@ export function tailorUserMessage(masterCv: unknown, analysis: unknown): string 
     "```json",
     JSON.stringify(analysis, null, 2),
     "```",
-    "",
-    "Produce the tailored CV now via the produce_tailored_cv tool.",
-  ].join("\n");
+  ];
+
+  if (customInstructions?.trim()) {
+    parts.push("", "## USER INSTRUCTIONS", customInstructions.trim());
+  }
+
+  parts.push("", "Produce the tailored CV now via the produce_tailored_cv tool.");
+  return parts.join("\n");
 }

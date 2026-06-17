@@ -70,6 +70,7 @@ export async function extractCvFromPdf(pdfBase64: string): Promise<MasterCvData>
 export async function tailorCv(
   masterCv: unknown,
   analysis: JobAnalysis,
+  customInstructions?: string,
 ): Promise<TailoredCv> {
   const message = await anthropic.messages.create({
     model: MODEL,
@@ -79,7 +80,7 @@ export async function tailorCv(
     tools: [tailorCvTool],
     tool_choice: { type: "tool", name: tailorCvTool.name },
     messages: [
-      { role: "user", content: tailorUserMessage(masterCv, analysis) },
+      { role: "user", content: tailorUserMessage(masterCv, analysis, customInstructions) },
     ],
   });
   return extractToolInput<TailoredCv>(message, tailorCvTool.name);

@@ -69,6 +69,23 @@ function AnalysisCard({ analysis }: { analysis: JobAnalysis }) {
   );
 }
 
+const SENIORITY_TEMPLATES: Record<string, string> = {
+  intern:
+    "Write as an intern/entry-level candidate. Use verbs: Built, Developed, Implemented, Assisted, Contributed. Focus on technologies used and concrete learning outcomes. Keep bullets to 1 line. Avoid leadership or ownership language.",
+  junior:
+    "Write as a junior developer. Use: Built, Developed, Implemented, Contributed. Show technical depth and ability to own features end-to-end. 1-2 line bullets. Quantify small wins where possible.",
+  middle:
+    "Write as a mid-level engineer. Use: Designed, Led, Owned, Drove, Delivered. Show feature or system ownership end-to-end, quantify impact (%, latency, user count). Mention cross-team collaboration. 1-2 line bullets.",
+  senior:
+    "Write as a senior engineer. Use: Architected, Spearheaded, Mentored, Scaled, Defined. Quantify: team size, DAU, RPS, latency improvements. Emphasize business impact and technical leadership. Always lead with scale or outcome.",
+  lead:
+    "Write as a tech lead. Use: Led, Defined, Established, Drove, Championed. Emphasize team leadership, technical direction, cross-functional collaboration, and org-wide influence. Show scope: team headcount, company impact.",
+  staff:
+    "Write as a staff engineer. Use: Architected, Drove org-wide adoption, Defined strategy, Established standards. Show company-wide technical impact and influence across multiple teams and orgs.",
+  principal:
+    "Write as a principal engineer. Use: Defined technical vision, Architected at org scale, Pioneered. Show multi-year strategic impact, cross-org influence, and transformation of how engineering is done.",
+};
+
 export default function App() {
   const [tab, setTab] = useState<Tab>("tailor");
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -79,6 +96,8 @@ export default function App() {
   const [jobText, setJobText] = useState("");
   const [jobUrl, setJobUrl] = useState("");
   const [source, setSource] = useState("");
+  const [customInstructions, setCustomInstructions] = useState("");
+  const [showCustom, setShowCustom] = useState(false);
 
   const [stage, setStage] = useState<Stage>(null);
   const [progress, setProgress] = useState(0);
@@ -150,7 +169,7 @@ export default function App() {
       setProgress(50);
       setStage("tailoring");
 
-      const res = await api.tailor(jobText, jobUrl, source, analysis);
+      const res = await api.tailor(jobText, jobUrl, source, analysis, customInstructions || undefined);
       setProgress(100);
       setResult(res);
       setApps((prev) => [res.application, ...prev]);
@@ -171,7 +190,7 @@ export default function App() {
     setProgress(50);
     setError(null);
     try {
-      const res = await api.tailor(jobText, jobUrl, source, cachedAnalysis);
+      const res = await api.tailor(jobText, jobUrl, source, cachedAnalysis, customInstructions || undefined);
       setProgress(100);
       setResult(res);
       setApps((prev) => [res.application, ...prev]);
@@ -330,6 +349,53 @@ export default function App() {
                 value={source}
                 onChange={(e) => setSource(e.target.value)}
               />
+            </div>
+            <div className="custom-instructions">
+              <button
+                className="custom-instructions-toggle"
+                type="button"
+                onClick={() => setShowCustom((v) => !v)}
+                aria-expanded={showCustom}
+              >
+                <span className={`ci-arrow ${showCustom ? "ci-arrow-open" : ""}`}>▶</span>
+                Custom instructions
+                {customInstructions.trim() && <span className="ci-dot" />}
+              </button>
+              {showCustom && (
+                <div className="ci-body">
+                  <div className="ci-levels">
+                    <span className="ci-levels-label">Quick-fill:</span>
+                    {Object.keys(SENIORITY_TEMPLATES).map((level) => (
+                      <button
+                        key={level}
+                        type="button"
+                        className="ci-level-btn"
+                        onClick={() => setCustomInstructions(SENIORITY_TEMPLATES[level])}
+                      >
+                        {level}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="ci-textarea-wrap">
+                    <textarea
+                      className="ci-textarea"
+                      rows={5}
+                      placeholder="Add any instructions for the AI… emphasize specific skills, avoid topics, adjust tone, etc. (optional)"
+                      value={customInstructions}
+                      onChange={(e) => setCustomInstructions(e.target.value)}
+                    />
+                    {customInstructions && (
+                      <button
+                        type="button"
+                        className="ci-clear"
+                        onClick={() => setCustomInstructions("")}
+                      >
+                        Clear
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
             <button
               className="btn btn-primary btn-block"

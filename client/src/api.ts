@@ -53,12 +53,13 @@ export const api = {
     jobUrl: string,
     source: string,
     analysis?: JobAnalysis,
+    customInstructions?: string,
   ): Promise<TailorResponse> {
     return json(
       await fetch("/api/tailor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ jobText, jobUrl, source, analysis }),
+        body: JSON.stringify({ jobText, jobUrl, source, analysis, customInstructions }),
       }),
     );
   },
