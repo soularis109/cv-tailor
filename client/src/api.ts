@@ -141,5 +141,15 @@ export const api = {
     return res.json() as Promise<{ letter: string }>;
   },
 
+  async getCompanyBrief(url: string, companyName: string): Promise<{ brief: string }> {
+    const res = await fetch("/api/company-brief", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url, companyName }),
+    });
+    if (!res.ok) throw new Error("company-brief failed");
+    return res.json() as Promise<{ brief: string }>;
+  },
+
   xlsxUrl: "/api/applications.xlsx",
 };

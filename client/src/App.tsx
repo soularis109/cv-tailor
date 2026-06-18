@@ -105,6 +105,7 @@ export default function App() {
   const [cachedAnalysis, setCachedAnalysis] = useState<JobAnalysis | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<TailorResponse | null>(null);
+  const [companyBrief, setCompanyBrief] = useState<string | null>(null);
   const [analyzeOnlyDone, setAnalyzeOnlyDone] = useState(false);
   const [coverLetterOpen, setCoverLetterOpen] = useState(false);
 
@@ -171,6 +172,7 @@ export default function App() {
     setStage("analyzing");
     setProgress(0);
     setError(null);
+    setCompanyBrief(null);
     setCachedAnalysis(null);
     setAnalyzeOnlyDone(false);
 
@@ -185,6 +187,12 @@ export default function App() {
       setResult(res);
       clearDraft();
       setApps((prev) => [res.application, ...prev]);
+      // Auto-fetch company brief if URL is available
+      if (jobUrl.trim() && res.application.company && res.application.company !== "—") {
+        api.getCompanyBrief(jobUrl, res.application.company)
+          .then((r) => setCompanyBrief(r.brief))
+          .catch(() => { /* silent fail — brief is optional */ });
+      }
 
       playDoneChime();
       await notifyDone(res.analysis.role_title);
@@ -217,12 +225,19 @@ export default function App() {
     setStage("tailoring");
     setProgress(50);
     setError(null);
+    setCompanyBrief(null);
     try {
       const res = await api.tailor(jobText, jobUrl, source, cachedAnalysis, customInstructions || undefined);
       setProgress(100);
       setResult(res);
       clearDraft();
       setApps((prev) => [res.application, ...prev]);
+      // Auto-fetch company brief if URL is available
+      if (jobUrl.trim() && res.application.company && res.application.company !== "—") {
+        api.getCompanyBrief(jobUrl, res.application.company)
+          .then((r) => setCompanyBrief(r.brief))
+          .catch(() => { /* silent fail — brief is optional */ });
+      }
       playDoneChime();
       await notifyDone(res.analysis.role_title);
     } catch (e) {
@@ -551,6 +566,13 @@ export default function App() {
                 </div>
 
                 <AnalysisCard analysis={analysis!} />
+
+                {companyBrief && (
+                  <div className="card company-brief-card">
+                    <h4>About {result!.application.company}</h4>
+                    <p className="notes">{companyBrief}</p>
+                  </div>
+                )}
 
                 <div className="card">
                   <Coverage coverage={tailored!.coverage} />
