@@ -244,6 +244,26 @@ app.get("/api/applications.xlsx", async (_req, res) => {
   }
 });
 
+app.post("/api/fetch-job", async (req, res) => {
+  const { url } = req.body as { url?: string };
+  if (!url || !url.startsWith("http")) {
+    return res.status(400).json({ error: "Invalid URL" });
+  }
+  try {
+    const jinaUrl = `https://r.jina.ai/${url}`;
+    const response = await fetch(jinaUrl, {
+      headers: { Accept: "text/plain" },
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!response.ok) throw new Error(`Jina returned ${response.status}`);
+    let text = await response.text();
+    if (text.length > 20_000) text = text.slice(0, 20_000);
+    res.json({ text });
+  } catch (err) {
+    res.status(502).json({ error: "Could not fetch URL" });
+  }
+});
+
 /** Best-effort company guess for the tracker row; the user can edit it later. */
 function extractCompany(jobText: string): string {
   const m =
