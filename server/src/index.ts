@@ -108,6 +108,7 @@ app.post("/api/tailor", async (req, res) => {
       salary: "",
       notes: "",
       language: analysis.language,
+      redFlagsCount: analysis.red_flags?.length ?? 0,
     });
 
     // Persist full analysis + tailored CV for interview prep and future features
