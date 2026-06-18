@@ -6,6 +6,7 @@ import { FitGauge } from "./FitGauge";
 import { Coverage } from "./Coverage";
 import { CvPreview } from "./CvPreview";
 import { showToast } from "../utils/toast";
+import { daysSince } from "../utils/dates";
 
 interface Props {
   application: Application | null;
@@ -91,10 +92,70 @@ function PrepChecklist({ data }: { data: ApplicationData }) {
   );
 }
 
+function FollowUpSection({
+  application,
+  daysWaited,
+}: {
+  application: Application;
+  daysWaited: number;
+}) {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function draft() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await api.draftFollowupEmail(application.id);
+      setEmail(res.email);
+    } catch {
+      setError("Generation failed — try again");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="followup-section">
+      {daysWaited < 5 && (
+        <p className="hint">Usually best to follow up after 7 days. Applied {daysWaited}d ago.</p>
+      )}
+      {!email && (
+        <button className="btn btn-secondary" onClick={draft} disabled={loading}>
+          {loading ? "Drafting…" : "Draft follow-up email with AI"}
+        </button>
+      )}
+      {error && <p className="error">{error}</p>}
+      {email && (
+        <>
+          <textarea
+            className="email-textarea"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            rows={8}
+          />
+          <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
+            <button
+              className="btn btn-ghost btn-sm"
+              onClick={() => navigator.clipboard.writeText(email)}
+            >
+              Copy to clipboard
+            </button>
+            <button className="btn btn-ghost btn-sm" onClick={draft}>
+              Regenerate
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export function ApplicationDetailPanel({ application, onClose, onPatch }: Props) {
   const [data, setData] = useState<ApplicationData | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [activeSection, setActiveSection] = useState<"overview" | "cv" | "prep">("overview");
+  const [activeSection, setActiveSection] = useState<"overview" | "cv" | "prep" | "followup">("overview");
   const [notes, setNotes] = useState("");
   const [notesSaving, setNotesSaving] = useState(false);
 
@@ -209,6 +270,12 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
                 {s === "overview" ? "Overview" : s === "cv" ? "Tailored CV" : "Interview Prep"}
               </button>
             ))}
+            <button
+              className={`tab-btn ${activeSection === "followup" ? "active" : ""}`}
+              onClick={() => setActiveSection("followup")}
+            >
+              Follow-up
+            </button>
           </div>
 
           {/* Body */}
@@ -260,6 +327,10 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
                   {notesSaving && <span className="muted small">Saving…</span>}
                 </div>
               </div>
+            )}
+
+            {activeSection === "followup" && (
+              <FollowUpSection application={application} daysWaited={daysSince(application.dateAdded)} />
             )}
           </div>
         </aside>

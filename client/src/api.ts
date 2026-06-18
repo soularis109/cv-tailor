@@ -123,5 +123,13 @@ export const api = {
     return data.text;
   },
 
+  async draftFollowupEmail(id: string): Promise<{ email: string }> {
+    const res = await fetch(`/api/applications/${id}/draft-followup`, {
+      method: "POST",
+    });
+    if (!res.ok) throw new Error("draft-followup failed");
+    return res.json() as Promise<{ email: string }>;
+  },
+
   xlsxUrl: "/api/applications.xlsx",
 };
