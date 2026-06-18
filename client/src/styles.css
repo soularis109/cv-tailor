@@ -265,6 +265,51 @@ select {
   outline: none;
 }
 
+.level-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.level-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.level-seg {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  overflow: hidden;
+  background: var(--panel-2);
+}
+
+.level-seg-btn {
+  flex: 1;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--line);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+.level-seg-btn:last-child {
+  border-right: none;
+}
+.level-seg-btn:hover:not(.level-seg-btn-on) {
+  background: var(--thread-weak);
+  color: var(--thread);
+}
+.level-seg-btn-on {
+  background: var(--thread);
+  color: #fff;
+}
+
 .hint {
   font-size: 0.82rem;
   color: var(--muted);

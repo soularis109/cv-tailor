@@ -87,12 +87,13 @@ export const api = {
     analysis?: JobAnalysis,
     customInstructions?: string,
     cvProfile?: string,
+    userLevel?: "junior" | "middle" | "senior",
   ): Promise<TailorResponse> {
     return json(
       await fetch("/api/tailor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ jobText, jobUrl, source, analysis, customInstructions, cvProfile }),
+        body: JSON.stringify({ jobText, jobUrl, source, analysis, customInstructions, cvProfile, userLevel }),
       }),
     );
   },

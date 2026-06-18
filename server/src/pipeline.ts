@@ -7,7 +7,8 @@ import {
   type TailoredCv,
   type MasterCvData,
 } from "./schemas.js";
-import { ANALYZE_SYSTEM, TAILOR_SYSTEM, tailorUserMessage, FOLLOWUP_SYSTEM, COVER_LETTER_SYSTEM, COMPANY_BRIEF_SYSTEM } from "./prompts.js";
+import { ANALYZE_SYSTEM, tailorUserMessage, FOLLOWUP_SYSTEM, COVER_LETTER_SYSTEM, COMPANY_BRIEF_SYSTEM } from "./prompts.js";
+import { buildTailorSystemPrompt, type CandidateLevel } from "./prompt-builder.js";
 import type Anthropic from "@anthropic-ai/sdk";
 
 /** Pull the forced tool_use input out of a Messages response. */
@@ -70,17 +71,20 @@ export async function extractCvFromPdf(pdfBase64: string): Promise<MasterCvData>
 export async function tailorCv(
   masterCv: unknown,
   analysis: JobAnalysis,
-  customInstructions?: string,
+  options?: { customInstructions?: string; role?: string; level?: CandidateLevel },
 ): Promise<TailoredCv> {
+  const role = options?.role ?? "Software Engineer";
+  const level = options?.level ?? "middle";
+  const systemPrompt = buildTailorSystemPrompt(role, level);
   const message = await anthropic.messages.create({
     model: MODEL,
     max_tokens: 4096,
     temperature: 0.3,
-    system: TAILOR_SYSTEM,
+    system: systemPrompt,
     tools: [tailorCvTool],
     tool_choice: { type: "tool", name: tailorCvTool.name },
     messages: [
-      { role: "user", content: tailorUserMessage(masterCv, analysis, customInstructions) },
+      { role: "user", content: tailorUserMessage(masterCv, analysis, options?.customInstructions) },
     ],
   });
   return extractToolInput<TailoredCv>(message, tailorCvTool.name);
