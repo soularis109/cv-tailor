@@ -1553,6 +1553,21 @@ select {
 /* Onboarding */
 .drawer-onboarding { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.85rem; text-align: center; padding: 1.5rem 1rem; }
 .onboarding-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--thread-weak); border: 1px solid var(--line); flex: none; }
+/* Risk badge and follow-up clock badge */
+.risk-badge {
+  margin-left: 4px;
+  font-size: 0.7rem;
+  color: #d97706;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.followup-badge {
+  margin-left: 4px;
+  font-size: 0.7rem;
+  color: #6b7280;
+  font-weight: 500;
+  white-space: nowrap;
+}
 /* Responsive pipeline */
 @media (max-width: 680px) {
   .pipeline-page { padding: 1rem 0.75rem; }

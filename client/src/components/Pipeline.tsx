@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { api } from "../api";
 import { STATUSES, type Application, type Status } from "../types";
 import { PipelineStats } from "./PipelineStats";
+import { daysSince, needsFollowUp } from "../utils/dates";
 
 interface Props {
   applications: Application[];
@@ -187,7 +188,17 @@ export function Pipeline({ applications, onPatch, onDelete, onOpen, loadError, l
                   />
                 </td>
                 <td className="mono">{a.seniority}</td>
-                <td className="mono fit">{a.fitScore}</td>
+                <td className="mono fit">
+                  {a.fitScore}
+                  {(a.redFlagsCount ?? 0) > 0 && (
+                    <span
+                      className="risk-badge"
+                      title={`${a.redFlagsCount} red flag${a.redFlagsCount === 1 ? "" : "s"} — check Interview Prep tab`}
+                    >
+                      ⚠ {a.redFlagsCount}
+                    </span>
+                  )}
+                </td>
                 <td onClick={(e) => e.stopPropagation()}>
                   <select
                     className={`status-select ${statusClass(a.status)}`}
@@ -200,6 +211,14 @@ export function Pipeline({ applications, onPatch, onDelete, onOpen, loadError, l
                       </option>
                     ))}
                   </select>
+                  {needsFollowUp(a) && (
+                    <span
+                      className="followup-badge"
+                      title={`Applied ${daysSince(a.dateAdded)} days ago — consider sending a follow-up`}
+                    >
+                      ⏱ {daysSince(a.dateAdded)}d
+                    </span>
+                  )}
                 </td>
                 <td onClick={(e) => e.stopPropagation()}>
                   <input

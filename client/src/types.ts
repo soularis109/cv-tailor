@@ -90,6 +90,7 @@ export interface Application {
   salary: string;
   notes: string;
   language: string;
+  redFlagsCount?: number;
 }
 
 export interface TailorResponse {
