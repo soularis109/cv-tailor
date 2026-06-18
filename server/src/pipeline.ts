@@ -7,7 +7,7 @@ import {
   type TailoredCv,
   type MasterCvData,
 } from "./schemas.js";
-import { ANALYZE_SYSTEM, TAILOR_SYSTEM, tailorUserMessage, FOLLOWUP_SYSTEM } from "./prompts.js";
+import { ANALYZE_SYSTEM, TAILOR_SYSTEM, tailorUserMessage, FOLLOWUP_SYSTEM, COVER_LETTER_SYSTEM } from "./prompts.js";
 import type Anthropic from "@anthropic-ai/sdk";
 
 /** Pull the forced tool_use input out of a Messages response. */
@@ -109,6 +109,44 @@ My name: ${candidateName}`.trim();
     model: MODEL,
     max_tokens: 300,
     system: FOLLOWUP_SYSTEM,
+    messages: [{ role: "user", content: userMessage }],
+  });
+
+  const block = message.content[0];
+  if (block.type !== "text") throw new Error("Unexpected response type");
+  return block.text.trim();
+}
+
+export async function generateCoverLetter(
+  masterCv: { name: string; email?: string; phone?: string },
+  application: { company: string; role: string },
+  analysis: { must_have: string[]; seniority: string },
+  tailored: { headline: string; summary: string; coverage: Array<{ requirement: string; status: string }> }
+): Promise<string> {
+  const strengths = tailored.coverage
+    .filter((c) => c.status === "strong")
+    .slice(0, 5)
+    .map((c) => c.requirement)
+    .join("\n- ");
+
+  const userMessage = `
+Name: ${masterCv.name}
+Email: ${masterCv.email ?? ""}
+Company: ${application.company}
+Role: ${application.role}
+Seniority: ${analysis.seniority}
+My headline: ${tailored.headline}
+My summary: ${tailored.summary}
+Key requirements I strongly match:
+- ${strengths}
+Top must-have requirements for the role:
+- ${analysis.must_have.slice(0, 5).join("\n- ")}
+  `.trim();
+
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 600,
+    system: COVER_LETTER_SYSTEM,
     messages: [{ role: "user", content: userMessage }],
   });
 

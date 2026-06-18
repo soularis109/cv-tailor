@@ -4,7 +4,7 @@ import { promises as fs } from "node:fs";
 import multer from "multer";
 import type { RequestHandler } from "express";
 import { PORT, MASTER_CV_PATH } from "./config.js";
-import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail } from "./pipeline.js";
+import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter } from "./pipeline.js";
 import { buildDocx, type CvHeader } from "./docx.js";
 import { buildPdf } from "./pdf.js";
 import type { TailoredCv, JobAnalysis } from "./schemas.js";
@@ -306,6 +306,34 @@ app.post("/api/applications/:id/draft-followup", async (req, res) => {
   try {
     const email = await generateFollowupEmail(application, data, candidateName, daysWaited);
     res.json({ email });
+  } catch (err) {
+    res.status(500).json({ error: "Generation failed" });
+  }
+});
+
+app.post("/api/cover-letter", async (req, res) => {
+  const { applicationId } = req.body as { applicationId?: string };
+  if (!applicationId) return res.status(400).json({ error: "applicationId required" });
+
+  const apps = await readApplications();
+  const application = apps.find((a) => a.id === applicationId);
+  if (!application) return res.status(404).json({ error: "Not found" });
+
+  const data = await readApplicationData(applicationId);
+  if (!data) return res.status(404).json({ error: "Application data not found" });
+
+  let masterCv: { name: string; email?: string; phone?: string } | null = null;
+  try {
+    const raw = await fs.readFile(MASTER_CV_PATH, "utf-8");
+    masterCv = JSON.parse(raw) as { name: string; email?: string; phone?: string };
+  } catch {
+    // file missing
+  }
+  if (!masterCv) return res.status(400).json({ error: "Master CV not set" });
+
+  try {
+    const letter = await generateCoverLetter(masterCv, application, data.analysis, data.tailored);
+    res.json({ letter });
   } catch (err) {
     res.status(500).json({ error: "Generation failed" });
   }
