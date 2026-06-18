@@ -330,7 +330,7 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
             )}
 
             {activeSection === "followup" && (
-              <FollowUpSection application={application} daysWaited={daysSince(application.dateAdded)} />
+              <FollowUpSection key={application.id} application={application} daysWaited={daysSince(application.dateAdded)} />
             )}
           </div>
         </aside>
