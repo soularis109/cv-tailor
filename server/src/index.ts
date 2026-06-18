@@ -3,7 +3,7 @@ import cors from "cors";
 import { promises as fs } from "node:fs";
 import multer from "multer";
 import type { RequestHandler } from "express";
-import { PORT, MASTER_CV_PATH, anthropic, MODEL } from "./config.js";
+import { PORT, MASTER_CV_PATH, anthropic, MODEL, CV_PROFILES_DIR, cvProfilePath, DEFAULT_PROFILE } from "./config.js";
 import { MOCK_INTERVIEW_SYSTEM } from "./prompts.js";
 import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter, generateCompanyBrief } from "./pipeline.js";
 import { buildDocx, type CvHeader } from "./docx.js";
@@ -17,6 +17,9 @@ import {
   saveApplicationData,
   readApplicationData,
   APPLICATIONS_XLSX_PATH,
+  listCvProfiles,
+  loadCvProfile,
+  saveCvProfile,
   type Status,
   type ApplicationData,
 } from "./store.js";
@@ -33,6 +36,23 @@ const upload = multer({
 });
 
 
+// One-time migration: master-cv.json → cv-profiles/default.json
+async function migrateToProfiles() {
+  try {
+    await fs.access(CV_PROFILES_DIR);
+  } catch {
+    // cv-profiles/ doesn't exist yet — create and migrate
+    await fs.mkdir(CV_PROFILES_DIR, { recursive: true });
+    try {
+      const raw = await fs.readFile(MASTER_CV_PATH, "utf8");
+      await fs.writeFile(cvProfilePath(DEFAULT_PROFILE), raw, "utf8");
+    } catch {
+      // master-cv.json doesn't exist either — that's fine
+    }
+  }
+}
+await migrateToProfiles();
+
 const interviewSessions = new Map<string, Array<{ role: "user" | "assistant"; content: string }>>();
 
 const app = express();
@@ -45,7 +65,10 @@ interface MasterCv extends CvHeader {
   [key: string]: unknown;
 }
 
-async function readMasterCv(): Promise<MasterCv> {
+async function readMasterCv(profile = DEFAULT_PROFILE): Promise<MasterCv> {
+  // Try profile first, fall back to legacy MASTER_CV_PATH
+  const profileData = await loadCvProfile(profile);
+  if (profileData) return profileData as MasterCv;
   const raw = await fs.readFile(MASTER_CV_PATH, "utf8");
   return JSON.parse(raw) as MasterCv;
 }
@@ -69,7 +92,9 @@ app.get("/api/master-cv", async (_req, res) => {
 
 app.put("/api/master-cv", async (req, res) => {
   try {
-    await fs.writeFile(MASTER_CV_PATH, JSON.stringify(req.body, null, 2), "utf8");
+    const data = JSON.stringify(req.body, null, 2);
+    await fs.writeFile(MASTER_CV_PATH, data, "utf8");
+    await saveCvProfile(DEFAULT_PROFILE, req.body as Record<string, unknown>);
     res.json({ ok: true });
   } catch (err) {
     fail(res, err);
@@ -93,11 +118,11 @@ app.post("/api/analyze", async (req, res) => {
 // ---- Tailor: analyze + rewrite + log ----
 app.post("/api/tailor", async (req, res) => {
   try {
-    const { jobText, jobUrl = "", source = "", analysis: preAnalysis, customInstructions } = req.body ?? {};
+    const { jobText, jobUrl = "", source = "", analysis: preAnalysis, customInstructions, cvProfile = DEFAULT_PROFILE } = req.body ?? {};
     if (!jobText || typeof jobText !== "string" || jobText.trim().length < 30) {
       return fail(res, new Error("Paste the full job posting (at least a few lines)."), 400);
     }
-    const masterCv = await readMasterCv();
+    const masterCv = await readMasterCv(cvProfile as string);
     const analysis: JobAnalysis = preAnalysis ?? await analyzeJob(jobText);
     const tailored = await tailorCv(masterCv, analysis, typeof customInstructions === "string" ? customInstructions : undefined);
 
@@ -432,6 +457,66 @@ app.post("/api/applications/:id/interview", async (req, res) => {
     res.json({ reply, questionNumber: Math.ceil(history.length / 2) });
   } catch (err) {
     res.status(500).json({ error: "Interview failed" });
+  }
+});
+
+// ---- CV Profiles ----
+app.get("/api/master-cv/profiles", async (_req, res) => {
+  try {
+    const profiles = await listCvProfiles();
+    res.json({ profiles });
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.post("/api/master-cv/profiles", async (req, res) => {
+  try {
+    const { name, cv } = req.body as { name?: string; cv?: Record<string, unknown> };
+    if (!name || typeof name !== "string") return res.status(400).json({ error: "name required" });
+    if (!cv || typeof cv !== "object") return res.status(400).json({ error: "cv required" });
+    const safe = name.replace(/[^a-zA-Z0-9-_]/g, "_").slice(0, 50);
+    if (safe === DEFAULT_PROFILE) return res.status(400).json({ error: "Use PUT /api/master-cv to update default" });
+    await saveCvProfile(safe, cv);
+    res.status(201).json({ ok: true, name: safe });
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.get("/api/master-cv/profiles/:name", async (req, res) => {
+  try {
+    const cv = await loadCvProfile(req.params.name);
+    if (!cv) return res.status(404).json({ error: "Profile not found" });
+    res.json(cv);
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.put("/api/master-cv/profiles/:name", async (req, res) => {
+  try {
+    const { name } = req.params;
+    if (!req.body || typeof req.body !== "object") return res.status(400).json({ error: "cv body required" });
+    await saveCvProfile(name, req.body as Record<string, unknown>);
+    // If updating default, also keep master-cv.json in sync
+    if (name === DEFAULT_PROFILE) {
+      await fs.writeFile(MASTER_CV_PATH, JSON.stringify(req.body, null, 2), "utf8");
+    }
+    res.json({ ok: true });
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.delete("/api/master-cv/profiles/:name", async (req, res) => {
+  try {
+    const { name } = req.params;
+    if (name === DEFAULT_PROFILE) return res.status(400).json({ error: "Cannot delete default profile" });
+    await fs.unlink(cvProfilePath(name));
+    res.json({ ok: true });
+  } catch (err) {
+    fail(res, err, 404);
   }
 });
 

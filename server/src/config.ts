@@ -28,3 +28,11 @@ export const MASTER_CV_PATH = path.join(DATA_DIR, "master-cv.json");
 export const APPLICATIONS_JSON_PATH = path.join(DATA_DIR, "applications.json");
 export const APPLICATIONS_XLSX_PATH = path.join(DATA_DIR, "applications.xlsx");
 export const APPLICATION_DATA_DIR = path.join(DATA_DIR, "application-data");
+
+export const CV_PROFILES_DIR = path.join(DATA_DIR, "cv-profiles");
+export const DEFAULT_PROFILE = "default";
+
+export function cvProfilePath(name: string): string {
+  const safe = name.replace(/[^a-zA-Z0-9-_]/g, "_").slice(0, 50);
+  return path.join(CV_PROFILES_DIR, `${safe}.json`);
+}

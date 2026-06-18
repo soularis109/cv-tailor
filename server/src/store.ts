@@ -5,6 +5,8 @@ import {
   APPLICATIONS_XLSX_PATH,
   APPLICATION_DATA_DIR,
   DATA_DIR,
+  CV_PROFILES_DIR,
+  cvProfilePath,
 } from "./config.js";
 import type { JobAnalysis, TailoredCv } from "./schemas.js";
 
@@ -173,3 +175,32 @@ export async function deleteApplication(id: string): Promise<boolean> {
 }
 
 export { APPLICATIONS_XLSX_PATH };
+
+// ---- CV Profiles ----
+
+export async function listCvProfiles(): Promise<string[]> {
+  try {
+    const files = await fs.readdir(CV_PROFILES_DIR);
+    const profiles = files
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => f.slice(0, -5));
+    // Ensure "default" is always first
+    return ["default", ...profiles.filter((p) => p !== "default")];
+  } catch {
+    return ["default"];
+  }
+}
+
+export async function loadCvProfile(name: string): Promise<Record<string, unknown> | null> {
+  try {
+    const raw = await fs.readFile(cvProfilePath(name), "utf8");
+    return JSON.parse(raw) as Record<string, unknown>;
+  } catch {
+    return null;
+  }
+}
+
+export async function saveCvProfile(name: string, cv: Record<string, unknown>): Promise<void> {
+  await fs.mkdir(CV_PROFILES_DIR, { recursive: true });
+  await fs.writeFile(cvProfilePath(name), JSON.stringify(cv, null, 2), "utf8");
+}
