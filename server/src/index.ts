@@ -4,7 +4,7 @@ import { promises as fs } from "node:fs";
 import multer from "multer";
 import type { RequestHandler } from "express";
 import { PORT, MASTER_CV_PATH } from "./config.js";
-import { analyzeJob, tailorCv, extractCvFromPdf } from "./pipeline.js";
+import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail } from "./pipeline.js";
 import { buildDocx, type CvHeader } from "./docx.js";
 import { buildPdf } from "./pdf.js";
 import type { TailoredCv, JobAnalysis } from "./schemas.js";
@@ -279,6 +279,37 @@ function extractCompany(jobText: string): string {
     jobText.match(/([A-Z][\w&.\- ]{2,40})\s+is\s+(?:looking|hiring|seeking)/);
   return m ? m[1].trim() : "";
 }
+
+app.post("/api/applications/:id/draft-followup", async (req, res) => {
+  const { id } = req.params;
+
+  const apps = await readApplications();
+  const application = apps.find((a) => a.id === id);
+  if (!application) return res.status(404).json({ error: "Not found" });
+
+  const data = await readApplicationData(id);
+  if (!data) return res.status(404).json({ error: "Application data not found" });
+
+  let candidateName = "the candidate";
+  try {
+    const raw = await fs.readFile(MASTER_CV_PATH, "utf-8");
+    const masterCv = JSON.parse(raw) as { name?: string };
+    if (masterCv?.name) candidateName = masterCv.name;
+  } catch {
+    // fallback to default
+  }
+
+  const daysWaited = Math.floor(
+    (Date.now() - new Date(application.dateAdded).getTime()) / (1000 * 60 * 60 * 24)
+  );
+
+  try {
+    const email = await generateFollowupEmail(application, data, candidateName, daysWaited);
+    res.json({ email });
+  } catch (err) {
+    res.status(500).json({ error: "Generation failed" });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`[cv-tailor] server on http://localhost:${PORT}`);

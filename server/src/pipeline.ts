@@ -7,7 +7,7 @@ import {
   type TailoredCv,
   type MasterCvData,
 } from "./schemas.js";
-import { ANALYZE_SYSTEM, TAILOR_SYSTEM, tailorUserMessage } from "./prompts.js";
+import { ANALYZE_SYSTEM, TAILOR_SYSTEM, tailorUserMessage, FOLLOWUP_SYSTEM } from "./prompts.js";
 import type Anthropic from "@anthropic-ai/sdk";
 
 /** Pull the forced tool_use input out of a Messages response. */
@@ -84,4 +84,35 @@ export async function tailorCv(
     ],
   });
   return extractToolInput<TailoredCv>(message, tailorCvTool.name);
+}
+
+export async function generateFollowupEmail(
+  application: { company: string; role: string; dateAdded: string },
+  data: { tailored: { headline: string; coverage: Array<{ requirement: string; status: string }> } },
+  candidateName: string,
+  daysWaited: number
+): Promise<string> {
+  const strengths = data.tailored.coverage
+    .filter((c) => c.status === "strong")
+    .slice(0, 3)
+    .map((c) => c.requirement)
+    .join(", ");
+
+  const userMessage = `Company: ${application.company}
+Role: ${application.role}
+Days since applying: ${daysWaited}
+My headline: ${data.tailored.headline}
+Key strengths for this role: ${strengths || "strong technical background"}
+My name: ${candidateName}`.trim();
+
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 300,
+    system: FOLLOWUP_SYSTEM,
+    messages: [{ role: "user", content: userMessage }],
+  });
+
+  const block = message.content[0];
+  if (block.type !== "text") throw new Error("Unexpected response type");
+  return block.text.trim();
 }
