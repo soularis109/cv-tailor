@@ -104,6 +104,7 @@ export default function App() {
   const [cachedAnalysis, setCachedAnalysis] = useState<JobAnalysis | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<TailorResponse | null>(null);
+  const [analyzeOnlyDone, setAnalyzeOnlyDone] = useState(false);
 
   const [apps, setApps] = useState<Application[]>([]);
   const [appsLoading, setAppsLoading] = useState(true);
@@ -181,6 +182,22 @@ export default function App() {
     } finally {
       setStage(null);
       setProgress(0);
+    }
+  }
+
+  async function runAnalyzeOnly() {
+    if (!jobText.trim() || jobText.trim().length < 30) return;
+    setStage("analyzing");
+    setError(null);
+    setAnalyzeOnlyDone(false);
+    try {
+      const { analysis } = await api.analyzeJob(jobText);
+      setCachedAnalysis(analysis);
+      setAnalyzeOnlyDone(true);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Analysis failed");
+    } finally {
+      setStage(null);
     }
   }
 
@@ -427,6 +444,13 @@ export default function App() {
             >
               {isRunning ? "Working…" : "Tailor for this role"}
             </button>
+            <button
+              className="btn btn-ghost btn-block"
+              onClick={runAnalyzeOnly}
+              disabled={isRunning || jobText.trim().length < 30}
+            >
+              {stage === "analyzing" && !analyzeOnlyDone ? "Analyzing…" : "Quick Analyze"}
+            </button>
             {error && (
               <div className="form-error">
                 {error}
@@ -448,7 +472,18 @@ export default function App() {
               <TailorProgress stage={stage} progress={progress} elapsed={elapsed} />
             )}
             {showPartialAnalysis && <AnalysisCard analysis={cachedAnalysis!} />}
-            {!result && !isRunning && !showPartialAnalysis && (
+            {cachedAnalysis && analyzeOnlyDone && !result && (
+              <>
+                <AnalysisCard analysis={cachedAnalysis} />
+                <div className="analyze-only-cta">
+                  <p>Looks interesting? Tailor your CV for this role.</p>
+                  <button className="btn btn-primary" onClick={runTailor}>
+                    Tailor CV →
+                  </button>
+                </div>
+              </>
+            )}
+            {!result && !isRunning && !showPartialAnalysis && !(cachedAnalysis && analyzeOnlyDone) && (
               <div className="placeholder">
                 <span className="placeholder-mark" aria-hidden="true" />
                 <p>Your tailored CV and fit analysis will appear here.</p>
