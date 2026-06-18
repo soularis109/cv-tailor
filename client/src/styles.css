@@ -1154,6 +1154,48 @@ select {
   margin-top: 1.25rem;
 }
 
+/* ---------- Cover Letter Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-overlay .modal {
+  background: var(--bg-card, #1e1e2e);
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 /* Drop zone */
 .drop-zone {
   border: 2px dashed var(--line);

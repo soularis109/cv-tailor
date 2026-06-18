@@ -131,5 +131,15 @@ export const api = {
     return res.json() as Promise<{ email: string }>;
   },
 
+  async generateCoverLetter(applicationId: string): Promise<{ letter: string }> {
+    const res = await fetch("/api/cover-letter", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ applicationId }),
+    });
+    if (!res.ok) throw new Error("cover-letter failed");
+    return res.json() as Promise<{ letter: string }>;
+  },
+
   xlsxUrl: "/api/applications.xlsx",
 };

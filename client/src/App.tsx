@@ -8,6 +8,7 @@ import { Pipeline } from "./components/Pipeline";
 import { MasterCvDrawer } from "./components/MasterCvDrawer";
 import { TailorProgress } from "./components/TailorProgress";
 import { ApplicationDetailPanel } from "./components/ApplicationDetailPanel";
+import { CoverLetterModal } from "./components/CoverLetterModal";
 import { ToastStack } from "./components/Toast";
 import { showToast } from "./utils/toast";
 import { playDoneChime, notifyDone, requestNotificationPermission } from "./utils/notify";
@@ -105,6 +106,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<TailorResponse | null>(null);
   const [analyzeOnlyDone, setAnalyzeOnlyDone] = useState(false);
+  const [coverLetterOpen, setCoverLetterOpen] = useState(false);
 
   const [apps, setApps] = useState<Application[]>([]);
   const [appsLoading, setAppsLoading] = useState(true);
@@ -520,6 +522,12 @@ export default function App() {
                       <button className="btn btn-ghost" onClick={handleDownloadPdf}>
                         Download PDF
                       </button>
+                      <button
+                        className="btn btn-ghost"
+                        onClick={() => setCoverLetterOpen(true)}
+                      >
+                        Cover Letter
+                      </button>
                     </div>
                     {result && cachedAnalysis && stage === null && (
                       <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
@@ -606,6 +614,14 @@ export default function App() {
         onClose={() => setDetailAppId(null)}
         onPatch={patchApp}
       />
+
+      {result && (
+        <CoverLetterModal
+          applicationId={result.application.id}
+          isOpen={coverLetterOpen}
+          onClose={() => setCoverLetterOpen(false)}
+        />
+      )}
 
       <ToastStack />
     </div>
