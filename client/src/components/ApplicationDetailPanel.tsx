@@ -5,6 +5,7 @@ import { STATUSES, type Status } from "../types";
 import { FitGauge } from "./FitGauge";
 import { Coverage } from "./Coverage";
 import { CvPreview } from "./CvPreview";
+import { MockInterview } from "./MockInterview";
 import { showToast } from "../utils/toast";
 import { daysSince } from "../utils/dates";
 
@@ -155,7 +156,7 @@ function FollowUpSection({
 export function ApplicationDetailPanel({ application, onClose, onPatch }: Props) {
   const [data, setData] = useState<ApplicationData | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [activeSection, setActiveSection] = useState<"overview" | "cv" | "prep" | "followup">("overview");
+  const [activeSection, setActiveSection] = useState<"overview" | "cv" | "prep" | "followup" | "interview">("overview");
   const [notes, setNotes] = useState("");
   const [notesSaving, setNotesSaving] = useState(false);
 
@@ -276,6 +277,12 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
             >
               Follow-up
             </button>
+            <button
+              className={`detail-tab ${activeSection === "interview" ? "on" : ""}`}
+              onClick={() => setActiveSection("interview")}
+            >
+              Mock Interview
+            </button>
           </div>
 
           {/* Body */}
@@ -284,7 +291,7 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
               <div className="form-error">{loadError}</div>
             )}
 
-            {!data && !loadError && activeSection !== "followup" && (
+            {!data && !loadError && activeSection !== "followup" && activeSection !== "interview" && (
               <div className="drawer-loading">Loading…</div>
             )}
 
@@ -331,6 +338,10 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
 
             {activeSection === "followup" && (
               <FollowUpSection key={application.id} application={application} daysWaited={daysSince(application.dateAdded)} />
+            )}
+
+            {activeSection === "interview" && (
+              <MockInterview key={application.id} applicationId={application.id} />
             )}
           </div>
         </aside>

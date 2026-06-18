@@ -131,6 +131,26 @@ export const api = {
     return res.json() as Promise<{ email: string }>;
   },
 
+  async startInterview(id: string): Promise<{ reply: string; questionNumber: number }> {
+    const res = await fetch(`/api/applications/${id}/interview`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ reset: true }),
+    });
+    if (!res.ok) throw new Error("interview failed");
+    return res.json() as Promise<{ reply: string; questionNumber: number }>;
+  },
+
+  async sendInterviewMessage(id: string, message: string): Promise<{ reply: string; questionNumber: number }> {
+    const res = await fetch(`/api/applications/${id}/interview`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+    if (!res.ok) throw new Error("interview failed");
+    return res.json() as Promise<{ reply: string; questionNumber: number }>;
+  },
+
   async generateCoverLetter(applicationId: string): Promise<{ letter: string }> {
     const res = await fetch("/api/cover-letter", {
       method: "POST",

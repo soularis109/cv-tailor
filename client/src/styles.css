@@ -1616,3 +1616,72 @@ select {
   .pipeline-head { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   .table th:nth-child(7), .table td:nth-child(7), .table th:nth-child(8), .table td:nth-child(8) { display: none; }
 }
+
+/* Mock Interview chat */
+.mock-interview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mock-interview-start {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.interview-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.interview-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.interview-msg-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.interview-msg--interviewer {
+  align-items: flex-start;
+}
+
+.interview-msg--you {
+  align-items: flex-end;
+}
+
+.interview-msg--you p {
+  background: var(--accent, #7c3aed);
+  color: #fff;
+  border-radius: 8px 8px 2px 8px;
+  padding: 8px 12px;
+  max-width: 80%;
+}
+
+.interview-msg--interviewer p {
+  background: var(--bg-card, #1e1e2e);
+  border-radius: 2px 8px 8px 8px;
+  padding: 8px 12px;
+  max-width: 85%;
+}
+
+.interview-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.interview-input-row .email-textarea {
+  flex: 1;
+}
