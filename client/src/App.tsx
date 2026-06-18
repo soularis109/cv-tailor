@@ -149,6 +149,14 @@ export default function App() {
     };
   }, [stage]);
 
+  useEffect(() => {
+    if (analyzeOnlyDone) {
+      setAnalyzeOnlyDone(false);
+      setCachedAnalysis(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [jobText]);
+
   async function runTailor() {
     // Guard: master CV must exist before spending tokens
     if (!masterLoading && !master) {
@@ -162,6 +170,7 @@ export default function App() {
     setProgress(0);
     setError(null);
     setCachedAnalysis(null);
+    setAnalyzeOnlyDone(false);
 
     try {
       const { analysis } = await api.analyzeJob(jobText);
