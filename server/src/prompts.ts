@@ -123,6 +123,15 @@ Rules:
 - Professional but not stiff — match the seniority level
 - Start with "Dear Hiring Team," if no contact name provided`;
 
+export const COMPANY_BRIEF_SYSTEM = `You are a research assistant. Given a company's website content or job posting, write a concise company brief for a job candidate preparing for an interview.
+
+Include (2-4 sentences total):
+1. What the company does / their product
+2. Company size/stage if apparent (startup/scale-up/enterprise)
+3. One notable thing about their culture or tech stack if visible
+
+Keep it factual and brief. If information is unclear, say so rather than guessing.`;
+
 export const FOLLOWUP_SYSTEM = `You are a senior career coach helping a job seeker write a professional follow-up email.
 
 You will receive:

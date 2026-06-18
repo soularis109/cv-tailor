@@ -4,7 +4,7 @@ import { promises as fs } from "node:fs";
 import multer from "multer";
 import type { RequestHandler } from "express";
 import { PORT, MASTER_CV_PATH } from "./config.js";
-import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter } from "./pipeline.js";
+import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter, generateCompanyBrief } from "./pipeline.js";
 import { buildDocx, type CvHeader } from "./docx.js";
 import { buildPdf } from "./pdf.js";
 import type { TailoredCv, JobAnalysis } from "./schemas.js";
@@ -336,6 +336,34 @@ app.post("/api/cover-letter", async (req, res) => {
     res.json({ letter });
   } catch (err) {
     res.status(500).json({ error: "Generation failed" });
+  }
+});
+
+app.post("/api/company-brief", async (req, res) => {
+  const { url, companyName } = req.body as { url?: string; companyName?: string };
+  if (!url || !companyName) return res.status(400).json({ error: "url and companyName required" });
+
+  // Validate URL (same pattern as /api/fetch-job)
+  let parsed: URL;
+  try { parsed = new URL(url); } catch {
+    return res.status(400).json({ error: "Invalid URL" });
+  }
+  if (!/^https?:$/.test(parsed.protocol)) {
+    return res.status(400).json({ error: "Invalid URL" });
+  }
+
+  try {
+    const jinaUrl = `https://r.jina.ai/${encodeURIComponent(url)}`;
+    const pageRes = await fetch(jinaUrl, {
+      headers: { Accept: "text/plain" },
+      signal: AbortSignal.timeout(10_000),
+    });
+    const pageContent = pageRes.ok ? await pageRes.text() : "";
+
+    const brief = await generateCompanyBrief(companyName, pageContent || `Company: ${companyName}`);
+    res.json({ brief });
+  } catch (err) {
+    res.status(500).json({ error: "Brief generation failed" });
   }
 });
 

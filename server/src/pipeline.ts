@@ -7,7 +7,7 @@ import {
   type TailoredCv,
   type MasterCvData,
 } from "./schemas.js";
-import { ANALYZE_SYSTEM, TAILOR_SYSTEM, tailorUserMessage, FOLLOWUP_SYSTEM, COVER_LETTER_SYSTEM } from "./prompts.js";
+import { ANALYZE_SYSTEM, TAILOR_SYSTEM, tailorUserMessage, FOLLOWUP_SYSTEM, COVER_LETTER_SYSTEM, COMPANY_BRIEF_SYSTEM } from "./prompts.js";
 import type Anthropic from "@anthropic-ai/sdk";
 
 /** Pull the forced tool_use input out of a Messages response. */
@@ -152,5 +152,24 @@ Top must-have requirements for the role:
 
   const block = message.content[0];
   if (block.type !== "text") throw new Error("Unexpected response type");
+  return block.text.trim();
+}
+
+export async function generateCompanyBrief(
+  companyName: string,
+  pageContent: string
+): Promise<string> {
+  const truncated = pageContent.slice(0, 8_000);
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 200,
+    system: COMPANY_BRIEF_SYSTEM,
+    messages: [{
+      role: "user",
+      content: `Company: ${companyName}\n\nWebsite/job page content:\n${truncated}`,
+    }],
+  });
+  const block = message.content[0];
+  if (block.type !== "text") throw new Error("Unexpected");
   return block.text.trim();
 }
