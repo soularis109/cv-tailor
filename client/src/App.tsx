@@ -400,6 +400,7 @@ export default function App() {
                   </div>
                   <div className="ci-textarea-wrap">
                     <textarea
+                      id="custom-instructions"
                       className="ci-textarea"
                       rows={5}
                       placeholder="Add any instructions for the AI… emphasize specific skills, avoid topics, adjust tone, etc. (optional)"
@@ -476,6 +477,24 @@ export default function App() {
                         Download PDF
                       </button>
                     </div>
+                    {result && cachedAnalysis && stage === null && (
+                      <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
+                        <button
+                          className="btn btn-ghost btn-sm"
+                          onClick={() => {
+                            setDraft({ showCustom: true });
+                            setTimeout(() => {
+                              document.getElementById("custom-instructions")?.scrollIntoView({
+                                behavior: "smooth",
+                                block: "center",
+                              });
+                            }, 100);
+                          }}
+                        >
+                          Adjust &amp; Re-tailor
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
 
