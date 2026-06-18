@@ -142,7 +142,7 @@ function FollowUpSection({
             >
               Copy to clipboard
             </button>
-            <button className="btn btn-ghost btn-sm" onClick={draft}>
+            <button className="btn btn-ghost btn-sm" onClick={draft} disabled={loading}>
               Regenerate
             </button>
           </div>
@@ -271,7 +271,7 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
               </button>
             ))}
             <button
-              className={`tab-btn ${activeSection === "followup" ? "active" : ""}`}
+              className={`detail-tab ${activeSection === "followup" ? "on" : ""}`}
               onClick={() => setActiveSection("followup")}
             >
               Follow-up
@@ -284,7 +284,7 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
               <div className="form-error">{loadError}</div>
             )}
 
-            {!data && !loadError && (
+            {!data && !loadError && activeSection !== "followup" && (
               <div className="drawer-loading">Loading…</div>
             )}
 
