@@ -246,11 +246,17 @@ app.get("/api/applications.xlsx", async (_req, res) => {
 
 app.post("/api/fetch-job", async (req, res) => {
   const { url } = req.body as { url?: string };
-  if (!url || !url.startsWith("http")) {
+  let parsed: URL;
+  try {
+    parsed = new URL(url ?? "");
+  } catch {
+    return res.status(400).json({ error: "Invalid URL" });
+  }
+  if (!/^https?:$/.test(parsed.protocol)) {
     return res.status(400).json({ error: "Invalid URL" });
   }
   try {
-    const jinaUrl = `https://r.jina.ai/${url}`;
+    const jinaUrl = `https://r.jina.ai/${encodeURIComponent(url!)}`;
     const response = await fetch(jinaUrl, {
       headers: { Accept: "text/plain" },
       signal: AbortSignal.timeout(15_000),
