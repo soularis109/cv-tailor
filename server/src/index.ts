@@ -3,7 +3,8 @@ import cors from "cors";
 import { promises as fs } from "node:fs";
 import multer from "multer";
 import type { RequestHandler } from "express";
-import { PORT, MASTER_CV_PATH } from "./config.js";
+import { PORT, MASTER_CV_PATH, anthropic, MODEL } from "./config.js";
+import { MOCK_INTERVIEW_SYSTEM } from "./prompts.js";
 import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter, generateCompanyBrief } from "./pipeline.js";
 import { buildDocx, type CvHeader } from "./docx.js";
 import { buildPdf } from "./pdf.js";
@@ -17,6 +18,7 @@ import {
   readApplicationData,
   APPLICATIONS_XLSX_PATH,
   type Status,
+  type ApplicationData,
 } from "./store.js";
 
 const upload = multer({
@@ -30,6 +32,8 @@ const upload = multer({
   },
 });
 
+
+const interviewSessions = new Map<string, Array<{ role: "user" | "assistant"; content: string }>>();
 
 const app = express();
 app.use(cors());
@@ -364,6 +368,70 @@ app.post("/api/company-brief", async (req, res) => {
     res.json({ brief });
   } catch (err) {
     res.status(500).json({ error: "Brief generation failed" });
+  }
+});
+
+function buildInterviewContext(data: ApplicationData): string {
+  const gaps = data.tailored.coverage.filter((c) => c.status === "missing").map((c) => c.requirement);
+  const partials = data.tailored.coverage.filter((c) => c.status === "partial").map((c) => c.requirement);
+  return `
+Job role: ${data.analysis.role_title} (${data.analysis.seniority})
+Key responsibilities: ${data.analysis.responsibilities.slice(0, 5).join("; ")}
+Candidate headline: ${data.tailored.headline}
+Coverage gaps (missing): ${gaps.join("; ") || "none"}
+Coverage partials: ${partials.join("; ") || "none"}
+Red flags to probe: ${(data.analysis.red_flags ?? []).join("; ") || "none"}
+  `.trim();
+}
+
+app.post("/api/applications/:id/interview", async (req, res) => {
+  const { id } = req.params;
+  const { message, reset } = req.body as { message?: string; reset?: boolean };
+
+  try {
+    const data = await readApplicationData(id);
+    if (!data) return res.status(404).json({ error: "Not found" });
+
+    if (reset || !interviewSessions.has(id)) {
+      interviewSessions.set(id, []);
+
+      const context = buildInterviewContext(data);
+      const startMessages: Array<{ role: "user" | "assistant"; content: string }> = [
+        { role: "user", content: "Start the interview." }
+      ];
+
+      const response = await anthropic.messages.create({
+        model: MODEL,
+        max_tokens: 400,
+        system: MOCK_INTERVIEW_SYSTEM + "\n\n" + context,
+        messages: startMessages,
+      });
+      const reply = (response.content[0] as { type: "text"; text: string }).text;
+      interviewSessions.get(id)!.push(
+        { role: "user", content: "Start the interview." },
+        { role: "assistant", content: reply }
+      );
+      return res.json({ reply, questionNumber: 1 });
+    }
+
+    if (!message) return res.status(400).json({ error: "message required" });
+
+    const history = interviewSessions.get(id)!;
+    history.push({ role: "user", content: message });
+
+    const context = buildInterviewContext(data);
+    const response = await anthropic.messages.create({
+      model: MODEL,
+      max_tokens: 400,
+      system: MOCK_INTERVIEW_SYSTEM + "\n\n" + context,
+      messages: history,
+    });
+    const reply = (response.content[0] as { type: "text"; text: string }).text;
+    history.push({ role: "assistant", content: reply });
+
+    res.json({ reply, questionNumber: Math.ceil(history.length / 2) });
+  } catch (err) {
+    res.status(500).json({ error: "Interview failed" });
   }
 });
 
