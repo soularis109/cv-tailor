@@ -24,11 +24,24 @@ async function triggerDownload(res: Response, fallbackName: string): Promise<voi
 export type MasterCv = Record<string, unknown> & { name?: string; title?: string };
 
 export const api = {
-  async getMasterCv(): Promise<MasterCv> {
+  async getMasterCv(profile?: string): Promise<MasterCv> {
+    if (profile && profile !== "default") {
+      return json(await fetch(`/api/master-cv/profiles/${encodeURIComponent(profile)}`));
+    }
     return json(await fetch("/api/master-cv"));
   },
 
-  async putMasterCv(cv: MasterCv): Promise<void> {
+  async putMasterCv(cv: MasterCv, profile?: string): Promise<void> {
+    if (profile && profile !== "default") {
+      await json(
+        await fetch(`/api/master-cv/profiles/${encodeURIComponent(profile)}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(cv),
+        }),
+      );
+      return;
+    }
     await json(
       await fetch("/api/master-cv", {
         method: "PUT",
@@ -36,6 +49,25 @@ export const api = {
         body: JSON.stringify(cv),
       }),
     );
+  },
+
+  async getCvProfiles(): Promise<string[]> {
+    const data = await json<{ profiles: string[] }>(await fetch("/api/master-cv/profiles"));
+    return data.profiles;
+  },
+
+  async createCvProfile(name: string, cv: MasterCv): Promise<{ name: string }> {
+    return json(
+      await fetch("/api/master-cv/profiles", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, cv }),
+      }),
+    );
+  },
+
+  async deleteCvProfile(name: string): Promise<void> {
+    await json(await fetch(`/api/master-cv/profiles/${encodeURIComponent(name)}`, { method: "DELETE" }));
   },
 
   async analyzeJob(jobText: string): Promise<{ analysis: JobAnalysis }> {
@@ -54,12 +86,13 @@ export const api = {
     source: string,
     analysis?: JobAnalysis,
     customInstructions?: string,
+    cvProfile?: string,
   ): Promise<TailorResponse> {
     return json(
       await fetch("/api/tailor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ jobText, jobUrl, source, analysis, customInstructions }),
+        body: JSON.stringify({ jobText, jobUrl, source, analysis, customInstructions, cvProfile }),
       }),
     );
   },

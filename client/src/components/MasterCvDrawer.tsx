@@ -6,6 +6,8 @@ interface Props {
   open: boolean;
   onClose: () => void;
   onSaved: (cv: MasterCv) => void;
+  profile?: string;
+  onProfilesChange?: (profiles: string[]) => void;
 }
 
 const EMPTY_TEMPLATE = {
@@ -23,7 +25,7 @@ const EMPTY_TEMPLATE = {
   certifications: [],
 };
 
-export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
+export function MasterCvDrawer({ open, onClose, onSaved, profile = "default", onProfilesChange }: Props) {
   const [text, setText] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -40,7 +42,7 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
     setLoading(true);
     setError(null);
     api
-      .getMasterCv()
+      .getMasterCv(profile)
       .then((cv) => setText(JSON.stringify(cv, null, 2)))
       .catch((e: Error) => {
         const msg = e?.message ?? "";
@@ -51,7 +53,7 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
         }
       })
       .finally(() => setLoading(false));
-  }, [open]);
+  }, [open, profile]);
 
   if (!open) return null;
 
@@ -82,7 +84,7 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
     setSaving(true);
     setError(null);
     try {
-      await api.putMasterCv(parsed);
+      await api.putMasterCv(parsed, profile);
       onSaved(parsed);
       handleClose();
     } catch (e) {
@@ -113,7 +115,7 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
         >
           <div className="drawer-head">
             <div>
-              <h3>Master CV</h3>
+              <h3>Master CV {profile !== "default" && <span className="pill ghost">{profile}</span>}</h3>
               <p className="muted small">
                 Your full, truthful record. The agent only ever uses what is in here — nothing
                 is invented. Keep more detail than fits one page.
@@ -134,6 +136,44 @@ export function MasterCvDrawer({ open, onClose, onSaved }: Props) {
             >
               Import from PDF
             </button>
+            <div className="drawer-profile-actions">
+              <button
+                className="btn btn-ghost btn-sm"
+                onClick={async () => {
+                  const name = window.prompt("Profile name (letters, numbers, dash, underscore):");
+                  if (!name?.trim()) return;
+                  try {
+                    const cv = text ? (JSON.parse(text) as MasterCv) : ({} as MasterCv);
+                    const res = await api.createCvProfile(name.trim(), cv);
+                    const profiles = await api.getCvProfiles();
+                    onProfilesChange?.(profiles);
+                    window.alert(`Profile "${res.name}" created. Select it from the header dropdown.`);
+                  } catch {
+                    window.alert("Could not create profile.");
+                  }
+                }}
+              >
+                + New Profile
+              </button>
+              <button
+                className="btn btn-ghost btn-sm"
+                disabled={profile === "default"}
+                title={profile === "default" ? "Cannot delete default profile" : undefined}
+                onClick={async () => {
+                  if (!window.confirm(`Delete profile "${profile}"?`)) return;
+                  try {
+                    await api.deleteCvProfile(profile);
+                    const profiles = await api.getCvProfiles();
+                    onProfilesChange?.(profiles);
+                    handleClose();
+                  } catch {
+                    window.alert("Could not delete profile.");
+                  }
+                }}
+              >
+                Delete Profile
+              </button>
+            </div>
           </div>
           {loading ? (
             <div className="drawer-loading">Loading…</div>

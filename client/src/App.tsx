@@ -94,6 +94,8 @@ export default function App() {
   const [master, setMaster] = useState<MasterCv | null>(null);
   const [masterLoading, setMasterLoading] = useState(true);
   const [masterError, setMasterError] = useState<string | null>(null);
+  const [cvProfiles, setCvProfiles] = useState<string[]>(["default"]);
+  const [activeProfile, setActiveProfile] = useState("default");
 
   const { draft, setDraft, clearDraft } = useDraftAutoSave();
   const { jobText, jobUrl, source, customInstructions, showCustom } = draft;
@@ -119,15 +121,10 @@ export default function App() {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    setMasterLoading(true);
-    api
-      .getMasterCv()
-      .then((cv) => {
-        setMaster(cv);
-        setMasterError(null);
-      })
-      .catch((e) => setMasterError(e instanceof Error ? e.message : "Unknown error"))
-      .finally(() => setMasterLoading(false));
+    // Load profiles on mount; fallback to ["default"] on error
+    api.getCvProfiles()
+      .then(setCvProfiles)
+      .catch(() => { /* fallback to ["default"] already set */ });
 
     setAppsLoading(true);
     api
@@ -139,6 +136,27 @@ export default function App() {
       .catch((e) => setAppsError(e instanceof Error ? e.message : "Could not load applications."))
       .finally(() => setAppsLoading(false));
   }, []);
+
+  useEffect(() => {
+    setMasterLoading(true);
+    setMaster(null);
+    setMasterError(null);
+    api
+      .getMasterCv(activeProfile)
+      .then((cv) => {
+        setMaster(cv);
+        setMasterError(null);
+      })
+      .catch((e: Error) => {
+        const msg = e?.message ?? "unknown error";
+        if (msg.includes("404") || msg.includes("not found")) {
+          setMaster(null);
+        } else {
+          setMasterError(msg);
+        }
+      })
+      .finally(() => setMasterLoading(false));
+  }, [activeProfile]);
 
   useEffect(() => {
     if (stage) {
@@ -182,7 +200,7 @@ export default function App() {
       setProgress(50);
       setStage("tailoring");
 
-      const res = await api.tailor(jobText, jobUrl, source, analysis, customInstructions || undefined);
+      const res = await api.tailor(jobText, jobUrl, source, analysis, customInstructions || undefined, activeProfile);
       setProgress(100);
       setResult(res);
       clearDraft();
@@ -227,7 +245,7 @@ export default function App() {
     setError(null);
     setCompanyBrief(null);
     try {
-      const res = await api.tailor(jobText, jobUrl, source, cachedAnalysis, customInstructions || undefined);
+      const res = await api.tailor(jobText, jobUrl, source, cachedAnalysis, customInstructions || undefined, activeProfile);
       setProgress(100);
       setResult(res);
       clearDraft();
@@ -359,6 +377,18 @@ export default function App() {
             <span className="master-name warn">Set up master CV</span>
           )}
         </button>
+        {cvProfiles.length > 1 && (
+          <select
+            className="profile-select"
+            value={activeProfile}
+            onChange={(e) => setActiveProfile(e.target.value)}
+            title="CV Profile"
+          >
+            {cvProfiles.map((p) => (
+              <option key={p} value={p}>{p}</option>
+            ))}
+          </select>
+        )}
       </header>
 
       {masterError && (
@@ -628,6 +658,10 @@ export default function App() {
         onSaved={(cv) => {
           setMaster(cv);
           setMasterError(null);
+        }}
+        profile={activeProfile}
+        onProfilesChange={(profiles) => {
+          setCvProfiles(profiles);
         }}
       />
 
