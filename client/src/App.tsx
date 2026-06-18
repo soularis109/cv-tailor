@@ -98,6 +98,7 @@ export default function App() {
   const { jobText, jobUrl, source, customInstructions, showCustom } = draft;
 
   const [stage, setStage] = useState<Stage>(null);
+  const [fetchingUrl, setFetchingUrl] = useState(false);
   const [progress, setProgress] = useState(0);
   const [elapsed, setElapsed] = useState(0);
   const [cachedAnalysis, setCachedAnalysis] = useState<JobAnalysis | null>(null);
@@ -337,12 +338,33 @@ export default function App() {
               onChange={(e) => setDraft({ jobText: e.target.value })}
             />
             <div className="field-row">
-              <input
-                className="text-input"
-                placeholder="Job URL (optional)"
-                value={jobUrl}
-                onChange={(e) => setDraft({ jobUrl: e.target.value })}
-              />
+              <div style={{ display: "flex", gap: "6px", flex: 1 }}>
+                <input
+                  className="text-input"
+                  style={{ flex: 1 }}
+                  placeholder="Job URL (optional)"
+                  value={jobUrl}
+                  onChange={(e) => setDraft({ jobUrl: e.target.value })}
+                />
+                <button
+                  className="btn btn-secondary btn-sm"
+                  disabled={!jobUrl.trim() || fetchingUrl}
+                  onClick={async () => {
+                    setFetchingUrl(true);
+                    try {
+                      const text = await api.fetchJobFromUrl(jobUrl);
+                      setDraft({ jobText: text });
+                      showToast("Job description fetched!", "success");
+                    } catch {
+                      showToast("Couldn't fetch — try pasting manually", "error");
+                    } finally {
+                      setFetchingUrl(false);
+                    }
+                  }}
+                >
+                  {fetchingUrl ? "Fetching…" : "Fetch"}
+                </button>
+              </div>
               <input
                 className="text-input"
                 placeholder="Source (LinkedIn, referral…)"

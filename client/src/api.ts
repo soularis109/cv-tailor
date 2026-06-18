@@ -112,5 +112,16 @@ export const api = {
     return json(await fetch("/api/master-cv/import-pdf", { method: "POST", body: form }));
   },
 
+  async fetchJobFromUrl(url: string): Promise<string> {
+    const res = await fetch("/api/fetch-job", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url }),
+    });
+    if (!res.ok) throw new Error("fetch-job failed");
+    const data = (await res.json()) as { text: string };
+    return data.text;
+  },
+
   xlsxUrl: "/api/applications.xlsx",
 };
