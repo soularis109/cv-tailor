@@ -100,6 +100,8 @@ export default function App() {
   const { draft, setDraft, clearDraft } = useDraftAutoSave();
   const { jobText, jobUrl, source, customInstructions, showCustom } = draft;
 
+  const [userLevel, setUserLevel] = useState<"junior" | "middle" | "senior">("middle");
+
   const [stage, setStage] = useState<Stage>(null);
   const [fetchingUrl, setFetchingUrl] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -200,7 +202,7 @@ export default function App() {
       setProgress(50);
       setStage("tailoring");
 
-      const res = await api.tailor(jobText, jobUrl, source, analysis, customInstructions || undefined, activeProfile);
+      const res = await api.tailor(jobText, jobUrl, source, analysis, customInstructions || undefined, activeProfile, userLevel);
       setProgress(100);
       setResult(res);
       clearDraft();
@@ -245,7 +247,7 @@ export default function App() {
     setError(null);
     setCompanyBrief(null);
     try {
-      const res = await api.tailor(jobText, jobUrl, source, cachedAnalysis, customInstructions || undefined, activeProfile);
+      const res = await api.tailor(jobText, jobUrl, source, cachedAnalysis, customInstructions || undefined, activeProfile, userLevel);
       setProgress(100);
       setResult(res);
       clearDraft();
@@ -444,6 +446,22 @@ export default function App() {
                 value={source}
                 onChange={(e) => setDraft({ source: e.target.value })}
               />
+            </div>
+            <div className="level-row">
+              <span className="level-label">My Level</span>
+              <div className="level-seg" role="group" aria-label="My Level">
+                {(["junior", "middle", "senior"] as const).map((lvl) => (
+                  <button
+                    key={lvl}
+                    type="button"
+                    className={`level-seg-btn${userLevel === lvl ? " level-seg-btn-on" : ""}`}
+                    onClick={() => setUserLevel(lvl)}
+                    aria-pressed={userLevel === lvl}
+                  >
+                    {lvl.charAt(0).toUpperCase() + lvl.slice(1)}
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="custom-instructions">
               <button
@@ -662,6 +680,7 @@ export default function App() {
         profile={activeProfile}
         onProfilesChange={(profiles) => {
           setCvProfiles(profiles);
+          if (!profiles.includes(activeProfile)) setActiveProfile("default");
         }}
       />
 

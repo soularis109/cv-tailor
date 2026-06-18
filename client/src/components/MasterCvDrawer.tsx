@@ -142,6 +142,10 @@ export function MasterCvDrawer({ open, onClose, onSaved, profile = "default", on
                 onClick={async () => {
                   const name = window.prompt("Profile name (letters, numbers, dash, underscore):");
                   if (!name?.trim()) return;
+                  if (!/^[a-zA-Z0-9_-]+$/.test(name.trim())) {
+                    window.alert("Profile name must contain only letters, numbers, dash, or underscore.");
+                    return;
+                  }
                   try {
                     const cv = text ? (JSON.parse(text) as MasterCv) : ({} as MasterCv);
                     const res = await api.createCvProfile(name.trim(), cv);
