@@ -118,13 +118,19 @@ app.post("/api/analyze", async (req, res) => {
 // ---- Tailor: analyze + rewrite + log ----
 app.post("/api/tailor", async (req, res) => {
   try {
-    const { jobText, jobUrl = "", source = "", analysis: preAnalysis, customInstructions, cvProfile = DEFAULT_PROFILE } = req.body ?? {};
+    const { jobText, jobUrl = "", source = "", analysis: preAnalysis, customInstructions, cvProfile = DEFAULT_PROFILE, userRole, userLevel } = req.body ?? {};
     if (!jobText || typeof jobText !== "string" || jobText.trim().length < 30) {
       return fail(res, new Error("Paste the full job posting (at least a few lines)."), 400);
     }
     const masterCv = await readMasterCv(cvProfile as string);
+    const role = (typeof userRole === "string" && userRole.trim()) ? userRole.trim() : (masterCv.title ?? "Software Engineer");
+    const level = (userLevel === "junior" || userLevel === "senior") ? userLevel : "middle";
     const analysis: JobAnalysis = preAnalysis ?? await analyzeJob(jobText);
-    const tailored = await tailorCv(masterCv, analysis, typeof customInstructions === "string" ? customInstructions : undefined);
+    const tailored = await tailorCv(masterCv, analysis, {
+      customInstructions: typeof customInstructions === "string" ? customInstructions : undefined,
+      role,
+      level,
+    });
 
     const application = await addApplication({
       company: extractCompany(jobText) || "—",
@@ -211,6 +217,7 @@ app.patch("/api/applications/:id", async (req, res) => {
 app.delete("/api/applications/:id", async (req, res) => {
   try {
     const ok = await deleteApplication(req.params.id);
+    interviewSessions.delete(req.params.id);
     res.json({ ok });
   } catch (err) {
     fail(res, err);
@@ -351,14 +358,12 @@ app.post("/api/cover-letter", async (req, res) => {
   const data = await readApplicationData(applicationId);
   if (!data) return res.status(404).json({ error: "Application data not found" });
 
-  let masterCv: { name: string; email?: string; phone?: string } | null = null;
+  let masterCv: MasterCv | null = null;
   try {
-    const raw = await fs.readFile(MASTER_CV_PATH, "utf-8");
-    masterCv = JSON.parse(raw) as { name: string; email?: string; phone?: string };
+    masterCv = await readMasterCv();
   } catch {
-    // file missing
+    return res.status(400).json({ error: "Master CV not set" });
   }
-  if (!masterCv) return res.status(400).json({ error: "Master CV not set" });
 
   try {
     const letter = await generateCoverLetter(masterCv, application, data.analysis, data.tailored);

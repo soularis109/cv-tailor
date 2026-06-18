@@ -228,6 +228,7 @@ export default function App() {
     if (!jobText.trim() || jobText.trim().length < 30) return;
     setStage("analyzing");
     setError(null);
+    setCompanyBrief(null);
     setAnalyzeOnlyDone(false);
     try {
       const { analysis } = await api.analyzeJob(jobText);
