@@ -498,12 +498,13 @@ app.put("/api/master-cv/profiles/:name", async (req, res) => {
   try {
     const { name } = req.params;
     if (!req.body || typeof req.body !== "object") return res.status(400).json({ error: "cv body required" });
-    await saveCvProfile(name, req.body as Record<string, unknown>);
+    const safe = name.replace(/[^a-zA-Z0-9-_]/g, "_").slice(0, 50);
+    await saveCvProfile(safe, req.body as Record<string, unknown>);
     // If updating default, also keep master-cv.json in sync
-    if (name === DEFAULT_PROFILE) {
+    if (safe === DEFAULT_PROFILE) {
       await fs.writeFile(MASTER_CV_PATH, JSON.stringify(req.body, null, 2), "utf8");
     }
-    res.json({ ok: true });
+    res.json({ ok: true, name: safe });
   } catch (err) {
     fail(res, err);
   }
