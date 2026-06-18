@@ -11,6 +11,7 @@ import { ApplicationDetailPanel } from "./components/ApplicationDetailPanel";
 import { ToastStack } from "./components/Toast";
 import { showToast } from "./utils/toast";
 import { playDoneChime, notifyDone, requestNotificationPermission } from "./utils/notify";
+import { useDraftAutoSave } from "./hooks/useDraftAutoSave";
 
 type Tab = "tailor" | "pipeline";
 type Stage = null | "analyzing" | "tailoring";
@@ -93,11 +94,8 @@ export default function App() {
   const [masterLoading, setMasterLoading] = useState(true);
   const [masterError, setMasterError] = useState<string | null>(null);
 
-  const [jobText, setJobText] = useState("");
-  const [jobUrl, setJobUrl] = useState("");
-  const [source, setSource] = useState("");
-  const [customInstructions, setCustomInstructions] = useState("");
-  const [showCustom, setShowCustom] = useState(false);
+  const { draft, setDraft, clearDraft } = useDraftAutoSave();
+  const { jobText, jobUrl, source, customInstructions, showCustom } = draft;
 
   const [stage, setStage] = useState<Stage>(null);
   const [progress, setProgress] = useState(0);
@@ -172,6 +170,7 @@ export default function App() {
       const res = await api.tailor(jobText, jobUrl, source, analysis, customInstructions || undefined);
       setProgress(100);
       setResult(res);
+      clearDraft();
       setApps((prev) => [res.application, ...prev]);
 
       playDoneChime();
@@ -193,6 +192,7 @@ export default function App() {
       const res = await api.tailor(jobText, jobUrl, source, cachedAnalysis, customInstructions || undefined);
       setProgress(100);
       setResult(res);
+      clearDraft();
       setApps((prev) => [res.application, ...prev]);
       playDoneChime();
       await notifyDone(res.analysis.role_title);
@@ -334,27 +334,27 @@ export default function App() {
               className="job-input"
               placeholder="Paste the full job description here — requirements, responsibilities, the lot."
               value={jobText}
-              onChange={(e) => setJobText(e.target.value)}
+              onChange={(e) => setDraft({ jobText: e.target.value })}
             />
             <div className="field-row">
               <input
                 className="text-input"
                 placeholder="Job URL (optional)"
                 value={jobUrl}
-                onChange={(e) => setJobUrl(e.target.value)}
+                onChange={(e) => setDraft({ jobUrl: e.target.value })}
               />
               <input
                 className="text-input"
                 placeholder="Source (LinkedIn, referral…)"
                 value={source}
-                onChange={(e) => setSource(e.target.value)}
+                onChange={(e) => setDraft({ source: e.target.value })}
               />
             </div>
             <div className="custom-instructions">
               <button
                 className="custom-instructions-toggle"
                 type="button"
-                onClick={() => setShowCustom((v) => !v)}
+                onClick={() => setDraft({ showCustom: !showCustom })}
                 aria-expanded={showCustom}
               >
                 <span className={`ci-arrow ${showCustom ? "ci-arrow-open" : ""}`}>▶</span>
@@ -370,7 +370,7 @@ export default function App() {
                         key={level}
                         type="button"
                         className="ci-level-btn"
-                        onClick={() => setCustomInstructions(SENIORITY_TEMPLATES[level])}
+                        onClick={() => setDraft({ customInstructions: SENIORITY_TEMPLATES[level] })}
                       >
                         {level}
                       </button>
@@ -382,13 +382,13 @@ export default function App() {
                       rows={5}
                       placeholder="Add any instructions for the AI… emphasize specific skills, avoid topics, adjust tone, etc. (optional)"
                       value={customInstructions}
-                      onChange={(e) => setCustomInstructions(e.target.value)}
+                      onChange={(e) => setDraft({ customInstructions: e.target.value })}
                     />
                     {customInstructions && (
                       <button
                         type="button"
                         className="ci-clear"
-                        onClick={() => setCustomInstructions("")}
+                        onClick={() => setDraft({ customInstructions: "" })}
                       >
                         Clear
                       </button>
