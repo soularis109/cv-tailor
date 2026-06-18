@@ -170,7 +170,8 @@ app.get("/api/applications/:id/data", async (req, res) => {
 
 app.patch("/api/applications/:id", async (req, res) => {
   try {
-    const updated = await updateApplication(req.params.id, req.body ?? {});
+    const { id: _id, dateAdded: _da, redFlagsCount: _rfc, ...patchable } = (req.body ?? {}) as Record<string, unknown>;
+    const updated = await updateApplication(req.params.id, patchable);
     if (!updated) return fail(res, new Error("Application not found."), 404);
     res.json(updated);
   } catch (err) {
