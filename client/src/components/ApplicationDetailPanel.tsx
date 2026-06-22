@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../api";
-import type { Application, ApplicationData, CoverageItem } from "../types";
+import type { Application, ApplicationData, AtsCheckResult, CoverageItem } from "../types";
 import { STATUSES, type Status } from "../types";
 import { FitGauge } from "./FitGauge";
 import { Coverage } from "./Coverage";
@@ -159,6 +159,19 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
   const [activeSection, setActiveSection] = useState<"overview" | "cv" | "prep" | "followup" | "interview" | "ats">("overview");
   const [notes, setNotes] = useState("");
   const [notesSaving, setNotesSaving] = useState(false);
+  const [atsResult, setAtsResult] = useState<AtsCheckResult | null>(null);
+  const [atsLoading, setAtsLoading] = useState(false);
+
+  // Sync atsResult when data loads (cached result from server)
+  useEffect(() => {
+    if (data?.ats_check) setAtsResult(data.ats_check);
+  }, [data?.ats_check]);
+
+  // Auto-trigger ATS check when tab is opened and no result yet
+  useEffect(() => {
+    if (activeSection !== "ats" || atsResult || atsLoading || !application) return;
+    handleRunAtsCheck();
+  }, [activeSection, atsResult, atsLoading]);
 
   useEffect(() => {
     if (!application) {
@@ -168,6 +181,8 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
     }
     setData(null);
     setLoadError(null);
+    setAtsResult(null);
+    setAtsLoading(false);
     setNotes(application.notes ?? "");
     setActiveSection("overview");
 
@@ -189,6 +204,19 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
       showToast("Could not save notes.", "error");
     } finally {
       setNotesSaving(false);
+    }
+  }
+
+  async function handleRunAtsCheck() {
+    if (!application || atsLoading) return;
+    setAtsLoading(true);
+    try {
+      const res = await api.runAtsCheck(application.id);
+      setAtsResult(res);
+    } catch {
+      // silent — user can retry with Re-check button
+    } finally {
+      setAtsLoading(false);
     }
   }
 
@@ -352,11 +380,13 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
 
             {activeSection === "ats" && (
               <div className="ats-check">
-                {!data && !loadError && <div className="drawer-loading">Loading…</div>}
-                {data && !data.ats_check && (
+                {atsLoading && !atsResult && (
+                  <div className="drawer-loading">Analyzing ATS compatibility…</div>
+                )}
+                {!atsLoading && !atsResult && (
                   <p className="muted small">ATS check not yet run for this application.</p>
                 )}
-                {data?.ats_check && (
+                {atsResult && (
                   <>
                     <div className="detail-fit-row">
                       <div style={{ textAlign: "center", flex: "none", width: 130 }}>
@@ -364,24 +394,25 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
                           className="gauge-score"
                           style={{
                             color:
-                              data.ats_check.ats_score >= 70
+                              atsResult.ats_score >= 70
                                 ? "var(--thread)"
-                                : data.ats_check.ats_score >= 50
+                                : atsResult.ats_score >= 50
                                   ? "var(--partial)"
                                   : "var(--gap)",
                           }}
                         >
-                          {data.ats_check.ats_score}
+                          {atsResult.ats_score}
                         </span>
                         <span className="gauge-label" style={{ display: "block" }}>ATS Score</span>
                       </div>
-                      <p className="notes small">{data.ats_check.verdict}</p>
+                      <p className="notes small">{atsResult.verdict}</p>
                     </div>
-                    {data.ats_check.recommendations.length > 0 && (
+
+                    {atsResult.recommendations.length > 0 && (
                       <div className="prep-section">
                         <h5>Recommendations</h5>
                         <ul className="prep-list">
-                          {data.ats_check.recommendations.map((r, i) => (
+                          {atsResult.recommendations.map((r, i) => (
                             <li
                               key={i}
                               className={
@@ -398,18 +429,51 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
                         </ul>
                       </div>
                     )}
-                    {data.ats_check.keyword_coverage.length > 0 && (
+
+                    {atsResult.format_checks.length > 0 && (
                       <div className="prep-section">
-                        <h5>Keyword Coverage</h5>
+                        <h5>Format Checks</h5>
+                        <ul className="prep-list">
+                          {atsResult.format_checks.map((fc, i) => (
+                            <li key={i} className={fc.passed ? "" : "prep-list-gap"}>
+                              {fc.passed ? "✓" : "✗"} {fc.rule}
+                              {!fc.passed && fc.note && (
+                                <span className="notes small" style={{ display: "block", marginTop: 2 }}>
+                                  {fc.note}
+                                </span>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {atsResult.keyword_coverage.length > 0 && (
+                      <div className="prep-section">
+                        <h5>
+                          Keyword Coverage (
+                          {atsResult.keyword_coverage.filter((k) => k.found).length}/
+                          {atsResult.keyword_coverage.length})
+                        </h5>
                         <div className="tokens">
-                          {data.ats_check.keyword_coverage.map((k, i) => (
-                            <span key={i} className={`token${k.found ? " hard" : ""}`}>
+                          {atsResult.keyword_coverage.map((k, i) => (
+                            <span key={i} className={`token${k.found ? " hard" : ""}`} title={k.location}>
                               {k.keyword}
                             </span>
                           ))}
                         </div>
                       </div>
                     )}
+
+                    <div>
+                      <button
+                        className="btn btn-ghost btn-sm"
+                        onClick={handleRunAtsCheck}
+                        disabled={atsLoading}
+                      >
+                        {atsLoading ? "Re-checking…" : "Re-check ATS"}
+                      </button>
+                    </div>
                   </>
                 )}
               </div>

@@ -210,7 +210,8 @@ export const api = {
       method: "POST",
     });
     if (!res.ok) throw new Error("ats-check failed");
-    return res.json() as Promise<AtsCheckResult>;
+    const body = await res.json() as { ats_check: AtsCheckResult };
+    return body.ats_check;
   },
 
   xlsxUrl: "/api/applications.xlsx",
