@@ -207,6 +207,8 @@ export default function App() {
       setResult(res);
       clearDraft();
       setApps((prev) => [res.application, ...prev]);
+      // Fire-and-forget ATS check
+      api.runAtsCheck(res.application.id).catch(() => { /* silent fail */ });
       // Auto-fetch company brief if URL is available
       if (jobUrl.trim() && res.application.company && res.application.company !== "—") {
         api.getCompanyBrief(jobUrl, res.application.company)
@@ -253,6 +255,8 @@ export default function App() {
       setResult(res);
       clearDraft();
       setApps((prev) => [res.application, ...prev]);
+      // Fire-and-forget ATS check
+      api.runAtsCheck(res.application.id).catch(() => { /* silent fail */ });
       // Auto-fetch company brief if URL is available
       if (jobUrl.trim() && res.application.company && res.application.company !== "—") {
         api.getCompanyBrief(jobUrl, res.application.company)
