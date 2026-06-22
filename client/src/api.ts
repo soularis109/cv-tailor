@@ -1,4 +1,4 @@
-import type { Application, ApplicationData, JobAnalysis, TailoredCv, TailorResponse } from "./types";
+import type { Application, ApplicationData, AtsCheckResult, JobAnalysis, TailoredCv, TailorResponse } from "./types";
 
 async function json<T>(res: Response): Promise<T> {
   if (!res.ok) {
@@ -203,6 +203,14 @@ export const api = {
     });
     if (!res.ok) throw new Error("company-brief failed");
     return res.json() as Promise<{ brief: string }>;
+  },
+
+  async runAtsCheck(applicationId: string): Promise<AtsCheckResult> {
+    const res = await fetch(`/api/applications/${applicationId}/ats-check`, {
+      method: "POST",
+    });
+    if (!res.ok) throw new Error("ats-check failed");
+    return res.json() as Promise<AtsCheckResult>;
   },
 
   xlsxUrl: "/api/applications.xlsx",
