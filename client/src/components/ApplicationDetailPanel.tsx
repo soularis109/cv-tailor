@@ -156,7 +156,7 @@ function FollowUpSection({
 export function ApplicationDetailPanel({ application, onClose, onPatch }: Props) {
   const [data, setData] = useState<ApplicationData | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [activeSection, setActiveSection] = useState<"overview" | "cv" | "prep" | "followup" | "interview">("overview");
+  const [activeSection, setActiveSection] = useState<"overview" | "cv" | "prep" | "followup" | "interview" | "ats">("overview");
   const [notes, setNotes] = useState("");
   const [notesSaving, setNotesSaving] = useState(false);
 
@@ -283,6 +283,12 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
             >
               Mock Interview
             </button>
+            <button
+              className={`detail-tab ${activeSection === "ats" ? "on" : ""}`}
+              onClick={() => setActiveSection("ats")}
+            >
+              ATS Check
+            </button>
           </div>
 
           {/* Body */}
@@ -291,7 +297,7 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
               <div className="form-error">{loadError}</div>
             )}
 
-            {!data && !loadError && activeSection !== "followup" && activeSection !== "interview" && (
+            {!data && !loadError && activeSection !== "followup" && activeSection !== "interview" && activeSection !== "ats" && (
               <div className="drawer-loading">Loading…</div>
             )}
 
@@ -342,6 +348,71 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
 
             {activeSection === "interview" && (
               <MockInterview key={application.id} applicationId={application.id} />
+            )}
+
+            {activeSection === "ats" && (
+              <div className="ats-check">
+                {!data && !loadError && <div className="drawer-loading">Loading…</div>}
+                {data && !data.ats_check && (
+                  <p className="muted small">ATS check not yet run for this application.</p>
+                )}
+                {data?.ats_check && (
+                  <>
+                    <div className="detail-fit-row">
+                      <div style={{ textAlign: "center", flex: "none", width: 130 }}>
+                        <span
+                          className="gauge-score"
+                          style={{
+                            color:
+                              data.ats_check.ats_score >= 70
+                                ? "var(--thread)"
+                                : data.ats_check.ats_score >= 50
+                                  ? "var(--partial)"
+                                  : "var(--gap)",
+                          }}
+                        >
+                          {data.ats_check.ats_score}
+                        </span>
+                        <span className="gauge-label" style={{ display: "block" }}>ATS Score</span>
+                      </div>
+                      <p className="notes small">{data.ats_check.verdict}</p>
+                    </div>
+                    {data.ats_check.recommendations.length > 0 && (
+                      <div className="prep-section">
+                        <h5>Recommendations</h5>
+                        <ul className="prep-list">
+                          {data.ats_check.recommendations.map((r, i) => (
+                            <li
+                              key={i}
+                              className={
+                                r.priority === "high"
+                                  ? "prep-list-gap"
+                                  : r.priority === "medium"
+                                    ? "prep-list-partial"
+                                    : ""
+                              }
+                            >
+                              {r.text}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {data.ats_check.keyword_coverage.length > 0 && (
+                      <div className="prep-section">
+                        <h5>Keyword Coverage</h5>
+                        <div className="tokens">
+                          {data.ats_check.keyword_coverage.map((k, i) => (
+                            <span key={i} className={`token${k.found ? " hard" : ""}`}>
+                              {k.keyword}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
             )}
           </div>
         </aside>
