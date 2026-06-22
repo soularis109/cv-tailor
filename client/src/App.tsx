@@ -17,10 +17,6 @@ import { useDraftAutoSave } from "./hooks/useDraftAutoSave";
 type Tab = "tailor" | "pipeline";
 type Stage = null | "analyzing" | "tailoring";
 
-interface PendingDelete {
-  app: Application;
-  timeoutId: ReturnType<typeof setTimeout>;
-}
 
 function Tokens({ items, kind = "" }: { items: string[]; kind?: string }) {
   if (!items.length) return <span className="muted small">—</span>;
@@ -118,8 +114,6 @@ export default function App() {
   const [appsError, setAppsError] = useState<string | null>(null);
 
   const [detailAppId, setDetailAppId] = useState<string | null>(null);
-  const [pendingDeletes] = useState<Map<string, PendingDelete>>(() => new Map());
-
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -281,42 +275,22 @@ export default function App() {
     });
   }
 
-  function removeApp(id: string) {
+  async function removeApp(id: string) {
     const app = apps.find((a) => a.id === id);
     if (!app) return;
 
-    // Optimistically hide the row
     setApps((prev) => prev.filter((a) => a.id !== id));
 
-    const timeoutId = setTimeout(() => {
-      api.deleteApplication(id).catch(() => {
-        showToast("Could not delete — restored.", "error");
-        setApps((prev) => {
-          const exists = prev.find((a) => a.id === id);
-          return exists ? prev : [app, ...prev];
-        });
+    try {
+      await api.deleteApplication(id);
+      showToast(`Removed ${app.company} — ${app.role}`, "info");
+    } catch {
+      showToast("Could not delete — restored.", "error");
+      setApps((prev) => {
+        const exists = prev.find((a) => a.id === id);
+        return exists ? prev : [app, ...prev];
       });
-      pendingDeletes.delete(id);
-    }, 5000);
-
-    pendingDeletes.set(id, { app, timeoutId });
-
-    showToast(`Removed ${app.company} — ${app.role}`, "info", {
-      duration: 5000,
-      action: {
-        label: "Undo",
-        onAction: () => {
-          const pending = pendingDeletes.get(id);
-          if (!pending) return;
-          clearTimeout(pending.timeoutId);
-          pendingDeletes.delete(id);
-          setApps((prev) => {
-            const exists = prev.find((a) => a.id === id);
-            return exists ? prev : [app, ...prev];
-          });
-        },
-      },
-    });
+    }
   }
 
   const detailApp = detailAppId ? apps.find((a) => a.id === detailAppId) ?? null : null;

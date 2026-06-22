@@ -140,6 +140,17 @@ export const api = {
     return json(await fetch(`/api/applications/${id}/data`));
   },
 
+  async patchTailored(id: string, tailored: TailoredCv): Promise<TailoredCv> {
+    const res = await json<{ tailored: TailoredCv }>(
+      await fetch(`/api/applications/${id}/data`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ tailored }),
+      }),
+    );
+    return res.tailored;
+  },
+
   async importPdf(file: File): Promise<MasterCv> {
     const form = new FormData();
     form.append("file", file);

@@ -21,6 +21,25 @@ import {
 import { buildTailorSystemPrompt, type CandidateLevel } from "./prompt-builder.js";
 import type Anthropic from "@anthropic-ai/sdk";
 
+function coerceToStringArray(val: unknown): string[] {
+  if (Array.isArray(val)) return val as string[];
+  if (typeof val === "string") return val.split(",").map((s) => s.trim()).filter(Boolean);
+  return [];
+}
+
+export function normalizeTailoredCv(raw: TailoredCv): TailoredCv {
+  return { ...raw, top_skills: coerceToStringArray(raw.top_skills) };
+}
+
+export function normalizeAtsCheckResult(raw: AtsCheckResult): AtsCheckResult {
+  return {
+    ...raw,
+    keyword_coverage: Array.isArray(raw.keyword_coverage) ? raw.keyword_coverage : [],
+    format_checks: Array.isArray(raw.format_checks) ? raw.format_checks : [],
+    recommendations: Array.isArray(raw.recommendations) ? raw.recommendations : [],
+  };
+}
+
 /** Pull the forced tool_use input out of a Messages response. */
 function extractToolInput<T>(message: Anthropic.Messages.Message, toolName: string): T {
   const block = message.content.find(
@@ -97,7 +116,7 @@ export async function tailorCv(
       { role: "user", content: tailorUserMessage(masterCv, analysis, options?.customInstructions) },
     ],
   });
-  return extractToolInput<TailoredCv>(message, tailorCvTool.name);
+  return normalizeTailoredCv(extractToolInput<TailoredCv>(message, tailorCvTool.name));
 }
 
 export async function generateFollowupEmail(
@@ -188,7 +207,7 @@ export async function runAtsCheck(
       },
     ],
   });
-  return extractToolInput<AtsCheckResult>(message, atsCheckTool.name);
+  return normalizeAtsCheckResult(extractToolInput<AtsCheckResult>(message, atsCheckTool.name));
 }
 
 export async function generateCompanyBrief(

@@ -5,6 +5,12 @@ interface Props {
 }
 
 export function CvPreview({ cv }: Props) {
+  const skills = Array.isArray(cv.top_skills)
+    ? cv.top_skills
+    : typeof cv.top_skills === "string"
+    ? (cv.top_skills as unknown as string).split(",").map((s) => s.trim()).filter(Boolean)
+    : [];
+
   return (
     <article className="cv">
       <header className="cv-head">
@@ -13,11 +19,11 @@ export function CvPreview({ cv }: Props) {
 
       {cv.summary && <p className="cv-summary">{cv.summary}</p>}
 
-      {cv.top_skills.length > 0 && (
+      {skills.length > 0 && (
         <section className="cv-section">
           <h4 className="cv-h">Skills</h4>
           <div className="tokens">
-            {cv.top_skills.map((s, i) => (
+            {skills.map((s, i) => (
               <span key={i} className="token">
                 {s}
               </span>

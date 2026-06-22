@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { api } from "../api";
-import type { Application, ApplicationData, AtsCheckResult, CoverageItem } from "../types";
+import type { Application, ApplicationData, AtsCheckResult, CoverageItem, TailoredCv } from "../types";
 import { STATUSES, type Status } from "../types";
 import { FitGauge } from "./FitGauge";
 import { Coverage } from "./Coverage";
 import { CvPreview } from "./CvPreview";
+import { CvEditor } from "./CvEditor";
 import { MockInterview } from "./MockInterview";
 import { showToast } from "../utils/toast";
 import { daysSince } from "../utils/dates";
@@ -161,6 +162,8 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
   const [notesSaving, setNotesSaving] = useState(false);
   const [atsResult, setAtsResult] = useState<AtsCheckResult | null>(null);
   const [atsLoading, setAtsLoading] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [cvSaving, setCvSaving] = useState(false);
 
   // Sync atsResult when data loads (cached result from server)
   useEffect(() => {
@@ -185,6 +188,7 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
     setAtsLoading(false);
     setNotes(application.notes ?? "");
     setActiveSection("overview");
+    setEditMode(false);
 
     api
       .getApplicationData(application.id)
@@ -235,6 +239,21 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
       await api.downloadPdf(data.tailored);
     } catch (e) {
       showToast(e instanceof Error ? e.message : "Could not download PDF.", "error");
+    }
+  }
+
+  async function handleSaveTailored(updated: TailoredCv) {
+    if (!application) return;
+    setCvSaving(true);
+    try {
+      const saved = await api.patchTailored(application.id, updated);
+      setData((prev) => (prev ? { ...prev, tailored: saved } : prev));
+      setEditMode(false);
+      showToast("CV збережено", "success");
+    } catch (e) {
+      showToast(e instanceof Error ? e.message : "Не вдалось зберегти CV", "error");
+    } finally {
+      setCvSaving(false);
     }
   }
 
@@ -349,7 +368,31 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
             )}
 
             {data && activeSection === "cv" && (
-              <CvPreview cv={data.tailored} />
+              <div className="cv-tab-container">
+                <div className="cv-tab-actions">
+                  <button
+                    className="btn btn-ghost btn-sm"
+                    onClick={() => setEditMode((v) => !v)}
+                  >
+                    {editMode ? "Закрити редактор" : "✏️ Редагувати"}
+                  </button>
+                </div>
+                <div className={`cv-tab-body${editMode ? " cv-tab-split" : ""}`}>
+                  <div className="cv-tab-preview">
+                    <CvPreview cv={data.tailored} />
+                  </div>
+                  {editMode && (
+                    <div className="cv-tab-editor">
+                      <CvEditor
+                        cv={data.tailored}
+                        onSave={handleSaveTailored}
+                        onCancel={() => setEditMode(false)}
+                        saving={cvSaving}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
             )}
 
             {data && activeSection === "prep" && (
@@ -408,7 +451,7 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
                       <p className="notes small">{atsResult.verdict}</p>
                     </div>
 
-                    {atsResult.recommendations.length > 0 && (
+                    {(atsResult.recommendations?.length ?? 0) > 0 && (
                       <div className="prep-section">
                         <h5>Recommendations</h5>
                         <ul className="prep-list">
@@ -430,7 +473,7 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
                       </div>
                     )}
 
-                    {atsResult.format_checks.length > 0 && (
+                    {(atsResult.format_checks?.length ?? 0) > 0 && (
                       <div className="prep-section">
                         <h5>Format Checks</h5>
                         <ul className="prep-list">
@@ -448,7 +491,7 @@ export function ApplicationDetailPanel({ application, onClose, onPatch }: Props)
                       </div>
                     )}
 
-                    {atsResult.keyword_coverage.length > 0 && (
+                    {(atsResult.keyword_coverage?.length ?? 0) > 0 && (
                       <div className="prep-section">
                         <h5>
                           Keyword Coverage (

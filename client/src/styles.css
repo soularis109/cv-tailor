@@ -1748,3 +1748,27 @@ select {
   flex-wrap: wrap;
   margin-top: 8px;
 }
+
+/* CV Editor — tab layout */
+.cv-tab-container { display: flex; flex-direction: column; gap: 8px; }
+.cv-tab-actions { display: flex; justify-content: flex-end; }
+.cv-tab-body { display: flex; gap: 0; }
+.cv-tab-body.cv-tab-split { gap: 16px; }
+.cv-tab-preview { flex: 1; min-width: 0; }
+.cv-tab-editor { flex: 1; min-width: 0; overflow-y: auto; }
+
+/* CV Editor — form */
+.cv-editor { display: flex; flex-direction: column; gap: 16px; padding: 4px 0; }
+.cv-editor-section { display: flex; flex-direction: column; gap: 6px; }
+.cv-editor-section label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted, #888); }
+.cv-editor-section input,
+.cv-editor-section textarea { width: 100%; padding: 6px 8px; border: 1px solid var(--line, #ddd); border-radius: 4px; font-size: 13px; font-family: inherit; resize: vertical; background: var(--panel, #fff); color: var(--ink, #000); }
+.cv-editor-section textarea { line-height: 1.5; }
+.cv-editor-exp-header { font-size: 12px; font-weight: 600; color: var(--muted, #888); margin-bottom: 4px; }
+.cv-editor-bullet { display: flex; gap: 4px; align-items: flex-start; margin-bottom: 4px; }
+.cv-editor-bullet textarea { flex: 1; }
+.cv-editor-bullet-remove { padding: 4px 6px; border: none; background: none; cursor: pointer; color: var(--gap, #e55); font-size: 14px; line-height: 1; }
+.cv-editor-add-bullet { font-size: 12px; color: var(--thread, #0077cc); background: none; border: none; cursor: pointer; padding: 2px 0; text-align: left; }
+.cv-editor-actions { display: flex; gap: 8px; padding-top: 8px; border-top: 1px solid var(--line, #eee); }
+.cv-editor-inline-row { display: flex; gap: 6px; }
+.cv-editor-inline-row input { flex: 1; min-width: 0; }

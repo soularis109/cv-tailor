@@ -5,7 +5,7 @@ import multer from "multer";
 import type { RequestHandler } from "express";
 import { PORT, MASTER_CV_PATH, anthropic, MODEL, CV_PROFILES_DIR, cvProfilePath, DEFAULT_PROFILE } from "./config.js";
 import { MOCK_INTERVIEW_SYSTEM } from "./prompts.js";
-import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter, generateCompanyBrief, runAtsCheck } from "./pipeline.js";
+import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter, generateCompanyBrief, runAtsCheck, normalizeTailoredCv, normalizeAtsCheckResult } from "./pipeline.js";
 import { buildDocx, type CvHeader } from "./docx.js";
 import { buildPdf } from "./pdf.js";
 import type { TailoredCv, JobAnalysis } from "./schemas.js";
@@ -158,8 +158,8 @@ app.post("/api/tailor", async (req, res) => {
 // ---- Export tailored CV to .docx ----
 app.post("/api/docx", async (req, res) => {
   try {
-    const tailored = req.body?.tailored as TailoredCv | undefined;
-    if (!tailored) return fail(res, new Error("Missing tailored CV in request body."), 400);
+    if (!req.body?.tailored) return fail(res, new Error("Missing tailored CV in request body."), 400);
+    const tailored = normalizeTailoredCv(req.body.tailored as TailoredCv);
     const master = await readMasterCv();
     const header: CvHeader = {
       name: master.name ?? "Your Name",
@@ -197,7 +197,25 @@ app.get("/api/applications/:id/data", async (req, res) => {
   try {
     const data = await readApplicationData(req.params.id);
     if (!data) return fail(res, new Error("Application data not found."), 404);
-    res.json(data);
+    res.json({
+      ...data,
+      tailored: normalizeTailoredCv(data.tailored),
+      ...(data.ats_check ? { ats_check: normalizeAtsCheckResult(data.ats_check) } : {}),
+    });
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.patch("/api/applications/:id/data", async (req, res) => {
+  try {
+    const rawTailored = req.body?.tailored;
+    if (!rawTailored) return fail(res, new Error("Missing tailored field."), 400);
+    const data = await readApplicationData(req.params.id);
+    if (!data) return fail(res, new Error("Application data not found."), 404);
+    const tailored = normalizeTailoredCv(rawTailored as TailoredCv);
+    await saveApplicationData(req.params.id, { ...data, tailored });
+    res.json({ tailored });
   } catch (err) {
     fail(res, err);
   }
@@ -227,8 +245,8 @@ app.delete("/api/applications/:id", async (req, res) => {
 // ---- Export tailored CV to .pdf ----
 app.post("/api/pdf", async (req, res) => {
   try {
-    const tailored = req.body?.tailored as TailoredCv | undefined;
-    if (!tailored) return fail(res, new Error("Missing tailored CV in request body."), 400);
+    if (!req.body?.tailored) return fail(res, new Error("Missing tailored CV in request body."), 400);
+    const tailored = normalizeTailoredCv(req.body.tailored as TailoredCv);
     const master = await readMasterCv();
     const header: CvHeader = {
       name: master.name ?? "Your Name",
