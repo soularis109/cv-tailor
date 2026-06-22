@@ -151,6 +151,106 @@ export interface TailoredCv {
   keywords_to_weave_in: string[]; // truthful job keywords the candidate has but under-emphasizes
 }
 
+// ---------- Step 3: ATS check ----------
+
+export interface AtsKeywordCheck {
+  keyword: string;
+  found: boolean;
+  location?: string; // e.g. "skills", "experience bullet 2"
+}
+
+export interface AtsFormatCheck {
+  rule: string;
+  passed: boolean;
+  note?: string;
+}
+
+export interface AtsRecommendation {
+  priority: "high" | "medium" | "low";
+  text: string;
+}
+
+export interface AtsCheckResult {
+  ats_score: number; // 0-100
+  keyword_coverage: AtsKeywordCheck[];
+  format_checks: AtsFormatCheck[];
+  recommendations: AtsRecommendation[];
+  verdict: string;
+}
+
+export const atsCheckTool: Anthropic.Messages.Tool = {
+  name: "record_ats_check",
+  description:
+    "Record a structured ATS compatibility analysis of a tailored CV. Score the CV against the job's ATS keywords and formatting standards.",
+  input_schema: {
+    type: "object",
+    properties: {
+      ats_score: {
+        type: "integer",
+        minimum: 0,
+        maximum: 100,
+        description: "Overall ATS compatibility score 0-100.",
+      },
+      keyword_coverage: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            keyword: { type: "string" },
+            found: { type: "boolean" },
+            location: {
+              type: "string",
+              description:
+                "Where the keyword was found, e.g. 'skills', 'experience bullet 2'. Omit if not found.",
+            },
+          },
+          required: ["keyword", "found"],
+        },
+        description: "One entry per ATS keyword from the job analysis.",
+      },
+      format_checks: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            rule: { type: "string", description: "The formatting rule being checked." },
+            passed: { type: "boolean" },
+            note: {
+              type: "string",
+              description: "Specific issue details when passed is false. Omit when passed.",
+            },
+          },
+          required: ["rule", "passed"],
+        },
+        description: "ATS formatting rule checks.",
+      },
+      recommendations: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            priority: { type: "string", enum: ["high", "medium", "low"] },
+            text: { type: "string", description: "Specific, actionable recommendation." },
+          },
+          required: ["priority", "text"],
+        },
+        description: "Ordered list of actionable improvements.",
+      },
+      verdict: {
+        type: "string",
+        description: "1-2 sentence overall verdict in the CV's language.",
+      },
+    },
+    required: [
+      "ats_score",
+      "keyword_coverage",
+      "format_checks",
+      "recommendations",
+      "verdict",
+    ],
+  },
+};
+
 // ---------- PDF import: master CV extraction ----------
 
 export interface MasterCvData {

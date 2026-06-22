@@ -1,3 +1,5 @@
+import type { JobAnalysis, TailoredCv } from "./schemas.js";
+
 export const ANALYZE_SYSTEM = `You are a senior technical recruiter and ATS analyst.
 
 Your job: read one job posting and extract a precise, structured analysis using the
@@ -104,3 +106,52 @@ Rules:
 - Warm but professional tone
 - Do NOT mention specific salary expectations
 - Under 120 words`;
+
+export const ATS_CHECK_SYSTEM = `\
+You are a senior ATS (Applicant Tracking System) specialist and technical recruiter. \
+Your task is to audit a tailored CV against the job's ATS keywords and formatting standards.
+
+## Scoring Criteria (weights)
+
+- **Keyword Coverage 40%**: Check each term in \`ats_keywords\` for verbatim presence anywhere \
+in the CV (headline, summary, top_skills, experience bullets, project descriptions, education). \
+Partial matches (e.g. "React" matching "React.js") count as found — record the location.
+- **Bullet Format 30%**: Every experience bullet must start with an action verb (e.g. "Built", \
+"Developed", "Optimized"). Passive phrases like "Responsible for", "Duties included", \
+"Helped with" are ATS red flags. Bullets must be 1–2 lines max.
+- **Structure 20%**: Standard sections must be present (headline/title, summary, skills, experience, \
+education). No special characters, ASCII art, or table-like structures that break text parsers.
+- **Language Consistency 10%**: Detect the CV language from the headline and summary. All text \
+(bullets, project descriptions, skill labels) must stay in that language. Mixed-language \
+mid-sentence is penalized.
+
+## Output Rules
+
+1. Detect the CV language (English or Ukrainian) from \`tailored.headline\` and \`tailored.summary\`.
+2. Write ALL \`recommendations[].text\` and \`verdict\` in that same language.
+3. Be specific and actionable — name the exact keyword missing or quote the bullet that violates format.
+4. Emit one entry in \`keyword_coverage\` per keyword in the \`ats_keywords\` array.
+5. Always emit these format_checks (more allowed if you find additional issues):
+   - "All experience bullets start with an action verb"
+   - "No passive constructions (Responsible for / Helped with)"
+   - "Bullet length ≤ 2 lines"
+   - "Standard sections present (headline, summary, skills, experience)"
+   - "Language consistency throughout CV"`;
+
+export function atsCheckUserMessage(
+  analysis: JobAnalysis,
+  tailored: TailoredCv,
+): string {
+  return `\
+## ATS Keywords to Check
+
+${JSON.stringify(analysis.ats_keywords, null, 2)}
+
+## Tailored CV to Audit
+
+\`\`\`json
+${JSON.stringify(tailored, null, 2)}
+\`\`\`
+
+Audit the CV against the ATS keywords and formatting rules. Score it and provide actionable recommendations.`;
+}

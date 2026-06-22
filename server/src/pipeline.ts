@@ -3,11 +3,21 @@ import {
   analyzeJobTool,
   tailorCvTool,
   masterCvTool,
+  atsCheckTool,
   type JobAnalysis,
   type TailoredCv,
   type MasterCvData,
+  type AtsCheckResult,
 } from "./schemas.js";
-import { ANALYZE_SYSTEM, tailorUserMessage, FOLLOWUP_SYSTEM, COVER_LETTER_SYSTEM, COMPANY_BRIEF_SYSTEM } from "./prompts.js";
+import {
+  ANALYZE_SYSTEM,
+  tailorUserMessage,
+  FOLLOWUP_SYSTEM,
+  COVER_LETTER_SYSTEM,
+  COMPANY_BRIEF_SYSTEM,
+  ATS_CHECK_SYSTEM,
+  atsCheckUserMessage,
+} from "./prompts.js";
 import { buildTailorSystemPrompt, type CandidateLevel } from "./prompt-builder.js";
 import type Anthropic from "@anthropic-ai/sdk";
 
@@ -157,6 +167,28 @@ Top must-have requirements for the role:
   const block = message.content[0];
   if (block.type !== "text") throw new Error("Unexpected response type");
   return block.text.trim();
+}
+
+/** Run ATS compatibility check on a tailored CV against the job's keywords. */
+export async function runAtsCheck(
+  analysis: JobAnalysis,
+  tailored: TailoredCv,
+): Promise<AtsCheckResult> {
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 2048,
+    temperature: 0,
+    system: ATS_CHECK_SYSTEM,
+    tools: [atsCheckTool],
+    tool_choice: { type: "tool", name: atsCheckTool.name },
+    messages: [
+      {
+        role: "user",
+        content: atsCheckUserMessage(analysis, tailored),
+      },
+    ],
+  });
+  return extractToolInput<AtsCheckResult>(message, atsCheckTool.name);
 }
 
 export async function generateCompanyBrief(

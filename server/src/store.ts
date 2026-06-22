@@ -8,12 +8,13 @@ import {
   CV_PROFILES_DIR,
   cvProfilePath,
 } from "./config.js";
-import type { JobAnalysis, TailoredCv } from "./schemas.js";
+import type { JobAnalysis, TailoredCv, AtsCheckResult } from "./schemas.js";
 
 export interface ApplicationData {
   jobText: string;
   analysis: JobAnalysis;
   tailored: TailoredCv;
+  ats_check?: AtsCheckResult;
 }
 
 export const STATUSES = [

@@ -5,7 +5,7 @@ import multer from "multer";
 import type { RequestHandler } from "express";
 import { PORT, MASTER_CV_PATH, anthropic, MODEL, CV_PROFILES_DIR, cvProfilePath, DEFAULT_PROFILE } from "./config.js";
 import { MOCK_INTERVIEW_SYSTEM } from "./prompts.js";
-import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter, generateCompanyBrief } from "./pipeline.js";
+import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter, generateCompanyBrief, runAtsCheck } from "./pipeline.js";
 import { buildDocx, type CvHeader } from "./docx.js";
 import { buildPdf } from "./pdf.js";
 import type { TailoredCv, JobAnalysis } from "./schemas.js";
@@ -462,6 +462,22 @@ app.post("/api/applications/:id/interview", async (req, res) => {
     res.json({ reply, questionNumber: Math.ceil(history.length / 2) });
   } catch (err) {
     res.status(500).json({ error: "Interview failed" });
+  }
+});
+
+app.post("/api/applications/:id/ats-check", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await readApplicationData(id);
+    if (!data) {
+      res.status(404).json({ error: "Application not found" });
+      return;
+    }
+    const result = await runAtsCheck(data.analysis, data.tailored);
+    await saveApplicationData(id, { ...data, ats_check: result });
+    res.json({ ats_check: result });
+  } catch (err) {
+    fail(res, err);
   }
 });
 
