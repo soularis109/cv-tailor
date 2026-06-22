@@ -64,6 +64,31 @@ export interface TailoredCv {
   keywords_to_weave_in: string[];
 }
 
+export interface AtsKeywordCheck {
+  keyword: string;
+  found: boolean;
+  location?: string;
+}
+
+export interface AtsFormatCheck {
+  rule: string;
+  passed: boolean;
+  note?: string;
+}
+
+export interface AtsRecommendation {
+  priority: "high" | "medium" | "low";
+  text: string;
+}
+
+export interface AtsCheckResult {
+  ats_score: number;
+  keyword_coverage: AtsKeywordCheck[];
+  format_checks: AtsFormatCheck[];
+  recommendations: AtsRecommendation[];
+  verdict: string;
+}
+
 export const STATUSES = [
   "Drafted",
   "Applied",
@@ -103,4 +128,5 @@ export interface ApplicationData {
   jobText: string;
   analysis: JobAnalysis;
   tailored: TailoredCv;
+  ats_check?: AtsCheckResult;
 }
