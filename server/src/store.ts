@@ -8,13 +8,19 @@ import {
   CV_PROFILES_DIR,
   cvProfilePath,
 } from "./config.js";
-import type { JobAnalysis, TailoredCv, AtsCheckResult } from "./schemas.js";
+import type { JobAnalysis, TailoredCv, AtsCheckResult, ExperienceVerificationResult } from "./schemas.js";
 
 export interface ApplicationData {
   jobText: string;
   analysis: JobAnalysis;
   tailored: TailoredCv;
   ats_check?: AtsCheckResult;
+  experience_check?: ExperienceVerificationResult;
+  customPdf?: boolean;
+}
+
+export function customPdfPath(id: string): string {
+  return `${APPLICATION_DATA_DIR}/${id}-custom.pdf`;
 }
 
 export const STATUSES = [
@@ -170,8 +176,9 @@ export async function deleteApplication(id: string): Promise<boolean> {
   const next = apps.filter((a) => a.id !== id);
   if (next.length === apps.length) return false;
   await persist(next);
-  // Clean up full data file if it exists
+  // Clean up full data file and custom PDF if they exist
   await fs.unlink(appDataPath(id)).catch(() => {});
+  await fs.unlink(customPdfPath(id)).catch(() => {});
   return true;
 }
 

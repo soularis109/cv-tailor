@@ -1,0 +1,529 @@
+{
+  "jobText": "Frontend Developer\n віддалено до $2000\nRequirements\nProficiency in HTML5, CSS3, and modern JavaScript (ES6+)\nStrong experience with TypeScript (interfaces, types, and generics)\nDeep knowledge of React.js and its core principles (Hooks, Context API)\nHands-on experience with Next.js (App Router, Server Components, SSR/SSG)\nProficiency in state management libraries (Redux Toolkit, Zustand, or MobX)\nFamiliarity with UI component libraries (shadcn/ui, Radix UI, MUI, etc)\nKnowledge of Web Performance optimization and Web Vitals\nExperience with Unit and Integration testing (Jest, Vitest, React Testing Library)\nResponsibilities\nDevelop high-quality, scalable web applications using React.js and Next.js\nTranslate Figma designs and wireframes into high-quality, pixel-perfect, and responsive code\nBuild reusable, modular components and front-end libraries for cross-project use\nOptimize applications for maximum speed, scalability, and optimal Core Web Vitals\nImplement Server-Side Rendering (SSR) and Static Site Generation (SSG) to improve SEO and performance\nCollaborate with UI/UX designers to ensure the technical feasibility of designs\nIntervew steps\npre-screen.\ntech interview.",
+  "analysis": {
+    "role_title": "Frontend Developer",
+    "seniority": "middle",
+    "language": "uk",
+    "must_have": [
+      "Proficiency in HTML5, CSS3, and modern JavaScript (ES6+)",
+      "Strong experience with TypeScript (interfaces, types, and generics)",
+      "Deep knowledge of React.js and its core principles (Hooks, Context API)",
+      "Hands-on experience with Next.js (App Router, Server Components, SSR/SSG)",
+      "Proficiency in state management libraries (Redux Toolkit, Zustand, or MobX)",
+      "Experience with Unit and Integration testing (Jest, Vitest, React Testing Library)"
+    ],
+    "nice_to_have": [
+      "Familiarity with UI component libraries (shadcn/ui, Radix UI, MUI, etc)",
+      "Knowledge of Web Performance optimization and Web Vitals"
+    ],
+    "core_technologies": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "ES6+",
+      "TypeScript",
+      "React.js",
+      "Next.js",
+      "Redux Toolkit",
+      "Zustand",
+      "MobX",
+      "shadcn/ui",
+      "Radix UI",
+      "MUI",
+      "Jest",
+      "Vitest",
+      "React Testing Library",
+      "Figma"
+    ],
+    "domains": [
+      "web development",
+      "frontend"
+    ],
+    "responsibilities": [
+      "Develop high-quality, scalable web applications using React.js and Next.js",
+      "Translate Figma designs and wireframes into high-quality, pixel-perfect, and responsive code",
+      "Build reusable, modular components and front-end libraries for cross-project use",
+      "Optimize applications for maximum speed, scalability, and optimal Core Web Vitals",
+      "Implement Server-Side Rendering (SSR) and Static Site Generation (SSG) to improve SEO and performance",
+      "Collaborate with UI/UX designers to ensure the technical feasibility of designs"
+    ],
+    "ats_keywords": [
+      "Frontend Developer",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "ES6+",
+      "TypeScript",
+      "interfaces",
+      "types",
+      "generics",
+      "React.js",
+      "Hooks",
+      "Context API",
+      "Next.js",
+      "App Router",
+      "Server Components",
+      "SSR",
+      "SSG",
+      "Redux Toolkit",
+      "Zustand",
+      "MobX",
+      "shadcn/ui",
+      "Radix UI",
+      "MUI",
+      "Web Performance optimization",
+      "Web Vitals",
+      "Core Web Vitals",
+      "Unit testing",
+      "Integration testing",
+      "Jest",
+      "Vitest",
+      "React Testing Library",
+      "Server-Side Rendering",
+      "Static Site Generation",
+      "SEO",
+      "pixel-perfect",
+      "responsive",
+      "Figma",
+      "reusable components",
+      "modular components",
+      "scalable"
+    ],
+    "soft_signals": [
+      "pixel-perfect attention to detail",
+      "cross-project reusability mindset",
+      "collaboration with UI/UX designers",
+      "remote work"
+    ],
+    "red_flags": [
+      "Salary capped at $2000 — may be below market for the depth of TypeScript, Next.js, and testing expertise required",
+      "No years of experience specified, making seniority level ambiguous",
+      "No mention of team size, product context, or company name",
+      "Very short interview process description with no detail on tech interview format"
+    ]
+  },
+  "tailored": {
+    "headline": "Frontend Developer | React.js, Next.js, TypeScript",
+    "summary": "Frontend Developer with 5+ years of hands-on experience building scalable web applications using React.js, Next.js, and TypeScript. Comfortable owning features end-to-end — from translating Figma designs into pixel-perfect, responsive interfaces to integrating REST and GraphQL APIs. Experienced with SSR/SSG, state management (Redux Toolkit, Zustand), and writing reliable Unit and Integration tests with Jest, Vitest, and React Testing Library.",
+    "top_skills": [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "HTML5",
+      "CSS3",
+      "Redux Toolkit",
+      "Zustand",
+      "TanStack Query",
+      "Apollo Client",
+      "GraphQL",
+      "WebSockets",
+      "SCSS",
+      "Tailwind CSS",
+      "Material UI",
+      "Jest",
+      "Vitest",
+      "React Testing Library",
+      "Playwright",
+      "Vite",
+      "Nx (Monorepo)",
+      "SSR",
+      "SSG",
+      "SEO",
+      "Web Performance optimization",
+      "Core Web Vitals",
+      "Figma"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Frontend Developer",
+        "period": "Feb 2025 – Present",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Designed and delivered a monorepo architecture using Nx to unify 3 products (marketplace, admin dashboard, landing pages), maximizing reusable component and business logic sharing across the ecosystem",
+          "Owned the development of core marketplace features — secure authentication flows, a multi-step order creation engine, and an advanced search UI with dynamic filtering — serving 50K+ monthly active users",
+          "Built a real-time P2P communication layer using WebSockets, enabling live chat messaging and transaction status synchronization between buyers and sellers",
+          "Delivered a full-featured admin panel with financial dashboards, role-based access control (RBAC), subscription management, and dispute resolution tools",
+          "Developed SEO-optimized marketing landing pages with Next.js (SSR/SSG), integrating analytics and A/B testing configurations that improved user conversion rates by ~15%",
+          "Collaborated closely with backend engineers, designers, and PMs to break down requirements into scalable, well-scoped frontend tasks",
+          "Configured CI/CD pipelines, production monitoring, and code review workflows to maintain high engineering standards across the team"
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Frontend Developer",
+        "period": "Nov 2022 – Jan 2025",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Designed and shipped a high-performance, SEO-optimized marketing landing page from scratch using Next.js (SSG), improving page speed scores and organic search visibility for B2B user acquisition",
+          "Owned the stabilization of an existing React.js admin dashboard — conducted a code audit, fixed critical bugs in business logic, broken API requests, and improper error handling",
+          "Implemented a subscription and billing system via Stripe integration, covering multi-tier pricing pages, billing management UI, and transaction status workflows",
+          "Developed an isolated embeddable chat widget using Shadow DOM and WebSockets, ensuring clean DOM containment and real-time AI response delivery on third-party client websites",
+          "Built an Integrations Hub enabling users to connect Slack, Telegram, and Webhooks to route chatbot leads and notifications to external platforms",
+          "Refactored the data-fetching layer with TanStack Query, establishing robust caching strategies, background revalidation, and consistent loading/error state handling",
+          "Optimized Core Web Vitals (LCP, TTI) through code-splitting and lazy loading, reducing bundle size by ~10% and improving widget load times by ~15%",
+          "Integrated Sentry for error tracking and production monitoring, significantly reducing mean time to debug and improving application observability"
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Frontend Developer",
+        "period": "Nov 2020 – Oct 2022",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Contributed to building and launching the platform from scratch, delivering features across the admin panel and marketing modules in a fast-paced startup environment",
+          "Built a pixel-perfect, SEO-optimized marketing landing page with Next.js using semantic HTML5, custom meta tags, and fully responsive CSS3 layouts",
+          "Developed an interactive Widget Builder (Alert Box, Goal Progress) allowing streamers to customize colors, typography, animations, and sounds for OBS overlays",
+          "Implemented OAuth integrations with Twitch, YouTube, and Kick for streamer authorization, profile sync, and live broadcast status tracking",
+          "Built data-heavy analytical dashboards with responsive data tables (1000+ rows), pagination, filtering, and interactive financial charts for real-time revenue tracking",
+          "Designed multi-step configuration forms with advanced validation for donation thresholds, media file constraints, and profanity filtering",
+          "Collaborated with backend engineers to integrate REST APIs and WebSockets, managing global state with Redux for reliable, real-time alert distribution",
+          "Delivered pixel-perfect layouts from Figma designs using modular, maintainable SCSS, ensuring cross-browser compatibility across all device sizes"
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc, Logistics",
+        "period": "2018 – 2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc, Management",
+        "period": "2014 – 2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "Proficiency in HTML5, CSS3, and modern JavaScript (ES6+)",
+        "status": "strong",
+        "evidence": "Used across all 3 roles; pixel-perfect layouts, semantic HTML, responsive CSS3, modern JS patterns throughout"
+      },
+      {
+        "requirement": "Strong experience with TypeScript (interfaces, types, and generics)",
+        "status": "strong",
+        "evidence": "TypeScript listed as primary language across all roles and all tech stacks (KYC Market, AMO FINTECH, DonateSystem)"
+      },
+      {
+        "requirement": "Deep knowledge of React.js and its core principles (Hooks, Context API)",
+        "status": "strong",
+        "evidence": "React.js is the core framework across all 3 roles spanning 4+ years; complex UI systems built with hooks-based architecture"
+      },
+      {
+        "requirement": "Hands-on experience with Next.js (App Router, Server Components, SSR/SSG)",
+        "status": "strong",
+        "evidence": "Next.js used at KYC Market, AMO FINTECH, and DonateSystem for SSR/SSG landing pages and SEO-optimized apps"
+      },
+      {
+        "requirement": "Proficiency in state management libraries (Redux Toolkit, Zustand, or MobX)",
+        "status": "strong",
+        "evidence": "Zustand used at KYC Market; Redux used at DonateSystem; TanStack Query and Apollo Client at AMO FINTECH"
+      },
+      {
+        "requirement": "Experience with Unit and Integration testing (Jest, Vitest, React Testing Library)",
+        "status": "strong",
+        "evidence": "Jest, Vitest, and React Testing Library listed in tech stack at KYC Market and AMO FINTECH; Playwright also used"
+      },
+      {
+        "requirement": "Familiarity with UI component libraries (shadcn/ui, Radix UI, MUI, etc)",
+        "status": "partial",
+        "evidence": "Material UI used at AMO FINTECH; no shadcn/ui or Radix UI mentioned in master CV"
+      },
+      {
+        "requirement": "Knowledge of Web Performance optimization and Web Vitals",
+        "status": "strong",
+        "evidence": "Optimized LCP and TTI at AMO FINTECH (~10% bundle reduction, ~15% widget load improvement); A/B testing and analytics at KYC Market"
+      },
+      {
+        "requirement": "Translate Figma designs into pixel-perfect, responsive code",
+        "status": "strong",
+        "evidence": "Explicitly mentioned at DonateSystem: pixel-perfect layouts from Figma using SCSS, cross-browser compatibility"
+      },
+      {
+        "requirement": "Build reusable, modular components for cross-project use",
+        "status": "strong",
+        "evidence": "Monorepo at KYC Market built specifically to maximize UI component and business logic reuse across 3 products"
+      },
+      {
+        "requirement": "Implement SSR and SSG to improve SEO and performance",
+        "status": "strong",
+        "evidence": "Next.js SSR/SSG used at KYC Market and AMO FINTECH for SEO-optimized landing pages; semantic HTML and meta tags at DonateSystem"
+      },
+      {
+        "requirement": "Collaborate with UI/UX designers",
+        "status": "strong",
+        "evidence": "Pixel-perfect Figma implementation at DonateSystem; collaboration with designers mentioned at KYC Market"
+      }
+    ],
+    "fit_score": 91,
+    "match_notes": "Kostya is a very strong match for this role technically — every must-have is covered with real, hands-on evidence across multiple projects. The main honest gap is shadcn/ui and Radix UI, which are listed as nice-to-have; MUI experience partially covers this. The role is positioned as middle-level, and the CV has been reframed accordingly to highlight feature ownership, cross-team collaboration, and delivery quality rather than team leadership or architectural strategy. One real-world consideration: Kostya's actual experience is senior-level, so the $2,000 salary cap flagged in the job analysis may be a point of friction worth evaluating before applying.",
+    "keywords_to_weave_in": [
+      "SSR",
+      "SSG",
+      "Server-Side Rendering",
+      "Static Site Generation",
+      "Core Web Vitals",
+      "Web Performance optimization",
+      "reusable components",
+      "modular components",
+      "pixel-perfect",
+      "responsive",
+      "scalable",
+      "Figma",
+      "Integration testing",
+      "Unit testing",
+      "ES6+",
+      "interfaces",
+      "types",
+      "generics",
+      "Hooks",
+      "Context API",
+      "App Router",
+      "Server Components"
+    ]
+  },
+  "ats_check": {
+    "ats_score": 74,
+    "keyword_coverage": [
+      {
+        "keyword": "Frontend Developer",
+        "found": true,
+        "location": "headline, experience roles (all 3 companies)"
+      },
+      {
+        "keyword": "HTML5",
+        "found": true,
+        "location": "top_skills, DonateSystem bullet 2"
+      },
+      {
+        "keyword": "CSS3",
+        "found": true,
+        "location": "top_skills, DonateSystem bullet 2"
+      },
+      {
+        "keyword": "JavaScript",
+        "found": true,
+        "location": "top_skills (JavaScript ES6+)"
+      },
+      {
+        "keyword": "ES6+",
+        "found": true,
+        "location": "top_skills (JavaScript ES6+)"
+      },
+      {
+        "keyword": "TypeScript",
+        "found": true,
+        "location": "headline, summary, top_skills"
+      },
+      {
+        "keyword": "interfaces",
+        "found": false
+      },
+      {
+        "keyword": "types",
+        "found": false
+      },
+      {
+        "keyword": "generics",
+        "found": false
+      },
+      {
+        "keyword": "React.js",
+        "found": true,
+        "location": "headline, summary, top_skills, AMO FINTECH bullet 2"
+      },
+      {
+        "keyword": "Hooks",
+        "found": false
+      },
+      {
+        "keyword": "Context API",
+        "found": false
+      },
+      {
+        "keyword": "Next.js",
+        "found": true,
+        "location": "headline, summary, top_skills, KYC Market bullet 5, AMO FINTECH bullet 1, DonateSystem bullet 2"
+      },
+      {
+        "keyword": "App Router",
+        "found": false
+      },
+      {
+        "keyword": "Server Components",
+        "found": false
+      },
+      {
+        "keyword": "SSR",
+        "found": true,
+        "location": "summary, top_skills, KYC Market bullet 5, AMO FINTECH bullet 1"
+      },
+      {
+        "keyword": "SSG",
+        "found": true,
+        "location": "summary, top_skills, KYC Market bullet 5, AMO FINTECH bullet 1"
+      },
+      {
+        "keyword": "Redux Toolkit",
+        "found": true,
+        "location": "summary, top_skills"
+      },
+      {
+        "keyword": "Zustand",
+        "found": true,
+        "location": "summary, top_skills"
+      },
+      {
+        "keyword": "MobX",
+        "found": false
+      },
+      {
+        "keyword": "shadcn/ui",
+        "found": false
+      },
+      {
+        "keyword": "Radix UI",
+        "found": false
+      },
+      {
+        "keyword": "MUI",
+        "found": false
+      },
+      {
+        "keyword": "Web Performance optimization",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "Web Vitals",
+        "found": false
+      },
+      {
+        "keyword": "Core Web Vitals",
+        "found": true,
+        "location": "top_skills, AMO FINTECH bullet 7"
+      },
+      {
+        "keyword": "Unit testing",
+        "found": true,
+        "location": "summary (Unit and Integration tests)"
+      },
+      {
+        "keyword": "Integration testing",
+        "found": true,
+        "location": "summary (Unit and Integration tests)"
+      },
+      {
+        "keyword": "Jest",
+        "found": true,
+        "location": "summary, top_skills"
+      },
+      {
+        "keyword": "Vitest",
+        "found": true,
+        "location": "summary, top_skills"
+      },
+      {
+        "keyword": "React Testing Library",
+        "found": true,
+        "location": "summary, top_skills"
+      },
+      {
+        "keyword": "Server-Side Rendering",
+        "found": false
+      },
+      {
+        "keyword": "Static Site Generation",
+        "found": false
+      },
+      {
+        "keyword": "SEO",
+        "found": true,
+        "location": "top_skills, KYC Market bullet 5, AMO FINTECH bullet 1, DonateSystem bullet 2"
+      },
+      {
+        "keyword": "pixel-perfect",
+        "found": true,
+        "location": "summary, DonateSystem bullets 2 and 8"
+      },
+      {
+        "keyword": "responsive",
+        "found": true,
+        "location": "summary, DonateSystem bullet 2"
+      },
+      {
+        "keyword": "Figma",
+        "found": true,
+        "location": "summary, top_skills, DonateSystem bullet 8"
+      },
+      {
+        "keyword": "reusable components",
+        "found": true,
+        "location": "KYC Market bullet 1 (reusable component)"
+      },
+      {
+        "keyword": "modular components",
+        "found": true,
+        "location": "DonateSystem bullet 8 (modular, maintainable SCSS)"
+      },
+      {
+        "keyword": "scalable",
+        "found": true,
+        "location": "summary (scalable web applications), KYC Market bullet 6"
+      }
+    ],
+    "format_checks": [
+      {
+        "rule": "All experience bullets start with an action verb",
+        "passed": false,
+        "note": "KYC Market bullet 1 starts with 'Designed' ✓, but bullet 2 starts with 'Owned' — while technically a verb, 'Owned' is borderline and may not be parsed as an action verb by all ATS engines. More critically, DonateSystem bullet 1 starts with 'Contributed to building' which is a weak, passive-adjacent construction. All other bullets pass."
+      },
+      {
+        "rule": "No passive constructions (Responsible for / Helped with)",
+        "passed": false,
+        "note": "DonateSystem bullet 1: 'Contributed to building and launching the platform' is a passive-adjacent phrase that dilutes impact and may be flagged. No 'Responsible for' or 'Helped with' found, but 'Contributed to' carries the same ATS risk."
+      },
+      {
+        "rule": "Bullet length ≤ 2 lines",
+        "passed": true
+      },
+      {
+        "rule": "Standard sections present (headline, summary, skills, experience)",
+        "passed": true
+      },
+      {
+        "rule": "Language consistency throughout CV",
+        "passed": true
+      },
+      {
+        "rule": "TypeScript depth keywords present (interfaces, types, generics)",
+        "passed": false,
+        "note": "TypeScript is listed as a top skill and appears in the headline, but the specific sub-keywords 'interfaces', 'types', and 'generics' — which appear verbatim in the job's ATS keyword list — are absent from all sections of the CV."
+      },
+      {
+        "rule": "React.js depth keywords present (Hooks, Context API)",
+        "passed": false,
+        "note": "'Hooks' and 'Context API' are explicitly listed ATS keywords but do not appear anywhere in the CV. React.js is mentioned, but ATS systems scan for these terms independently."
+      },
+      {
+        "rule": "Next.js depth keywords present (App Router, Server Components)",
+        "passed": false,
+        "note": "'App Router' and 'Server Components' are absent from all sections. SSR/SSG are covered, but these Next.js-specific terms are separate ATS targets."
+      },
+      {
+        "rule": "Full-form SSR/SSG synonyms present (Server-Side Rendering, Static Site Generation)",
+        "passed": false,
+        "note": "Only abbreviations 'SSR' and 'SSG' are used. The job's ATS keyword list includes both the abbreviations AND the full forms 'Server-Side Rendering' and 'Static Site Generation' as separate entries. At least one full-form mention is missing."
+      },
+      {
+        "rule": "UI library keywords present (MUI, shadcn/ui, Radix UI)",
+        "passed": false,
+        "note": "The CV lists 'Material UI' in top_skills but the ATS keyword is 'MUI' — a partial match risk. 'shadcn/ui' and 'Radix UI' are entirely absent. Even a brief mention as 'familiar with' in the skills section would capture these keywords."
+      }
+    ],
+    "recommendations": []
+  }
+}

@@ -9,6 +9,7 @@ import { MasterCvDrawer } from "./components/MasterCvDrawer";
 import { TailorProgress } from "./components/TailorProgress";
 import { ApplicationDetailPanel } from "./components/ApplicationDetailPanel";
 import { CoverLetterModal } from "./components/CoverLetterModal";
+import { AddApplicationModal } from "./components/AddApplicationModal";
 import { ToastStack } from "./components/Toast";
 import { showToast } from "./utils/toast";
 import { playDoneChime, notifyDone, requestNotificationPermission } from "./utils/notify";
@@ -74,6 +75,8 @@ const SENIORITY_TEMPLATES: Record<string, string> = {
     "Write as a junior developer. Use: Built, Developed, Implemented, Contributed. Show technical depth and ability to own features end-to-end. 1-2 line bullets. Quantify small wins where possible.",
   middle:
     "Write as a mid-level engineer. Use: Designed, Led, Owned, Drove, Delivered. Show feature or system ownership end-to-end, quantify impact (%, latency, user count). Mention cross-team collaboration. 1-2 line bullets.",
+  "strong-middle":
+    "Write as a strong mid-level engineer. Use: Owned, Designed, Led (feature), Optimized, Integrated, Refactored, Contributed to. Show ownership of bounded features end-to-end, performance work, and participation in architecture discussions. Avoid: technical lead, architect, team management, mentoring others, org-level decisions. 1-2 line bullets.",
   senior:
     "Write as a senior engineer. Use: Architected, Spearheaded, Mentored, Scaled, Defined. Quantify: team size, DAU, RPS, latency improvements. Emphasize business impact and technical leadership. Always lead with scale or outcome.",
   lead:
@@ -96,7 +99,7 @@ export default function App() {
   const { draft, setDraft, clearDraft } = useDraftAutoSave();
   const { jobText, jobUrl, source, customInstructions, showCustom } = draft;
 
-  const [userLevel, setUserLevel] = useState<"junior" | "middle" | "senior">("middle");
+  const [userLevel, setUserLevel] = useState<"junior" | "middle" | "strong-middle" | "senior">("middle");
 
   const [stage, setStage] = useState<Stage>(null);
   const [fetchingUrl, setFetchingUrl] = useState(false);
@@ -108,6 +111,7 @@ export default function App() {
   const [companyBrief, setCompanyBrief] = useState<string | null>(null);
   const [analyzeOnlyDone, setAnalyzeOnlyDone] = useState(false);
   const [coverLetterOpen, setCoverLetterOpen] = useState(false);
+  const [addAppModalOpen, setAddAppModalOpen] = useState(false);
 
   const [apps, setApps] = useState<Application[]>([]);
   const [appsLoading, setAppsLoading] = useState(true);
@@ -203,6 +207,8 @@ export default function App() {
       setApps((prev) => [res.application, ...prev]);
       // Fire-and-forget ATS check
       api.runAtsCheck(res.application.id).catch(() => { /* silent fail */ });
+      // Fire-and-forget experience check
+      api.runExperienceVerification(res.application.id).catch(() => {});
       // Auto-fetch company brief if URL is available
       if (jobUrl.trim() && res.application.company && res.application.company !== "—") {
         api.getCompanyBrief(jobUrl, res.application.company)
@@ -251,6 +257,8 @@ export default function App() {
       setApps((prev) => [res.application, ...prev]);
       // Fire-and-forget ATS check
       api.runAtsCheck(res.application.id).catch(() => { /* silent fail */ });
+      // Fire-and-forget experience check
+      api.runExperienceVerification(res.application.id).catch(() => {});
       // Auto-fetch company brief if URL is available
       if (jobUrl.trim() && res.application.company && res.application.company !== "—") {
         api.getCompanyBrief(jobUrl, res.application.company)
@@ -265,6 +273,11 @@ export default function App() {
       setStage(null);
       setProgress(0);
     }
+  }
+
+  function handleAppCreated(app: Application) {
+    setApps((prev) => [app, ...prev]);
+    showToast(`Added ${app.company} — ${app.role}`, "success");
   }
 
   function patchApp(id: string, patch: Partial<Application>) {
@@ -429,7 +442,7 @@ export default function App() {
             <div className="level-row">
               <span className="level-label">My Level</span>
               <div className="level-seg" role="group" aria-label="My Level">
-                {(["junior", "middle", "senior"] as const).map((lvl) => (
+                {(["junior", "middle", "strong-middle", "senior"] as const).map((lvl) => (
                   <button
                     key={lvl}
                     type="button"
@@ -437,7 +450,7 @@ export default function App() {
                     onClick={() => setUserLevel(lvl)}
                     aria-pressed={userLevel === lvl}
                   >
-                    {lvl.charAt(0).toUpperCase() + lvl.slice(1)}
+                    {lvl === "strong-middle" ? "Strong Middle" : lvl.charAt(0).toUpperCase() + lvl.slice(1)}
                   </button>
                 ))}
               </div>
@@ -643,6 +656,7 @@ export default function App() {
             onPatch={patchApp}
             onDelete={removeApp}
             onOpen={(id) => setDetailAppId(id)}
+            onQuickAdd={() => setAddAppModalOpen(true)}
             loadError={appsError}
             loading={appsLoading}
           />
@@ -676,6 +690,12 @@ export default function App() {
           onClose={() => setCoverLetterOpen(false)}
         />
       )}
+
+      <AddApplicationModal
+        open={addAppModalOpen}
+        onClose={() => setAddAppModalOpen(false)}
+        onCreated={handleAppCreated}
+      />
 
       <ToastStack />
     </div>

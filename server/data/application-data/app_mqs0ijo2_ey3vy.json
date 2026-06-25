@@ -1,0 +1,458 @@
+{
+  "jobText": "Front-End Developer (next.js)\n віддалено\nAbout the Company & Product\n\nWe are a rapidly growing product company entering the global gaming entertainment market. Our mission is to bring innovative business solutions to the iGaming industry by building cutting-edge technology products. Our core product is a SaaS gaming platform with 200+ microservices that powers a seamless gaming experience for millions of users worldwide. The platform provides a full suite of iGaming solutions, including game management, payments, analytics, CRM, and more.\n\nMeet Your Future Team\n\nWe have an open management culture where leaders share a clear product vision rather than simply assigning tasks. We believe people do their best work when they understand where the team is going and why their contribution matters. Initiative is always welcome, and everyone is encouraged to share ideas, suggest improvements, and influence how things are built.\n\nReady for a career upgrade?\n\nWe are looking for a Front-End Developer to provide high-quality support to stakeholders and offer timely advice on the functionality.\n\nWhat you’ll be doing\n\nDevelop new features for web applications using React and Next.js\nBuild responsive, cross-browser UI using TailwindCSS\nWork with server-side rendering (SSR) and server components, optimize Web Vitals\nIntegrate with backend via GraphQL API (Apollo Client), optimize queries and caching\nContribute to CI/CD setup and build processes\nIdentify and implement improvements to code quality and application performance\nParticipate in sprint planning, collaborate with QA, Backend, PM, and Design teams, and take part in code reviews\nYou have these superpowers\n\n3+ years of experience in web development with React\nStrong knowledge of JavaScript (ES6+) and TypeScript\nExperience with Next.js (SSR, App Router, Server Components)\nExperience working with GraphQL API and Apollo Client\nStrong knowledge of HTML5 and CSS, experience with TailwindCSS\nAbility to build performant, responsive, and cross-browser web applications\nUnderstanding of how browsers and web servers work; experience with debugging tools (DevTools, Network, Performance)\nExperience writing unit tests (Jest or similar)\nExperience with Git\nAbility to write clean, maintainable code\nEnglish sufficient for reading documentation and technical communication\nStrong communication skills and ability to work in a team\nNice to have\n\nExperience with performance optimization (bundle analysis, profiling, Web Vitals)\nExperience with REST API and WebSocket\nExperience with Sentry or similar monitoring tools\nUnderstanding of feature flags and trunk-based development\nExperience working with various Web APIs\nExperience using AI tools effectively in web development\nProactive mindset and willingness to grow professionally\nReadiness to participate in architecture discussions and suggest improvements",
+  "analysis": {
+    "role_title": "Front-End Developer (Next.js)",
+    "seniority": "middle",
+    "language": "uk",
+    "must_have": [
+      "3+ years of experience in web development with React",
+      "Strong knowledge of JavaScript (ES6+) and TypeScript",
+      "Experience with Next.js (SSR, App Router, Server Components)",
+      "Experience working with GraphQL API and Apollo Client",
+      "Strong knowledge of HTML5 and CSS, experience with TailwindCSS",
+      "Ability to build performant, responsive, and cross-browser web applications",
+      "Understanding of how browsers and web servers work; experience with debugging tools (DevTools, Network, Performance)",
+      "Experience writing unit tests (Jest or similar)",
+      "Experience with Git",
+      "Ability to write clean, maintainable code",
+      "English sufficient for reading documentation and technical communication"
+    ],
+    "nice_to_have": [
+      "Experience with performance optimization (bundle analysis, profiling, Web Vitals)",
+      "Experience with REST API and WebSocket",
+      "Experience with Sentry or similar monitoring tools",
+      "Understanding of feature flags and trunk-based development",
+      "Experience working with various Web APIs",
+      "Experience using AI tools effectively in web development",
+      "Readiness to participate in architecture discussions and suggest improvements"
+    ],
+    "core_technologies": [
+      "React",
+      "Next.js",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "TailwindCSS",
+      "GraphQL",
+      "Apollo Client",
+      "HTML5",
+      "CSS",
+      "Jest",
+      "Git",
+      "CI/CD"
+    ],
+    "domains": [
+      "iGaming",
+      "SaaS",
+      "gaming entertainment",
+      "gaming platform"
+    ],
+    "responsibilities": [
+      "Develop new features for web applications using React and Next.js",
+      "Build responsive, cross-browser UI using TailwindCSS",
+      "Work with server-side rendering (SSR) and server components, optimize Web Vitals",
+      "Integrate with backend via GraphQL API (Apollo Client), optimize queries and caching",
+      "Contribute to CI/CD setup and build processes",
+      "Identify and implement improvements to code quality and application performance",
+      "Participate in sprint planning, collaborate with QA, Backend, PM, and Design teams, and take part in code reviews"
+    ],
+    "ats_keywords": [
+      "React",
+      "Next.js",
+      "JavaScript",
+      "ES6+",
+      "TypeScript",
+      "TailwindCSS",
+      "GraphQL",
+      "Apollo Client",
+      "SSR",
+      "App Router",
+      "Server Components",
+      "HTML5",
+      "CSS",
+      "Jest",
+      "unit tests",
+      "Git",
+      "CI/CD",
+      "Web Vitals",
+      "cross-browser",
+      "responsive",
+      "performance optimization",
+      "bundle analysis",
+      "profiling",
+      "REST API",
+      "WebSocket",
+      "Sentry",
+      "feature flags",
+      "trunk-based development",
+      "Web APIs",
+      "DevTools",
+      "code reviews",
+      "sprint planning"
+    ],
+    "soft_signals": [
+      "Open management culture",
+      "Leaders share product vision rather than assigning tasks",
+      "Initiative is always welcome",
+      "Everyone encouraged to share ideas and suggest improvements",
+      "Proactive mindset and willingness to grow professionally",
+      "Rapidly growing product company",
+      "Remote work"
+    ],
+    "red_flags": [
+      "No compensation range disclosed",
+      "iGaming/gambling industry — may be a concern for some candidates",
+      "Broad scope: expected to contribute to CI/CD, architecture discussions, and cross-team collaboration alongside core front-end work",
+      "Seniority title is 'Developer' but 3+ years and architecture involvement suggest strong-middle expectations"
+    ]
+  },
+  "tailored": {
+    "headline": "Front-End Developer | React, Next.js, TypeScript, GraphQL, TailwindCSS",
+    "summary": "Front-End Developer with 5+ years of experience building performant, responsive web applications with React and Next.js. Comfortable delivering complex features end-to-end — from API integration with GraphQL and Apollo Client to SSR optimization, Web Vitals tuning, and unit testing with Jest. Experienced collaborating closely with QA, Backend, PM, and Design teams in fast-moving product environments.",
+    "top_skills": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "GraphQL",
+      "Apollo Client",
+      "TailwindCSS",
+      "HTML5",
+      "CSS",
+      "SCSS",
+      "SSR",
+      "Server Components",
+      "App Router",
+      "TanStack Query",
+      "Zustand",
+      "Redux Toolkit",
+      "Jest",
+      "Vitest",
+      "React Testing Library",
+      "Playwright",
+      "WebSocket",
+      "REST API",
+      "Sentry",
+      "CI/CD",
+      "Web Vitals",
+      "Performance Optimization",
+      "Nx (Monorepo)",
+      "Git",
+      "Vite"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Front-End Developer",
+        "period": "Feb 2025 – Jun 2026",
+        "location": "Remote",
+        "bullets": [
+          "Designed and implemented a monorepo architecture using Nx to unify three products — marketplace, admin dashboard, and landing pages — maximizing UI component and business logic reuse",
+          "Developed core features of a crypto marketplace (50K+ MAU), including secure authentication, a multi-step order creation workflow, and an advanced search with dynamic filtering",
+          "Built marketing landing pages with Next.js using SSR and semantic HTML, integrating analytics, tracking scripts, and A/B testing configurations that boosted user conversion by ~15%",
+          "Implemented a real-time P2P communication layer using WebSockets, enabling live chat messaging and transaction-status synchronization between buyers and sellers",
+          "Delivered a management and arbitration admin panel with financial dashboards, role-based access control (RBAC), and subscription management tools",
+          "Contributed to CI/CD pipeline configuration, production monitoring setup, and code review workflows to maintain delivery quality"
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Front-End Developer",
+        "period": "Nov 2022 – Jan 2025",
+        "location": "Remote",
+        "bullets": [
+          "Built an SEO-optimized marketing landing page from scratch using Next.js with SSR, optimizing page speed and search rankings to support B2B user acquisition",
+          "Integrated GraphQL API via Apollo Client across the product, optimizing queries and caching strategies to reduce redundant network requests",
+          "Refactored the data-fetching layer using TanStack Query, adding caching, background revalidation, and consistent loading-state handling across the application",
+          "Improved client-side performance (LCP, TTI) through code-splitting and lazy loading, reducing bundle size by ~10% and widget load times by ~15%",
+          "Developed and maintained an embeddable chat widget using Shadow DOM for clean DOM containment and WebSockets for real-time AI response delivery",
+          "Integrated Sentry for error tracking and production monitoring, enabling faster debugging and improved application observability",
+          "Built responsive, cross-browser UI components using TailwindCSS and Material UI, ensuring consistent rendering across devices and browsers"
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Front-End Developer",
+        "period": "Nov 2020 – Oct 2022",
+        "location": "Remote",
+        "bullets": [
+          "Built an SEO-optimized marketing landing page using Next.js with semantic HTML5, custom meta tags, and responsive layouts to maximize search ranking and conversion",
+          "Developed data-heavy analytical dashboards with responsive tables (1000+ rows), pagination, transaction filtering, and interactive financial charts for real-time revenue tracking",
+          "Implemented multi-step configuration forms with advanced validation for donation thresholds, media file constraints, and profanity filtering",
+          "Integrated REST APIs and WebSockets for global state management using Redux, supporting reliable real-time alert distribution",
+          "Delivered pixel-perfect, cross-browser layouts from Figma designs using SCSS, ensuring consistent performance across all device sizes"
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc Logistics",
+        "period": "2018 – 2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc Management",
+        "period": "2014 – 2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "3+ years of experience in web development with React",
+        "status": "strong",
+        "evidence": "5+ years total; React used across all 3 employers (KYC Market, AMO FINTECH, DonateSystem)"
+      },
+      {
+        "requirement": "Strong knowledge of JavaScript (ES6+) and TypeScript",
+        "status": "strong",
+        "evidence": "TypeScript listed as primary language across all roles; used in every employer's tech stack"
+      },
+      {
+        "requirement": "Experience with Next.js (SSR, App Router, Server Components)",
+        "status": "strong",
+        "evidence": "Next.js used at KYC Market and AMO FINTECH for SSR landing pages and marketplace features; SSR explicitly mentioned"
+      },
+      {
+        "requirement": "Experience working with GraphQL API and Apollo Client",
+        "status": "strong",
+        "evidence": "Apollo Client and GraphQL explicitly listed in AMO FINTECH tech stack and skills"
+      },
+      {
+        "requirement": "Strong knowledge of HTML5 and CSS, experience with TailwindCSS",
+        "status": "strong",
+        "evidence": "HTML, CSS, SCSS, TailwindCSS all listed in skills; TailwindCSS used at AMO FINTECH"
+      },
+      {
+        "requirement": "Ability to build performant, responsive, and cross-browser web applications",
+        "status": "strong",
+        "evidence": "Performance optimization (LCP, TTI, bundle size -10%, widget load -15%) at AMO FINTECH; cross-browser layouts at DonateSystem"
+      },
+      {
+        "requirement": "Understanding of how browsers and web servers work; experience with debugging tools (DevTools, Network, Performance)",
+        "status": "partial",
+        "evidence": "Implied by performance profiling (LCP, TTI, bundle analysis) and Sentry integration; DevTools not explicitly named"
+      },
+      {
+        "requirement": "Experience writing unit tests (Jest or similar)",
+        "status": "strong",
+        "evidence": "Jest, Vitest, React Testing Library, and Playwright all listed in skills and KYC Market / AMO FINTECH tech stacks"
+      },
+      {
+        "requirement": "Experience with Git",
+        "status": "strong",
+        "evidence": "Code review workflows mentioned at KYC Market; Git is a standard implied tool across all roles"
+      },
+      {
+        "requirement": "Ability to write clean, maintainable code",
+        "status": "strong",
+        "evidence": "Code audit and bug fixing at AMO FINTECH; code review workflows at KYC Market; refactoring initiatives across roles"
+      },
+      {
+        "requirement": "English sufficient for reading documentation and technical communication",
+        "status": "strong",
+        "evidence": "English listed as Professional level in spoken languages"
+      },
+      {
+        "requirement": "Experience with performance optimization (bundle analysis, profiling, Web Vitals)",
+        "status": "strong",
+        "evidence": "LCP, TTI optimization; bundle size reduced by ~10%; widget load times reduced by ~15% at AMO FINTECH"
+      },
+      {
+        "requirement": "Experience with REST API and WebSocket",
+        "status": "strong",
+        "evidence": "WebSockets used at KYC Market and AMO FINTECH; REST API integration at DonateSystem"
+      },
+      {
+        "requirement": "Experience with Sentry or similar monitoring tools",
+        "status": "strong",
+        "evidence": "Sentry integrated at AMO FINTECH for error tracking and production monitoring"
+      },
+      {
+        "requirement": "Understanding of feature flags and trunk-based development",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "Experience working with various Web APIs",
+        "status": "partial",
+        "evidence": "Shadow DOM used for chat widget at AMO FINTECH; WebSockets and OAuth integrations at DonateSystem"
+      },
+      {
+        "requirement": "Experience using AI tools effectively in web development",
+        "status": "strong",
+        "evidence": "Claude and Codex listed explicitly in AI Tools skills section"
+      },
+      {
+        "requirement": "Readiness to participate in architecture discussions and suggest improvements",
+        "status": "strong",
+        "evidence": "Monorepo architecture design at KYC Market; data-fetching refactor and code audit at AMO FINTECH"
+      }
+    ],
+    "fit_score": 88,
+    "match_notes": "Strong overall match. The candidate covers virtually every must-have requirement with direct, production-proven evidence: React (5+ years), Next.js with SSR, TypeScript, GraphQL + Apollo Client, TailwindCSS, Jest/Vitest, WebSockets, Sentry, and performance optimization with verified metrics. The iGaming/SaaS domain is not a direct match, but the candidate's marketplace and SaaS product experience (crypto marketplace, fintech SaaS) is the closest transferable context and should resonate well. The one real gap is feature flags and trunk-based development — this is a nice-to-have, not a blocker, but worth mentioning if it comes up in the interview. DevTools proficiency is implied but not explicitly stated — be ready to speak to it. The seniority normalization (Senior → Front-End Developer) is applied throughout to align with the vacancy's middle-level framing; the candidate's depth of experience will naturally stand out positively in the interview.",
+    "keywords_to_weave_in": [
+      "App Router",
+      "Server Components",
+      "Web Vitals",
+      "bundle analysis",
+      "code reviews",
+      "sprint planning",
+      "cross-browser",
+      "responsive",
+      "profiling",
+      "DevTools",
+      "AI tools"
+    ]
+  },
+  "experience_check": {
+    "level_checks": [
+      {
+        "location": "experience[0].bullets[0]",
+        "current_text": "Designed and implemented a monorepo architecture using Nx to unify three products — marketplace, admin dashboard, and landing pages — maximizing UI component and business logic reuse",
+        "issue": "too_senior",
+        "explanation": "'Designed and implemented a monorepo architecture' signals org-level architectural ownership (Architected / Defined system design). For a middle-level target, this reads as a senior/staff-level initiative — designing the overarching architecture of a multi-product system is beyond the expected scope.",
+        "suggestion": "Developed and configured a monorepo setup using Nx to unify three products — marketplace, admin dashboard, and landing pages — maximizing UI component and business logic reuse"
+      },
+      {
+        "location": "experience[0].bullets[5]",
+        "current_text": "Contributed to CI/CD pipeline configuration, production monitoring setup, and code review workflows to maintain delivery quality",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[1].bullets[1]",
+        "current_text": "Integrated GraphQL API via Apollo Client across the product, optimizing queries and caching strategies to reduce redundant network requests",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[1].bullets[2]",
+        "current_text": "Refactored the data-fetching layer using TanStack Query, adding caching, background revalidation, and consistent loading-state handling across the application",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[2].bullets[3]",
+        "current_text": "Integrated REST APIs and WebSockets for global state management using Redux, supporting reliable real-time alert distribution",
+        "issue": "too_junior",
+        "explanation": "'Integrated REST APIs and WebSockets' uses a junior-level integration verb with no indication of design decisions, performance considerations, or ownership. For a middle-level target, this bullet lacks the depth of ownership or optimization framing expected.",
+        "suggestion": "Owned real-time data flow by integrating REST APIs and WebSockets with Redux for global state management, ensuring reliable real-time alert distribution across the platform"
+      },
+      {
+        "location": "experience[2].bullets[4]",
+        "current_text": "Delivered pixel-perfect, cross-browser layouts from Figma designs using SCSS, ensuring consistent performance across all device sizes",
+        "issue": "too_junior",
+        "explanation": "'Delivered pixel-perfect layouts from Figma designs' is a classic junior/intern-level framing — it describes execution of design specs rather than any engineering judgment, optimization, or ownership. Middle-level candidates are expected to show more than faithful implementation.",
+        "suggestion": "Built responsive, cross-browser UI components from Figma designs using SCSS, enforcing consistent rendering and performance across all device sizes and browsers"
+      },
+      {
+        "location": "experience[2].bullets[0]",
+        "current_text": "Built an SEO-optimized marketing landing page using Next.js with semantic HTML5, custom meta tags, and responsive layouts to maximize search ranking and conversion",
+        "issue": "too_junior",
+        "explanation": "'Built an SEO-optimized marketing landing page' uses a junior-level verb ('Built') and describes a single-page deliverable with no indication of technical decisions, performance outcomes, or broader impact. The same task at AMO FINTECH (experience[1].bullets[0]) is framed more strongly.",
+        "suggestion": "Developed and optimized a marketing landing page with Next.js (SSR), implementing semantic HTML5, structured metadata, and responsive layouts that improved search rankings and supported user acquisition"
+      },
+      {
+        "location": "experience[2].bullets[1]",
+        "current_text": "Developed data-heavy analytical dashboards with responsive tables (1000+ rows), pagination, transaction filtering, and interactive financial charts for real-time revenue tracking",
+        "issue": "too_junior",
+        "explanation": "'Developed data-heavy analytical dashboards' lists features built but shows no ownership of performance trade-offs, architecture decisions, or measurable outcomes. For a middle-level target, the framing should reflect engineering judgment (e.g., virtualization, rendering strategy) rather than a feature list.",
+        "suggestion": "Designed and delivered data-heavy analytical dashboards featuring virtualized tables (1000+ rows), pagination, transaction filtering, and interactive financial charts — optimizing rendering performance for real-time revenue tracking"
+      }
+    ],
+    "stack_checks": [
+      {
+        "technology": "React",
+        "status": "demonstrated",
+        "location": "experience[0].bullets[1], experience[1].bullets[6], experience[2].bullets[1]"
+      },
+      {
+        "technology": "Next.js",
+        "status": "demonstrated",
+        "location": "experience[0].bullets[2], experience[1].bullets[0], experience[2].bullets[0]"
+      },
+      {
+        "technology": "JavaScript (ES6+)",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Add a brief qualifier in the summary or in a DonateSystem bullet, e.g., 'leveraging ES6+ features (destructuring, async/await, optional chaining) to keep the codebase clean and maintainable', to move it from a skills-list entry to demonstrated usage."
+      },
+      {
+        "technology": "TypeScript",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Weave TypeScript into at least one experience bullet — e.g., in the KYC Market monorepo bullet: '…enforcing strict TypeScript contracts across shared packages to prevent cross-product type regressions.' This turns a listed skill into demonstrated practice."
+      },
+      {
+        "technology": "TailwindCSS",
+        "status": "demonstrated",
+        "location": "experience[1].bullets[6]"
+      },
+      {
+        "technology": "GraphQL",
+        "status": "demonstrated",
+        "location": "experience[1].bullets[1]"
+      },
+      {
+        "technology": "Apollo Client",
+        "status": "demonstrated",
+        "location": "experience[1].bullets[1]"
+      },
+      {
+        "technology": "HTML5",
+        "status": "demonstrated",
+        "location": "experience[0].bullets[2], experience[2].bullets[0]"
+      },
+      {
+        "technology": "CSS",
+        "status": "demonstrated",
+        "location": "experience[1].bullets[6], experience[2].bullets[4]"
+      },
+      {
+        "technology": "Jest",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Add a testing bullet to the KYC Market or AMO FINTECH role, e.g., 'Wrote unit and integration tests with Jest and React Testing Library, maintaining >80% coverage on critical business-logic modules.' This demonstrates Jest in context rather than just listing it."
+      },
+      {
+        "technology": "Git",
+        "status": "mentioned_only",
+        "location": "top_skills, experience[0].bullets[5] (implied via 'code review workflows')",
+        "suggestion": "Strengthen the existing KYC Market CI/CD bullet to explicitly name Git: e.g., '…including Git branching strategy (trunk-based), CI/CD pipeline configuration, and code review workflows…'"
+      },
+      {
+        "technology": "CI/CD",
+        "status": "demonstrated",
+        "location": "experience[0].bullets[5]"
+      }
+    ],
+    "level_score": 55,
+    "stack_score": 79,
+    "overall_score": 64,
+    "recommendations": [
+      {
+        "priority": "high",
+        "type": "seniority",
+        "text": "Reframe the DonateSystem bullets (experience[2].bullets[0], [1], [3], [4]) using middle-level ownership verbs — replace 'Built', 'Integrated', 'Delivered pixel-perfect' with 'Developed', 'Owned', 'Designed and delivered' — and add at least one measurable outcome or engineering decision per bullet to signal the expected level of judgment."
+      },
+      {
+        "priority": "high",
+        "type": "seniority",
+        "text": "Soften the KYC Market monorepo bullet (experience[0].bullets[0]): replace 'Designed and implemented a monorepo architecture' with 'Developed and configured a monorepo setup using Nx…' to avoid the senior/staff-level 'architected the system' signal that overshoots the middle target."
+      },
+      {
+        "priority": "high",
+        "type": "stack",
+        "text": "Add a dedicated testing bullet to the KYC Market or AMO FINTECH role demonstrating Jest (and/or Vitest + React Testing Library) in context — e.g., coverage targets, what was tested, and the outcome. Jest is a must-have requirement and is currently only listed in top_skills, which scores as 'mentioned_only'."
+      },
+      {
+        "priority": "medium",
+        "type": "stack",
+        "text": "Demonstrate TypeScript in at least one experience bullet. The strongest natural fit is the KYC Market monorepo bullet — add a clause about enforcing strict TypeScript contracts across shared Nx packages. TypeScript is a must-have and currently appears only in top_skills."
+      },
+      {
+        "priority": "medium",
+        "type": "framing",
+        "text": "Explicitly name DevTools (Chrome DevTools, Performance/Network panels) in the AMO FINTECH performance bullet (experience[1].bullets[3]). The job description specifically calls out debugging tools, and the current framing ('LCP, TTI through code-splitting') implies profiling work without naming the tooling — a quick addition closes this gap cleanly."
+      }
+    ],
+    "verdict": "CV загалом добре відповідає вакансії Middle Front-End Developer: ключові технології (Next.js SSR, GraphQL + Apollo Client, TailwindCSS, CI/CD) підкріплені конкретними прикладами з досвіду, а метрики продуктивності додають переконливості. Найкритичніша проблема — мовний рівень досвіду в DonateSystem (4 з 5 буллетів звучать як junior-рівень) і один overshooting-буллет у KYC Market, що разом суттєво знижують оцінку відповідності сеньйорності; крім того, Jest і TypeScript — обидва must-have — присутні лише у списку навичок без демонстрації в досвіді."
+  }
+}

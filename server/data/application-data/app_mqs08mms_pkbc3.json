@@ -1,0 +1,537 @@
+{
+  "jobText": "Strong Middle Frontend Developer\n Київ, за кордоном, віддалено\nWe are looking for a Strong Middle Frontend Developer to join the project full-time. This person will be the primary FE contributor — no splitting between projects. They need to be a thinking partner, not an executor — someone the client’s technical leadership wants to work with directly.\n\n\n\nYour responsibilities will include:\nOwn any part of the frontend end-to-end — architecture decisions, performance work, integration, testing — without hand-holding.\nWork directly with the client’s technical leadership as a thinking partner.\nNavigate and extend a large, strictly-conventioned, module-based codebase.\nCover any part of the frontend independently — no “that’s not my area.”\nUse AI-assisted development (Claude Code / Cursor / Copilot or equivalent) fluently and extensively as a primary tool.\nWhat we expect from you:\nCore stack:\n\nTypeScript (strict) — no-any, no-implicit-any codebase; comfortable with generics, discriminated unions, unknown + narrowing, and yup.InferType-style inference.\nReact 19 + Next.js 15 (App Router) — understands the Server Component / Client Component boundary, server-side data fetching in RSCs, layouts vs. pages, route groups, middleware, Server Actions.\nModern React patterns — custom hooks as the primary unit of logic, controlled state, effects used sparingly and correctly, deliberate memoization; smart/dumb component separation.\nState management — Zustand: store design, selectors, provider-scoped stores, SSR hydration concerns.\nForms — React Hook Form + Yup: schema-driven validation, server-error mapping back onto fields, controlled/uncontrolled trade-offs.\nStyling — MUI v7 + Emotion: theme-token-driven styling, sx API, no hardcoded values.\nData layer — Axios: REST integration, interceptors, token refresh / 401 retry flows, typed API clients.\nTesting — Vitest + React Testing Library: meaningful component and hook tests (queries by role/label, not implementation details).\nFoundations:\n\nPerformance reasoning — can diagnose re-render storms, understand React’s reconciliation and memoization model, reason about bundle size, code-splitting, SSR/streaming, Core Web Vitals.\nArchitecture & data flow — can navigate and extend a large, strictly-conventioned, module-based codebase; respects existing architecture and knows when a pattern should be challenged.\nAuth & app-level concerns — token-based auth, session handling, multi-tenant routing.\nBrowser & web fundamentals — solid on HTTP, caching, cookies, the event loop, rendering, accessibility basics.\nTooling:\n\nAI-assisted development (Claude Code / Cursor / Copilot or equivalent) as a primary tool — non-negotiable.\nGit discipline — conventional commits, granular atomic history, clean PRs.\nESLint / Prettier / strict CI — comfortable working inside an opinionated, heavily-linted codebase.\nNice to have:\nMapbox GL or other data-visualization / mapping / charting experience.\nnext-intl or other i18n frameworks.\nSentry or comparable observability / error-monitoring tooling.\nWorkOS / Auth0 / Clerk or similar managed-auth experience.",
+  "analysis": {
+    "role_title": "Strong Middle Frontend Developer",
+    "seniority": "strong-middle",
+    "language": "uk",
+    "must_have": [
+      "TypeScript (strict) — no-any, no-implicit-any; generics, discriminated unions, unknown + narrowing, yup.InferType-style inference",
+      "React 19 + Next.js 15 (App Router) — Server Component / Client Component boundary, server-side data fetching in RSCs, layouts vs. pages, route groups, middleware, Server Actions",
+      "Modern React patterns — custom hooks as primary unit of logic, controlled state, effects used sparingly, deliberate memoization, smart/dumb component separation",
+      "Zustand — store design, selectors, provider-scoped stores, SSR hydration concerns",
+      "React Hook Form + Yup — schema-driven validation, server-error mapping back onto fields, controlled/uncontrolled trade-offs",
+      "MUI v7 + Emotion — theme-token-driven styling, sx API, no hardcoded values",
+      "Axios — REST integration, interceptors, token refresh / 401 retry flows, typed API clients",
+      "Vitest + React Testing Library — component and hook tests using queries by role/label",
+      "Performance reasoning — re-render storms, reconciliation, memoization, bundle size, code-splitting, SSR/streaming, Core Web Vitals",
+      "Token-based auth, session handling, multi-tenant routing",
+      "Browser & web fundamentals — HTTP, caching, cookies, event loop, rendering, accessibility basics",
+      "AI-assisted development (Claude Code / Cursor / Copilot or equivalent) as a primary tool — non-negotiable",
+      "Git discipline — conventional commits, granular atomic history, clean PRs",
+      "ESLint / Prettier / strict CI — comfortable in opinionated, heavily-linted codebase"
+    ],
+    "nice_to_have": [
+      "Mapbox GL or other data-visualization / mapping / charting experience",
+      "next-intl or other i18n frameworks",
+      "Sentry or comparable observability / error-monitoring tooling",
+      "WorkOS / Auth0 / Clerk or similar managed-auth experience"
+    ],
+    "core_technologies": [
+      "TypeScript",
+      "React 19",
+      "Next.js 15",
+      "App Router",
+      "Zustand",
+      "React Hook Form",
+      "Yup",
+      "MUI v7",
+      "Emotion",
+      "Axios",
+      "Vitest",
+      "React Testing Library",
+      "ESLint",
+      "Prettier",
+      "Claude Code",
+      "Cursor",
+      "Copilot",
+      "Mapbox GL",
+      "next-intl",
+      "Sentry",
+      "WorkOS",
+      "Auth0",
+      "Clerk"
+    ],
+    "domains": [
+      "frontend engineering",
+      "web application development",
+      "SaaS / client-facing product"
+    ],
+    "responsibilities": [
+      "Own any part of the frontend end-to-end — architecture decisions, performance work, integration, testing — without hand-holding",
+      "Work directly with the client's technical leadership as a thinking partner",
+      "Navigate and extend a large, strictly-conventioned, module-based codebase",
+      "Cover any part of the frontend independently — no 'that's not my area'",
+      "Use AI-assisted development fluently and extensively as a primary tool"
+    ],
+    "ats_keywords": [
+      "TypeScript",
+      "strict TypeScript",
+      "no-any",
+      "generics",
+      "discriminated unions",
+      "unknown narrowing",
+      "React 19",
+      "Next.js 15",
+      "App Router",
+      "Server Components",
+      "Client Components",
+      "Server Actions",
+      "RSC",
+      "server-side data fetching",
+      "route groups",
+      "middleware",
+      "custom hooks",
+      "memoization",
+      "smart/dumb component separation",
+      "Zustand",
+      "SSR hydration",
+      "React Hook Form",
+      "Yup",
+      "schema-driven validation",
+      "MUI v7",
+      "Emotion",
+      "sx API",
+      "theme tokens",
+      "Axios",
+      "REST integration",
+      "interceptors",
+      "token refresh",
+      "401 retry",
+      "Vitest",
+      "React Testing Library",
+      "Core Web Vitals",
+      "code-splitting",
+      "bundle size",
+      "SSR",
+      "streaming",
+      "token-based auth",
+      "multi-tenant routing",
+      "conventional commits",
+      "ESLint",
+      "Prettier",
+      "CI",
+      "AI-assisted development",
+      "Mapbox GL",
+      "next-intl",
+      "i18n",
+      "Sentry",
+      "Auth0",
+      "Clerk",
+      "WorkOS"
+    ],
+    "soft_signals": [
+      "Thinking partner, not an executor",
+      "Works directly with client's technical leadership",
+      "Full ownership — no splitting between projects",
+      "No 'that's not my area' mentality",
+      "Respects existing architecture and knows when a pattern should be challenged",
+      "Comfortable in opinionated, heavily-linted, strictly-conventioned codebase"
+    ],
+    "red_flags": [
+      "Seniority title is 'Strong Middle' but responsibilities and autonomy expectations (architecture decisions, direct client leadership engagement, end-to-end ownership) are closer to Senior level",
+      "No compensation range disclosed",
+      "Single primary FE contributor — high bus-factor risk for the candidate",
+      "AI-assisted development listed as 'non-negotiable' primary tool — may not suit developers who prefer traditional workflows"
+    ]
+  },
+  "tailored": {
+    "headline": "Front-End Developer | React, Next.js, TypeScript, Zustand, Vitest",
+    "summary": "Front-End Developer with 5+ years of experience delivering complex features end-to-end in React, Next.js, and TypeScript. Comfortable owning any part of the frontend independently — from server-side data fetching and performance optimization to testing and REST integration. Experienced with Zustand, Vitest, React Testing Library, and AI-assisted development as a primary daily tool. Thrives in strictly-conventioned, module-based codebases and works directly with technical stakeholders to translate requirements into production-ready solutions.",
+    "top_skills": [
+      "TypeScript",
+      "React",
+      "Next.js (App Router)",
+      "Zustand",
+      "Vitest",
+      "React Testing Library",
+      "TanStack Query",
+      "Apollo Client",
+      "GraphQL",
+      "React Hook Form",
+      "Yup",
+      "Material UI",
+      "Axios",
+      "REST integration",
+      "SSR",
+      "Server Components",
+      "code-splitting",
+      "Core Web Vitals",
+      "bundle size optimization",
+      "token-based auth",
+      "WebSockets",
+      "SCSS",
+      "Tailwind CSS",
+      "ESLint",
+      "Prettier",
+      "Sentry",
+      "AI-assisted development (Claude",
+      "Codex)",
+      "Nx (Monorepo)",
+      "Playwright",
+      "Jest"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Front-End Developer",
+        "period": "Feb 2025 – Jun 2026",
+        "location": "Remote",
+        "bullets": [
+          "Designed and implemented a monorepo architecture using Nx to unify three products — marketplace, admin dashboard, and landing pages — maximizing UI component and business logic reuse",
+          "Owned the frontend of a crypto marketplace (50K+ MAU), delivering token-based auth, a multi-step order creation workflow, and an advanced search and dynamic filtering infrastructure",
+          "Implemented WebSocket communication, enabling real-time chat messaging and transaction-status synchronization between buyers and sellers within active P2P sessions",
+          "Built a management and arbitration admin panel with financial dashboards, role-based access control (RBAC), subscription management, and dispute intervention tooling",
+          "Developed performance-critical marketing landing pages with Next.js, integrating product analytics, tracking scripts, and A/B testing configurations that boosted conversion rates by ~15%",
+          "Configured CI/CD pipelines, production monitoring, and code review workflows to maintain delivery quality across the full product ecosystem"
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Front-End Developer",
+        "period": "Nov 2022 – Jan 2025",
+        "location": "Remote",
+        "bullets": [
+          "Built a high-performance, SEO-optimized marketing landing page from scratch using Next.js with SSR, optimized page speed, and semantic HTML to support B2B user acquisition",
+          "Refactored the data-fetching layer using TanStack Query, adding caching, background revalidation, and consistent state synchronization across the application",
+          "Developed an isolated embeddable chat widget using Shadow DOM and WebSockets, enabling real-time AI responses on client websites with clean DOM containment",
+          "Implemented a subscription and billing system via Stripe integration, covering multi-tier pricing pages, billing management, and transaction status workflows",
+          "Improved Core Web Vitals (LCP, TTI) through code-splitting and lazy loading, reducing bundle size by ~10% and widget load times by ~15%",
+          "Integrated Sentry for error tracking and production observability, enabling faster debugging and issue triage",
+          "Built an Integrations Hub allowing users to connect third-party platforms (Slack, Telegram, Webhooks) to route leads and notifications from the chatbot"
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Front-End Developer",
+        "period": "Nov 2020 – Oct 2022",
+        "location": "Remote",
+        "bullets": [
+          "Contributed to building and launching the platform from scratch, delivering features across admin panel and marketing modules end-to-end",
+          "Built an SEO-optimized marketing landing page using Next.js with semantic HTML, custom meta tags, and responsive layouts to maximize search ranking",
+          "Developed data-heavy analytical dashboards with responsive tables (1000+ rows), pagination, transaction filtering, and interactive financial charts",
+          "Implemented OAuth integrations with Twitch, YouTube, and Kick for streamer authorization, profile synchronization, and live broadcast status tracking",
+          "Integrated REST APIs and WebSockets for global state management using Redux and real-time alert distribution"
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc Logistics",
+        "period": "2018 – 2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc Management",
+        "period": "2014 – 2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "TypeScript (strict) — generics, discriminated unions, unknown + narrowing, inference",
+        "status": "partial",
+        "evidence": "TypeScript listed as primary language across all roles; strict patterns (generics, discriminated unions) not explicitly evidenced in master CV"
+      },
+      {
+        "requirement": "React 19 + Next.js 15 (App Router) — RSC, Server Actions, layouts, route groups, middleware",
+        "status": "partial",
+        "evidence": "Next.js used across all three employers; SSR and App Router not explicitly versioned in master CV; RSC/Server Actions not mentioned"
+      },
+      {
+        "requirement": "Modern React patterns — custom hooks, controlled state, deliberate memoization, smart/dumb separation",
+        "status": "partial",
+        "evidence": "React used across all roles; specific patterns (custom hooks as primary unit, memoization strategy) not explicitly stated in master CV"
+      },
+      {
+        "requirement": "Zustand — store design, selectors, provider-scoped stores, SSR hydration",
+        "status": "partial",
+        "evidence": "Zustand listed in skills and used at KYC Market; SSR hydration specifics not evidenced"
+      },
+      {
+        "requirement": "React Hook Form + Yup — schema-driven validation, server-error mapping",
+        "status": "missing",
+        "evidence": "Multi-step forms with validation evidenced at KYC Market and DonateSystem, but React Hook Form and Yup are not mentioned in master CV"
+      },
+      {
+        "requirement": "MUI v7 + Emotion — theme-token-driven styling, sx API",
+        "status": "partial",
+        "evidence": "Material UI listed in skills and used at AMO FINTECH; Emotion and sx API / theme tokens not explicitly mentioned"
+      },
+      {
+        "requirement": "Axios — REST integration, interceptors, token refresh / 401 retry, typed API clients",
+        "status": "partial",
+        "evidence": "REST API integration evidenced across roles; Axios not explicitly named in master CV"
+      },
+      {
+        "requirement": "Vitest + React Testing Library — component and hook tests",
+        "status": "strong",
+        "evidence": "Vitest and React Testing Library explicitly listed in skills and tech stack at KYC Market and AMO FINTECH"
+      },
+      {
+        "requirement": "Performance reasoning — re-renders, memoization, bundle size, code-splitting, Core Web Vitals, SSR/streaming",
+        "status": "strong",
+        "evidence": "Bundle size reduced ~10%, widget load times ~15% at AMO FINTECH; LCP/TTI optimization; code-splitting and lazy loading explicitly stated; Next.js SSR used across roles"
+      },
+      {
+        "requirement": "Token-based auth, session handling, multi-tenant routing",
+        "status": "strong",
+        "evidence": "Secure authentication delivered at KYC Market (50K+ MAU); OAuth integrations at DonateSystem; RBAC at KYC Market admin panel"
+      },
+      {
+        "requirement": "Browser & web fundamentals — HTTP, caching, cookies, event loop, rendering, accessibility",
+        "status": "partial",
+        "evidence": "Caching via TanStack Query, Shadow DOM, WebSockets, SSR evidenced; accessibility and event loop not explicitly mentioned"
+      },
+      {
+        "requirement": "AI-assisted development (Claude Code / Cursor / Copilot) as primary tool — non-negotiable",
+        "status": "strong",
+        "evidence": "Claude and Codex listed explicitly in AI Tools skills section"
+      },
+      {
+        "requirement": "Git discipline — conventional commits, granular atomic history, clean PRs",
+        "status": "partial",
+        "evidence": "Code review workflows and CI/CD configuration evidenced at KYC Market; conventional commits not explicitly mentioned"
+      },
+      {
+        "requirement": "ESLint / Prettier / strict CI — opinionated, heavily-linted codebase",
+        "status": "partial",
+        "evidence": "CI/CD pipelines and code review workflows configured at KYC Market; ESLint/Prettier not explicitly named in master CV"
+      },
+      {
+        "requirement": "Mapbox GL or data-visualization / mapping / charting (nice to have)",
+        "status": "partial",
+        "evidence": "Interactive financial charts and data-heavy dashboards built at DonateSystem and KYC Market; Mapbox GL not mentioned"
+      },
+      {
+        "requirement": "next-intl or i18n frameworks (nice to have)",
+        "status": "missing",
+        "evidence": "No i18n or internationalization experience mentioned in master CV"
+      },
+      {
+        "requirement": "Sentry or observability / error-monitoring (nice to have)",
+        "status": "strong",
+        "evidence": "Sentry integrated at AMO FINTECH for error tracking and production observability"
+      },
+      {
+        "requirement": "WorkOS / Auth0 / Clerk or managed-auth (nice to have)",
+        "status": "missing",
+        "evidence": "No WorkOS, Auth0, or Clerk experience mentioned in master CV"
+      }
+    ],
+    "fit_score": 68,
+    "match_notes": "**Where you are strong:**\n- React, Next.js, and TypeScript across 5+ years and three employers — solid foundation\n- Vitest + React Testing Library explicitly in your stack — direct match\n- Performance optimization is well-evidenced: bundle size, LCP/TTI, code-splitting, lazy loading, Core Web Vitals\n- Sentry integration is a direct nice-to-have match\n- AI-assisted development (Claude, Codex) is explicitly listed — this is a non-negotiable for the role and you have it\n- Token-based auth, RBAC, and OAuth integrations demonstrate auth depth\n- Zustand is in your stack and used in production\n\n**Where the real gaps are:**\n- **React Hook Form + Yup** — not mentioned anywhere in your master CV. This is a must-have. If you have used it, add it to your skills and be ready to discuss it in depth\n- **Axios** — REST integration is evidenced but Axios is never named. If you have used it, add it explicitly\n- **App Router specifics** — RSC, Server Actions, route groups, middleware are not evidenced. Next.js is present but the vacancy targets Next.js 15 App Router patterns specifically. Be prepared to speak to these in detail\n- **Strict TypeScript patterns** — generics, discriminated unions, unknown narrowing are not evidenced in your CV. If you use these, surface them\n- **MUI v7 + Emotion / sx API / theme tokens** — Material UI is listed but the vacancy wants theme-token-driven styling with the sx API. Clarify your depth here\n- **i18n (next-intl)** — no evidence at all; this is a nice-to-have gap\n- **WorkOS / Auth0 / Clerk** — no evidence; nice-to-have gap\n- **ESLint / Prettier** — not named explicitly; add to skills if you use them (very likely you do)\n- **Conventional commits / Git discipline** — not evidenced; mention if practiced\n\n**Overall:** You are a credible candidate with strong production experience and the right core stack. The primary risk is the gap around React Hook Form/Yup and Next.js 15 App Router specifics — these are must-haves the vacancy tests for directly. Close those gaps in your skills list and be ready to demonstrate them technically.",
+    "keywords_to_weave_in": [
+      "strict TypeScript",
+      "generics",
+      "Server Components",
+      "App Router",
+      "SSR hydration",
+      "code-splitting",
+      "Core Web Vitals",
+      "token-based auth",
+      "REST integration",
+      "schema-driven validation",
+      "AI-assisted development",
+      "ESLint",
+      "Prettier",
+      "conventional commits",
+      "memoization",
+      "custom hooks"
+    ]
+  },
+  "experience_check": {
+    "level_checks": [
+      {
+        "location": "headline",
+        "current_text": "Front-End Developer | React, Next.js, TypeScript, Zustand, Vitest",
+        "issue": "too_junior",
+        "explanation": "The title 'Front-End Developer' is generic and does not signal strong-middle seniority. It lacks any qualifier that communicates ownership, depth, or scope expected at this level.",
+        "suggestion": "Strong Middle Front-End Developer | React 19, Next.js 15 (App Router), TypeScript, Zustand, Vitest"
+      },
+      {
+        "location": "experience[0].bullets[0]",
+        "current_text": "Designed and implemented a monorepo architecture using Nx to unify three products — marketplace, admin dashboard, and landing pages — maximizing UI component and business logic reuse",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[0].bullets[5]",
+        "current_text": "Configured CI/CD pipelines, production monitoring, and code review workflows to maintain delivery quality across the full product ecosystem",
+        "issue": "too_junior",
+        "explanation": "'Configured' is a passive, task-level verb that undersells the scope. At strong-middle level, this should convey ownership and deliberate engineering decisions, not just setup work.",
+        "suggestion": "Owned CI/CD pipeline design, production monitoring setup, and code-review conventions to enforce delivery quality and consistency across the full product ecosystem"
+      },
+      {
+        "location": "experience[1].bullets[0]",
+        "current_text": "Built a high-performance, SEO-optimized marketing landing page from scratch using Next.js with SSR, optimized page speed, and semantic HTML to support B2B user acquisition",
+        "issue": "too_junior",
+        "explanation": "'Built' is a junior-level verb. The work described — SSR, performance optimization, SEO strategy — warrants stronger ownership language at strong-middle level.",
+        "suggestion": "Engineered a high-performance, SEO-optimized marketing landing page with Next.js SSR, semantic HTML, and page-speed tuning, directly supporting B2B user acquisition goals"
+      },
+      {
+        "location": "experience[1].bullets[3]",
+        "current_text": "Implemented a subscription and billing system via Stripe integration, covering multi-tier pricing pages, billing management, and transaction status workflows",
+        "issue": "too_junior",
+        "explanation": "'Implemented' signals execution rather than ownership. A subscription/billing system with multi-tier pricing is a significant product surface that deserves stronger framing at strong-middle level.",
+        "suggestion": "Owned the subscription and billing system end-to-end via Stripe integration — designing multi-tier pricing pages, billing management flows, and transaction status workflows"
+      },
+      {
+        "location": "experience[2].bullets[0]",
+        "current_text": "Contributed to building and launching the platform from scratch, delivering features across admin panel and marketing modules end-to-end",
+        "issue": "too_junior",
+        "explanation": "'Contributed to' is explicitly an intern/junior-level verb. Even if this was an earlier role, it actively undermines the strong-middle narrative and should be reframed to reflect actual ownership.",
+        "suggestion": "Delivered features end-to-end across admin panel and marketing modules, playing a core role in building and launching the platform from scratch"
+      },
+      {
+        "location": "experience[2].bullets[4]",
+        "current_text": "Integrated REST APIs and WebSockets for global state management using Redux and real-time alert distribution",
+        "issue": "too_junior",
+        "explanation": "'Integrated' at this level is acceptable for a single integration, but combined with 'REST APIs and WebSockets' as a flat list it reads as task execution rather than design ownership. Redux global state architecture deserves stronger framing.",
+        "suggestion": "Designed the global state architecture with Redux, integrating REST APIs and WebSockets to power real-time alert distribution across the platform"
+      },
+      {
+        "location": "experience[0].bullets[1]",
+        "current_text": "Owned the frontend of a crypto marketplace (50K+ MAU), delivering token-based auth, a multi-step order creation workflow, and an advanced search and dynamic filtering infrastructure",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[1].bullets[4]",
+        "current_text": "Improved Core Web Vitals (LCP, TTI) through code-splitting and lazy loading, reducing bundle size by ~10% and widget load times by ~15%",
+        "issue": "ok"
+      }
+    ],
+    "stack_checks": [
+      {
+        "technology": "TypeScript",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Add a bullet to KYC Market or AMO FINTECH explicitly referencing strict TypeScript patterns: e.g., 'Enforced strict TypeScript across the codebase — generics for reusable data-fetching hooks, discriminated unions for order/transaction state machines, and unknown + narrowing for API response handling'"
+      },
+      {
+        "technology": "React 19",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Version React explicitly in at least one KYC Market bullet; tie it to React 19 features (e.g., use() hook, Server Actions) to signal currency with the latest release"
+      },
+      {
+        "technology": "Next.js 15",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Version Next.js explicitly in the KYC Market role and reference App Router specifics: layouts, route groups, middleware, or Server Actions — e.g., 'Migrated routing to Next.js 15 App Router, leveraging route groups for multi-tenant layout isolation and middleware for auth-gated navigation'"
+      },
+      {
+        "technology": "App Router",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Surface App Router usage in a KYC Market bullet with concrete patterns: Server Components for data fetching, layouts vs. pages separation, or route groups for tenant isolation"
+      },
+      {
+        "technology": "Zustand",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Add a bullet at KYC Market referencing Zustand store design specifics: e.g., 'Designed provider-scoped Zustand stores with typed selectors to isolate marketplace, admin, and landing-page state, handling SSR hydration to prevent client/server mismatch'"
+      },
+      {
+        "technology": "React Hook Form",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Add to a KYC Market bullet: e.g., 'Built the multi-step order creation workflow with React Hook Form and Yup schema validation, mapping server-side field errors back onto form fields for inline user feedback'"
+      },
+      {
+        "technology": "Yup",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Pair with React Hook Form in the same KYC Market bullet; reference schema-driven validation and yup.InferType for end-to-end type safety between form schema and TypeScript types"
+      },
+      {
+        "technology": "MUI v7",
+        "status": "mentioned_only",
+        "location": "top_skills (listed as 'Material UI')",
+        "suggestion": "Rename to 'MUI v7' in skills and add a bullet at KYC Market or AMO FINTECH: e.g., 'Styled all UI surfaces with MUI v7 using the sx API and design-token-driven theme — zero hardcoded color or spacing values across the component library'"
+      },
+      {
+        "technology": "Emotion",
+        "status": "missing",
+        "suggestion": "Add Emotion to top_skills and reference it alongside MUI v7 in an experience bullet, noting its use for custom component styling within the MUI theme system"
+      },
+      {
+        "technology": "Axios",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Add a bullet at KYC Market or AMO FINTECH: e.g., 'Built a typed Axios API client with request/response interceptors handling token refresh and automatic 401 retry, centralizing auth logic across all REST calls'"
+      },
+      {
+        "technology": "Vitest",
+        "status": "demonstrated",
+        "location": "top_skills + experience[0] implied stack"
+      },
+      {
+        "technology": "React Testing Library",
+        "status": "demonstrated",
+        "location": "top_skills + experience[0] implied stack"
+      },
+      {
+        "technology": "ESLint",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Reference ESLint and Prettier explicitly in the KYC Market CI/CD bullet: e.g., 'Owned CI/CD pipeline design enforcing ESLint and Prettier on every PR, maintaining zero-lint-error policy across the monorepo'"
+      },
+      {
+        "technology": "Prettier",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Pair with ESLint in the KYC Market CI/CD bullet as noted above"
+      },
+      {
+        "technology": "Claude Code",
+        "status": "mentioned_only",
+        "location": "top_skills (listed as 'Claude')",
+        "suggestion": "Strengthen the summary or add a bullet: e.g., 'Use Claude Code and Cursor as primary development tools — generating boilerplate, reviewing logic, and accelerating feature delivery across the full stack'"
+      },
+      {
+        "technology": "Cursor",
+        "status": "missing",
+        "suggestion": "Add Cursor to top_skills alongside Claude Code and reference both in a summary sentence or dedicated bullet about AI-assisted development workflow"
+      },
+      {
+        "technology": "Copilot",
+        "status": "missing",
+        "suggestion": "Add GitHub Copilot to top_skills if used; if Cursor/Claude Code are the primary tools, a brief mention in the AI tools section is sufficient to cover this requirement"
+      },
+      {
+        "technology": "Mapbox GL",
+        "status": "missing",
+        "suggestion": "If not used, omit — this is a nice-to-have. If interactive map work exists in the master CV, add a brief mention in the KYC Market or DonateSystem role"
+      },
+      {
+        "technology": "next-intl",
+        "status": "missing",
+        "suggestion": "If no i18n experience exists in the master CV, acknowledge the gap in interview prep. If any localization work was done, add it to the KYC Market role with next-intl or equivalent named explicitly"
+      },
+      {
+        "technology": "Sentry",
+        "status": "demonstrated",
+        "location": "experience[1].bullets[5]"
+      },
+      {
+        "technology": "WorkOS",
+        "status": "missing",
+        "suggestion": "Nice-to-have gap — no evidence in master CV. If any managed-auth provider (Auth0, Clerk, WorkOS) was used, name it explicitly in the relevant role's auth bullet"
+      },
+      {
+        "technology": "Auth0",
+        "status": "missing",
+        "suggestion": "Nice-to-have gap — if Auth0 or a comparable managed-auth provider was used, surface it in the KYC Market auth bullet"
+      },
+      {
+        "technology": "Clerk",
+        "status": "missing",
+        "suggestion": "Nice-to-have gap — same as Auth0/WorkOS; name any managed-auth provider used if applicable"
+      }
+    ],
+    "level_score": 55,
+    "stack_score": 30,
+    "overall_score": 45,
+    "recommendations": []
+  }
+}

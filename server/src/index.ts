@@ -5,10 +5,11 @@ import multer from "multer";
 import type { RequestHandler } from "express";
 import { PORT, MASTER_CV_PATH, anthropic, MODEL, CV_PROFILES_DIR, cvProfilePath, DEFAULT_PROFILE } from "./config.js";
 import { MOCK_INTERVIEW_SYSTEM } from "./prompts.js";
-import { analyzeJob, tailorCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter, generateCompanyBrief, runAtsCheck, normalizeTailoredCv, normalizeAtsCheckResult } from "./pipeline.js";
+import { analyzeJob, tailorCv, refineCv, extractCvFromPdf, generateFollowupEmail, generateCoverLetter, generateCompanyBrief, runAtsCheck, enhanceCvForAts, normalizeTailoredCv, normalizeAtsCheckResult, runExperienceVerification, enhanceCvForExperience } from "./pipeline.js";
 import { buildDocx, type CvHeader } from "./docx.js";
 import { buildPdf } from "./pdf.js";
 import type { TailoredCv, JobAnalysis } from "./schemas.js";
+import { type CandidateLevel } from "./prompt-builder.js";
 import {
   readApplications,
   addApplication,
@@ -16,12 +17,14 @@ import {
   deleteApplication,
   saveApplicationData,
   readApplicationData,
+  customPdfPath,
   APPLICATIONS_XLSX_PATH,
   listCvProfiles,
   loadCvProfile,
   saveCvProfile,
   type Status,
   type ApplicationData,
+  STATUSES,
 } from "./store.js";
 
 const upload = multer({
@@ -79,6 +82,15 @@ function fail(res: express.Response, err: unknown, code = 500) {
   res.status(code).json({ error: message });
 }
 
+const VALID_LEVELS = ["junior", "middle", "strong-middle", "senior"] as const;
+
+function seniorityToLevel(s: string): CandidateLevel {
+  if (s === "senior" || s === "lead" || s === "staff" || s === "principal") return "senior";
+  if (s === "junior" || s === "intern") return "junior";
+  if (s === "strong-middle") return "strong-middle";
+  return "middle";
+}
+
 app.get("/api/health", (_req, res) => res.json({ ok: true }));
 
 // ---- Master CV ----
@@ -124,7 +136,7 @@ app.post("/api/tailor", async (req, res) => {
     }
     const masterCv = await readMasterCv(cvProfile as string);
     const role = (typeof userRole === "string" && userRole.trim()) ? userRole.trim() : (masterCv.title ?? "Software Engineer");
-    const level = (userLevel === "junior" || userLevel === "senior") ? userLevel : "middle";
+    const level: CandidateLevel = VALID_LEVELS.includes(userLevel as CandidateLevel) ? userLevel as CandidateLevel : "middle";
     const analysis: JobAnalysis = preAnalysis ?? await analyzeJob(jobText);
     const tailored = await tailorCv(masterCv, analysis, {
       customInstructions: typeof customInstructions === "string" ? customInstructions : undefined,
@@ -160,6 +172,7 @@ app.post("/api/docx", async (req, res) => {
   try {
     if (!req.body?.tailored) return fail(res, new Error("Missing tailored CV in request body."), 400);
     const tailored = normalizeTailoredCv(req.body.tailored as TailoredCv);
+    const company: string | undefined = req.body.company;
     const master = await readMasterCv();
     const header: CvHeader = {
       name: master.name ?? "Your Name",
@@ -169,7 +182,8 @@ app.post("/api/docx", async (req, res) => {
       links: master.links,
     };
     const buffer = await buildDocx(tailored, header);
-    const safe = (header.name + " - " + tailored.headline)
+    const companySuffix = company ? "_" + company : "";
+    const safe = (header.name + "_CV" + companySuffix)
       .replace(/[^\w\s-]/g, "")
       .replace(/\s+/g, "_")
       .slice(0, 80);
@@ -188,6 +202,33 @@ app.post("/api/docx", async (req, res) => {
 app.get("/api/applications", async (_req, res) => {
   try {
     res.json(await readApplications());
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.post("/api/applications", async (req, res) => {
+  try {
+    const body = (req.body ?? {}) as Record<string, unknown>;
+    const company = typeof body.company === "string" ? body.company.trim() : "";
+    const role    = typeof body.role    === "string" ? body.role.trim()    : "";
+    if (!company) return fail(res, new Error("company is required"), 400);
+    if (!role)    return fail(res, new Error("role is required"), 400);
+    const status: Status =
+      typeof body.status === "string" && (STATUSES as readonly string[]).includes(body.status)
+        ? (body.status as Status)
+        : "Applied";
+    const application = await addApplication({
+      company, role, status,
+      seniority: typeof body.seniority === "string" ? body.seniority.trim() : "",
+      fitScore: 0,
+      jobUrl:  typeof body.jobUrl  === "string" ? body.jobUrl.trim()  : "",
+      source:  typeof body.source  === "string" ? body.source.trim()  : "",
+      salary:  typeof body.salary  === "string" ? body.salary.trim()  : "",
+      notes:   typeof body.notes   === "string" ? body.notes.trim()   : "",
+      language: "en",
+    });
+    res.status(201).json({ application });
   } catch (err) {
     fail(res, err);
   }
@@ -221,6 +262,50 @@ app.patch("/api/applications/:id/data", async (req, res) => {
   }
 });
 
+// ---- Custom PDF upload / download / delete ----
+app.post(
+  "/api/applications/:id/upload-pdf",
+  upload.single("file") as unknown as RequestHandler,
+  async (req, res) => {
+    try {
+      if (!req.file) return fail(res, new Error("No file uploaded. Send the PDF in the 'file' field."), 400);
+      const id = req.params['id'] as string;
+      const data = await readApplicationData(id);
+      if (!data) return fail(res, new Error("Application data not found."), 404);
+      await fs.writeFile(customPdfPath(id), req.file.buffer);
+      await saveApplicationData(id, { ...data, customPdf: true });
+      res.json({ ok: true });
+    } catch (err) {
+      fail(res, err);
+    }
+  },
+);
+
+app.get("/api/applications/:id/custom-pdf", async (req, res) => {
+  try {
+    const filePath = customPdfPath(req.params.id);
+    await fs.access(filePath);
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", `attachment; filename="CV.pdf"`);
+    const buf = await fs.readFile(filePath);
+    res.send(buf);
+  } catch {
+    fail(res, new Error("Custom PDF not found."), 404);
+  }
+});
+
+app.delete("/api/applications/:id/custom-pdf", async (req, res) => {
+  try {
+    const data = await readApplicationData(req.params.id);
+    if (!data) return fail(res, new Error("Application data not found."), 404);
+    await fs.unlink(customPdfPath(req.params.id)).catch(() => {});
+    await saveApplicationData(req.params.id, { ...data, customPdf: false });
+    res.json({ ok: true });
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
 app.patch("/api/applications/:id", async (req, res) => {
   try {
     const { id: _id, dateAdded: _da, redFlagsCount: _rfc, ...patchable } = (req.body ?? {}) as Record<string, unknown>;
@@ -247,6 +332,7 @@ app.post("/api/pdf", async (req, res) => {
   try {
     if (!req.body?.tailored) return fail(res, new Error("Missing tailored CV in request body."), 400);
     const tailored = normalizeTailoredCv(req.body.tailored as TailoredCv);
+    const company: string | undefined = req.body.company;
     const master = await readMasterCv();
     const header: CvHeader = {
       name: master.name ?? "Your Name",
@@ -256,7 +342,8 @@ app.post("/api/pdf", async (req, res) => {
       links: master.links,
     };
     const buffer = await buildPdf(tailored, header);
-    const safe = (header.name + " - " + tailored.headline)
+    const companySuffix = company ? "_" + company : "";
+    const safe = (header.name + "_CV" + companySuffix)
       .replace(/[^\w\s-]/g, "")
       .replace(/\s+/g, "_")
       .slice(0, 80);
@@ -494,6 +581,138 @@ app.post("/api/applications/:id/ats-check", async (req, res) => {
     const result = await runAtsCheck(data.analysis, data.tailored);
     await saveApplicationData(id, { ...data, ats_check: result });
     res.json({ ats_check: result });
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.post("/api/applications/:id/ats-enhance", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await readApplicationData(id);
+    if (!data) {
+      res.status(404).json({ error: "Application not found" });
+      return;
+    }
+    if (!data.ats_check) {
+      res.status(400).json({ error: "Run ATS check first" });
+      return;
+    }
+    const masterCv = await readMasterCv();
+    const enhanced = await enhanceCvForAts(masterCv, data.tailored, data.ats_check, data.analysis);
+    const newAtsCheck = await runAtsCheck(data.analysis, enhanced);
+    await saveApplicationData(id, { ...data, tailored: enhanced, ats_check: newAtsCheck });
+    res.json({ tailored: enhanced, ats_check: newAtsCheck });
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.post("/api/applications/:id/experience-check", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await readApplicationData(id);
+    if (!data) {
+      res.status(404).json({ error: "Application not found" });
+      return;
+    }
+    const result = await runExperienceVerification(data.analysis, data.tailored);
+    await saveApplicationData(id, { ...data, experience_check: result });
+    res.json({ experience_check: result });
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.post("/api/applications/:id/experience-enhance", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await readApplicationData(id);
+    if (!data) {
+      res.status(404).json({ error: "Application not found" });
+      return;
+    }
+    if (!data.experience_check) {
+      res.status(400).json({ error: "Run experience check first" });
+      return;
+    }
+    const masterCv = await readMasterCv();
+    const enhanced = await enhanceCvForExperience(
+      masterCv,
+      data.tailored,
+      data.experience_check,
+      data.analysis,
+    );
+    const newCheck = await runExperienceVerification(data.analysis, enhanced);
+    await saveApplicationData(id, { ...data, tailored: enhanced, experience_check: newCheck });
+    res.json({ tailored: enhanced, experience_check: newCheck });
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.post("/api/applications/:id/retailor", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { customInstructions, userLevel } = req.body as {
+      customInstructions?: string;
+      userLevel?: string;
+    };
+
+    const data = await readApplicationData(id);
+    if (!data) { res.status(404).json({ error: "Application not found" }); return; }
+
+    const masterCv = await readMasterCv();
+    const role = data.analysis.role_title;
+    const baseLevel = seniorityToLevel(data.analysis.seniority);
+    const effectiveLevel: CandidateLevel =
+      VALID_LEVELS.includes(userLevel as CandidateLevel) ? userLevel as CandidateLevel : baseLevel;
+
+    const tailored = await tailorCv(masterCv, data.analysis, {
+      customInstructions:
+        typeof customInstructions === "string" && customInstructions.trim()
+          ? customInstructions.trim()
+          : undefined,
+      role,
+      level: effectiveLevel,
+    });
+
+    await saveApplicationData(id, {
+      ...data,
+      tailored,
+      ats_check: undefined,
+      experience_check: undefined,
+    });
+    res.json({ tailored });
+  } catch (err) {
+    fail(res, err);
+  }
+});
+
+app.post("/api/applications/:id/refine", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { customInstructions } = req.body as { customInstructions?: string };
+
+    const data = await readApplicationData(id);
+    if (!data) { res.status(404).json({ error: "Application not found" }); return; }
+    if (!data.tailored) { res.status(400).json({ error: "No tailored CV to refine" }); return; }
+
+    const masterCv = await readMasterCv();
+    const tailored = await refineCv(masterCv, data.tailored, data.analysis, {
+      customInstructions:
+        typeof customInstructions === "string" && customInstructions.trim()
+          ? customInstructions.trim()
+          : undefined,
+    });
+
+    await saveApplicationData(id, {
+      ...data,
+      tailored,
+      ats_check: undefined,
+      experience_check: undefined,
+    });
+    res.json({ tailored });
   } catch (err) {
     fail(res, err);
   }

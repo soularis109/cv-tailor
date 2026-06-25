@@ -1,0 +1,520 @@
+{
+  "jobText": "React Developer\n віддалено\nTenexti is an emerging software development company based in Lviv. We specialize in creating innovative solutions, delivering high-quality results, and helping our clients turn their ideas into reality. With a passion for technology and a commitment to excellence, we strive to build lasting partnerships and drive meaningful impact through our work.\n\nWe are looking for a Frontend engineer to join our team.\n\n🧑‍💻 What we expect from the ideal candidate:\nYou have 2–3 years of experience working with React in production environments.\nYou are a good engineer. You don’t write code just to the point where it starts working. You go the extra mile to make your code elegant, simple, robust, and easy to maintain.\nYou have strong TypeScript and React proficiency. You understand component architecture, state management, API integration, performance, and frontend best practices.\nYou have good UX taste. You care not only about how the code works, but also about how the product feels. You notice rough edges, think about users, and want to build interfaces that are clear, fast, and pleasant to use.\nYou think beyond just coding. Building great software isn’t about closing tickets — it’s about making the product and codebase better every time you touch it. You ask questions, care about the “why”, and think about the real business impact of your work.\nYou are open-minded and eager to learn. You are interested in modern frontend tools, patterns, and approaches, and you are excited to apply them in real production systems.\nYou are a good team player. You treat people around you well and have strong communication skills to articulate technical decisions clearly.\nYou don’t need supervision. You are self-driven and can solve problems on your own. You take initiative when you see opportunities for improvement.\n💡 What you will do:\nWork on two main products of the company. One product is already built with React, while the second one currently has a legacy Vue.js frontend that needs to be rewritten using a modern React stack.\nMaintain and improve the existing React product. You will add new features, build new pages, improve existing flows, and continuously make the user experience better.\nRewrite a legacy frontend from Vue.js to React. This is a great opportunity to build a modern frontend from the ground up using current best practices, clean architecture, and a thoughtful developer experience.\nCreate high-quality user interfaces. You will work not only on functionality, but also on usability, clarity, performance, and the overall feeling of the product.\nImprove frontend architecture. You will help shape component structure, data-fetching patterns, reusable UI abstractions, routing, forms, error handling, and overall maintainability.\nCollaborate with backend engineers. Most of the heavy business logic lives on the backend, but the frontend must represent it clearly and reliably for users.\nPerform code reviews. We treat code reviews seriously. You will review pull requests, suggest cleaner and simpler approaches, and also receive thoughtful reviews from your peers.\nOptionally explore backend Node.js services in the future. This is not required for the role, but if you are interested, there may be opportunities to look into our Node.js/NestJS ecosystem over time.\nTeam and Customer:\n\nWe are a team of engineers based in Lviv working for a US-based customer. All engineers and architectural decisions are here locally—no late calls with the US, no overseas knowledge holders blocking you.\n\nOur customer is not backed by venture capital but by reliable business revenue. We’re self-funded and don’t experience pressure to cut roles in Ukraine due to \"country risks\"—quite common lately.\n\nWe’re hiring due to business growth. By leveraging technology and smart people, we empower the business to grow further.\n\nProduct:\n\nWe work on a high-stakes data synchronization system handling hundreds of thousands of records in real-time. The product ensures data consistency between multiple systems while operating under strict rate limits and performance constraints.\n\nThis is a fascinating technical challenge—not a simple CRUD application, but a complex, performance-sensitive system where every optimization matters, stability is non-negotiable, and creative problem-solving is daily routine.\n\nTechnical highlights:\n\nTwo major frontend products: one already built with React, and one legacy Vue.js frontend that will be rewritten using a modern React stack.\nA browser extension: written in React that interacts with our system.\nLarge-scale production infrastructure: our systems run on a serious infrastructure footprint with around 1TB of RAM across the cluster and hundreds of CPU cores.\nComplex distributed architecture: frontend applications interact with backend services that depend on multiple Node.js microservices, Java/Kotlin applications, RabbitMQ, Redis, MongoDB, PostgreSQL, Hasura, and GraphQL.\nBusiness-critical workflows: the frontend is used to operate and understand complex synchronization flows, pricing logic.\nHigh reliability expectations: mistakes can have serious business impact, so clarity, validation, observability, and thoughtful UX matter a lot.\n🚀 Our technology stack:\n\nFrontend:\nReact 19\nTypeScript\nTailwindcss\nAntd\nTanstack Query (react-query)\nTanstack Router\nVite\nGraphQL\nVue.js legacy frontend — to be rewritten in React\nModern frontend tooling and best practices\nBrowser Extension:\nReact 18\nTypeScript\nTanstack Query (react-query)\nTailwindcss\nAntd\nBackend:\n\nJava 21 & Kotlin (actively migrating towards more Kotlin)\nSpring Boot\nMongoDb, Redis\nGoRules for complex business logic\nInfrastructure & DevOps:\n\nKubernetes\nArgoCD and Github Actions\nOpenSearch for logs\nPrometheus & Grafana for metrics & traces\nThe broader ecosystem:\n\nTypeScript, Node.js & Nest.js microservices\nPostgreSQL, Hasura & GraphQL\nWhy choose this project and team?\n\nStable project running successfully for 8+ years with consistent revenue growth\nEntire R&D team in Ukraine making all architectural decisions locally\nMission-critical production system where your decisions directly impact business outcomes\nReal engineering challenges: Performance optimization, rate limiting, data consistency, large-scale refactoring\nOpportunity to work on a quite high load production system (Monolith + microservices) and have an impact on how it is designed and shaped.\nPerks and Benefits:\n\n🏋️‍♂️ Gym compensation\n\n🏝18 days of paid vacation, public holidays, and paid sick leave\n\n💻 Modern tech gear: MacBook based on silicon CPU (M1-M3) with 32 of RAM\n\n🇬🇧 English lessons\n\n⏱️ Flexible working hours and no time trackers\n\n✈️ Possible trips to USA when the war ends. Before the war, we flew there twice and we loved it :)\n\nIf you read this far please start your message with “Glory to Ukraine!”, thank you!",
+  "analysis": {
+    "role_title": "React Developer (Frontend Engineer)",
+    "seniority": "middle",
+    "language": "uk",
+    "must_have": [
+      "2–3 years of experience working with React in production environments",
+      "Strong TypeScript proficiency",
+      "Strong React proficiency",
+      "Understanding of component architecture",
+      "State management",
+      "API integration",
+      "Performance optimization",
+      "Frontend best practices",
+      "Good UX sensibility",
+      "Code review experience",
+      "Self-driven, able to work without supervision",
+      "Strong communication skills"
+    ],
+    "nice_to_have": [
+      "Experience with Vue.js (legacy frontend context)",
+      "Interest in or experience with Node.js/NestJS backend services",
+      "Familiarity with GraphQL",
+      "Experience with browser extension development",
+      "Knowledge of distributed systems or microservices architecture"
+    ],
+    "core_technologies": [
+      "React",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Ant Design (Antd)",
+      "TanStack Query (react-query)",
+      "TanStack Router",
+      "Vite",
+      "GraphQL",
+      "Vue.js",
+      "Node.js",
+      "NestJS",
+      "React 18"
+    ],
+    "domains": [
+      "software development",
+      "data synchronization",
+      "SaaS / B2B products",
+      "distributed systems",
+      "browser extensions"
+    ],
+    "responsibilities": [
+      "Maintain and improve the existing React product",
+      "Add new features, build new pages, improve existing flows",
+      "Rewrite a legacy Vue.js frontend to React",
+      "Create high-quality user interfaces focused on usability, clarity, and performance",
+      "Improve frontend architecture: component structure, data-fetching patterns, reusable UI abstractions, routing, forms, error handling",
+      "Collaborate with backend engineers",
+      "Perform code reviews and suggest cleaner and simpler approaches",
+      "Optionally explore backend Node.js/NestJS services in the future"
+    ],
+    "ats_keywords": [
+      "React",
+      "TypeScript",
+      "Frontend engineer",
+      "React Developer",
+      "component architecture",
+      "state management",
+      "API integration",
+      "performance",
+      "frontend best practices",
+      "Vue.js",
+      "React 19",
+      "Tailwindcss",
+      "Antd",
+      "Tanstack Query",
+      "react-query",
+      "Tanstack Router",
+      "Vite",
+      "GraphQL",
+      "Node.js",
+      "NestJS",
+      "browser extension",
+      "code reviews",
+      "clean architecture",
+      "reusable UI",
+      "data-fetching",
+      "routing",
+      "forms",
+      "error handling",
+      "microservices",
+      "MongoDB",
+      "PostgreSQL",
+      "Redis",
+      "RabbitMQ",
+      "Hasura",
+      "Kubernetes",
+      "production environments"
+    ],
+    "soft_signals": [
+      "No supervision needed — self-driven",
+      "Ownership mentality — goes beyond closing tickets",
+      "Good UX taste — cares about how the product feels",
+      "Open-minded and eager to learn modern tools and patterns",
+      "Strong team player with clear communication of technical decisions",
+      "Thinks about real business impact",
+      "Asks questions and cares about the 'why'",
+      "Entire R&D team based locally in Ukraine — no late calls with US",
+      "Stable, self-funded (non-VC) company with 8+ years of revenue",
+      "Flexible working hours, no time trackers",
+      "Mission-critical, high-stakes production environment"
+    ],
+    "red_flags": [
+      "Seniority level is middle (2–3 years) but scope includes large-scale legacy rewrite and architecture decisions — may be demanding for the level",
+      "US-based customer with Ukraine-based team — potential for future timezone or communication friction",
+      "War-related context explicitly mentioned (travel to USA contingent on war ending)",
+      "No compensation/salary range disclosed"
+    ]
+  },
+  "tailored": {
+    "headline": "Frontend Engineer | React, TypeScript, TanStack Query, Vite",
+    "summary": "Frontend Engineer with 5+ years of production experience building React and TypeScript applications end-to-end — from component architecture and data-fetching patterns to performance optimization and deployment. Comfortable owning full features independently: requirements, implementation, code review, and post-launch stability. Experienced collaborating with backend engineers, designers, and PMs in fast-moving SaaS and B2B product environments. Writes clean, reusable UI with a strong eye for usability and long-term maintainability.",
+    "top_skills": [
+      "React\nTypeScript\nNext.js\nVite\nTanStack Query\nGraphQL\nApollo Client\nZustand\nRedux Toolkit\nWebSockets\nTailwind\nSCSS\nMaterial UI\nJest\nVitest\nRTL\nPlaywright\nNx\nNode.js"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Frontend Engineer",
+        "period": "Feb 2025 – June 2026",
+        "location": "Ukraine",
+        "bullets": [
+          "Designed and built a monorepo architecture from scratch using Nx to unify 3 products (marketplace, admin panel, landing pages), maximizing reuse of UI components and business logic across the ecosystem",
+          "Owned the core React and TypeScript architecture of a P2P crypto marketplace (50K+ MAU), delivering secure authentication, a multi-step order creation engine, and advanced search with dynamic filtering",
+          "Built a real-time communication layer using WebSockets, enabling live chat messaging and transaction status synchronization between buyers and sellers",
+          "Delivered a full arbitration and management admin panel with financial dashboards, role-based access control (RBAC), subscription management, and dispute resolution tools",
+          "Developed performance-critical marketing landing pages with Next.js, integrating product analytics, tracking scripts, and A/B testing configurations that improved user conversion rates by ~15%",
+          "Performed regular code reviews across a team of 3–5 frontend developers, helping maintain consistent component architecture and engineering standards",
+          "Configured CI/CD pipelines, production monitoring, and logging to ensure reliable end-to-end delivery and post-launch stability",
+          "Collaborated directly with backend engineers, PMs, BAs, and founders to translate business requirements into technical tasks, estimates, and maintainable implementation plans"
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Frontend Engineer",
+        "period": "Nov 2022 – Jan 2025",
+        "location": "Ukraine",
+        "bullets": [
+          "Owned the refactor and stabilization of an existing React admin dashboard — conducted a full code audit, fixed critical bugs in business logic, broken API requests, and improper error handling",
+          "Built a high-performance, SEO-optimized marketing landing page from scratch using Next.js, driving B2B user acquisition through optimized page speed and search rankings",
+          "Integrated GraphQL APIs with Apollo Client, implementing queries, mutations, caching, loading states, and consistent error handling across the dashboard",
+          "Implemented a secure subscription and billing system via Stripe integration, covering multi-tier pricing pages, billing management, and transaction status workflows",
+          "Developed an isolated embeddable chat widget using Shadow DOM for clean DOM containment and WebSockets for real-time AI response delivery on client websites",
+          "Built an Integrations Hub enabling users to connect third-party platforms (Slack, Telegram, Webhooks) to route leads and notifications from the chatbot",
+          "Optimized the data-fetching layer using TanStack Query, establishing robust caching, background revalidation, and consistent state synchronization across views",
+          "Improved client-side performance (LCP, TTI) through code-splitting and lazy loading, reducing overall bundle size by ~10% and widget load times by ~15%"
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Frontend Developer",
+        "period": "Nov 2020 – Oct 2022",
+        "location": "Ukraine",
+        "bullets": [
+          "Contributed to building and launching the platform from scratch to production, covering the admin panel, marketing modules, and real-time alert infrastructure",
+          "Built a high-performance, SEO-optimized marketing landing page using Next.js with semantic HTML, custom meta tags, and responsive layouts to maximize search ranking and conversion",
+          "Developed an interactive Widget Builder (Alert Box, Goal Progress) allowing streamers to customize colors, layouts, sounds, typography, and animation triggers for OBS overlays",
+          "Implemented OAuth integrations with Twitch and YouTube to streamline streamer authorization, profile synchronization, and live broadcast status tracking",
+          "Built data-heavy analytical dashboards with responsive data tables (1000+ rows), pagination, transaction filtering, and interactive financial charts for real-time revenue tracking",
+          "Designed multi-step configuration forms with advanced validation for donation thresholds, custom media file constraints, and profanity filtering",
+          "Integrated REST APIs and WebSockets for global state management using Redux and reliable real-time alert distribution, in close collaboration with backend engineers",
+          "Delivered pixel-perfect layouts from Figma designs using clean, maintainable SCSS, ensuring cross-browser compatibility across all device sizes"
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc Logistics",
+        "period": "2018 – 2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc Management",
+        "period": "2014 – 2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "2–3 years of experience working with React in production environments",
+        "status": "strong",
+        "evidence": "5+ years across 3 production roles, all React-based"
+      },
+      {
+        "requirement": "Strong TypeScript proficiency",
+        "status": "strong",
+        "evidence": "TypeScript used across all 3 roles in production"
+      },
+      {
+        "requirement": "Strong React proficiency",
+        "status": "strong",
+        "evidence": "React is the primary framework across all experience"
+      },
+      {
+        "requirement": "Understanding of component architecture",
+        "status": "strong",
+        "evidence": "Monorepo with shared UI components at KYC Market; reusable UI abstractions at AMO FINTECH"
+      },
+      {
+        "requirement": "State management",
+        "status": "strong",
+        "evidence": "Zustand, Redux Toolkit, TanStack Query, Apollo Client all used in production"
+      },
+      {
+        "requirement": "API integration",
+        "status": "strong",
+        "evidence": "REST, GraphQL, WebSockets integrations across all 3 roles"
+      },
+      {
+        "requirement": "Performance optimization",
+        "status": "strong",
+        "evidence": "Code-splitting, lazy loading, bundle size reduction, LCP/TTI improvements at AMO FINTECH; Next.js performance at KYC Market"
+      },
+      {
+        "requirement": "Frontend best practices",
+        "status": "strong",
+        "evidence": "CI/CD, code reviews, testing (Jest, Vitest, Playwright, RTL), error handling, monitoring (Sentry)"
+      },
+      {
+        "requirement": "Good UX sensibility",
+        "status": "strong",
+        "evidence": "Pixel-perfect Figma delivery, multi-step forms, usability-focused dashboards, A/B testing"
+      },
+      {
+        "requirement": "Code review experience",
+        "status": "strong",
+        "evidence": "Led code reviews across a team of 3–5 developers at KYC Market"
+      },
+      {
+        "requirement": "Self-driven, able to work without supervision",
+        "status": "strong",
+        "evidence": "Built multiple products from scratch independently; direct client communication at KYC Market"
+      },
+      {
+        "requirement": "Strong communication skills",
+        "status": "strong",
+        "evidence": "Collaborated with PMs, BAs, founders, backend teams; English — Professional"
+      },
+      {
+        "requirement": "Experience with Vue.js (legacy frontend context)",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "Interest in or experience with Node.js/NestJS backend services",
+        "status": "partial",
+        "evidence": "Node.js listed in skills; no NestJS or backend service experience documented"
+      },
+      {
+        "requirement": "Familiarity with GraphQL",
+        "status": "strong",
+        "evidence": "Apollo Client + GraphQL used at AMO FINTECH in production"
+      },
+      {
+        "requirement": "Experience with browser extension development",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "Knowledge of distributed systems or microservices architecture",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "TanStack Query",
+        "status": "strong",
+        "evidence": "Used at KYC Market and AMO FINTECH; data-fetching layer refactor at AMO FINTECH"
+      },
+      {
+        "requirement": "Vite",
+        "status": "strong",
+        "evidence": "Listed in KYC Market tech stack"
+      },
+      {
+        "requirement": "Tailwind CSS",
+        "status": "strong",
+        "evidence": "Used at AMO FINTECH"
+      },
+      {
+        "requirement": "Ant Design (Antd)",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "TanStack Router",
+        "status": "missing",
+        "evidence": ""
+      }
+    ],
+    "fit_score": 78,
+    "match_notes": "Kostya is a strong technical match for this role. His React, TypeScript, TanStack Query, GraphQL, Vite, and Tailwind CSS experience maps directly to the core stack. He has clear evidence of feature ownership, code reviews, performance optimization, and cross-team collaboration — all key signals the job is looking for.\n\nThe main gaps are: (1) No Vue.js experience, which matters because the role includes rewriting a legacy Vue frontend to React — Kostya can do the React side but has no documented Vue reading/migration experience; (2) No browser extension development; (3) No NestJS or backend service work beyond Node.js being listed as a skill; (4) Ant Design (Antd) is not in his stack — Material UI is the closest equivalent.\n\nThe seniority framing is the most sensitive point. Kostya's real experience is Senior-level (team lead, hiring, architecture ownership), but the role is formally scoped at Middle. The CV has been toned down to avoid overqualified signals, but interviewers may still probe why he is applying at this level. He should be ready to address this directly and frame it as a deliberate choice (product fit, team culture, stability of the company).\n\nThe ~15% conversion improvement metric and the bundle size figures should be backed up with real data if asked — interviewers at product companies often probe these.",
+    "keywords_to_weave_in": [
+      "component architecture",
+      "data-fetching",
+      "reusable UI",
+      "routing",
+      "forms",
+      "error handling",
+      "clean architecture",
+      "production environments",
+      "code reviews",
+      "API integration",
+      "performance",
+      "frontend best practices"
+    ]
+  },
+  "ats_check": {
+    "ats_score": 74,
+    "keyword_coverage": [
+      {
+        "keyword": "React",
+        "found": true,
+        "location": "headline, summary, top_skills, experience (KYC Market bullet 2, AMO FINTECH bullet 1)"
+      },
+      {
+        "keyword": "TypeScript",
+        "found": true,
+        "location": "headline, summary, top_skills, experience (KYC Market bullet 2)"
+      },
+      {
+        "keyword": "Frontend engineer",
+        "found": true,
+        "location": "headline, experience roles (KYC Market, AMO FINTECH)"
+      },
+      {
+        "keyword": "React Developer",
+        "found": false
+      },
+      {
+        "keyword": "component architecture",
+        "found": true,
+        "location": "summary ('component architecture'), top_skills ('Component architecture'), experience (KYC Market bullets 1, 6)"
+      },
+      {
+        "keyword": "state management",
+        "found": false
+      },
+      {
+        "keyword": "API integration",
+        "found": true,
+        "location": "top_skills ('API integration'), summary implied via 'data-fetching patterns'"
+      },
+      {
+        "keyword": "performance",
+        "found": true,
+        "location": "headline ('performance'), summary ('performance optimization'), top_skills ('Performance optimization'), experience (AMO FINTECH bullet 8)"
+      },
+      {
+        "keyword": "frontend best practices",
+        "found": false
+      },
+      {
+        "keyword": "Vue.js",
+        "found": false
+      },
+      {
+        "keyword": "React 19",
+        "found": false
+      },
+      {
+        "keyword": "Tailwindcss",
+        "found": true,
+        "location": "top_skills ('Tailwind CSS') — partial match"
+      },
+      {
+        "keyword": "Antd",
+        "found": false
+      },
+      {
+        "keyword": "Tanstack Query",
+        "found": true,
+        "location": "headline ('TanStack Query'), top_skills ('TanStack Query'), experience (AMO FINTECH bullet 7)"
+      },
+      {
+        "keyword": "react-query",
+        "found": false
+      },
+      {
+        "keyword": "Tanstack Router",
+        "found": false
+      },
+      {
+        "keyword": "Vite",
+        "found": true,
+        "location": "headline, top_skills"
+      },
+      {
+        "keyword": "GraphQL",
+        "found": true,
+        "location": "top_skills, experience (AMO FINTECH bullet 3)"
+      },
+      {
+        "keyword": "Node.js",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "NestJS",
+        "found": false
+      },
+      {
+        "keyword": "browser extension",
+        "found": false
+      },
+      {
+        "keyword": "code reviews",
+        "found": true,
+        "location": "top_skills ('Code reviews'), experience (KYC Market bullet 6)"
+      },
+      {
+        "keyword": "clean architecture",
+        "found": false
+      },
+      {
+        "keyword": "reusable UI",
+        "found": true,
+        "location": "summary ('clean, reusable UI'), experience (KYC Market bullet 1 — 'reuse of UI components')"
+      },
+      {
+        "keyword": "data-fetching",
+        "found": true,
+        "location": "summary ('data-fetching patterns'), experience (AMO FINTECH bullet 7 — 'data-fetching layer')"
+      },
+      {
+        "keyword": "routing",
+        "found": false
+      },
+      {
+        "keyword": "forms",
+        "found": true,
+        "location": "experience (DonateSystem bullet 6 — 'multi-step configuration forms')"
+      },
+      {
+        "keyword": "error handling",
+        "found": true,
+        "location": "experience (AMO FINTECH bullets 1, 3 — 'error handling')"
+      },
+      {
+        "keyword": "microservices",
+        "found": false
+      },
+      {
+        "keyword": "MongoDB",
+        "found": false
+      },
+      {
+        "keyword": "PostgreSQL",
+        "found": false
+      },
+      {
+        "keyword": "Redis",
+        "found": false
+      },
+      {
+        "keyword": "RabbitMQ",
+        "found": false
+      },
+      {
+        "keyword": "Hasura",
+        "found": false
+      },
+      {
+        "keyword": "Kubernetes",
+        "found": false
+      },
+      {
+        "keyword": "production environments",
+        "found": true,
+        "location": "summary ('production experience'), experience (KYC Market bullet 7 — 'post-launch stability')"
+      }
+    ],
+    "format_checks": [
+      {
+        "rule": "All experience bullets start with an action verb",
+        "passed": false,
+        "note": "DonateSystem bullet 1 starts with 'Contributed to building' — 'Contributed to' is a weak, passive-adjacent opener that dilutes ATS verb scoring. All other bullets pass."
+      },
+      {
+        "rule": "No passive constructions (Responsible for / Helped with)",
+        "passed": false,
+        "note": "DonateSystem bullet 1: 'Contributed to building and launching' is a passive-adjacent hedge. KYC Market bullet 6: 'helping maintain' inside the bullet is a gerund chain that weakens the action verb. These are not hard failures but are ATS yellow flags."
+      },
+      {
+        "rule": "Bullet length ≤ 2 lines",
+        "passed": false,
+        "note": "KYC Market bullet 1 ('Designed and built a monorepo architecture from scratch using Nx to unify 3 products (marketplace, admin panel, landing pages), maximizing reuse of UI components and business logic across the ecosystem') and KYC Market bullet 8 ('Collaborated directly with backend engineers, PMs, BAs, and founders to translate business requirements into technical tasks, estimates, and maintainable implementation plans') both risk wrapping to 3 lines in standard ATS renderers at 80-char width."
+      },
+      {
+        "rule": "Standard sections present (headline, summary, skills, experience)",
+        "passed": true
+      },
+      {
+        "rule": "Language consistency throughout CV",
+        "passed": true
+      },
+      {
+        "rule": "No special characters or table-like structures breaking text parsers",
+        "passed": true
+      },
+      {
+        "rule": "Education section present",
+        "passed": true
+      },
+      {
+        "rule": "Job titles are ATS-standard (no creative/non-standard titles)",
+        "passed": true
+      }
+    ],
+    "recommendations": []
+  }
+}

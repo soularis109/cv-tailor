@@ -9,6 +9,7 @@ interface Props {
   onPatch: (id: string, patch: Partial<Application>) => void;
   onDelete: (id: string) => void;
   onOpen: (id: string) => void;
+  onQuickAdd: () => void;
   loadError: string | null;
   loading: boolean;
 }
@@ -26,7 +27,7 @@ function statusClass(status: Status): string {
   }
 }
 
-export function Pipeline({ applications, onPatch, onDelete, onOpen, loadError, loading }: Props) {
+export function Pipeline({ applications, onPatch, onDelete, onOpen, onQuickAdd, loadError, loading }: Props) {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<Status | "All">("All");
   const [sortKey, setSortKey] = useState<"dateAdded" | "fitScore" | null>(null);
@@ -79,8 +80,11 @@ export function Pipeline({ applications, onPatch, onDelete, onOpen, loadError, l
       <div className="empty">
         <p>No applications yet.</p>
         <p className="muted">
-          Tailor your CV for a posting and it lands here, ready to track.
+          Tailor your CV for a posting and it lands here, or add one manually.
         </p>
+        <button className="btn btn-primary btn-sm" style={{ marginTop: "0.75rem" }} onClick={onQuickAdd}>
+          + Add application
+        </button>
       </div>
     );
   }
@@ -99,9 +103,14 @@ export function Pipeline({ applications, onPatch, onDelete, onOpen, loadError, l
         <span className="pipeline-count">
           {visibleApplications.length} application{visibleApplications.length === 1 ? "" : "s"}
         </span>
-        <a className="btn btn-ghost" href={api.xlsxUrl} download>
-          Open Excel
-        </a>
+        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+          <button className="btn btn-primary btn-sm" onClick={onQuickAdd}>
+            + Add application
+          </button>
+          <a className="btn btn-ghost" href={api.xlsxUrl} download>
+            Open Excel
+          </a>
+        </div>
       </div>
 
       <div className="pipeline-toolbar">

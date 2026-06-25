@@ -12,6 +12,7 @@ export type Seniority =
   | "intern"
   | "junior"
   | "middle"
+  | "strong-middle"
   | "senior"
   | "lead"
   | "staff"
@@ -46,6 +47,7 @@ export const analyzeJobTool: Anthropic.Messages.Tool = {
           "intern",
           "junior",
           "middle",
+          "strong-middle",
           "senior",
           "lead",
           "staff",
@@ -344,6 +346,152 @@ export const masterCvTool: Anthropic.Messages.Tool = {
       certifications: { type: "array", items: { type: "string" } },
     },
     required: ["name"],
+  },
+};
+
+// ---------- Step 4: Experience & Level Verification ----------
+
+export interface LevelCheck {
+  location: string; // e.g. "summary", "experience[0].bullets[2]", "headline"
+  current_text: string;
+  issue: "too_junior" | "too_senior" | "ok";
+  explanation?: string;
+  suggestion?: string;
+}
+
+export interface StackCheck {
+  technology: string;
+  status: "demonstrated" | "mentioned_only" | "missing";
+  location?: string;
+  suggestion?: string;
+}
+
+export interface VerificationRecommendation {
+  priority: "high" | "medium" | "low";
+  type: "seniority" | "stack" | "framing";
+  text: string;
+}
+
+export interface ExperienceVerificationResult {
+  level_score: number; // 0-100
+  stack_score: number; // 0-100
+  overall_score: number; // round(0.6*level + 0.4*stack)
+  level_checks: LevelCheck[];
+  stack_checks: StackCheck[];
+  recommendations: VerificationRecommendation[];
+  verdict: string;
+}
+
+export const experienceCheckTool: Anthropic.Messages.Tool = {
+  name: "record_experience_verification",
+  description:
+    "Record a structured seniority + stack alignment audit of a tailored CV. Check that experience descriptions convey the right level and that required technologies are demonstrated — not just listed.",
+  input_schema: {
+    type: "object",
+    properties: {
+      level_score: {
+        type: "integer",
+        minimum: 0,
+        maximum: 100,
+        description:
+          "How well the CV language conveys the target seniority (0-100). Deduct 15 per too_junior issue, 10 per too_senior issue.",
+      },
+      stack_score: {
+        type: "integer",
+        minimum: 0,
+        maximum: 100,
+        description:
+          "Technology stack alignment score (0-100). demonstrated=1.0, mentioned_only=0.5, missing=0.0 — averaged across all required techs.",
+      },
+      overall_score: {
+        type: "integer",
+        minimum: 0,
+        maximum: 100,
+        description: "round(0.6 * level_score + 0.4 * stack_score)",
+      },
+      level_checks: {
+        type: "array",
+        description:
+          "Seniority-alignment findings for specific bullets, summary, or headline. Include only items with issue != ok (plus up to 3 ok samples for context).",
+        items: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description:
+                "Where in the CV this text appears. Examples: 'summary', 'headline', 'experience[0].bullets[1]', 'experience[2].bullets[0]'.",
+            },
+            current_text: { type: "string", description: "The exact text being evaluated." },
+            issue: {
+              type: "string",
+              enum: ["too_junior", "too_senior", "ok"],
+            },
+            explanation: {
+              type: "string",
+              description: "Why it is misaligned. Omit when issue is ok.",
+            },
+            suggestion: {
+              type: "string",
+              description: "Concrete rewrite that fixes the level issue. Omit when issue is ok.",
+            },
+          },
+          required: ["location", "current_text", "issue"],
+        },
+      },
+      stack_checks: {
+        type: "array",
+        description:
+          "One entry per technology in must_have + core_technologies. Exhaustive — every required tech must appear.",
+        items: {
+          type: "object",
+          properties: {
+            technology: { type: "string" },
+            status: {
+              type: "string",
+              enum: ["demonstrated", "mentioned_only", "missing"],
+            },
+            location: {
+              type: "string",
+              description:
+                "Where the technology appears in the CV (e.g. 'top_skills', 'experience[1].bullets[0]'). Omit if missing.",
+            },
+            suggestion: {
+              type: "string",
+              description:
+                "How to naturally incorporate this technology if it is missing or only mentioned. Omit if demonstrated.",
+            },
+          },
+          required: ["technology", "status"],
+        },
+      },
+      recommendations: {
+        type: "array",
+        description: "Top 3-5 actionable improvements, ordered by priority.",
+        items: {
+          type: "object",
+          properties: {
+            priority: { type: "string", enum: ["high", "medium", "low"] },
+            type: { type: "string", enum: ["seniority", "stack", "framing"] },
+            text: { type: "string", description: "Specific, actionable recommendation." },
+          },
+          required: ["priority", "type", "text"],
+        },
+      },
+      verdict: {
+        type: "string",
+        description:
+          "2-3 sentence summary in the same language as the CV. State the overall alignment quality and the most critical gap.",
+      },
+    },
+    required: [
+      "level_score",
+      "stack_score",
+      "overall_score",
+      "level_checks",
+      "stack_checks",
+      "recommendations",
+      "verdict",
+    ],
   },
 };
 

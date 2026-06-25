@@ -4,10 +4,12 @@ import {
   tailorCvTool,
   masterCvTool,
   atsCheckTool,
+  experienceCheckTool,
   type JobAnalysis,
   type TailoredCv,
   type MasterCvData,
   type AtsCheckResult,
+  type ExperienceVerificationResult,
 } from "./schemas.js";
 import {
   ANALYZE_SYSTEM,
@@ -17,6 +19,14 @@ import {
   COMPANY_BRIEF_SYSTEM,
   ATS_CHECK_SYSTEM,
   atsCheckUserMessage,
+  ATS_ENHANCE_SYSTEM,
+  atsEnhanceUserMessage,
+  EXPERIENCE_CHECK_SYSTEM,
+  experienceCheckUserMessage,
+  EXPERIENCE_ENHANCE_SYSTEM,
+  experienceEnhanceUserMessage,
+  REFINE_CV_SYSTEM,
+  refineCvUserMessage,
 } from "./prompts.js";
 import { buildTailorSystemPrompt, type CandidateLevel } from "./prompt-builder.js";
 import type Anthropic from "@anthropic-ai/sdk";
@@ -119,6 +129,30 @@ export async function tailorCv(
   return normalizeTailoredCv(extractToolInput<TailoredCv>(message, tailorCvTool.name));
 }
 
+/** Iterative refinement — improve an existing tailored CV per custom instructions. */
+export async function refineCv(
+  masterCv: unknown,
+  tailored: TailoredCv,
+  analysis: JobAnalysis,
+  options?: { customInstructions?: string },
+): Promise<TailoredCv> {
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 4096,
+    temperature: 0.3,
+    system: REFINE_CV_SYSTEM,
+    tools: [tailorCvTool],
+    tool_choice: { type: "tool", name: tailorCvTool.name },
+    messages: [
+      {
+        role: "user",
+        content: refineCvUserMessage(masterCv, tailored, analysis, options?.customInstructions),
+      },
+    ],
+  });
+  return normalizeTailoredCv(extractToolInput<TailoredCv>(message, tailorCvTool.name));
+}
+
 export async function generateFollowupEmail(
   application: { company: string; role: string; dateAdded: string },
   data: { tailored: { headline: string; coverage: Array<{ requirement: string; status: string }> } },
@@ -208,6 +242,81 @@ export async function runAtsCheck(
     ],
   });
   return normalizeAtsCheckResult(extractToolInput<AtsCheckResult>(message, atsCheckTool.name));
+}
+
+/** ATS Enhancement — rewrite the tailored CV to fix every gap from the ATS audit. */
+export async function enhanceCvForAts(
+  masterCv: unknown,
+  tailored: TailoredCv,
+  atsResult: AtsCheckResult,
+  analysis: JobAnalysis,
+): Promise<TailoredCv> {
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 4096,
+    temperature: 0.2,
+    system: ATS_ENHANCE_SYSTEM,
+    tools: [tailorCvTool],
+    tool_choice: { type: "tool", name: tailorCvTool.name },
+    messages: [
+      { role: "user", content: atsEnhanceUserMessage(masterCv, tailored, atsResult, analysis) },
+    ],
+  });
+  return normalizeTailoredCv(extractToolInput<TailoredCv>(message, tailorCvTool.name));
+}
+
+export function normalizeExperienceVerificationResult(
+  raw: ExperienceVerificationResult,
+): ExperienceVerificationResult {
+  return {
+    ...raw,
+    level_checks: Array.isArray(raw.level_checks) ? raw.level_checks : [],
+    stack_checks: Array.isArray(raw.stack_checks) ? raw.stack_checks : [],
+    recommendations: Array.isArray(raw.recommendations) ? raw.recommendations : [],
+  };
+}
+
+/** Run seniority-level + stack-demonstration audit on a tailored CV. */
+export async function runExperienceVerification(
+  analysis: JobAnalysis,
+  tailored: TailoredCv,
+): Promise<ExperienceVerificationResult> {
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 3072,
+    temperature: 0,
+    system: EXPERIENCE_CHECK_SYSTEM,
+    tools: [experienceCheckTool],
+    tool_choice: { type: "tool", name: experienceCheckTool.name },
+    messages: [{ role: "user", content: experienceCheckUserMessage(analysis, tailored) }],
+  });
+  return normalizeExperienceVerificationResult(
+    extractToolInput<ExperienceVerificationResult>(message, experienceCheckTool.name),
+  );
+}
+
+/** Rewrite the tailored CV to fix level and stack alignment issues. */
+export async function enhanceCvForExperience(
+  masterCv: unknown,
+  tailored: TailoredCv,
+  verificationResult: ExperienceVerificationResult,
+  analysis: JobAnalysis,
+): Promise<TailoredCv> {
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 4096,
+    temperature: 0.2,
+    system: EXPERIENCE_ENHANCE_SYSTEM,
+    tools: [tailorCvTool],
+    tool_choice: { type: "tool", name: tailorCvTool.name },
+    messages: [
+      {
+        role: "user",
+        content: experienceEnhanceUserMessage(masterCv, tailored, verificationResult, analysis),
+      },
+    ],
+  });
+  return normalizeTailoredCv(extractToolInput<TailoredCv>(message, tailorCvTool.name));
 }
 
 export async function generateCompanyBrief(

@@ -1,4 +1,4 @@
-import type { Application, ApplicationData, AtsCheckResult, JobAnalysis, TailoredCv, TailorResponse } from "./types";
+import type { Application, ApplicationData, AtsCheckResult, ExperienceVerificationResult, JobAnalysis, TailoredCv, TailorResponse } from "./types";
 
 async function json<T>(res: Response): Promise<T> {
   if (!res.ok) {
@@ -87,7 +87,7 @@ export const api = {
     analysis?: JobAnalysis,
     customInstructions?: string,
     cvProfile?: string,
-    userLevel?: "junior" | "middle" | "senior",
+    userLevel?: "junior" | "middle" | "strong-middle" | "senior",
   ): Promise<TailorResponse> {
     return json(
       await fetch("/api/tailor", {
@@ -98,21 +98,21 @@ export const api = {
     );
   },
 
-  async downloadDocx(tailored: TailoredCv): Promise<void> {
+  async downloadDocx(tailored: TailoredCv, company?: string): Promise<void> {
     const res = await fetch("/api/docx", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ tailored }),
+      body: JSON.stringify({ tailored, company }),
     });
     if (!res.ok) throw new Error("Could not generate the .docx file.");
     await triggerDownload(res, "CV.docx");
   },
 
-  async downloadPdf(tailored: TailoredCv): Promise<void> {
+  async downloadPdf(tailored: TailoredCv, company?: string): Promise<void> {
     const res = await fetch("/api/pdf", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ tailored }),
+      body: JSON.stringify({ tailored, company }),
     });
     if (!res.ok) throw new Error("Could not generate the PDF.");
     await triggerDownload(res, "CV.pdf");
@@ -120,6 +120,20 @@ export const api = {
 
   async getApplications(): Promise<Application[]> {
     return json(await fetch("/api/applications"));
+  },
+
+  async createApplication(
+    fields: Pick<Application, "company" | "role"> &
+      Partial<Pick<Application, "status" | "source" | "jobUrl" | "salary" | "notes">>,
+  ): Promise<Application> {
+    const data = await json<{ application: Application }>(
+      await fetch("/api/applications", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fields),
+      }),
+    );
+    return data.application;
   },
 
   async patchApplication(id: string, patch: Partial<Application>): Promise<Application> {
@@ -149,6 +163,22 @@ export const api = {
       }),
     );
     return res.tailored;
+  },
+
+  async uploadCustomPdf(id: string, file: File): Promise<void> {
+    const form = new FormData();
+    form.append("file", file);
+    await json(await fetch(`/api/applications/${id}/upload-pdf`, { method: "POST", body: form }));
+  },
+
+  async deleteCustomPdf(id: string): Promise<void> {
+    await json(await fetch(`/api/applications/${id}/custom-pdf`, { method: "DELETE" }));
+  },
+
+  async downloadCustomPdf(id: string): Promise<void> {
+    const res = await fetch(`/api/applications/${id}/custom-pdf`);
+    if (!res.ok) throw new Error("Custom PDF not found.");
+    await triggerDownload(res, "CV.pdf");
   },
 
   async importPdf(file: File): Promise<MasterCv> {
@@ -223,6 +253,55 @@ export const api = {
     if (!res.ok) throw new Error("ats-check failed");
     const body = await res.json() as { ats_check: AtsCheckResult };
     return body.ats_check;
+  },
+
+  async enhanceForAts(applicationId: string): Promise<{ tailored: TailoredCv; ats_check: AtsCheckResult }> {
+    const res = await fetch(`/api/applications/${applicationId}/ats-enhance`, {
+      method: "POST",
+    });
+    if (!res.ok) throw new Error("ats-enhance failed");
+    return res.json() as Promise<{ tailored: TailoredCv; ats_check: AtsCheckResult }>;
+  },
+
+  async runExperienceVerification(applicationId: string): Promise<ExperienceVerificationResult> {
+    const res = await fetch(`/api/applications/${applicationId}/experience-check`, { method: "POST" });
+    if (!res.ok) throw new Error("Experience check failed");
+    const data = await res.json() as { experience_check: ExperienceVerificationResult };
+    return data.experience_check;
+  },
+
+  async enhanceCvForExperience(applicationId: string): Promise<{ tailored: TailoredCv; experience_check: ExperienceVerificationResult }> {
+    const res = await fetch(`/api/applications/${applicationId}/experience-enhance`, { method: "POST" });
+    if (!res.ok) throw new Error("Experience enhance failed");
+    return res.json() as Promise<{ tailored: TailoredCv; experience_check: ExperienceVerificationResult }>;
+  },
+
+  async reTailor(
+    applicationId: string,
+    opts?: { customInstructions?: string },
+  ): Promise<TailoredCv> {
+    const res = await fetch(`/api/applications/${applicationId}/retailor`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(opts ?? {}),
+    });
+    if (!res.ok) throw new Error("Re-tailor failed");
+    const data = await res.json();
+    return data.tailored as TailoredCv;
+  },
+
+  async refineTailor(
+    applicationId: string,
+    opts?: { customInstructions?: string },
+  ): Promise<TailoredCv> {
+    const res = await fetch(`/api/applications/${applicationId}/refine`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(opts ?? {}),
+    });
+    if (!res.ok) throw new Error("Refine failed");
+    const data = await res.json();
+    return data.tailored as TailoredCv;
   },
 
   xlsxUrl: "/api/applications.xlsx",

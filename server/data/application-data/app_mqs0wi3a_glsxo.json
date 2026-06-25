@@ -1,0 +1,474 @@
+{
+  "jobText": "AMO Publishing — міжнародна IT-компанія, яка створює історії, що змінюють світ.\n\nНаш продукт, AmoMama, є одним із найбільших онлайн-таблоїдів в Україні, який щомісяця охоплює понад 40 мільйонів читачів з Америки та Західної Європи. Ми створюємо різноманітний контент: від оперативних новин та яскравих розважальних матеріалів до зворушливих історій, що надихають і об’єднують людей по всьому світу.\n\nЗараз ми шукаємо Middle Frontend Engineer для розробки та вдосконалення наших веб-сайтів і внутрішніх адмін інструментів. Ти приєднаєшся до команди, яка цінує самостійність, а твої рішення, код і креативні ідеї безпосередньо впливатимуть на оптимізацію бізнес-процесів і розвиток продуктів.\n\nНаш продукт побудовано на:\nNext.js / React;\n\nMulti-project monorepo / micro frontends архітектурі;\n\nАвтоматизації рішень на базі AI;\n\nГнучкій системі керування контентом (CMS) з ролями, кастомними інтерфейсами;\n\nБекенді, написаному на Go, який надає REST API для взаємодії;\n\nАналітичній платформі, яка агрегує дані з різних джерел для прийняття продуктових рішень та підтримці A/B тестування;\n\nПовністю автоматизованих CI/CD процесах, включаючи перевірки, юніт та інтеграційні тести, білди та деплой; \n\nІнфраструктурі з autoscaling у Kubernetes/Cloud середовищі для гнучкого масштабування, повністю розгорнутій в AWS;\n\nВідстеженні метрик та логів у реальному часі через системи моніторингу (Prometheus, Grafana, Loki).\n\nВ новій ролі ти будеш тісно взаємодіяти з:\nДосвідченими front та back-end розробниками;\n\nQA/AQA-спеціалістами;\n\nDevOps-командою;\n\nProduct менеджерами;\n\nData анілитиками;\n\nКлючовими бізнес стейкхолдерами (редакція, монетизація тощо).\n\nТвої майбутні задачі:\nВпровадження рішень у сфері реклами, що впливають на ефективність монетизації;\n\nПродуктові задачі, спрямовані на розвиток, підтримку та вдосконалення поточних веб-сайтів, включаючи впровадження змін через A/B тестування;\n\nРозвиток і підтримка внутрішніх CMS для ефективного керування контентом і процесами;\n\nТехнічні задачі з впровадження нових рішень, рефакторингу та оптимізації продуктивності для забезпечення стабільної роботи й високої якості користувацького досвіду.\n\nЩо допоможе бути ефективним/ною в цій ролі:\nКомерційний досвід роботи з Next.js від 2х років;\n\nЗнання та досвід роботи з ключовим стеком технологій нашого проєкту (React, нативний TypeScript, SCSS, JavaScript, Jest);\n\nБазове розуміння SEO (CWV etc);\n\nБазове розуміння Engineering core (HTTP, REST API, CORS); \n\nАвтономність та відповідальність, вміння самостійно оцінювати складність задач і планувати час;\n\nProduct mindset, ownership та командність.\n\nБуде перевагою:\nДодаткові знання НЕ ключового стеку технологій нашого проєкту (Node.js, Microfrontends, NX, React Query);\n\nДосвід роботи з банерною рекламою;\n\nДосвід роботи з аналітичними інструментами (GA4, Amplitude);\n\nДосвід роботи з Docker інструментами;\n\nДосвід роботи з AWS інструментами.",
+  "analysis": {
+    "role_title": "Middle Frontend Engineer",
+    "seniority": "middle",
+    "language": "uk",
+    "must_have": [
+      "Комерційний досвід роботи з Next.js від 2х років",
+      "Знання та досвід роботи з React",
+      "Нативний TypeScript",
+      "SCSS",
+      "JavaScript",
+      "Jest",
+      "Базове розуміння SEO (CWV etc)",
+      "Базове розуміння Engineering core (HTTP, REST API, CORS)",
+      "Автономність та відповідальність, вміння самостійно оцінювати складність задач і планувати час"
+    ],
+    "nice_to_have": [
+      "Node.js",
+      "Microfrontends",
+      "NX",
+      "React Query",
+      "Досвід роботи з банерною рекламою",
+      "Досвід роботи з аналітичними інструментами (GA4, Amplitude)",
+      "Досвід роботи з Docker",
+      "Досвід роботи з AWS інструментами"
+    ],
+    "core_technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "SCSS",
+      "JavaScript",
+      "Jest",
+      "Node.js",
+      "NX",
+      "React Query",
+      "REST API",
+      "CI/CD",
+      "Kubernetes",
+      "AWS",
+      "Prometheus",
+      "Grafana",
+      "Loki",
+      "Docker",
+      "GA4",
+      "Amplitude"
+    ],
+    "domains": [
+      "online media / tabloid publishing",
+      "content management systems (CMS)",
+      "ad monetization",
+      "analytics platforms"
+    ],
+    "responsibilities": [
+      "Впровадження рішень у сфері реклами, що впливають на ефективність монетизації",
+      "Продуктові задачі, спрямовані на розвиток, підтримку та вдосконалення поточних веб-сайтів, включаючи впровадження змін через A/B тестування",
+      "Розвиток і підтримка внутрішніх CMS для ефективного керування контентом і процесами",
+      "Технічні задачі з впровадження нових рішень, рефакторингу та оптимізації продуктивності для забезпечення стабільної роботи й високої якості користувацького досвіду"
+    ],
+    "ats_keywords": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "SCSS",
+      "Jest",
+      "REST API",
+      "SEO",
+      "Core Web Vitals",
+      "CWV",
+      "HTTP",
+      "CORS",
+      "CI/CD",
+      "A/B тестування",
+      "monorepo",
+      "micro frontends",
+      "CMS",
+      "Node.js",
+      "NX",
+      "React Query",
+      "Microfrontends",
+      "Docker",
+      "AWS",
+      "Kubernetes",
+      "GA4",
+      "Amplitude",
+      "Prometheus",
+      "Grafana",
+      "Loki",
+      "рефакторинг",
+      "оптимізація продуктивності",
+      "банерна реклама",
+      "монетизація"
+    ],
+    "soft_signals": [
+      "Product mindset",
+      "ownership",
+      "командність",
+      "самостійність (автономність)",
+      "відповідальність",
+      "вміння самостійно оцінювати складність задач і планувати час",
+      "тісна взаємодія з крос-функціональними командами (QA, DevOps, PM, Data, бізнес-стейкхолдери)"
+    ],
+    "red_flags": [
+      "Компенсація не вказана у вакансії",
+      "Широкий scope: від рекламних рішень і монетизації до CMS і рефакторингу — можливе розмиття фокусу",
+      "Взаємодія з ключовими бізнес-стейкхолдерами для рівня Middle може означати підвищений рівень відповідальності"
+    ]
+  },
+  "tailored": {
+    "headline": "Middle Frontend Engineer | Next.js, React, TypeScript",
+    "summary": "Front-End Developer with 5+ years of commercial experience building production-grade applications with Next.js, React, and TypeScript. Comfortable delivering complex frontend features independently — from requirements clarification and REST API integration to performance optimization and testing with Jest. Experienced with SCSS, monorepo setups using NX, SEO fundamentals including Core Web Vitals, and A/B testing configurations. Works closely with cross-functional teams including PM, QA, and backend engineers.",
+    "top_skills": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "SCSS",
+      "Jest",
+      "Vitest",
+      "React Testing Library",
+      "Playwright",
+      "TanStack Query (React Query)",
+      "REST API",
+      "NX (Monorepo)",
+      "Node.js",
+      "Redux Toolkit",
+      "Zustand",
+      "GraphQL",
+      "Apollo Client",
+      "Tailwind CSS",
+      "Material UI",
+      "WebSockets",
+      "CI/CD",
+      "SEO / Core Web Vitals",
+      "A/B Testing",
+      "Sentry"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Front-End Developer",
+        "period": "Feb 2025 – Jun 2026",
+        "location": "Remote",
+        "bullets": [
+          "Designed and implemented a monorepo solution from scratch using NX, unifying three products (marketplace, admin dashboard, landing pages) and maximising UI component and business logic reuse",
+          "Developed marketing landing pages with Next.js, integrating product analytics, tracking scripts, and A/B testing configurations that boosted user conversion rates by ~15%",
+          "Built the core features of a crypto marketplace (50K+ MAU), including secure authentication, a multi-step order creation workflow, and an advanced search with dynamic filtering",
+          "Configured CI/CD pipelines, production monitoring, and code review workflows to ensure stable, high-quality delivery across all products",
+          "Collaborated directly with PMs, BAs, and backend teams to break down business requirements into technical tasks and provide accurate estimations"
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Front-End Developer",
+        "period": "Nov 2022 – Jan 2025",
+        "location": "Remote",
+        "bullets": [
+          "Built a high-performance, SEO-optimized marketing landing page from scratch using Next.js, targeting B2B user acquisition through optimized page speed and search rankings",
+          "Improved client-side performance (LCP, TTI) through code-splitting and lazy loading, reducing overall bundle size by ~10% and optimizing widget load times by ~15%",
+          "Refactored the data-fetching layer using TanStack Query (React Query), adding caching, background revalidation, and consistent state synchronization across the application",
+          "Stabilized an existing React-based admin dashboard by conducting a code audit to fix critical bugs in business logic, broken REST API requests, and improper error handling",
+          "Integrated Sentry for error tracking and production monitoring, enabling faster debugging and improved application observability"
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Front-End Developer",
+        "period": "Nov 2020 – Oct 2022",
+        "location": "Remote",
+        "bullets": [
+          "Built a high-performance, SEO-optimized marketing landing page using Next.js with semantic HTML, custom meta tags, and responsive layouts to maximize search ranking",
+          "Developed data-heavy analytical dashboards featuring responsive tables (1000+ rows), pagination, transaction filtering, and interactive financial charts",
+          "Implemented multi-step configuration forms with advanced validation for donation thresholds, media file constraints, and profanity filtering",
+          "Integrated REST APIs and WebSockets for global state management using Redux, enabling reliable real-time alert distribution",
+          "Delivered pixel-perfect layouts from Figma designs using clean, maintainable SCSS, ensuring cross-browser compatibility across all device sizes"
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc Logistics",
+        "period": "2018 – 2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc Management",
+        "period": "2014 – 2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "Комерційний досвід роботи з Next.js від 2х років",
+        "status": "strong",
+        "evidence": "Next.js used across all 3 employers spanning 5+ years: KYC Market, AMO FINTECH, DonateSystem — landing pages, SSR, SEO, performance optimization"
+      },
+      {
+        "requirement": "Знання та досвід роботи з React",
+        "status": "strong",
+        "evidence": "React is the primary framework across all roles; admin dashboards, marketplaces, widgets, and CMS-adjacent features all built in React"
+      },
+      {
+        "requirement": "Нативний TypeScript",
+        "status": "strong",
+        "evidence": "TypeScript listed as primary language across all 3 employers and in the global skills section"
+      },
+      {
+        "requirement": "SCSS",
+        "status": "strong",
+        "evidence": "SCSS used at KYC Market and DonateSystem; explicitly mentioned in tech stacks and bullets (pixel-perfect layouts, clean maintainable SCSS)"
+      },
+      {
+        "requirement": "JavaScript",
+        "status": "strong",
+        "evidence": "JavaScript listed as a core language skill; underpins all React/Next.js work throughout the CV"
+      },
+      {
+        "requirement": "Jest",
+        "status": "strong",
+        "evidence": "Jest listed in tech stacks at both KYC Market and AMO FINTECH; also Vitest and React Testing Library"
+      },
+      {
+        "requirement": "Базове розуміння SEO (CWV etc)",
+        "status": "strong",
+        "evidence": "SEO-optimized landing pages built at AMO FINTECH and DonateSystem; LCP/TTI improvements at AMO FINTECH; semantic HTML, meta tags, page speed optimization explicitly mentioned"
+      },
+      {
+        "requirement": "Базове розуміння Engineering core (HTTP, REST API, CORS)",
+        "status": "strong",
+        "evidence": "REST API integration explicitly mentioned at DonateSystem; API requests, error handling at AMO FINTECH; general backend collaboration across all roles implies HTTP/REST fluency"
+      },
+      {
+        "requirement": "Автономність та відповідальність, вміння самостійно оцінювати складність задач і планувати час",
+        "status": "strong",
+        "evidence": "Multiple features built independently from scratch (landing pages, monorepo, widgets); direct communication with PMs and founders for technical estimations at KYC Market"
+      },
+      {
+        "requirement": "Node.js (nice to have)",
+        "status": "partial",
+        "evidence": "Node.js listed in global skills section; no specific project-level evidence in the CV"
+      },
+      {
+        "requirement": "Microfrontends (nice to have)",
+        "status": "partial",
+        "evidence": "NX monorepo with 3 separate products at KYC Market is architecturally adjacent to microfrontends; no explicit microfrontend mention"
+      },
+      {
+        "requirement": "NX (nice to have)",
+        "status": "strong",
+        "evidence": "NX monorepo implemented from scratch at KYC Market, listed in tech stack"
+      },
+      {
+        "requirement": "React Query (nice to have)",
+        "status": "strong",
+        "evidence": "TanStack Query (React Query) used at KYC Market and AMO FINTECH; caching, background revalidation, state synchronization explicitly described"
+      },
+      {
+        "requirement": "Досвід роботи з банерною рекламою (nice to have)",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "Досвід роботи з аналітичними інструментами GA4, Amplitude (nice to have)",
+        "status": "partial",
+        "evidence": "Product analytics and tracking scripts integrated at KYC Market landing pages; specific tools (GA4, Amplitude) not named in the master CV"
+      },
+      {
+        "requirement": "Docker (nice to have)",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "AWS (nice to have)",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "CMS experience",
+        "status": "missing",
+        "evidence": "No explicit CMS work mentioned; admin dashboards built but not described as content management systems"
+      },
+      {
+        "requirement": "A/B тестування",
+        "status": "strong",
+        "evidence": "A/B testing configurations integrated in landing pages at KYC Market, contributing to ~15% conversion rate improvement"
+      }
+    ],
+    "fit_score": 74,
+    "match_notes": "Strong match on the core technical stack: Next.js, React, TypeScript, SCSS, Jest, REST API, SEO/Core Web Vitals, NX, and TanStack Query are all well-evidenced across multiple employers. The A/B testing and analytics tracking experience at KYC Market is a direct hit for the role's product responsibilities. The NX monorepo is a genuine differentiator for the nice-to-have list.\n\nReal gaps to be aware of: (1) No banner advertising or ad monetization experience — this is a central domain for the role and the candidate has zero evidence here; (2) No CMS experience explicitly mentioned — the role involves building and maintaining internal CMS tools; (3) GA4 and Amplitude are not named in the master CV, only generic \"analytics and tracking scripts\"; (4) Docker, AWS, Kubernetes, Prometheus, Grafana, Loki — none are evidenced. These are listed as infrastructure/observability tools the team uses, so the candidate may need to learn them on the job. The fit score of 74 reflects a strong frontend stack match with a meaningful domain gap in ad tech and CMS.",
+    "keywords_to_weave_in": [
+      "Core Web Vitals",
+      "A/B testing",
+      "REST API",
+      "CI/CD",
+      "monorepo",
+      "NX",
+      "React Query",
+      "SEO",
+      "performance optimization",
+      "refactoring",
+      "Node.js"
+    ]
+  },
+  "experience_check": {
+    "level_checks": [
+      {
+        "location": "experience[0].bullets[0]",
+        "current_text": "Designed and implemented a monorepo solution from scratch using NX, unifying three products (marketplace, admin dashboard, landing pages) and maximising UI component and business logic reuse",
+        "issue": "too_senior",
+        "explanation": "\"Designed and implemented from scratch\" a multi-product monorepo architecture signals a senior/lead-level initiative (architecting a system). For a middle engineer the expected framing is owning or delivering a feature/tool, not designing org-level infrastructure from scratch.",
+        "suggestion": "Developed and configured a monorepo setup using NX, unifying three products (marketplace, admin dashboard, landing pages) to maximise UI component and business logic reuse"
+      },
+      {
+        "location": "experience[0].bullets[3]",
+        "current_text": "Configured CI/CD pipelines, production monitoring, and code review workflows to ensure stable, high-quality delivery across all products",
+        "issue": "too_senior",
+        "explanation": "\"Configured CI/CD pipelines … and code review workflows … across all products\" implies owning the entire delivery infrastructure and establishing team-wide processes — a senior/lead responsibility. A middle engineer would typically contribute to or maintain existing pipelines, not define workflows across all products.",
+        "suggestion": "Configured and maintained CI/CD pipelines and production monitoring tooling; participated in code review processes to support stable, high-quality delivery"
+      },
+      {
+        "location": "experience[0].bullets[4]",
+        "current_text": "Collaborated directly with PMs, BAs, and backend teams to break down business requirements into technical tasks and provide accurate estimations",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[1].bullets[2]",
+        "current_text": "Refactored the data-fetching layer using TanStack Query (React Query), adding caching, background revalidation, and consistent state synchronization across the application",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[1].bullets[3]",
+        "current_text": "Stabilized an existing React-based admin dashboard by conducting a code audit to fix critical bugs in business logic, broken REST API requests, and improper error handling",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[2].bullets[3]",
+        "current_text": "Integrated REST APIs and WebSockets for global state management using Redux, enabling reliable real-time alert distribution",
+        "issue": "too_junior",
+        "explanation": "\"Integrated REST APIs\" is a junior-level verb pattern. For a middle-level target, the bullet should convey ownership of the integration layer and its design decisions, not just the act of connecting an API.",
+        "suggestion": "Owned the real-time data layer by integrating REST APIs and WebSockets with Redux for global state management, enabling reliable real-time alert distribution"
+      },
+      {
+        "location": "experience[2].bullets[4]",
+        "current_text": "Delivered pixel-perfect layouts from Figma designs using clean, maintainable SCSS, ensuring cross-browser compatibility across all device sizes",
+        "issue": "too_junior",
+        "explanation": "\"Delivered pixel-perfect layouts from Figma\" is a classic junior/intern-level framing focused on execution fidelity rather than engineering judgment. For a middle engineer, the emphasis should be on design-system thinking, reusability, or performance impact.",
+        "suggestion": "Implemented responsive, cross-browser UI components from Figma designs using clean, maintainable SCSS, establishing consistent styling patterns across the application"
+      },
+      {
+        "location": "experience[2].bullets[2]",
+        "current_text": "Implemented multi-step configuration forms with advanced validation for donation thresholds, media file constraints, and profanity filtering",
+        "issue": "too_junior",
+        "explanation": "\"Implemented\" multi-step forms is junior-level language. A middle engineer should frame this around owning the feature end-to-end, including validation strategy and UX decisions.",
+        "suggestion": "Designed and delivered multi-step configuration forms with advanced validation logic covering donation thresholds, media file constraints, and profanity filtering"
+      },
+      {
+        "location": "summary",
+        "current_text": "Front-End Developer with 5+ years of commercial experience building production-grade applications with Next.js, React, and TypeScript.",
+        "issue": "too_senior",
+        "explanation": "5+ years of experience combined with the breadth of the summary (monorepo design, CI/CD, cross-functional leadership) positions the candidate closer to a senior profile. For a middle role, the summary should emphasise depth of ownership on features and delivery quality rather than implying a near-senior tenure and scope.",
+        "suggestion": "Front-End Developer with 4+ years of commercial experience delivering production-grade features with Next.js, React, and TypeScript, with a focus on performance, testing, and clean architecture."
+      }
+    ],
+    "stack_checks": [
+      {
+        "technology": "Next.js",
+        "status": "demonstrated",
+        "location": "experience[0].bullets[1], experience[1].bullets[0], experience[2].bullets[0]"
+      },
+      {
+        "technology": "React",
+        "status": "demonstrated",
+        "location": "experience[1].bullets[3], experience[0].bullets[2]"
+      },
+      {
+        "technology": "TypeScript",
+        "status": "mentioned_only",
+        "location": "top_skills, summary",
+        "suggestion": "Add TypeScript context to at least one experience bullet, e.g. 'Leveraged TypeScript strict mode across the monorepo to enforce type safety and reduce runtime errors at KYC Market.'"
+      },
+      {
+        "technology": "SCSS",
+        "status": "demonstrated",
+        "location": "experience[2].bullets[4]"
+      },
+      {
+        "technology": "JavaScript",
+        "status": "mentioned_only",
+        "location": "top_skills, summary",
+        "suggestion": "JavaScript is implied but never called out in a bullet. A brief mention in context (e.g. custom scripts, tooling) in one bullet would elevate it to demonstrated."
+      },
+      {
+        "technology": "Jest",
+        "status": "mentioned_only",
+        "location": "top_skills, summary",
+        "suggestion": "Add a bullet at KYC Market or AMO FINTECH describing what was tested with Jest, e.g. 'Wrote unit and integration tests with Jest and React Testing Library, achieving X% coverage on critical business-logic modules.'"
+      },
+      {
+        "technology": "Node.js",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "If Node.js was used for scripts, tooling, or SSR customisation in any role, add a brief bullet, e.g. 'Wrote Node.js scripts for build automation and data seeding within the NX monorepo.'"
+      },
+      {
+        "technology": "NX",
+        "status": "demonstrated",
+        "location": "experience[0].bullets[0]"
+      },
+      {
+        "technology": "React Query",
+        "status": "demonstrated",
+        "location": "experience[1].bullets[2]"
+      },
+      {
+        "technology": "REST API",
+        "status": "demonstrated",
+        "location": "experience[2].bullets[3], experience[1].bullets[3]"
+      },
+      {
+        "technology": "CI/CD",
+        "status": "demonstrated",
+        "location": "experience[0].bullets[3]"
+      },
+      {
+        "technology": "Kubernetes",
+        "status": "missing",
+        "suggestion": "If the candidate has any exposure to Kubernetes (e.g. reviewing deployment configs, working in a K8s-managed environment), add a brief mention in the KYC Market bullet about CI/CD and production monitoring."
+      },
+      {
+        "technology": "AWS",
+        "status": "missing",
+        "suggestion": "If AWS services (S3, CloudFront, Amplify) were used for hosting or asset delivery in any project, add a concise mention in the relevant experience bullet."
+      },
+      {
+        "technology": "Prometheus",
+        "status": "missing",
+        "suggestion": "If the candidate worked in an environment with Prometheus dashboards (even read-only), note it alongside the production monitoring bullet at KYC Market."
+      },
+      {
+        "technology": "Grafana",
+        "status": "missing",
+        "suggestion": "Same as Prometheus — if used for observability in any role, add to the KYC Market monitoring bullet."
+      },
+      {
+        "technology": "Loki",
+        "status": "missing",
+        "suggestion": "If log aggregation via Loki was part of the production monitoring setup at KYC Market, name it explicitly in the CI/CD/monitoring bullet."
+      },
+      {
+        "technology": "Docker",
+        "status": "missing",
+        "suggestion": "If Docker was used for local dev environments or containerised builds in any role, add a brief mention, e.g. 'Used Docker for local development environment consistency within the NX monorepo.'"
+      },
+      {
+        "technology": "GA4",
+        "status": "mentioned_only",
+        "location": "experience[0].bullets[1] (implied via 'product analytics, tracking scripts')",
+        "suggestion": "Name GA4 explicitly in the KYC Market landing page bullet: '…integrating GA4 for product analytics, tracking scripts, and A/B testing configurations…'"
+      },
+      {
+        "technology": "Amplitude",
+        "status": "missing",
+        "suggestion": "If Amplitude was used alongside GA4 at KYC Market, name it explicitly in the analytics bullet: '…integrating GA4 and Amplitude for product analytics and event tracking…'"
+      }
+    ],
+    "level_score": 55,
+    "stack_score": 57,
+    "overall_score": 56,
+    "recommendations": []
+  }
+}

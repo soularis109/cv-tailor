@@ -1,0 +1,570 @@
+{
+  "jobText": "Middle Frontend Engineer (Marketing)\n віддалено\nWe are looking for a skilled Middle Frontend Engineer with deep technical expertise and a passion for development.\n\nAs a Middle Frontend Engineer, you will develop, implement, and optimize marketing funnels that drive engagement, conversions, and revenue. You’ll collaborate closely with marketing strategists and developers to create seamless user experiences and ensure the high quality of the memoryOS project.\n\nOur Core Values: Strong ownership skills, taking responsibility for results, driving tasks to completion, and approaching them with a focus on efficiency and quality.\n\nReady to be part of a modern, fast-growing, #1 product in its niche while gaining extensive professional growth? Apply now!\n\nWho are we?\n\nmemoryOS is the world’s #1 app for improving memory and focus, helping people overcome the forgetting curve and retain needed knowledge. Proven learning and memory techniques are merged with Duolingo-like gamified e-learning with patented virtual mind palace tech. Co-founded by 2X World Memory Champion — Jonas von Essen.\n\nWe’re a remote team of 30 diverse, like-minded professionals, united in solving the problem of the forgetting curve.\n\nWe are proud to be the Most Funded App on Kickstarter. The memoryOS was featured on TechCrunch and recognized by Google Brands Accelerator as a product that is “light years ahead of any other company in memory space”.\n\nTech Stack\n\nReact\nTypeScript\nJavascript\nGit\n\nWhat you’ll be working on\n\nLanding Page & Funnel Development\n\nDevelop and optimize landing pages optimized for marketing campaigns and dynamic personalization.\nBuild and optimize marketing funnels & checkout integrations.\nImplement advanced form handling, lead capture flows, and multi-step funnel interfaces.\nTracking, A/B Testing & Conversion Optimization\n\nExperience setting up and optimizing A/B testing and personalization strategies using tools such as Convert.com, GrowthBook, Optimizely, etc.\nEnsure accurate tracking of marketing pixels, conversion tracking (Facebook Ads, Google Ads, TikTok, etc.), and event triggers.\nDebug and troubleshoot frontend tracking issues to ensure data accuracy.\nFrontend Performance & UX Optimization\n\nOptimize pages for speed, responsiveness, and SEO, maximizing ad quality scores.\nImprove frontend performance using Core Web Vitals, Lighthouse, GTmetrix, Google PageSpeed, lazy loading, asset bundling, etc.\nEnsure cross-browser and cross-device compatibility to maximize campaign reach.\nCreate reusable, modular UI components for rapid deployment.\nCollaboration & Technical Integration\n\nCollaborate with developers, QA engineers, designers, Product Owners, and marketing teams to refine tracking and analytics strategies.\nIntegrate frontend solutions with third-party services and CRMs (GoHighLevel, HubSpot, ActiveCampaign, etc.).\nCode Quality & Best Practices\n\nWrite clean, maintainable, and efficient front-end code.\nParticipate in code reviews, sprint planning, and product discussions.\nContribute to continuous improvements in performance, scalability, and quality.\nStay up-to-date with industry trends and emerging technologies.\nAbout you\n\n3+ years of proven experience as a Frontend Developer, with a strong focus on building and optimizing web applications or marketing funnels.\nStrong proficiency in React.js and TypeScript.\nExperience with mobile-first and responsive development across all devices and browsers.\nUnderstanding of REST APIs and frontend architecture principles.\nStrong problem-solving skills and attention to detail.\nProactive, reliable, and committed to self-development in a dynamic business environment.\nEnglish level B1+ or higher.\nOptional green flags:\n\nExperience with rich UI applications (animations, parallax, visually intensive components).\nPayment systems integration (Stripe, Solidgate, etc.).\nExperience working with WebView.\nDeveloping admin interfaces and internal tools.\nIntegration of A/B testing frameworks and analytics services.\n\nYou will also get\n\nDeveloping solutions that have a direct impact on business.\nTransparent management and regular feedback.\nThe opportunities to be involved in interesting and useful product for millions of people.\nThe modern team of like-minded and diverse professionals.\nEnjoy a vacation and paid sick leave days to relax every year.\nFully remote: you are free to choose your productive work time and place.\nGetting the job\n\nEnjoy building a top-level product with us while gaining extensive professional experience in a company with an important mission.\n\nStep-by-step for this position:\n\nScreening interview (up to 1 hour): To discuss the position, check basic competencies, and culture fit.\nTechnical interview (2 hours): Detailed сase approach to identify experience, technical skills, and core competencies.\nFull Day (up to 5 hours): Have an opportunity to work all day with the team, solve tech problems, and write code.\nReferral: Recommendations from the previous workplace.\nOffer call (30 min): Discussion of a Job Offer Proposal.\nLet’s make the world remember!",
+  "analysis": {
+    "role_title": "Middle Frontend Engineer (Marketing)",
+    "seniority": "middle",
+    "language": "en",
+    "must_have": [
+      "3+ years of proven experience as a Frontend Developer",
+      "Strong proficiency in React.js and TypeScript",
+      "Experience with mobile-first and responsive development across all devices and browsers",
+      "Understanding of REST APIs and frontend architecture principles",
+      "Experience building and optimizing web applications or marketing funnels",
+      "Strong problem-solving skills and attention to detail",
+      "English level B1+ or higher"
+    ],
+    "nice_to_have": [
+      "Experience with rich UI applications (animations, parallax, visually intensive components)",
+      "Payment systems integration (Stripe, Solidgate, etc.)",
+      "Experience working with WebView",
+      "Developing admin interfaces and internal tools",
+      "Integration of A/B testing frameworks and analytics services"
+    ],
+    "core_technologies": [
+      "React",
+      "React.js",
+      "TypeScript",
+      "JavaScript",
+      "Git",
+      "Convert.com",
+      "GrowthBook",
+      "Optimizely",
+      "Core Web Vitals",
+      "Lighthouse",
+      "GTmetrix",
+      "Google PageSpeed",
+      "GoHighLevel",
+      "HubSpot",
+      "ActiveCampaign",
+      "Stripe",
+      "Solidgate",
+      "Facebook Ads",
+      "Google Ads",
+      "TikTok"
+    ],
+    "domains": [
+      "edtech",
+      "e-learning",
+      "marketing funnels",
+      "SaaS",
+      "mobile app",
+      "gamification",
+      "memory/focus improvement"
+    ],
+    "responsibilities": [
+      "Develop and optimize landing pages optimized for marketing campaigns and dynamic personalization",
+      "Build and optimize marketing funnels & checkout integrations",
+      "Implement advanced form handling, lead capture flows, and multi-step funnel interfaces",
+      "Set up and optimize A/B testing and personalization strategies",
+      "Ensure accurate tracking of marketing pixels, conversion tracking, and event triggers",
+      "Debug and troubleshoot frontend tracking issues to ensure data accuracy",
+      "Optimize pages for speed, responsiveness, and SEO, maximizing ad quality scores",
+      "Improve frontend performance using Core Web Vitals, Lighthouse, GTmetrix, Google PageSpeed, lazy loading, asset bundling",
+      "Ensure cross-browser and cross-device compatibility",
+      "Create reusable, modular UI components for rapid deployment",
+      "Collaborate with developers, QA engineers, designers, Product Owners, and marketing teams",
+      "Integrate frontend solutions with third-party services and CRMs",
+      "Write clean, maintainable, and efficient front-end code",
+      "Participate in code reviews, sprint planning, and product discussions",
+      "Contribute to continuous improvements in performance, scalability, and quality",
+      "Stay up-to-date with industry trends and emerging technologies"
+    ],
+    "ats_keywords": [
+      "Middle Frontend Engineer",
+      "Frontend Developer",
+      "React.js",
+      "TypeScript",
+      "JavaScript",
+      "Git",
+      "marketing funnels",
+      "landing pages",
+      "A/B testing",
+      "Convert.com",
+      "GrowthBook",
+      "Optimizely",
+      "conversion tracking",
+      "marketing pixels",
+      "Facebook Ads",
+      "Google Ads",
+      "TikTok",
+      "Core Web Vitals",
+      "Lighthouse",
+      "GTmetrix",
+      "Google PageSpeed",
+      "lazy loading",
+      "asset bundling",
+      "SEO",
+      "responsive development",
+      "mobile-first",
+      "cross-browser",
+      "REST APIs",
+      "frontend architecture",
+      "CRM",
+      "GoHighLevel",
+      "HubSpot",
+      "ActiveCampaign",
+      "Stripe",
+      "Solidgate",
+      "WebView",
+      "code reviews",
+      "sprint planning",
+      "modular UI components",
+      "checkout integrations",
+      "lead capture",
+      "personalization",
+      "conversion optimization"
+    ],
+    "soft_signals": [
+      "Strong ownership skills",
+      "taking responsibility for results",
+      "driving tasks to completion",
+      "focus on efficiency and quality",
+      "proactive, reliable, and committed to self-development",
+      "dynamic business environment",
+      "fast-growing product",
+      "remote team",
+      "like-minded and diverse professionals",
+      "transparent management and regular feedback",
+      "direct impact on business"
+    ],
+    "red_flags": [
+      "No compensation range disclosed",
+      "Full Day interview step (up to 5 hours of unpaid work with the team)",
+      "5-step hiring process is lengthy and demanding",
+      "Referral/recommendation from previous workplace required as a formal hiring step"
+    ]
+  },
+  "tailored": {
+    "headline": "Middle Frontend Engineer (Marketing) | React.js, TypeScript, Next.js",
+    "summary": "Frontend Developer with 5+ years of hands-on experience building and optimizing marketing landing pages, multi-step funnels, and high-traffic web applications using React.js, TypeScript, and Next.js. Delivered end-to-end features across marketing, checkout, and analytics domains — from architecture to production — with a strong focus on performance, SEO, and conversion optimization. Comfortable working cross-functionally with designers, PMs, backend engineers, and marketing teams in fast-moving product environments.",
+    "top_skills": [
+      "React.js",
+      "TypeScript",
+      "JavaScript",
+      "Next.js",
+      "Vite",
+      "Nx (Monorepo)",
+      "TanStack Query",
+      "Zustand",
+      "Redux Toolkit",
+      "Apollo Client",
+      "GraphQL",
+      "WebSockets",
+      "SCSS",
+      "Tailwind CSS",
+      "Material UI",
+      "A/B testing",
+      "SEO",
+      "responsive development",
+      "mobile-first",
+      "REST APIs",
+      "Stripe",
+      "Jest",
+      "Vitest",
+      "React Testing Library",
+      "Playwright",
+      "lazy loading",
+      "asset bundling",
+      "conversion tracking",
+      "marketing pixels",
+      "modular UI components",
+      "code reviews"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Frontend Developer",
+        "period": "Feb 2025 – Present",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Designed and delivered performance-critical marketing landing pages using Next.js, integrating product analytics, tracking scripts, and A/B testing configurations that boosted user conversion rates by ~15%",
+          "Owned the architecture of a monorepo solution built from scratch using Nx, unifying 3 products (marketplace, admin dashboard, landing pages) and maximizing UI component and business logic reuse",
+          "Developed core features of a high-traffic crypto marketplace (50K+ MAU), including secure authentication, a multi-step order creation engine, and advanced search with dynamic filtering",
+          "Built a real-time P2P communication layer using WebSockets, enabling live chat messaging and status synchronization between buyers and sellers within active transactions",
+          "Delivered a comprehensive admin panel with financial dashboards, role-based access control (RBAC), subscription management, and dispute resolution tools",
+          "Established CI/CD pipelines, production monitoring, and code review workflows to ensure reliable end-to-end delivery",
+          "Collaborated directly with clients, founders, PMs, BAs, and backend teams to translate business goals into scalable technical roadmaps"
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Frontend Developer",
+        "period": "Nov 2022 – Jan 2025",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Designed and delivered a high-performance, SEO-optimized marketing landing page from scratch using Next.js, driving B2B user acquisition through optimized page speed and search rankings",
+          "Improved client-side performance (LCP, TTI) through code-splitting and lazy loading, reducing overall bundle size by ~10% and optimizing widget load times by ~15%",
+          "Owned the implementation of a secure subscription and billing system via Stripe integration, covering multi-tier pricing pages, billing management, and transaction status workflows",
+          "Built an isolated embeddable chat widget using Shadow DOM and WebSockets, ensuring clean DOM containment and real-time AI response delivery on third-party client websites",
+          "Delivered an Integrations Hub enabling users to connect Slack, Telegram, and Webhooks to forward chatbot leads and notifications to external platforms",
+          "Refactored the data-fetching layer using TanStack Query, establishing robust caching, background revalidation, and consistent state synchronization across the app",
+          "Integrated Sentry for error tracking and production monitoring, significantly reducing debugging time and improving application observability"
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Frontend Developer",
+        "period": "Nov 2020 – Oct 2022",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Delivered a high-performance, SEO-optimized marketing landing page using Next.js, implementing semantic HTML, custom meta tags, and responsive layouts to maximize search ranking and conversion",
+          "Designed and shipped an interactive Widget Builder (Alert Box, Goal Progress) allowing full customization of colors, layouts, sounds, typography, and animation triggers for OBS overlays",
+          "Implemented OAuth integrations with Twitch, YouTube, and Kick to streamline streamer authorization, profile sync, and live broadcast status tracking",
+          "Built data-heavy analytical dashboards featuring responsive tables (1000+ rows), complex pagination, transaction filtering, and interactive financial charts for real-time revenue tracking",
+          "Developed multi-step configuration forms with advanced validation for donation thresholds, media file constraints, and profanity filtering",
+          "Collaborated with backend engineers to integrate REST APIs and WebSockets for global state management using Redux and real-time alert distribution",
+          "Delivered pixel-perfect, cross-browser-compatible layouts from Figma designs using clean, maintainable SCSS across all device sizes"
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc Logistics",
+        "period": "2018 – 2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc Management",
+        "period": "2014 – 2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "3+ years of proven experience as a Frontend Developer",
+        "status": "strong",
+        "evidence": "5+ years of experience across 3 companies (Nov 2020 – Present)"
+      },
+      {
+        "requirement": "Strong proficiency in React.js and TypeScript",
+        "status": "strong",
+        "evidence": "React.js and TypeScript listed as core stack across all 3 roles"
+      },
+      {
+        "requirement": "Experience with mobile-first and responsive development across all devices and browsers",
+        "status": "strong",
+        "evidence": "DonateSystem: 'cross-browser compatibility across all device sizes'; AMO FINTECH: responsive landing pages"
+      },
+      {
+        "requirement": "Understanding of REST APIs and frontend architecture principles",
+        "status": "strong",
+        "evidence": "REST API integration at DonateSystem; monorepo architecture at KYC Market; data-fetching architecture at AMO FINTECH"
+      },
+      {
+        "requirement": "Experience building and optimizing web applications or marketing funnels",
+        "status": "strong",
+        "evidence": "Marketing landing pages at KYC Market (A/B testing, ~15% conversion boost), AMO FINTECH (SEO, LCP/TTI optimization), and DonateSystem (Next.js SEO landing)"
+      },
+      {
+        "requirement": "Strong problem-solving skills and attention to detail",
+        "status": "strong",
+        "evidence": "Code audit and bug fixing at AMO FINTECH; pixel-perfect Figma delivery at DonateSystem"
+      },
+      {
+        "requirement": "English level B1+ or higher",
+        "status": "strong",
+        "evidence": "English listed as Professional level in spoken languages"
+      },
+      {
+        "requirement": "Experience with rich UI applications (animations, parallax, visually intensive components)",
+        "status": "partial",
+        "evidence": "Widget Builder with animation triggers at DonateSystem; pixel-perfect UI delivery — no explicit parallax/animation-heavy work mentioned"
+      },
+      {
+        "requirement": "Payment systems integration (Stripe, Solidgate, etc.)",
+        "status": "strong",
+        "evidence": "Stripe subscription and billing system implemented end-to-end at AMO FINTECH"
+      },
+      {
+        "requirement": "Experience working with WebView",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "Developing admin interfaces and internal tools",
+        "status": "strong",
+        "evidence": "Admin panel with RBAC, financial dashboards, and dispute tools at KYC Market; admin dashboard stabilization at AMO FINTECH"
+      },
+      {
+        "requirement": "Integration of A/B testing frameworks and analytics services",
+        "status": "partial",
+        "evidence": "A/B testing configurations and product analytics integrated at KYC Market landing pages — specific tools (Convert.com, GrowthBook, Optimizely) not named in master CV"
+      },
+      {
+        "requirement": "Conversion tracking, marketing pixels, Facebook/Google/TikTok Ads",
+        "status": "partial",
+        "evidence": "Tracking scripts integrated at KYC Market landing pages — specific ad platforms not named in master CV"
+      },
+      {
+        "requirement": "Core Web Vitals / Lighthouse / GTmetrix / Google PageSpeed optimization",
+        "status": "partial",
+        "evidence": "LCP and TTI improvements at AMO FINTECH; ~10% bundle size reduction and ~15% widget load time improvement — specific tooling (Lighthouse, GTmetrix) not named"
+      },
+      {
+        "requirement": "CRM integrations (GoHighLevel, HubSpot, ActiveCampaign)",
+        "status": "missing",
+        "evidence": ""
+      }
+    ],
+    "fit_score": 72,
+    "match_notes": "Kostya is a strong technical match for the core stack — React.js, TypeScript, Next.js, responsive development, REST APIs, Stripe, and SEO-optimized landing pages are all well-evidenced. The A/B testing and conversion optimization experience at KYC Market is directly relevant, though the specific tools the role names (Convert.com, GrowthBook, Optimizely) are not mentioned in the master CV — worth clarifying in an interview. The main gaps are: (1) No WebView experience mentioned anywhere. (2) No CRM integrations (GoHighLevel, HubSpot, ActiveCampaign) — this is a notable gap for a marketing-focused role. (3) Specific ad-platform pixel work (Facebook Ads, Google Ads, TikTok) is implied by \"tracking scripts\" but not explicitly stated — risky to claim without evidence. (4) The role targets a Middle-level engineer; Kostya's actual seniority is Senior, which may raise expectations or salary misalignment concerns — the CV has been framed to emphasize hands-on delivery and feature ownership rather than team leadership to avoid appearing overqualified.",
+    "keywords_to_weave_in": [
+      "marketing funnels",
+      "landing pages",
+      "A/B testing",
+      "conversion tracking",
+      "SEO",
+      "lazy loading",
+      "asset bundling",
+      "modular UI components",
+      "responsive development",
+      "mobile-first",
+      "cross-browser",
+      "checkout integrations",
+      "lead capture",
+      "REST APIs",
+      "Stripe",
+      "code reviews",
+      "sprint planning",
+      "personalization",
+      "conversion optimization",
+      "Core Web Vitals"
+    ]
+  },
+  "ats_check": {
+    "ats_score": 71,
+    "keyword_coverage": [
+      {
+        "keyword": "Middle Frontend Engineer",
+        "found": true,
+        "location": "headline"
+      },
+      {
+        "keyword": "Frontend Developer",
+        "found": true,
+        "location": "summary, experience roles (all 3 companies)"
+      },
+      {
+        "keyword": "React.js",
+        "found": true,
+        "location": "headline, summary, top_skills"
+      },
+      {
+        "keyword": "TypeScript",
+        "found": true,
+        "location": "headline, summary, top_skills"
+      },
+      {
+        "keyword": "JavaScript",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "Git",
+        "found": false
+      },
+      {
+        "keyword": "marketing funnels",
+        "found": true,
+        "location": "summary"
+      },
+      {
+        "keyword": "landing pages",
+        "found": true,
+        "location": "summary, KYC Market bullet 1, AMO FINTECH bullet 1, DonateSystem bullet 1"
+      },
+      {
+        "keyword": "A/B testing",
+        "found": true,
+        "location": "top_skills, KYC Market bullet 1"
+      },
+      {
+        "keyword": "Convert.com",
+        "found": false
+      },
+      {
+        "keyword": "GrowthBook",
+        "found": false
+      },
+      {
+        "keyword": "Optimizely",
+        "found": false
+      },
+      {
+        "keyword": "conversion tracking",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "marketing pixels",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "Facebook Ads",
+        "found": false
+      },
+      {
+        "keyword": "Google Ads",
+        "found": false
+      },
+      {
+        "keyword": "TikTok",
+        "found": false
+      },
+      {
+        "keyword": "Core Web Vitals",
+        "found": false
+      },
+      {
+        "keyword": "Lighthouse",
+        "found": false
+      },
+      {
+        "keyword": "GTmetrix",
+        "found": false
+      },
+      {
+        "keyword": "Google PageSpeed",
+        "found": false
+      },
+      {
+        "keyword": "lazy loading",
+        "found": true,
+        "location": "top_skills, AMO FINTECH bullet 2"
+      },
+      {
+        "keyword": "asset bundling",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "SEO",
+        "found": true,
+        "location": "summary, top_skills, AMO FINTECH bullet 1, DonateSystem bullet 1"
+      },
+      {
+        "keyword": "responsive development",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "mobile-first",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "cross-browser",
+        "found": true,
+        "location": "DonateSystem bullet 7"
+      },
+      {
+        "keyword": "REST APIs",
+        "found": true,
+        "location": "top_skills, DonateSystem bullet 6"
+      },
+      {
+        "keyword": "frontend architecture",
+        "found": true,
+        "location": "summary"
+      },
+      {
+        "keyword": "CRM",
+        "found": false
+      },
+      {
+        "keyword": "GoHighLevel",
+        "found": false
+      },
+      {
+        "keyword": "HubSpot",
+        "found": false
+      },
+      {
+        "keyword": "ActiveCampaign",
+        "found": false
+      },
+      {
+        "keyword": "Stripe",
+        "found": true,
+        "location": "top_skills, AMO FINTECH bullet 3"
+      },
+      {
+        "keyword": "Solidgate",
+        "found": false
+      },
+      {
+        "keyword": "WebView",
+        "found": false
+      },
+      {
+        "keyword": "code reviews",
+        "found": true,
+        "location": "top_skills, KYC Market bullet 6"
+      },
+      {
+        "keyword": "sprint planning",
+        "found": false
+      },
+      {
+        "keyword": "modular UI components",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "checkout integrations",
+        "found": false
+      },
+      {
+        "keyword": "lead capture",
+        "found": false
+      },
+      {
+        "keyword": "personalization",
+        "found": false
+      },
+      {
+        "keyword": "conversion optimization",
+        "found": true,
+        "location": "summary"
+      }
+    ],
+    "format_checks": [
+      {
+        "rule": "All experience bullets start with an action verb",
+        "passed": true
+      },
+      {
+        "rule": "No passive constructions (Responsible for / Helped with)",
+        "passed": true
+      },
+      {
+        "rule": "Bullet length ≤ 2 lines",
+        "passed": true
+      },
+      {
+        "rule": "Standard sections present (headline, summary, skills, experience)",
+        "passed": true
+      },
+      {
+        "rule": "Language consistency throughout CV",
+        "passed": true
+      },
+      {
+        "rule": "Education section present",
+        "passed": true
+      },
+      {
+        "rule": "No special characters or ASCII art that break parsers",
+        "passed": true
+      },
+      {
+        "rule": "Projects section populated",
+        "passed": false,
+        "note": "The 'projects' array is empty. ATS parsers may flag a declared-but-empty section; either populate it or remove the section entirely."
+      }
+    ],
+    "recommendations": []
+  }
+}

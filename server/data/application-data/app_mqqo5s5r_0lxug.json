@@ -1,0 +1,387 @@
+{
+  "jobText": "Frontend Developer\n віддалено\nAbout us:\nGismart is a value-driven mobile app developer with a strong presence in the Health & Wellness, Utilities, and Music app markets. We have recently achieved a significant milestone of over 1 billion downloads worldwide, taking a step toward our mission of cultivating the well-being of people worldwide. With headquarters in London, UK, Gismart is a dynamic global company with a reach extending across Europe and far beyond. Our determined team comprises over 350 individuals who bring diversity, creativity, innovation, and relentless drive to the company. Gismart unites professionals from diverse backgrounds in entertainment, music, and tech, allowing us to play to each other’s strengths and succeed as a team.\n\nOur mission:\nBecome a stepping stone on our customers’ journeys of self-improvement.\n\nOur values:\n\nDeliver what matters\nRespect and support others\nInitiate and own\nVoiceopenly\nExecute with quality\nIf you are passionate about mobile app development and want to join a company that’s reshaping the industry, Gismart is the place for you. We provide exciting career opportunities, a supportive workplace culture, and the chance to contribute to a team that is making a tangible impact. For more information on Gismart, visit gismart.com.\n\nWhat you will do:\n\nActive development of new features for existing web funnels\nDevelopment of single page applications to realize web2app flow\nIntegration of analytics systems, A/B testing, payment systems\nKey Qualifications:\n\nStrong understanding of modern JavaScript (ES6+) and static typing with TypeScript\nProficiency in building applications using functional components and React Hooks\nExperience with React Query for server state and Zustand for client state\nSkilled in writing modular and maintainable styles using styled-components\nWould be a plus:\n\nBasic knowledge of HTTP, the DOM, and the JavaScript event loop\nExperience working with RESTful APIs\nFamiliarity with no-code/low-code visual builder tools for creating UI components or pages\nEmployee Benefits:\n\nRemote-First Culture: Our team is diverse and extensive, just like our product portfolio. We provide a flexible working schedule and let you work anywhere in the world, either remotely or in one of our corporate hubs.\nСoworking Compensation: We provide 50% compensation for coworking spaces worldwide to make sure that everyone has a comfortable and inspiring workspace.\nPublic Holidays Policy: Gismart observes public holidays based on the Ukrainian or Polish holiday calendars. Employees working in other locations are entitled to 12 public holidays per year.\n100% Sick Leave Compensation\nMental and Physical Health: To help you stay happy and healthy, Gismart will partially cover your medical insurance, sports activities, and therapy costs.\nPersonal Equipment Policy: Of course, we’ll provide you with all the equipment you need or cover the maintenance cost for your own tools.\nPersonal Learning and Development: We love to see you learn and grow, so Gismart will cover 70% of your professional development courses. We’ll also pay for 100% of corporate English courses.\nTime-Off Policy: Every employee gets 18 working days of paid vacation and 3 personal days per year, with an extra day added for each year at Gismart.\nCorporate Events: We are remote-first, but we love meeting up in person. Whenever possible, we organize corporate events and team-building activities across all Gismart hubs.",
+  "analysis": {
+    "role_title": "Frontend Developer",
+    "seniority": "middle",
+    "language": "uk",
+    "must_have": [
+      "Strong understanding of modern JavaScript (ES6+)",
+      "Static typing with TypeScript",
+      "Proficiency in building applications using functional components and React Hooks",
+      "Experience with React Query for server state",
+      "Zustand for client state",
+      "Skilled in writing modular and maintainable styles using styled-components"
+    ],
+    "nice_to_have": [
+      "Basic knowledge of HTTP, the DOM, and the JavaScript event loop",
+      "Experience working with RESTful APIs",
+      "Familiarity with no-code/low-code visual builder tools for creating UI components or pages"
+    ],
+    "core_technologies": [
+      "JavaScript",
+      "ES6+",
+      "TypeScript",
+      "React",
+      "React Hooks",
+      "React Query",
+      "Zustand",
+      "styled-components",
+      "RESTful APIs"
+    ],
+    "domains": [
+      "mobile app development",
+      "Health & Wellness",
+      "Utilities",
+      "Music",
+      "web funnels",
+      "web2app",
+      "single page applications"
+    ],
+    "responsibilities": [
+      "Active development of new features for existing web funnels",
+      "Development of single page applications to realize web2app flow",
+      "Integration of analytics systems, A/B testing, payment systems"
+    ],
+    "ats_keywords": [
+      "Frontend Developer",
+      "JavaScript",
+      "ES6+",
+      "TypeScript",
+      "React Hooks",
+      "functional components",
+      "React Query",
+      "Zustand",
+      "styled-components",
+      "single page applications",
+      "web2app",
+      "A/B testing",
+      "RESTful APIs",
+      "no-code",
+      "low-code",
+      "DOM",
+      "JavaScript event loop",
+      "HTTP",
+      "payment systems",
+      "analytics systems",
+      "remote"
+    ],
+    "soft_signals": [
+      "remote-first culture",
+      "flexible working schedule",
+      "value-driven",
+      "diversity, creativity, innovation",
+      "relentless drive",
+      "supportive workplace culture",
+      "initiate and own",
+      "execute with quality",
+      "deliver what matters"
+    ],
+    "red_flags": [
+      "No mention of compensation or salary range",
+      "Seniority level not explicitly stated — scope suggests mid-level but title is generic",
+      "Nice-to-have items (HTTP, DOM, event loop) are arguably fundamental frontend knowledge, suggesting potentially inconsistent expectations"
+    ]
+  },
+  "tailored": {
+    "headline": "Frontend Developer | React, TypeScript, React Query, Zustand",
+    "summary": "Frontend Developer with 4+ years of hands-on experience building high-performance React and Next.js applications. Experienced in developing marketing funnels, single page applications, and web2app flows — integrating analytics platforms, payment systems, and A/B testing configurations to drive measurable conversion growth. Proficient in TypeScript, React Query, and Zustand, with a strong track record of delivering production-ready features end-to-end in fast-paced product environments.",
+    "top_skills": [
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "React",
+      "React Hooks",
+      "functional components",
+      "React Query (TanStack Query)",
+      "Zustand",
+      "Next.js",
+      "single page applications",
+      "RESTful APIs",
+      "GraphQL",
+      "A/B testing",
+      "analytics systems",
+      "payment systems",
+      "SCSS",
+      "Tailwind CSS",
+      "Material UI",
+      "Vitest",
+      "Jest",
+      "React Testing Library",
+      "Playwright",
+      "WebSockets",
+      "Redux Toolkit",
+      "Apollo Client",
+      "HTML",
+      "CSS",
+      "Node.js"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Frontend Developer",
+        "period": "Feb 2025 – Present",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Delivered a conversion-focused marketing landing page using Next.js, integrating product analytics, tracking scripts, and A/B testing configurations that boosted user conversion rates by ~15%",
+          "Owned the core architecture of a high-traffic crypto marketplace (50K+ MAU), building secure authentication, a multi-step order creation engine, and advanced search with dynamic filtering",
+          "Built a real-time P2P communication layer using WebSockets, enabling instant chat messaging and live status synchronization between buyers and sellers within active transactions",
+          "Designed and delivered a full-featured admin panel with financial dashboards, role-based access control (RBAC), subscription management, and dispute resolution tools",
+          "Drove end-to-end delivery processes — configuring CI/CD pipelines, production monitoring, and code review workflows to ensure stable, predictable releases",
+          "Collaborated directly with PMs, BAs, designers, and backend engineers to translate business goals into scoped, shippable frontend features"
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Frontend Developer",
+        "period": "Nov 2022 – Jan 2025",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Delivered a high-performance, SEO-optimized marketing landing page from scratch using Next.js, driving B2B user acquisition through optimized Core Web Vitals and search rankings",
+          "Integrated a secure subscription and billing system via Stripe, developing multi-tier pricing pages, billing management flows, and transaction status workflows end-to-end",
+          "Built an isolated embeddable chat widget using Shadow DOM and WebSockets, enabling real-time AI responses on client websites with clean DOM containment and zero style leakage",
+          "Developed an Integrations Hub allowing users to connect third-party platforms (Slack, Telegram, Webhooks) to route leads and notifications from the chatbot",
+          "Optimized the data-fetching layer using React Query (TanStack Query), establishing robust caching, background revalidation, and consistent server state synchronization across the app",
+          "Improved client-side performance (LCP, TTI) through code-splitting and lazy loading, reducing bundle size by ~10% and optimizing widget load times by ~15%",
+          "Integrated Sentry for production error tracking and monitoring, significantly reducing debugging time and improving application observability"
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Frontend Developer",
+        "period": "Nov 2020 – Oct 2022",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Delivered a high-performance, SEO-optimized marketing landing page using Next.js with semantic HTML, custom meta tags, and responsive layouts to maximize search ranking and conversion",
+          "Built an interactive Widget Builder (Alert Box, Goal Progress) allowing streamers to fully customize colors, layouts, sounds, typography, and animation triggers for OBS overlays",
+          "Implemented OAuth integrations with Twitch, YouTube, and Kick to streamline streamer authorization, profile synchronization, and live broadcast status tracking via RESTful APIs",
+          "Developed data-heavy analytical dashboards with responsive tables (1000+ rows), pagination, transaction filtering, and interactive financial charts for real-time revenue tracking",
+          "Integrated WebSockets for reliable real-time alert distribution, managing global state with Redux for consistent, low-latency updates across the platform",
+          "Collaborated with backend engineers to integrate REST APIs and align on data contracts, ensuring robust and predictable frontend behavior across all features"
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc Logistics",
+        "period": "2018 – 2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc Management",
+        "period": "2014 – 2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "Strong understanding of modern JavaScript (ES6+)",
+        "status": "strong",
+        "evidence": "4+ years of professional JavaScript/TypeScript across all roles; ES6+ patterns used throughout React, Next.js, and Node.js work"
+      },
+      {
+        "requirement": "Static typing with TypeScript",
+        "status": "strong",
+        "evidence": "TypeScript listed as primary language; used across all 3 roles including KYC Market, AMO FINTECH, and DonateSystem"
+      },
+      {
+        "requirement": "Proficiency in building applications using functional components and React Hooks",
+        "status": "strong",
+        "evidence": "React is the core framework across all roles; functional components and hooks are the standard approach in all listed projects"
+      },
+      {
+        "requirement": "Experience with React Query for server state",
+        "status": "strong",
+        "evidence": "TanStack Query (React Query) explicitly listed in both KYC Market and AMO FINTECH tech stacks; refactored data-fetching layer at AMO FINTECH using TanStack Query"
+      },
+      {
+        "requirement": "Zustand for client state",
+        "status": "strong",
+        "evidence": "Zustand listed in KYC Market tech stack as primary client state solution"
+      },
+      {
+        "requirement": "Skilled in writing modular and maintainable styles using styled-components",
+        "status": "partial",
+        "evidence": "Candidate uses SCSS, Tailwind CSS, and Material UI — no direct styled-components experience listed in master CV"
+      },
+      {
+        "requirement": "Experience working with RESTful APIs",
+        "status": "strong",
+        "evidence": "REST API integration present across all 3 roles; explicitly mentioned in DonateSystem and AMO FINTECH"
+      },
+      {
+        "requirement": "Integration of analytics systems, A/B testing, payment systems",
+        "status": "strong",
+        "evidence": "A/B testing and analytics integrations at KYC Market (~15% conversion lift); Stripe billing at AMO FINTECH; analytics tracking scripts mentioned"
+      },
+      {
+        "requirement": "Development of single page applications / web2app flow",
+        "status": "partial",
+        "evidence": "Candidate has strong SPA experience (React dashboards, widgets, marketplaces) but no explicit web2app or mobile funnel traffic flow mentioned"
+      },
+      {
+        "requirement": "Familiarity with no-code/low-code visual builder tools",
+        "status": "missing",
+        "evidence": "No mention of no-code or low-code tools in master CV"
+      }
+    ],
+    "fit_score": 82,
+    "match_notes": "You are a strong match for this role on the core technical stack — React, TypeScript, React Query, and Zustand are all present and well-evidenced. Your A/B testing, analytics integration, and payment system experience (Stripe) are directly relevant to what this Growth/Marketing team needs. The main gap is styled-components: you use SCSS, Tailwind, and MUI, but not styled-components specifically — this is a listed must-have and worth flagging honestly. You may be able to address it in a cover note by highlighting your CSS-in-JS awareness and fast ramp-up ability. The second gap is web2app funnels and mobile traffic flows — your funnel and landing page work is close, but you have no explicit web2app experience. No-code/low-code tools are also missing, though this is a nice-to-have. Overall, your profile is well above average for this role — the seniority calibration is right (mid-level framing works in your favour here), and your React Query + Zustand combination is a direct keyword match that most candidates won't have.",
+    "keywords_to_weave_in": [
+      "single page applications",
+      "web2app",
+      "analytics systems",
+      "A/B testing",
+      "payment systems",
+      "functional components",
+      "React Hooks",
+      "DOM",
+      "HTTP",
+      "JavaScript event loop",
+      "no-code",
+      "low-code",
+      "remote"
+    ]
+  },
+  "experience_check": {
+    "level_checks": [
+      {
+        "location": "experience[0].bullets[1]",
+        "current_text": "Owned the core architecture of a high-traffic crypto marketplace (50K+ MAU), building secure authentication, a multi-step order creation engine, and advanced search with dynamic filtering",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[1].bullets[4]",
+        "current_text": "Optimized the data-fetching layer using React Query (TanStack Query), establishing robust caching, background revalidation, and consistent server state synchronization across the app",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[0].bullets[4]",
+        "current_text": "Drove end-to-end delivery processes — configuring CI/CD pipelines, production monitoring, and code review workflows to ensure stable, predictable releases",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[2].bullets[2]",
+        "current_text": "Implemented OAuth integrations with Twitch, YouTube, and Kick to streamline streamer authorization, profile synchronization, and live broadcast status tracking via RESTful APIs",
+        "issue": "too_junior",
+        "explanation": "'Implemented' is a junior/intern-level verb. For a middle-level role, this bullet should convey ownership of the integration design and its business impact, not just execution.",
+        "suggestion": "Integrated OAuth flows with Twitch, YouTube, and Kick — designing the authorization lifecycle, profile synchronization, and live broadcast status tracking via RESTful APIs to streamline streamer onboarding."
+      },
+      {
+        "location": "experience[2].bullets[4]",
+        "current_text": "Integrated WebSockets for reliable real-time alert distribution, managing global state with Redux for consistent, low-latency updates across the platform",
+        "issue": "too_junior",
+        "explanation": "'Integrated' and 'managing' are execution-level verbs that understate the candidate's ownership. A middle-level framing should highlight the design decision and measurable outcome.",
+        "suggestion": "Engineered a real-time alert distribution layer using WebSockets, architecting global state management with Redux to ensure consistent, low-latency updates across the platform."
+      },
+      {
+        "location": "experience[2].bullets[5]",
+        "current_text": "Collaborated with backend engineers to integrate REST APIs and align on data contracts, ensuring robust and predictable frontend behavior across all features",
+        "issue": "too_junior",
+        "explanation": "'Collaborated to integrate' reads as a supporting/assisting role rather than an ownership role. Middle-level engineers drive API contracts, not just align on them.",
+        "suggestion": "Drove REST API integration with backend engineers, defining data contracts and interface boundaries to ensure robust, predictable frontend behavior across all features."
+      },
+      {
+        "location": "experience[1].bullets[3]",
+        "current_text": "Developed an Integrations Hub allowing users to connect third-party platforms (Slack, Telegram, Webhooks) to route leads and notifications from the chatbot",
+        "issue": "too_junior",
+        "explanation": "'Developed' is a mid-tier verb but the bullet lacks any indication of ownership, design decisions, or impact — it reads like a task description rather than an achievement, which skews junior.",
+        "suggestion": "Designed and delivered an Integrations Hub enabling users to connect third-party platforms (Slack, Telegram, Webhooks), owning the full integration lifecycle from API design to production rollout for lead and notification routing."
+      },
+      {
+        "location": "experience[2].bullets[0]",
+        "current_text": "Delivered a high-performance, SEO-optimized marketing landing page using Next.js with semantic HTML, custom meta tags, and responsive layouts to maximize search ranking and conversion",
+        "issue": "too_junior",
+        "explanation": "While 'Delivered' is acceptable, the bullet focuses entirely on implementation details (semantic HTML, meta tags, responsive layouts) with no quantified outcome or ownership signal — this reads as a junior task list.",
+        "suggestion": "Delivered a high-performance, SEO-optimized marketing landing page in Next.js — owning semantic structure, Core Web Vitals optimization, and responsive layout — resulting in measurable improvements in search ranking and conversion rate."
+      },
+      {
+        "location": "experience[2].bullets[1]",
+        "current_text": "Built an interactive Widget Builder (Alert Box, Goal Progress) allowing streamers to fully customize colors, layouts, sounds, typography, and animation triggers for OBS overlays",
+        "issue": "too_junior",
+        "explanation": "'Built' is a junior-level verb. The bullet also enumerates features without conveying design ownership, technical complexity, or impact — hallmarks of a junior task description.",
+        "suggestion": "Designed and delivered an interactive Widget Builder (Alert Box, Goal Progress) for OBS overlays, owning the full customization engine — colors, layouts, sounds, typography, and animation triggers — used by streamers to personalize live broadcast experiences."
+      }
+    ],
+    "stack_checks": [
+      {
+        "technology": "JavaScript (ES6+)",
+        "status": "demonstrated",
+        "location": "summary, top_skills, experience across all 3 roles"
+      },
+      {
+        "technology": "ES6+",
+        "status": "demonstrated",
+        "location": "summary ('ES6+ patterns'), top_skills"
+      },
+      {
+        "technology": "TypeScript",
+        "status": "mentioned_only",
+        "location": "headline, summary, top_skills",
+        "suggestion": "Add TypeScript explicitly to at least one experience bullet — e.g., in the KYC Market or AMO FINTECH role, mention 'TypeScript-first codebase' or 'enforced strict TypeScript typing across shared component library' to move from mentioned to demonstrated."
+      },
+      {
+        "technology": "React",
+        "status": "demonstrated",
+        "location": "summary, experience[0].bullets[1], experience[1] multiple bullets"
+      },
+      {
+        "technology": "React Hooks",
+        "status": "mentioned_only",
+        "location": "top_skills ('React Hooks', 'functional components')",
+        "suggestion": "Weave React Hooks into an experience bullet — e.g., 'Built reusable custom hooks (useAuth, useFilters) to encapsulate shared business logic across the marketplace' in the KYC Market role."
+      },
+      {
+        "technology": "React Query",
+        "status": "demonstrated",
+        "location": "headline, summary, top_skills, experience[1].bullets[4]"
+      },
+      {
+        "technology": "Zustand",
+        "status": "mentioned_only",
+        "location": "headline, summary, top_skills",
+        "suggestion": "Add a concrete Zustand bullet to the KYC Market role — e.g., 'Managed client-side application state with Zustand, structuring modular stores for auth, order flow, and UI state to keep components decoupled and predictable.'"
+      },
+      {
+        "technology": "styled-components",
+        "status": "missing",
+        "suggestion": "styled-components is a listed must-have and is entirely absent from the CV. Since the master CV shows no direct experience, add a brief honest signal in the summary or a cover note — e.g., 'Familiar with CSS-in-JS patterns including styled-components; primary styling experience in SCSS and Tailwind CSS.' Alternatively, if any project used styled-components even minimally, surface it in a bullet."
+      },
+      {
+        "technology": "RESTful APIs",
+        "status": "demonstrated",
+        "location": "top_skills, experience[2].bullets[2], experience[2].bullets[5], experience[1].bullets[1]"
+      }
+    ],
+    "level_score": 40,
+    "stack_score": 72,
+    "overall_score": 53,
+    "recommendations": [
+      {
+        "priority": "high",
+        "type": "seniority",
+        "text": "Rewrite the 5 'too_junior' bullets in the DonateSystem and AMO FINTECH roles using ownership-signalling verbs (Designed, Engineered, Drove, Owned) and add at least one quantified outcome per bullet. The DonateSystem role in particular reads like a task log — every bullet needs a 'so that' or a metric to convey mid-level impact."
+      },
+      {
+        "priority": "high",
+        "type": "stack",
+        "text": "styled-components is a must-have and is completely absent. Add at minimum a summary-level acknowledgement of CSS-in-JS familiarity (e.g., 'experienced with CSS-in-JS patterns including styled-components') or surface any project where it was used. Leaving it entirely missing is the single largest gap against the job spec."
+      },
+      {
+        "priority": "high",
+        "type": "stack",
+        "text": "Zustand and React Hooks are only mentioned in the skills list — neither appears in any experience bullet with meaningful context. Add one concrete bullet per technology: a Zustand store design bullet in KYC Market, and a custom hooks bullet (e.g., useAuth, useFilters) in either KYC Market or AMO FINTECH."
+      },
+      {
+        "priority": "medium",
+        "type": "stack",
+        "text": "TypeScript is listed everywhere but never demonstrated in context. Insert 'TypeScript' into at least one experience bullet — e.g., 'Enforced strict TypeScript typing across the shared component library, eliminating a class of runtime errors and improving IDE-driven developer experience' in the AMO FINTECH role."
+      },
+      {
+        "priority": "medium",
+        "type": "framing",
+        "text": "The summary is strong but does not mention styled-components or CSS-in-JS at all, and omits web2app funnels — both are explicit job requirements. Add a single sentence: 'Experienced building web2app conversion funnels and comfortable with CSS-in-JS styling approaches including styled-components.' This directly addresses the two partial/missing coverage items without overstating experience."
+      }
+    ],
+    "verdict": "CV демонструє чіткий середній рівень у підсумку та в найсильніших буллетах (KYC Market, AMO FINTECH), однак роль DonateSystem і кілька буллетів AMO FINTECH суттєво знижують загальне враження через юніорські дієслова та відсутність кількісних результатів — це найкритичніша проблема рівня. Найбільша прогалина у стеку — повна відсутність styled-components (обов'язкова вимога), а Zustand і React Hooks присутні лише у списку навичок без жодного контекстного підтвердження в досвіді."
+  }
+}

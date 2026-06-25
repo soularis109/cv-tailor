@@ -2,6 +2,7 @@ export type Seniority =
   | "intern"
   | "junior"
   | "middle"
+  | "strong-middle"
   | "senior"
   | "lead"
   | "staff"
@@ -89,6 +90,37 @@ export interface AtsCheckResult {
   verdict: string;
 }
 
+export interface LevelCheck {
+  location: string;
+  current_text: string;
+  issue: "too_junior" | "too_senior" | "ok";
+  explanation?: string;
+  suggestion?: string;
+}
+
+export interface StackCheck {
+  technology: string;
+  status: "demonstrated" | "mentioned_only" | "missing";
+  location?: string;
+  suggestion?: string;
+}
+
+export interface VerificationRecommendation {
+  priority: "high" | "medium" | "low";
+  type: "seniority" | "stack" | "framing";
+  text: string;
+}
+
+export interface ExperienceVerificationResult {
+  level_score: number;
+  stack_score: number;
+  overall_score: number;
+  level_checks: LevelCheck[];
+  stack_checks: StackCheck[];
+  recommendations: VerificationRecommendation[];
+  verdict: string;
+}
+
 export const STATUSES = [
   "Drafted",
   "Applied",
@@ -129,4 +161,6 @@ export interface ApplicationData {
   analysis: JobAnalysis;
   tailored: TailoredCv;
   ats_check?: AtsCheckResult;
+  experience_check?: ExperienceVerificationResult;
+  customPdf?: boolean;
 }

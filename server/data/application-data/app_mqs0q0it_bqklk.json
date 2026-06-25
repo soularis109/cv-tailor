@@ -1,0 +1,423 @@
+{
+  "jobText": "Frontend Engineer (React)\n Київ\nGrowly — глобальна продуктова компанія, яку рухають виняткові команди.\n\nНаш принцип простий: ніхто не перемагає наодинці. Змінюються продукти і ринки — але сильна команда досягає результатів знову і знову. Тому для нас не так важливо, що робити. Важливо — з ким, ми збираємо команди, які разом перетворюють амбітні ідеї на реальність.\n\nСьогодні ми розвиваємо три напрями в межах одного бренду:\n\nІнструменти для роботи з документами — редагування, конвертація, підписання і захист файлів в одному місці.\nПлатформа для розвитку когнітивних навичок — тренування памʼяті, уваги та швидкості мислення через науково обґрунтовані тести й практики.\nПлатформа для розвитку карʼєри — резюме та мотиваційні листи, пошук вакансій і підтримка на кожному етапі карʼєрного розвитку.\nМи частина екосистеми SKELAR. Що варто знати про SKELAR? Це венчур-білдер — іншими словами, компанія, яка будує компанії. З нами фаундери створюють consumer-бізнеси, які стають лідерами на глобальних ринках EdTech, Mental health, Petcare, FashionTech та інших.\n\nСкеларівці будують tech-продукти, які здобувають відзнаки від Product Hunt, The Webby Awards та отримують тисячі позитивних відгуків на TrustPilot. Загалом tech-продуктами наших бізнесів користуються 10+ млн людей у світі.\n\nКласні продукти будують не вакансії, а люди. Тому ми не «закриваємо позицію» — ми шукаємо людину, яка підніме планку команди — можливо, це ти.\n\nЗараз ми шукаємо Frontend Engineer, з яким перетворимо амбіції на результат.\n\nЩо робитимеш:\n— Розробка та підтримка користувацьких інтерфейсів з використанням React 19 / Next.js 15 / TypeScript.\n— Робота в монорепозиторії з кількома продуктами та спільними пакетами.\n— Покриття коду тестами (компонентними та E2E) і участь у налаштуванні CI/CD-пайплайнів.\n— Запуск та аналіз A/B-тестів.\n— Участь у технічному прийнятті рішень, code review та покращенні Developer Experience.\nЩо для нас важливо:\n— 2+ роки комерційного досвіду на React + TypeScript.\n— Практичний досвід роботи з інструментами керування станом на клієнті та сервері (Zustand / Redux Toolkit, TanStack Query або аналогічні).\n— Розуміння performance-практик на фронтенді (оптимізація рендерів, Core Web Vitals, зменшення бандл-розміру, робота з браузером).\n— Впевнена робота з Dev Tools та вміння ефективно взаємодіяти з Figma.\nБуде перевагою:\n— Досвід роботи в монорепозиторіях (Turborepo, Nx тощо).\n— Досвід написання E2E-тестів (Cypress, Playwright).\n— Досвід роботи з системами моніторингу помилок та перформансу (Sentry).\n— Досвід налаштування CI/CD пайплайнів (GitHub Actions, GitLab CI тощо).\n\nЯк ми працюємо — наші цінності\nOpenness — Be Brave. Embrace Change. Value Feedback. Сміливість говорити правду й чути інших — навіть коли незручно.\n\nOwnership — Take charge. Deliver results. Тут не питають «де мій KPI» — тут приходять з «я бачу, як зробити краще».\n\nBias for Action — Quick Moves, Big Wins. Приймаємо рішення швидко й любимо дію більше за нескінченні узгодження. Краще спробувати, помилитись і навчитися, ніж зробити ідеально, але запізно.\n\nGrowth — Evolve Today, Excel Tomorrow. Ми не зупиняємось на досягнутому — ні як бізнес, ні як люди. Ставимо високу планку й щодня рухаємось до неї.",
+  "analysis": {
+    "role_title": "Frontend Engineer (React)",
+    "seniority": "middle",
+    "language": "uk",
+    "must_have": [
+      "2+ роки комерційного досвіду на React + TypeScript",
+      "Практичний досвід роботи з інструментами керування станом на клієнті та сервері (Zustand / Redux Toolkit, TanStack Query або аналогічні)",
+      "Розуміння performance-практик на фронтенді (оптимізація рендерів, Core Web Vitals, зменшення бандл-розміру, робота з браузером)",
+      "Впевнена робота з Dev Tools",
+      "Вміння ефективно взаємодіяти з Figma"
+    ],
+    "nice_to_have": [
+      "Досвід роботи в монорепозиторіях (Turborepo, Nx тощо)",
+      "Досвід написання E2E-тестів (Cypress, Playwright)",
+      "Досвід роботи з системами моніторингу помилок та перформансу (Sentry)",
+      "Досвід налаштування CI/CD пайплайнів (GitHub Actions, GitLab CI тощо)"
+    ],
+    "core_technologies": [
+      "React 19",
+      "Next.js 15",
+      "TypeScript",
+      "Zustand",
+      "Redux Toolkit",
+      "TanStack Query",
+      "Turborepo",
+      "Nx",
+      "Cypress",
+      "Playwright",
+      "Sentry",
+      "GitHub Actions",
+      "GitLab CI",
+      "Figma"
+    ],
+    "domains": [
+      "EdTech",
+      "document tools",
+      "cognitive skills platform",
+      "career development platform",
+      "consumer tech",
+      "SaaS"
+    ],
+    "responsibilities": [
+      "Розробка та підтримка користувацьких інтерфейсів з використанням React 19 / Next.js 15 / TypeScript",
+      "Робота в монорепозиторії з кількома продуктами та спільними пакетами",
+      "Покриття коду тестами (компонентними та E2E) і участь у налаштуванні CI/CD-пайплайнів",
+      "Запуск та аналіз A/B-тестів",
+      "Участь у технічному прийнятті рішень, code review та покращенні Developer Experience"
+    ],
+    "ats_keywords": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Zustand",
+      "Redux Toolkit",
+      "TanStack Query",
+      "Core Web Vitals",
+      "performance optimization",
+      "bundle size",
+      "monorepo",
+      "Turborepo",
+      "Nx",
+      "E2E tests",
+      "Cypress",
+      "Playwright",
+      "Sentry",
+      "CI/CD",
+      "GitHub Actions",
+      "GitLab CI",
+      "A/B testing",
+      "code review",
+      "Developer Experience",
+      "Figma",
+      "Dev Tools",
+      "component testing",
+      "state management",
+      "server state",
+      "client state"
+    ],
+    "soft_signals": [
+      "Ownership — самостійне прийняття рішень без очікування KPI",
+      "Bias for Action — швидке прийняття рішень, перевага дії над узгодженнями",
+      "Openness — культура зворотного зв'язку та сміливість говорити правду",
+      "Growth mindset — постійний розвиток і висока планка",
+      "Продуктова компанія з кількома напрямами одночасно",
+      "Частина венчур-білдера SKELAR — глобальний масштаб"
+    ],
+    "red_flags": [
+      "Компенсація не вказана",
+      "Широкий охват відповідальності: одночасно кілька продуктів у монорепозиторії — можливе розпорошення фокусу",
+      "Формат роботи (remote/office/hybrid) явно не вказаний, лише згадано 'Київ'"
+    ]
+  },
+  "tailored": {
+    "headline": "Front-End Developer | React, Next.js, TypeScript",
+    "summary": "Front-End Developer with 5+ years of commercial experience building React, Next.js, and TypeScript applications across SaaS and marketplace products. Comfortable delivering complex frontend features independently — from Figma to production — with a strong focus on performance optimization, Core Web Vitals, and state management. Experienced working in Nx monorepos with multiple shared packages, writing component and E2E tests, and contributing to CI/CD pipelines and code review workflows.",
+    "top_skills": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Zustand",
+      "TanStack Query",
+      "Redux Toolkit",
+      "Nx (monorepo)",
+      "Playwright",
+      "Vitest",
+      "Jest",
+      "React Testing Library",
+      "performance optimization",
+      "Core Web Vitals",
+      "bundle size reduction",
+      "A/B testing",
+      "Sentry",
+      "SCSS",
+      "Tailwind CSS",
+      "Material UI",
+      "GraphQL",
+      "Apollo Client",
+      "WebSockets",
+      "Figma",
+      "CI/CD"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Front-End Developer",
+        "period": "Feb 2025 – Jun 2026",
+        "location": "Remote",
+        "bullets": [
+          "Designed and implemented an Nx monorepo from scratch, unifying three products (marketplace, admin dashboard, landing pages) with shared UI components and business logic packages",
+          "Owned the frontend of a crypto marketplace (50K+ MAU), delivering secure authentication, a multi-step order creation workflow, and an advanced search with dynamic filtering",
+          "Implemented WebSocket communication, enabling real-time chat messaging and transaction-status synchronization between buyers and sellers",
+          "Developed marketing landing pages with Next.js, integrating product analytics, tracking scripts, and A/B testing configurations that boosted user conversion by ~15%",
+          "Contributed to code review workflows and technical decision-making, maintaining high engineering standards across the monorepo",
+          "Participated in CI/CD pipeline configuration, production monitoring setup, and comprehensive logging for reliable post-launch stability"
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Front-End Developer",
+        "period": "Nov 2022 – Jan 2025",
+        "location": "Remote",
+        "bullets": [
+          "Built a high-performance, SEO-optimized marketing landing page from scratch using Next.js, with optimized page speed and semantic markup to support B2B user acquisition",
+          "Refactored the data-fetching layer using TanStack Query, adding caching, background revalidation, and consistent server-state synchronization across the application",
+          "Improved Core Web Vitals (LCP, TTI) through code-splitting and lazy loading, reducing bundle size by ~10% and optimizing widget load times by ~15%",
+          "Integrated Sentry for error tracking and production monitoring, enabling faster debugging and improved application observability",
+          "Developed an embeddable chat widget with Shadow DOM isolation and WebSocket communication for real-time AI responses on client websites",
+          "Stabilized the existing React admin dashboard by conducting a code audit and fixing critical bugs in business logic, API requests, and error handling"
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Front-End Developer",
+        "period": "Nov 2020 – Oct 2022",
+        "location": "Remote",
+        "bullets": [
+          "Contributed to building and launching the platform from scratch, delivering features across the admin panel and marketing modules",
+          "Built an SEO-optimized marketing landing page using Next.js with semantic HTML, custom meta tags, and responsive layouts to support search ranking and conversion",
+          "Developed data-heavy analytical dashboards with responsive tables (1000+ rows), pagination, transaction filtering, and interactive financial charts",
+          "Implemented multi-step configuration forms with advanced validation for donation thresholds, media file constraints, and profanity filtering",
+          "Integrated REST APIs and WebSockets for global state management using Redux and real-time alert distribution"
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc Logistics",
+        "period": "2018 – 2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc Management",
+        "period": "2014 – 2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "2+ роки комерційного досвіду на React + TypeScript",
+        "status": "strong",
+        "evidence": "5+ years of commercial experience across KYC Market, AMO FINTECH, and DonateSystem — all using React and TypeScript"
+      },
+      {
+        "requirement": "Практичний досвід з Zustand / Redux Toolkit, TanStack Query",
+        "status": "strong",
+        "evidence": "Zustand at KYC Market; TanStack Query at KYC Market and AMO FINTECH; Redux at DonateSystem — all explicitly listed in tech stacks"
+      },
+      {
+        "requirement": "Розуміння performance-практик (Core Web Vitals, bundle size, оптимізація рендерів)",
+        "status": "strong",
+        "evidence": "AMO FINTECH: reduced bundle size by ~10%, optimized LCP/TTI via code-splitting and lazy loading; KYC Market: A/B testing and analytics on landing pages"
+      },
+      {
+        "requirement": "Впевнена робота з Dev Tools",
+        "status": "partial",
+        "evidence": "Implied by performance optimization work (LCP, TTI, bundle analysis) but not explicitly stated in master CV"
+      },
+      {
+        "requirement": "Вміння ефективно взаємодіяти з Figma",
+        "status": "partial",
+        "evidence": "DonateSystem: 'pixel-perfect layouts from Figma designs' — direct evidence, but only at one employer"
+      },
+      {
+        "requirement": "Досвід роботи в монорепозиторіях (Turborepo, Nx)",
+        "status": "strong",
+        "evidence": "KYC Market: designed and implemented Nx monorepo from scratch unifying 3 products; Nx listed in skills"
+      },
+      {
+        "requirement": "Досвід написання E2E-тестів (Cypress, Playwright)",
+        "status": "strong",
+        "evidence": "Playwright listed in KYC Market tech stack and in global skills; also Vitest, Jest, React Testing Library"
+      },
+      {
+        "requirement": "Досвід роботи з Sentry",
+        "status": "strong",
+        "evidence": "AMO FINTECH: integrated Sentry for error tracking and production monitoring"
+      },
+      {
+        "requirement": "Досвід налаштування CI/CD пайплайнів",
+        "status": "partial",
+        "evidence": "KYC Market: participated in CI/CD pipeline configuration — present in master CV but framed as team-level ownership (senior signal); retained as participation"
+      },
+      {
+        "requirement": "Розробка UI з React 19 / Next.js 15 / TypeScript",
+        "status": "strong",
+        "evidence": "Next.js and React used across all 3 employers; TypeScript throughout — exact versions not specified in master CV"
+      },
+      {
+        "requirement": "Робота в монорепозиторії з кількома продуктами та спільними пакетами",
+        "status": "strong",
+        "evidence": "KYC Market: Nx monorepo with 3 products and shared UI/business logic packages"
+      },
+      {
+        "requirement": "Покриття коду тестами (компонентні та E2E) і участь у CI/CD",
+        "status": "strong",
+        "evidence": "Playwright (E2E), Vitest, Jest, React Testing Library at KYC Market and AMO FINTECH; CI/CD participation at KYC Market"
+      },
+      {
+        "requirement": "Запуск та аналіз A/B-тестів",
+        "status": "strong",
+        "evidence": "KYC Market: A/B testing configurations on landing pages with ~15% conversion uplift"
+      },
+      {
+        "requirement": "Участь у code review та покращенні Developer Experience",
+        "status": "partial",
+        "evidence": "KYC Market: code review workflows mentioned in master CV — retained as contribution, not ownership"
+      }
+    ],
+    "fit_score": 84,
+    "match_notes": "Strong overall match. The candidate covers nearly every must-have and nice-to-have requirement with direct, verifiable evidence. Key strengths: Nx monorepo experience (built from scratch), TanStack Query + Zustand state management, Playwright E2E testing, Sentry integration, performance optimization with real metrics (bundle -10%, LCP/TTI improvements, conversion +15%), and A/B testing. The main honest gaps are: (1) Figma collaboration is only explicitly evidenced at DonateSystem — worth mentioning in an interview but not a blocker; (2) Dev Tools proficiency is implied by performance work but never stated directly — be ready to discuss this concretely; (3) CI/CD experience exists but was framed as team-level ownership in the original CV — the tailored version correctly presents it as participation, which is the defensible claim at Strong Middle level; (4) React 19 / Next.js 15 specific versions are not confirmed — the candidate should verify their current version exposure before the interview. The SaaS/product company context (SKELAR venture builder, multiple simultaneous products) aligns well with the candidate's multi-product monorepo experience at KYC Market.",
+    "keywords_to_weave_in": [
+      "Core Web Vitals",
+      "bundle size",
+      "server state",
+      "client state",
+      "component testing",
+      "Developer Experience",
+      "A/B testing",
+      "monorepo",
+      "code review",
+      "Figma"
+    ]
+  },
+  "experience_check": {
+    "level_checks": [
+      {
+        "location": "experience[0].bullets[0]",
+        "current_text": "Designed and implemented an Nx monorepo from scratch, unifying three products (marketplace, admin dashboard, landing pages) with shared UI components and business logic packages",
+        "issue": "too_senior",
+        "explanation": "\"Designed and implemented from scratch\" signals full architectural ownership of a cross-product infrastructure decision — this is senior/staff-level language (Architected, Established). For a middle target, the bullet should convey ownership of the implementation with input into the design, not sole authorship of the architecture.",
+        "suggestion": "Owned the setup and configuration of an Nx monorepo, unifying three products (marketplace, admin dashboard, landing pages) with shared UI components and business logic packages"
+      },
+      {
+        "location": "experience[0].bullets[1]",
+        "current_text": "Owned the frontend of a crypto marketplace (50K+ MAU), delivering secure authentication, a multi-step order creation workflow, and an advanced search with dynamic filtering",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[0].bullets[4]",
+        "current_text": "Contributed to code review workflows and technical decision-making, maintaining high engineering standards across the monorepo",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[0].bullets[5]",
+        "current_text": "Participated in CI/CD pipeline configuration, production monitoring setup, and comprehensive logging for reliable post-launch stability",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[1].bullets[5]",
+        "current_text": "Stabilized the existing React admin dashboard by conducting a code audit and fixing critical bugs in business logic, API requests, and error handling",
+        "issue": "too_junior",
+        "explanation": "\"Fixing critical bugs\" and \"conducting a code audit\" read as reactive, junior-level maintenance work. A middle-level framing should emphasize the systematic refactoring and quality improvement outcome, not just bug-fixing.",
+        "suggestion": "Refactored and stabilized the existing React admin dashboard through a targeted code audit — resolving critical defects in business logic, API integration, and error handling to restore production reliability"
+      },
+      {
+        "location": "experience[2].bullets[0]",
+        "current_text": "Contributed to building and launching the platform from scratch, delivering features across the admin panel and marketing modules",
+        "issue": "too_junior",
+        "explanation": "\"Contributed to building\" is a junior/intern-level verb pattern. Combined with the vague \"delivering features\", this bullet undersells the candidate's role and reads as a supporting contributor rather than an independent middle-level developer.",
+        "suggestion": "Developed and shipped features across the admin panel and marketing modules as part of the platform's greenfield build and launch"
+      },
+      {
+        "location": "experience[2].bullets[4]",
+        "current_text": "Integrated REST APIs and WebSockets for global state management using Redux and real-time alert distribution",
+        "issue": "too_junior",
+        "explanation": "\"Integrated REST APIs\" is a junior-level verb. The bullet also conflates two distinct concerns (API integration and state management) without conveying ownership or complexity. A middle-level rewrite should highlight the design of the data layer.",
+        "suggestion": "Designed the client-side data layer integrating REST APIs and WebSockets with Redux for global state management and real-time alert distribution"
+      }
+    ],
+    "stack_checks": [
+      {
+        "technology": "React 19",
+        "status": "mentioned_only",
+        "location": "headline, top_skills (as 'React')",
+        "suggestion": "Add the specific version to at least one KYC Market bullet, e.g. '…using React 19 and Next.js 15…' to signal current-version awareness."
+      },
+      {
+        "technology": "Next.js 15",
+        "status": "mentioned_only",
+        "location": "headline, top_skills (as 'Next.js')",
+        "suggestion": "Specify 'Next.js 15' in the KYC Market or AMO FINTECH bullet that mentions Next.js landing pages to confirm version currency."
+      },
+      {
+        "technology": "TypeScript",
+        "status": "demonstrated",
+        "location": "summary, headline, top_skills"
+      },
+      {
+        "technology": "Zustand",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Add a KYC Market bullet that names Zustand explicitly in context, e.g. 'Managed client state with Zustand across the marketplace and admin dashboard, replacing a legacy Context-based approach.'"
+      },
+      {
+        "technology": "Redux Toolkit",
+        "status": "mentioned_only",
+        "location": "top_skills (as 'Redux Toolkit'); experience[2].bullets[4] mentions 'Redux' only",
+        "suggestion": "Update the DonateSystem bullet to say 'Redux Toolkit' if accurate, or add a note in the KYC Market/AMO FINTECH context where RTK was used."
+      },
+      {
+        "technology": "TanStack Query",
+        "status": "demonstrated",
+        "location": "experience[1].bullets[1]"
+      },
+      {
+        "technology": "Turborepo",
+        "status": "missing",
+        "suggestion": "If Turborepo was not used, omit it — do not fabricate. If it was evaluated or used alongside Nx, add a brief note in the KYC Market monorepo bullet, e.g. 'evaluated Turborepo and Nx before selecting Nx for its plugin ecosystem.'"
+      },
+      {
+        "technology": "Nx",
+        "status": "demonstrated",
+        "location": "experience[0].bullets[0], top_skills"
+      },
+      {
+        "technology": "Cypress",
+        "status": "missing",
+        "suggestion": "If Cypress was not used, omit it. If it was used at any employer, add it to the relevant experience bullet alongside Playwright."
+      },
+      {
+        "technology": "Playwright",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Add a concrete bullet at KYC Market or AMO FINTECH, e.g. 'Wrote Playwright E2E test suites covering critical user flows (authentication, order creation), integrated into the CI pipeline.'"
+      },
+      {
+        "technology": "Sentry",
+        "status": "demonstrated",
+        "location": "experience[1].bullets[3]"
+      },
+      {
+        "technology": "GitHub Actions",
+        "status": "missing",
+        "suggestion": "If GitHub Actions was used in CI/CD work at KYC Market or AMO FINTECH, name it explicitly in the CI/CD bullet, e.g. 'Participated in CI/CD pipeline configuration using GitHub Actions…'"
+      },
+      {
+        "technology": "GitLab CI",
+        "status": "missing",
+        "suggestion": "Same as GitHub Actions — if GitLab CI was the tool used, name it explicitly in the KYC Market CI/CD bullet."
+      },
+      {
+        "technology": "Figma",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Add a brief cross-cutting note in the summary or a KYC Market bullet, e.g. 'Collaborated closely with designers in Figma, translating wireframes and component specs into production-ready UI across all three products.'"
+      }
+    ],
+    "level_score": 55,
+    "stack_score": 43,
+    "overall_score": 50,
+    "recommendations": [
+      {
+        "priority": "high",
+        "type": "stack",
+        "text": "Вкажіть конкретні версії React 19 та Next.js 15 хоча б в одному bullet досвіду (наприклад, KYC Market). Відсутність версій — найпомітніший gap для ролі, де вони прямо вказані в JD."
+      },
+      {
+        "priority": "high",
+        "type": "stack",
+        "text": "Додайте контекстний bullet про Playwright: де саме писались E2E-тести, які флоу покривались, як вони були інтегровані в CI. Зараз Playwright лише в списку навичок — це 'mentioned_only', а не 'demonstrated'."
+      },
+      {
+        "priority": "high",
+        "type": "stack",
+        "text": "Назвіть конкретний CI/CD-інструмент (GitHub Actions або GitLab CI) у bullet KYC Market. Зараз написано просто 'CI/CD pipeline configuration' — рекрутер і технічний інтерв'юер очікують побачити назву тулу."
+      },
+      {
+        "priority": "medium",
+        "type": "seniority",
+        "text": "Перепишіть три 'too_junior' bullets (DonateSystem bullets[0] та [4], AMO FINTECH bullets[5]) з дієсловами рівня middle: 'Developed and shipped', 'Refactored and stabilized', 'Designed the client-side data layer'. Це підніме level_score приблизно на 45 балів."
+      },
+      {
+        "priority": "medium",
+        "type": "stack",
+        "text": "Додайте Zustand у контекстний bullet (KYC Market) — зараз він лише в top_skills. Також уточніть 'Redux' → 'Redux Toolkit' у DonateSystem, якщо це відповідає дійсності."
+      }
+    ],
+    "verdict": "CV демонструє релевантний досвід і покриває більшість вимог JD, однак має два критичних gap: (1) ключові технології стека — React 19, Next.js 15, Playwright, Zustand, GitHub Actions/GitLab CI — або відсутні, або лише перелічені в навичках без контексту використання, що дає stack_score лише 43/100; (2) три bullet'и на рівні DonateSystem та AMO FINTECH використовують junior-рівневу мову («Contributed to», «fixing bugs», «Integrated REST APIs»), що знижує загальне враження від сеньйорності. Найкритичніший крок — додати версії React 19 / Next.js 15 та конкретний CI/CD-інструмент у досвід, і переписати junior-bullet'и дієсловами рівня middle."
+  }
+}

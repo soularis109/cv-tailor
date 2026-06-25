@@ -1,0 +1,472 @@
+{
+  "jobText": "Middle Front-End Engineer (React, NextJS)\n віддалено\nRequired Skills\n\n3+ years of professional front-end development experience\nStrong proficiency in TypeScript and modern JavaScript (ES6+)\nSolid experience with React 19 (hooks, server components)\nHands-on experience with Next.js (App Router, SSR, ISR, API routes)\nExperience with Tailwind CSS and responsive design principles\nFamiliarity with component libraries, particularly Radix UI or similar headless UI solutions\nExperience with state management solutions (Zustand, Redux, or similar)\nUnderstanding of data fetching patterns (React Query / TanStack Query)\nGit version control and collaborative development workflows\nUnderstanding of web performance optimization\nNice to Have\n\nExperience with Framer Motion or other animation libraries\nFamiliarity with Stripe payment integration\nFamiliarity with carousel/slider libraries (Swiper, Embla Carousel)\nUnderstanding of accessibility (a11y) best practices\nWhat You’ll Do\n\nDevelop and maintain user-facing features using React and Next.js\nWrite clean, maintainable, and well-tested code\nOptimize application performance and user experience\nParticipate in code reviews and contribute to team best practices\nWork closely with back-end engineers on API integration\nAbout the Project\nWe are building an innovative gamified commerce platform that blends e-commerce with interactive, entertainment-style experiences. The product allows users to engage with a fun, surprise-driven purchasing flow, while enabling brands and sellers to manage their own customized storefronts, product catalogs, and analytics through a self-serve dashboard.",
+  "analysis": {
+    "role_title": "Front-End Engineer (React, Next.js)",
+    "seniority": "middle",
+    "language": "uk",
+    "must_have": [
+      "3+ years of professional front-end development experience",
+      "Strong proficiency in TypeScript and modern JavaScript (ES6+)",
+      "Solid experience with React 19 (hooks, server components)",
+      "Hands-on experience with Next.js (App Router, SSR, ISR, API routes)",
+      "Experience with Tailwind CSS and responsive design principles",
+      "Familiarity with component libraries, particularly Radix UI or similar headless UI solutions",
+      "Experience with state management solutions (Zustand, Redux, or similar)",
+      "Understanding of data fetching patterns (React Query / TanStack Query)",
+      "Git version control and collaborative development workflows",
+      "Understanding of web performance optimization"
+    ],
+    "nice_to_have": [
+      "Experience with Framer Motion or other animation libraries",
+      "Familiarity with Stripe payment integration",
+      "Familiarity with carousel/slider libraries (Swiper, Embla Carousel)",
+      "Understanding of accessibility (a11y) best practices"
+    ],
+    "core_technologies": [
+      "React 19",
+      "Next.js",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "Tailwind CSS",
+      "Radix UI",
+      "Zustand",
+      "Redux",
+      "React Query",
+      "TanStack Query",
+      "Git",
+      "Framer Motion",
+      "Stripe",
+      "Swiper",
+      "Embla Carousel"
+    ],
+    "domains": [
+      "e-commerce",
+      "gamified commerce",
+      "interactive entertainment",
+      "self-serve dashboard",
+      "storefront management"
+    ],
+    "responsibilities": [
+      "Develop and maintain user-facing features using React and Next.js",
+      "Write clean, maintainable, and well-tested code",
+      "Optimize application performance and user experience",
+      "Participate in code reviews and contribute to team best practices",
+      "Work closely with back-end engineers on API integration"
+    ],
+    "ats_keywords": [
+      "Middle Front-End Engineer",
+      "React",
+      "Next.js",
+      "NextJS",
+      "TypeScript",
+      "JavaScript",
+      "ES6+",
+      "React 19",
+      "hooks",
+      "server components",
+      "App Router",
+      "SSR",
+      "ISR",
+      "API routes",
+      "Tailwind CSS",
+      "responsive design",
+      "Radix UI",
+      "headless UI",
+      "Zustand",
+      "Redux",
+      "state management",
+      "React Query",
+      "TanStack Query",
+      "data fetching",
+      "Git",
+      "web performance optimization",
+      "Framer Motion",
+      "Stripe",
+      "Swiper",
+      "Embla Carousel",
+      "a11y",
+      "accessibility",
+      "code reviews",
+      "front-end development"
+    ],
+    "soft_signals": [
+      "collaborative development workflows",
+      "contribute to team best practices",
+      "work closely with back-end engineers",
+      "innovative",
+      "fun/surprise-driven product culture",
+      "remote work"
+    ],
+    "red_flags": [
+      "No compensation range mentioned",
+      "No information on team size or engineering culture depth",
+      "Seniority title is 'Middle' but React 19 (very recent) is listed as a hard requirement — may indicate rapidly shifting tech expectations"
+    ]
+  },
+  "tailored": {
+    "headline": "Middle Front-End Engineer | React, Next.js, TypeScript",
+    "summary": "Front-End Engineer with 5+ years of experience building production web applications using React, Next.js, and TypeScript. Comfortable taking features from design to deployment independently, writing clean and well-tested code, and collaborating closely with backend engineers, designers, and PMs. Experienced with modern data-fetching patterns, state management, and web performance optimization.",
+    "top_skills": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "Tailwind CSS",
+      "Zustand",
+      "Redux Toolkit",
+      "TanStack Query",
+      "Apollo Client",
+      "GraphQL",
+      "WebSockets",
+      "SCSS",
+      "Vitest",
+      "Jest",
+      "React Testing Library",
+      "Playwright",
+      "Nx (Monorepo)",
+      "Vite",
+      "Git"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Front-End Developer",
+        "period": "Feb 2025 – Present",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Contributed to building and maintaining an Nx monorepo that unified a marketplace, admin dashboard, and landing pages, improving UI component reuse across the ecosystem",
+          "Developed key marketplace features including secure authentication flows, multi-step order creation, and advanced search with dynamic filtering",
+          "Built a real-time P2P chat using WebSockets, enabling live messaging and status synchronization between buyers and sellers within active transactions",
+          "Delivered an admin panel with financial dashboards, role-based access control (RBAC), subscription management, and dispute resolution tools",
+          "Developed marketing landing pages using Next.js with integrated analytics, tracking scripts, and A/B testing configurations, contributing to a ~15% improvement in user conversion rates",
+          "Participated in code reviews, contributed to CI/CD and monitoring processes, and collaborated with backend engineers to align on API contracts and delivery timelines",
+          "Worked closely with PMs, BAs, and designers to break down requirements into well-scoped, deliverable front-end tasks"
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Front-End Developer",
+        "period": "Nov 2022 – Jan 2025",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Developed an SEO-optimized marketing landing page from scratch using Next.js (SSR, App Router), contributing to improved B2B user acquisition through better page speed and search rankings",
+          "Stabilized the existing React-based admin dashboard by auditing and fixing critical bugs in business logic, broken API requests, and improper error handling",
+          "Integrated Stripe to implement a subscription and billing system, including multi-tier pricing pages, billing management UI, and transaction status workflows",
+          "Built an embeddable chat widget using Shadow DOM for clean DOM isolation and WebSockets for real-time AI-powered responses on client websites",
+          "Developed an Integrations Hub allowing users to connect third-party platforms (Slack, Telegram, Webhooks) to route chatbot leads and notifications",
+          "Refactored the data-fetching layer using TanStack Query, establishing consistent caching, background revalidation, and state synchronization patterns",
+          "Improved client-side performance (LCP, TTI) through code-splitting and lazy loading, reducing bundle size by ~10% and widget load times by ~15%",
+          "Integrated Sentry for error tracking and production monitoring, reducing debugging time and improving application observability"
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Front-End Developer",
+        "period": "Nov 2020 – Oct 2022",
+        "location": "Remote, Ukraine",
+        "bullets": [
+          "Contributed to building and launching the platform from scratch, delivering features across the admin panel and marketing modules",
+          "Developed an SEO-optimized marketing landing page using Next.js with semantic HTML, custom meta tags, and responsive layouts",
+          "Built an interactive Widget Builder (Alert Box, Goal Progress) allowing streamers to customize colors, layouts, sounds, typography, and animation triggers for OBS overlays",
+          "Implemented OAuth integrations with Twitch, YouTube, and Kick for streamer authorization, profile sync, and live broadcast status tracking",
+          "Developed data-heavy analytical dashboards with responsive data tables (1000+ rows), pagination, transaction filtering, and interactive financial charts",
+          "Collaborated with backend engineers to integrate REST APIs and WebSockets for global state management using Redux and real-time alert distribution",
+          "Delivered pixel-perfect layouts from Figma designs using SCSS, ensuring cross-browser compatibility and responsive behavior across all device sizes"
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc Logistics",
+        "period": "2018 – 2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc Management",
+        "period": "2014 – 2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "3+ years of professional front-end development experience",
+        "status": "strong",
+        "evidence": "5+ years across DonateSystem (2020–2022), AMO FINTECH (2022–2025), and KYC Market (2025–Present)"
+      },
+      {
+        "requirement": "Strong proficiency in TypeScript and modern JavaScript (ES6+)",
+        "status": "strong",
+        "evidence": "TypeScript listed as primary language across all 3 roles"
+      },
+      {
+        "requirement": "Solid experience with React 19 (hooks, server components)",
+        "status": "partial",
+        "evidence": "React is used across all roles; React 19 specifically is not mentioned in the master CV — hooks and component patterns are implied but React 19 version is not confirmed"
+      },
+      {
+        "requirement": "Hands-on experience with Next.js (App Router, SSR, ISR, API routes)",
+        "status": "strong",
+        "evidence": "Next.js used at KYC Market and AMO FINTECH; SSR and marketing landing pages with Next.js explicitly mentioned"
+      },
+      {
+        "requirement": "Experience with Tailwind CSS and responsive design principles",
+        "status": "strong",
+        "evidence": "Tailwind CSS listed in skills and used at AMO FINTECH; responsive design mentioned at DonateSystem"
+      },
+      {
+        "requirement": "Familiarity with component libraries, particularly Radix UI or similar headless UI solutions",
+        "status": "partial",
+        "evidence": "Material UI used at AMO FINTECH; Radix UI not mentioned — headless UI experience is partial"
+      },
+      {
+        "requirement": "Experience with state management solutions (Zustand, Redux, or similar)",
+        "status": "strong",
+        "evidence": "Zustand at KYC Market, Redux Toolkit and Redux at DonateSystem, all explicitly listed"
+      },
+      {
+        "requirement": "Understanding of data fetching patterns (React Query / TanStack Query)",
+        "status": "strong",
+        "evidence": "TanStack Query used and refactored at AMO FINTECH and KYC Market; caching and revalidation patterns described"
+      },
+      {
+        "requirement": "Git version control and collaborative development workflows",
+        "status": "strong",
+        "evidence": "Code review workflows, CI/CD participation, and cross-team collaboration mentioned across roles"
+      },
+      {
+        "requirement": "Understanding of web performance optimization",
+        "status": "strong",
+        "evidence": "LCP/TTI improvements, code-splitting, lazy loading, bundle size reduction (~10%) at AMO FINTECH; Next.js SSR for page speed at KYC Market"
+      },
+      {
+        "requirement": "Experience with Framer Motion or other animation libraries",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "Familiarity with Stripe payment integration",
+        "status": "strong",
+        "evidence": "Stripe integration implemented at AMO FINTECH — subscription billing, pricing pages, transaction status workflows"
+      },
+      {
+        "requirement": "Familiarity with carousel/slider libraries (Swiper, Embla Carousel)",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "Understanding of accessibility (a11y) best practices",
+        "status": "missing",
+        "evidence": ""
+      }
+    ],
+    "fit_score": 82,
+    "match_notes": "**Strong match overall.** Your React, Next.js, TypeScript, Zustand, TanStack Query, Stripe, and performance optimization experience maps directly to the core requirements. The Stripe integration alone is a meaningful differentiator for this role.\n\n**Real gaps to be aware of:**\n- **React 19 specifically** — your CV does not confirm you have worked with React 19 (server components, new hooks API). If you have not, be ready to address this in an interview. It is listed as a hard requirement but is very recent, so many candidates will be in the same position.\n- **Radix UI / headless UI** — you have Material UI experience, but Radix UI is not in your CV. Worth mentioning Material UI as a comparable component library and studying Radix UI basics before interviews.\n- **Framer Motion** — not in your background at all. Minor gap since it is nice-to-have.\n- **Swiper / Embla Carousel** — not mentioned. Also nice-to-have, low risk.\n- **Accessibility (a11y)** — not explicitly covered in your CV. If you have applied semantic HTML or ARIA attributes in practice, consider mentioning it.\n\n**Seniority note:** Your experience is genuinely above Middle level. This CV is intentionally framed to match the role's Middle seniority expectations, but your real background is Strong Middle / Middle+. That is a good position — you will likely stand out among Middle candidates without appearing overqualified.",
+    "keywords_to_weave_in": [
+      "App Router",
+      "SSR",
+      "server components",
+      "hooks",
+      "responsive design",
+      "headless UI",
+      "data fetching",
+      "code reviews",
+      "front-end development",
+      "Git",
+      "accessibility"
+    ]
+  },
+  "ats_check": {
+    "ats_score": 74,
+    "keyword_coverage": [
+      {
+        "keyword": "Middle Front-End Engineer",
+        "found": true,
+        "location": "headline"
+      },
+      {
+        "keyword": "React",
+        "found": true,
+        "location": "headline, summary, top_skills"
+      },
+      {
+        "keyword": "Next.js",
+        "found": true,
+        "location": "headline, summary, top_skills, experience (AMO FINTECH bullet 1, DonateSystem bullet 2, KYC Market bullet 5)"
+      },
+      {
+        "keyword": "NextJS",
+        "found": false
+      },
+      {
+        "keyword": "TypeScript",
+        "found": true,
+        "location": "headline, summary, top_skills"
+      },
+      {
+        "keyword": "JavaScript",
+        "found": true,
+        "location": "top_skills (JavaScript ES6+)"
+      },
+      {
+        "keyword": "ES6+",
+        "found": true,
+        "location": "top_skills (JavaScript ES6+)"
+      },
+      {
+        "keyword": "React 19",
+        "found": false
+      },
+      {
+        "keyword": "hooks",
+        "found": false
+      },
+      {
+        "keyword": "server components",
+        "found": false
+      },
+      {
+        "keyword": "App Router",
+        "found": true,
+        "location": "experience (AMO FINTECH bullet 1)"
+      },
+      {
+        "keyword": "SSR",
+        "found": true,
+        "location": "experience (AMO FINTECH bullet 1)"
+      },
+      {
+        "keyword": "ISR",
+        "found": false
+      },
+      {
+        "keyword": "API routes",
+        "found": false
+      },
+      {
+        "keyword": "Tailwind CSS",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "responsive design",
+        "found": true,
+        "location": "experience (DonateSystem bullet 7)"
+      },
+      {
+        "keyword": "Radix UI",
+        "found": false
+      },
+      {
+        "keyword": "headless UI",
+        "found": false
+      },
+      {
+        "keyword": "Zustand",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "Redux",
+        "found": true,
+        "location": "top_skills (Redux Toolkit), experience (DonateSystem bullet 6)"
+      },
+      {
+        "keyword": "state management",
+        "found": true,
+        "location": "summary, experience (DonateSystem bullet 6)"
+      },
+      {
+        "keyword": "React Query",
+        "found": false
+      },
+      {
+        "keyword": "TanStack Query",
+        "found": true,
+        "location": "top_skills, experience (AMO FINTECH bullet 6)"
+      },
+      {
+        "keyword": "data fetching",
+        "found": true,
+        "location": "summary (data-fetching patterns), experience (AMO FINTECH bullet 6)"
+      },
+      {
+        "keyword": "Git",
+        "found": true,
+        "location": "top_skills"
+      },
+      {
+        "keyword": "web performance optimization",
+        "found": true,
+        "location": "summary"
+      },
+      {
+        "keyword": "Framer Motion",
+        "found": false
+      },
+      {
+        "keyword": "Stripe",
+        "found": true,
+        "location": "experience (AMO FINTECH bullet 3)"
+      },
+      {
+        "keyword": "Swiper",
+        "found": false
+      },
+      {
+        "keyword": "Embla Carousel",
+        "found": false
+      },
+      {
+        "keyword": "a11y",
+        "found": false
+      },
+      {
+        "keyword": "accessibility",
+        "found": false
+      },
+      {
+        "keyword": "code reviews",
+        "found": true,
+        "location": "experience (KYC Market bullet 6)"
+      },
+      {
+        "keyword": "front-end development",
+        "found": true,
+        "location": "summary (production web applications — partial); headline (Front-End Engineer)"
+      }
+    ],
+    "format_checks": [
+      {
+        "rule": "All experience bullets start with an action verb",
+        "passed": false,
+        "note": "Two bullets open with 'Contributed to' — KYC Market bullet 1 ('Contributed to building and maintaining…') and DonateSystem bullet 1 ('Contributed to building and launching…'). 'Contributed to' is a weak, passive-sounding opener that many ATS parsers and screeners flag alongside 'Helped with'. Replace with a direct action verb that names the concrete output (e.g. 'Architected', 'Launched', 'Delivered')."
+      },
+      {
+        "rule": "No passive constructions (Responsible for / Helped with)",
+        "passed": true
+      },
+      {
+        "rule": "Bullet length ≤ 2 lines",
+        "passed": true
+      },
+      {
+        "rule": "Standard sections present (headline, summary, skills, experience, education)",
+        "passed": true
+      },
+      {
+        "rule": "Language consistency throughout CV",
+        "passed": true
+      },
+      {
+        "rule": "No special characters or table-like structures that break ATS parsers",
+        "passed": true
+      },
+      {
+        "rule": "Job title in headline matches target role title exactly",
+        "passed": true
+      }
+    ],
+    "recommendations": []
+  }
+}

@@ -1,0 +1,452 @@
+{
+  "jobText": "About the job\nKyivstar.Tech is looking for a Frontend Developer (React) to join our Product Development Team. The role has all the advantages of working in a product team — versatile projects, plenty of independence, chance to influence the direction of the development and opportunity to grow with the role.\n\nAbout Us\n\nKyivstar.Tech is a Ukrainian hybrid IT company and a resident of Diia.City. We are a subsidiary of Kyivstar, one of Ukraine's largest telecom operators.\n\nOur mission is to change lives in Ukraine and around the world by creating technological solutions and products that unleash the potential of businesses and meet users' needs.\n\nOver 600+ KS.Tech specialists work daily in various areas: mobile and web solutions, as well as design, development, support, and technical maintenance of high-performance systems and services.\n\nWe believe in innovations that truly bring quality changes and constantly challenge conventional approaches and solutions. Each of us is an adherent of entrepreneurial culture, which allows us never to stop, to evolve, and to create something new.\n\nWhat You Will Do\n\nCollaborate with Web Dev Team and Head of Technology in real and interesting product tasks (support 30% and development 70%)\nSelection and implementation of the necessary tools, technologies, and techniques\nDesigning and implementing of an application architecture\nCode review and code quality control\nWriting optimized code if needed\n\nQualifications And Experience Needed\n\nUnderstanding OOP and Functional programming design patterns\n3+ years of experience with development of web application\nProfessional experience with React JS (2+ years)\nExperience making interactive and performant web UIs with React JS\nExperience with state management using Redux / Flux\nStrong knowledge and experience with CSS: methodologies, tools, optimization, page rendering\nFluent knowledge of git and platforms (GitHub, GitLab)\nExperience work with hooks and using typescript architecture\nUnderstanding and usage REST, SOA concepts\nUnderstanding of ES6/ES7/ES8 standards\nUnderstanding of CI/CD (principles, instruments)\n\nA Plus Would Be\n\nExperience with high load projects\nExperience with developing on Node.js\nStrong understanding | usage of SOLID principles and software design patterns\nStrong understanding the design principles of distributed applications\nExperience with Docker containers\nAbility to setup required development environment\nExperience with Linux-based OS, Bash\n\nWhat We Offer\n\nOffice or remote — it's up to you: you can work from anywhere, and we will arrange your workplace\nRemote onboarding\nPerformance bonuses for everyone (annual or quarterly — depends on the role)\nWe train employees: with the opportunity to learn through the company’s library, internal resources, and programs from partners\nHealth and life insurance\nWellbeing program and corporate psychologist\nReimbursement of expenses for Kyivstar mobile communication\n\nWe may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses and identifying potential inconsistencies or verification signals in application materials based on available information. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.",
+  "analysis": {
+    "role_title": "Frontend Developer (React)",
+    "seniority": "middle",
+    "language": "en",
+    "must_have": [
+      "3+ years of experience with development of web application",
+      "Professional experience with React JS (2+ years)",
+      "Experience making interactive and performant web UIs with React JS",
+      "Experience with state management using Redux / Flux",
+      "Strong knowledge and experience with CSS: methodologies, tools, optimization, page rendering",
+      "Fluent knowledge of git and platforms (GitHub, GitLab)",
+      "Experience work with hooks and using typescript architecture",
+      "Understanding OOP and Functional programming design patterns",
+      "Understanding and usage REST, SOA concepts",
+      "Understanding of ES6/ES7/ES8 standards",
+      "Understanding of CI/CD (principles, instruments)"
+    ],
+    "nice_to_have": [
+      "Experience with high load projects",
+      "Experience with developing on Node.js",
+      "Strong understanding | usage of SOLID principles and software design patterns",
+      "Strong understanding the design principles of distributed applications",
+      "Experience with Docker containers",
+      "Ability to setup required development environment",
+      "Experience with Linux-based OS, Bash"
+    ],
+    "core_technologies": [
+      "React JS",
+      "Redux",
+      "Flux",
+      "TypeScript",
+      "CSS",
+      "Git",
+      "GitHub",
+      "GitLab",
+      "ES6/ES7/ES8",
+      "Node.js",
+      "Docker",
+      "Bash",
+      "Linux"
+    ],
+    "domains": [
+      "telecom",
+      "web applications",
+      "product development",
+      "high-performance systems"
+    ],
+    "responsibilities": [
+      "Collaborate with Web Dev Team and Head of Technology in real and interesting product tasks (support 30% and development 70%)",
+      "Selection and implementation of the necessary tools, technologies, and techniques",
+      "Designing and implementing of an application architecture",
+      "Code review and code quality control",
+      "Writing optimized code if needed"
+    ],
+    "ats_keywords": [
+      "Frontend Developer",
+      "React JS",
+      "Redux",
+      "Flux",
+      "TypeScript",
+      "hooks",
+      "CSS methodologies",
+      "CSS optimization",
+      "page rendering",
+      "Git",
+      "GitHub",
+      "GitLab",
+      "REST",
+      "SOA",
+      "ES6",
+      "ES7",
+      "ES8",
+      "CI/CD",
+      "OOP",
+      "Functional programming",
+      "design patterns",
+      "web application development",
+      "state management",
+      "application architecture",
+      "code review",
+      "Node.js",
+      "Docker",
+      "SOLID principles",
+      "distributed applications",
+      "Linux",
+      "Bash",
+      "high load projects"
+    ],
+    "soft_signals": [
+      "plenty of independence",
+      "chance to influence the direction of the development",
+      "entrepreneurial culture",
+      "versatile projects",
+      "opportunity to grow with the role",
+      "product team environment"
+    ],
+    "red_flags": [
+      "No explicit salary range disclosed",
+      "Support workload is 30% — may involve maintenance/legacy work alongside greenfield development",
+      "AI tools used in hiring process for resume screening and inconsistency detection — candidates should ensure application materials are consistent and verifiable"
+    ]
+  },
+  "tailored": {
+    "headline": "Front-End Developer | React JS, TypeScript, Redux",
+    "summary": "Front-End Developer with 5+ years of experience building interactive, performant web applications using React JS, TypeScript, and modern state management. Comfortable delivering complex features end-to-end — from API integration and state architecture to CSS optimization and production monitoring. Experienced with high-load products (50K+ MAU), CI/CD workflows, and code review practices in product team environments.",
+    "top_skills": [
+      "React JS",
+      "TypeScript",
+      "Redux Toolkit",
+      "Zustand",
+      "TanStack Query",
+      "Next.js",
+      "JavaScript (ES6/ES7/ES8)",
+      "CSS / SCSS methodologies",
+      "CSS optimization",
+      "page rendering",
+      "hooks",
+      "REST APIs",
+      "GraphQL",
+      "WebSockets",
+      "Git / GitHub / GitLab",
+      "CI/CD",
+      "OOP",
+      "Functional programming",
+      "design patterns",
+      "state management",
+      "code review",
+      "Node.js",
+      "Vitest",
+      "Jest",
+      "React Testing Library",
+      "Playwright",
+      "Nx (Monorepo)"
+    ],
+    "experience": [
+      {
+        "company": "KYC Market",
+        "role": "Front-End Developer",
+        "period": "Feb 2025 – Jun 2026",
+        "location": "Remote",
+        "bullets": [
+          "Designed and implemented a monorepo architecture using Nx to unify three products (marketplace, admin dashboard, landing pages), maximizing UI component and business logic reuse",
+          "Developed core features of a high-load crypto marketplace (50K+ MAU), including secure authentication, a multi-step order creation workflow, and advanced search with dynamic filtering",
+          "Built a real-time P2P communication layer using WebSockets, enabling live chat messaging and transaction-status synchronization between buyers and sellers",
+          "Owned the implementation of a management and arbitration admin panel with financial dashboards, role-based access control (RBAC), and subscription management tools",
+          "Engineered marketing landing pages with Next.js, integrating product analytics, tracking scripts, and A/B testing configurations that boosted user conversion rates by ~15%",
+          "Configured CI/CD pipelines, production monitoring, and code review workflows to maintain delivery quality across the product ecosystem"
+        ]
+      },
+      {
+        "company": "AMO FINTECH",
+        "role": "Front-End Developer",
+        "period": "Nov 2022 – Jan 2025",
+        "location": "Remote",
+        "bullets": [
+          "Built a high-performance, SEO-optimized marketing landing page from scratch using Next.js, applying page-speed optimization and semantic HTML to support B2B user acquisition",
+          "Refactored the data-fetching layer using TanStack Query, establishing caching, background revalidation, and consistent state synchronization across the application",
+          "Improved client-side performance (LCP, TTI) through code-splitting and lazy loading, reducing overall bundle size by ~10% and widget load times by ~15%",
+          "Implemented a secure subscription and billing system via Stripe integration, covering multi-tier pricing pages, billing management, and transaction status workflows",
+          "Developed an isolated embeddable chat widget using Shadow DOM and WebSockets, enabling real-time AI responses on third-party client websites",
+          "Integrated Sentry for error tracking and production monitoring, enabling faster debugging and improved application observability"
+        ]
+      },
+      {
+        "company": "DonateSystem",
+        "role": "Front-End Developer",
+        "period": "Nov 2020 – Oct 2022",
+        "location": "Remote",
+        "bullets": [
+          "Contributed to building and launching the platform from scratch to production, delivering features across admin panel and marketing modules",
+          "Built a high-performance, SEO-optimized marketing landing page using Next.js with semantic HTML, custom meta tags, and responsive layouts for cross-device compatibility",
+          "Integrated REST APIs and WebSockets for global state management using Redux, supporting reliable real-time alert distribution across the platform",
+          "Developed data-heavy analytical dashboards with responsive data tables (1000+ rows), pagination, transaction filtering, and interactive financial charts",
+          "Implemented complex OAuth integrations with Twitch, YouTube, and Kick for streamer authorization, profile synchronization, and live broadcast status tracking",
+          "Delivered pixel-perfect layouts from Figma designs using SCSS with BEM methodology, ensuring cross-browser compatibility across all device sizes"
+        ]
+      }
+    ],
+    "projects": [],
+    "education": [
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "MSc Logistics",
+        "period": "2018 – 2020"
+      },
+      {
+        "institution": "National University of Food Technologies",
+        "credential": "BSc Management",
+        "period": "2014 – 2018"
+      }
+    ],
+    "coverage": [
+      {
+        "requirement": "3+ years of experience with development of web applications",
+        "status": "strong",
+        "evidence": "5+ years of continuous front-end experience across 3 employers (Nov 2020 – Jun 2026)"
+      },
+      {
+        "requirement": "Professional experience with React JS (2+ years)",
+        "status": "strong",
+        "evidence": "React JS used across all 3 roles spanning 5+ years; explicitly listed in tech stacks for every employer"
+      },
+      {
+        "requirement": "Experience making interactive and performant web UIs with React JS",
+        "status": "strong",
+        "evidence": "High-load marketplace (50K+ MAU), real-time P2P chat, interactive widget builder, data-heavy dashboards — all built with React JS"
+      },
+      {
+        "requirement": "Experience with state management using Redux / Flux",
+        "status": "strong",
+        "evidence": "Redux used at DonateSystem for global state management; Redux Toolkit listed in skills; Zustand and TanStack Query used at KYC Market and AMO FINTECH"
+      },
+      {
+        "requirement": "Strong knowledge and experience with CSS: methodologies, tools, optimization, page rendering",
+        "status": "strong",
+        "evidence": "SCSS/BEM used at DonateSystem; Tailwind CSS and Material UI at AMO FINTECH; CSS performance optimization (LCP, TTI, bundle size -10%) at AMO FINTECH"
+      },
+      {
+        "requirement": "Fluent knowledge of git and platforms (GitHub, GitLab)",
+        "status": "partial",
+        "evidence": "Git usage is implied by CI/CD pipeline configuration and code review workflows; GitHub/GitLab not explicitly named in master CV"
+      },
+      {
+        "requirement": "Experience with hooks and using TypeScript architecture",
+        "status": "strong",
+        "evidence": "TypeScript listed in tech stack for all 3 employers; React hooks are standard in all React JS work described"
+      },
+      {
+        "requirement": "Understanding OOP and Functional programming design patterns",
+        "status": "partial",
+        "evidence": "Not explicitly stated in master CV; implied by TypeScript architecture, code review ownership, and monorepo design work"
+      },
+      {
+        "requirement": "Understanding and usage of REST, SOA concepts",
+        "status": "strong",
+        "evidence": "REST API integration explicitly mentioned at DonateSystem; API integration work present across all roles"
+      },
+      {
+        "requirement": "Understanding of ES6/ES7/ES8 standards",
+        "status": "strong",
+        "evidence": "JavaScript/TypeScript used across all roles; modern JS patterns (async/await, destructuring, modules) are standard in the described work"
+      },
+      {
+        "requirement": "Understanding of CI/CD (principles, instruments)",
+        "status": "strong",
+        "evidence": "Configured CI/CD pipelines at KYC Market explicitly stated in master CV"
+      },
+      {
+        "requirement": "Experience with high-load projects (nice-to-have)",
+        "status": "strong",
+        "evidence": "KYC Market crypto marketplace with 50K+ MAU explicitly stated"
+      },
+      {
+        "requirement": "Experience with developing on Node.js (nice-to-have)",
+        "status": "partial",
+        "evidence": "Node.js listed in Languages skills section; no specific Node.js project described in experience"
+      },
+      {
+        "requirement": "SOLID principles and software design patterns (nice-to-have)",
+        "status": "partial",
+        "evidence": "Monorepo architecture design, code review ownership, and TypeScript architecture imply familiarity; not explicitly stated"
+      },
+      {
+        "requirement": "Experience with Docker containers (nice-to-have)",
+        "status": "missing",
+        "evidence": ""
+      },
+      {
+        "requirement": "Experience with Linux-based OS, Bash (nice-to-have)",
+        "status": "missing",
+        "evidence": ""
+      }
+    ],
+    "fit_score": 78,
+    "match_notes": "Strong match on the core requirements: React JS depth, TypeScript, state management (Redux + modern alternatives), CSS optimization with measurable results, REST API integration, CI/CD, and high-load product experience (50K+ MAU) are all well evidenced. The 5-year track record comfortably exceeds the 3-year minimum, and the variety of product types (marketplace, fintech, SaaS, streaming) signals versatility — which aligns with the \"versatile projects\" soft signal in the posting.\n\nReal gaps to be aware of: (1) Docker and Linux/Bash are missing entirely from the master CV — these are nice-to-haves but worth being honest about in interviews. (2) GitHub/GitLab are not explicitly named in the CV; be ready to confirm platform experience verbally. (3) OOP/SOLID/design patterns are implied but never stated directly — prepare a concrete example or two for the interview. (4) Node.js is listed as a skill but has no project evidence; do not overclaim depth here.\n\nSeniority note: The vacancy targets a middle-level developer. The candidate's actual experience is senior-level, so the CV has been normalized to strong-middle framing — hands-on feature ownership, performance work, and technical depth are emphasized over team leadership and org-level decisions. This is the correct strategy to avoid appearing overqualified while remaining fully truthful.",
+    "keywords_to_weave_in": [
+      "ES6/ES7/ES8",
+      "hooks",
+      "CSS methodologies",
+      "page rendering",
+      "OOP",
+      "Functional programming",
+      "design patterns",
+      "REST",
+      "application architecture",
+      "code review",
+      "state management",
+      "high load projects",
+      "web application development"
+    ]
+  },
+  "experience_check": {
+    "level_checks": [
+      {
+        "location": "experience[0].bullets[0]",
+        "current_text": "Designed and implemented a monorepo architecture using Nx to unify three products (marketplace, admin dashboard, landing pages), maximizing UI component and business logic reuse",
+        "issue": "too_senior",
+        "explanation": "'Designed and implemented a monorepo architecture' implies org-level architectural ownership (defining the system structure for multiple products). For a middle target, architecture decisions should be framed as contributions or implementations under guidance, not sole authorship of the architecture itself.",
+        "suggestion": "Developed and maintained a monorepo setup using Nx to unify three products (marketplace, admin dashboard, landing pages), maximizing UI component and business logic reuse"
+      },
+      {
+        "location": "experience[0].bullets[4]",
+        "current_text": "Engineered marketing landing pages with Next.js, integrating product analytics, tracking scripts, and A/B testing configurations that boosted user conversion rates by ~15%",
+        "issue": "too_senior",
+        "explanation": "'Engineered' is a principal/staff-level verb that signals deep system-level ownership. For a middle developer, a verb like 'Built' or 'Developed' is more appropriate and equally credible.",
+        "suggestion": "Built marketing landing pages with Next.js, integrating product analytics, tracking scripts, and A/B testing configurations that boosted user conversion rates by ~15%"
+      },
+      {
+        "location": "experience[0].bullets[5]",
+        "current_text": "Configured CI/CD pipelines, production monitoring, and code review workflows to maintain delivery quality across the product ecosystem",
+        "issue": "too_senior",
+        "explanation": "'Configured CI/CD pipelines … across the product ecosystem' implies ownership of the entire delivery infrastructure — an initiative-level scope typical of a senior/lead. For middle, framing it as participation or contribution to an existing setup is more appropriate.",
+        "suggestion": "Contributed to CI/CD pipeline configuration, production monitoring setup, and code review workflows to maintain delivery quality across the product"
+      },
+      {
+        "location": "experience[1].bullets[1]",
+        "current_text": "Refactored the data-fetching layer using TanStack Query, establishing caching, background revalidation, and consistent state synchronization across the application",
+        "issue": "too_senior",
+        "explanation": "'Establishing caching … across the application' implies setting an org/app-wide standard — a senior-level framing. 'Establishing' is flagged as a too_senior verb pattern for middle targets.",
+        "suggestion": "Refactored the data-fetching layer using TanStack Query, implementing caching, background revalidation, and consistent state synchronization across the application"
+      },
+      {
+        "location": "experience[2].bullets[0]",
+        "current_text": "Contributed to building and launching the platform from scratch to production, delivering features across admin panel and marketing modules",
+        "issue": "too_junior",
+        "explanation": "'Contributed to building' is a junior/intern-level phrase that undersells the candidate's role. Given the surrounding bullets describe full feature ownership (dashboards, OAuth, layouts), this opener weakens the overall impression for a middle-level target.",
+        "suggestion": "Developed and shipped features across admin panel and marketing modules as part of building and launching the platform from scratch to production"
+      },
+      {
+        "location": "experience[2].bullets[2]",
+        "current_text": "Integrated REST APIs and WebSockets for global state management using Redux, supporting reliable real-time alert distribution across the platform",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[1].bullets[2]",
+        "current_text": "Improved client-side performance (LCP, TTI) through code-splitting and lazy loading, reducing overall bundle size by ~10% and widget load times by ~15%",
+        "issue": "ok"
+      },
+      {
+        "location": "experience[0].bullets[1]",
+        "current_text": "Developed core features of a high-load crypto marketplace (50K+ MAU), including secure authentication, a multi-step order creation workflow, and advanced search with dynamic filtering",
+        "issue": "ok"
+      }
+    ],
+    "stack_checks": [
+      {
+        "technology": "React JS",
+        "status": "demonstrated",
+        "location": "experience[0].bullets[1], experience[1].bullets[3], experience[2].bullets[3]"
+      },
+      {
+        "technology": "Redux",
+        "status": "demonstrated",
+        "location": "experience[2].bullets[2]"
+      },
+      {
+        "technology": "Flux",
+        "status": "missing",
+        "suggestion": "Flux is the architectural pattern underlying Redux. Add a brief parenthetical in the DonateSystem Redux bullet or summary, e.g. '…using Redux (Flux architecture) for global state management…' to signal awareness of the pattern."
+      },
+      {
+        "technology": "TypeScript",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "TypeScript is listed in top_skills but no experience bullet explicitly mentions it in context. Add it to at least one bullet, e.g. in the KYC Market monorepo bullet: '…using Nx and TypeScript to unify three products…' or in the AMO FINTECH chat widget bullet: '…Developed an isolated embeddable chat widget in TypeScript using Shadow DOM and WebSockets…'"
+      },
+      {
+        "technology": "CSS",
+        "status": "demonstrated",
+        "location": "experience[2].bullets[5], experience[1].bullets[2], top_skills"
+      },
+      {
+        "technology": "Git",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Git is only in top_skills. Weave it into the KYC Market CI/CD bullet, e.g. '…Configured CI/CD pipelines with Git-based branching workflows, production monitoring, and code review processes…'"
+      },
+      {
+        "technology": "GitHub",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "GitHub is listed in top_skills but never named in an experience bullet. Add it to the CI/CD bullet at KYC Market: '…using GitHub Actions for CI/CD pipeline configuration…'"
+      },
+      {
+        "technology": "GitLab",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "GitLab is listed in top_skills but never named in an experience bullet. If GitLab was used at AMO FINTECH or DonateSystem, name it explicitly in the relevant CI/CD or workflow context."
+      },
+      {
+        "technology": "ES6/ES7/ES8",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "ES6/ES7/ES8 is listed in top_skills but never referenced in experience bullets. Add a brief mention in the summary or in a bullet describing modern JS patterns, e.g. '…leveraging ES6+ features (async/await, destructuring, modules) throughout the codebase…'"
+      },
+      {
+        "technology": "Node.js",
+        "status": "mentioned_only",
+        "location": "top_skills",
+        "suggestion": "Node.js is in top_skills only. If any tooling, scripts, or SSR work involved Node.js (e.g. Next.js server-side, Nx build scripts), add a brief mention in the relevant bullet to demonstrate hands-on usage."
+      },
+      {
+        "technology": "Docker",
+        "status": "missing",
+        "suggestion": "Docker is absent from the CV. If Docker was used in any CI/CD pipeline or local dev environment, add it to the KYC Market CI/CD bullet: '…Configured CI/CD pipelines with Docker-based build environments…'. If genuinely unused, be prepared to address this gap verbally."
+      },
+      {
+        "technology": "Bash",
+        "status": "missing",
+        "suggestion": "Bash is absent from the CV. If any shell scripting was done for CI/CD, deployment, or tooling, add it to the KYC Market CI/CD bullet or top_skills. Otherwise, acknowledge this as a gap."
+      },
+      {
+        "technology": "Linux",
+        "status": "missing",
+        "suggestion": "Linux is absent from the CV. If development or deployment work was done on Linux-based environments (common with Docker/CI), add a brief mention in the CI/CD bullet or top_skills, e.g. 'Linux (Ubuntu)'."
+      }
+    ],
+    "level_score": 55,
+    "stack_score": 52,
+    "overall_score": 54,
+    "recommendations": [
+      {
+        "priority": "high",
+        "type": "seniority",
+        "text": "Downscale 4 too_senior verbs/framings: replace 'Designed and implemented a monorepo architecture' → 'Developed and maintained a monorepo setup'; 'Engineered' → 'Built'; 'establishing' → 'implementing'; and 'Configured CI/CD pipelines … across the product ecosystem' → 'Contributed to CI/CD pipeline configuration…'. These four items alone cost 40 level-score points and risk signalling overqualification for a middle role."
+      },
+      {
+        "priority": "high",
+        "type": "stack",
+        "text": "Demonstrate TypeScript in at least one experience bullet (not just top_skills). For example, update the KYC Market monorepo bullet to read '…using Nx and TypeScript to unify three products…' or the AMO FINTECH chat widget bullet to explicitly name TypeScript. This is the highest-value required technology currently only mentioned."
+      },
+      {
+        "priority": "high",
+        "type": "stack",
+        "text": "Name GitHub and/or GitLab explicitly in an experience bullet. The KYC Market CI/CD bullet is the natural home: '…Configured CI/CD pipelines using GitHub Actions…'. This converts two 'mentioned_only' required technologies to 'demonstrated' and directly addresses the coverage gap flagged in the CV's own match_notes."
+      },
+      {
+        "priority": "medium",
+        "type": "stack",
+        "text": "Add a Flux reference to the DonateSystem Redux bullet. A single parenthetical — '…using Redux (Flux architecture) for global state management…' — covers the Flux requirement without inventing experience, since Redux is a Flux implementation."
+      },
+      {
+        "priority": "medium",
+        "type": "framing",
+        "text": "Rewrite the DonateSystem opening bullet from 'Contributed to building and launching…' (too_junior) to 'Developed and shipped features across admin panel and marketing modules as part of building and launching the platform from scratch to production'. This is the only too_junior signal and it sets the tone for the entire earliest role."
+      }
+    ],
+    "verdict": "CV має сильну технічну базу та релевантний досвід, однак у поточному вигляді він недостатньо відкалібрований під рівень middle: чотири формулювання (monorepo architecture, Engineered, establishing, product ecosystem) звучать як senior/lead-рівень і ризикують виглядати як overqualification. Найкритичніша прогалина у стеку — TypeScript, GitHub, GitLab та ES6/ES7/ES8 присутні лише у списку навичок без жодного підтвердження в досвіді, а Docker, Bash і Linux відсутні повністю; усунення хоча б перших чотирьох підніме stack_score з 52 до ~75+."
+  }
+}
